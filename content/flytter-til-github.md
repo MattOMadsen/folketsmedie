@@ -1,26 +1,22 @@
-# Folkets Medie flytter: Arkivet lever videre
+# Folkets Medie lukker sitet — men artiklerne lever videre
 
 Kære læsere,
 
-Efter flere år med Folkets Medie er det tid til en ærlig besked: Jeg har ikke længere tid, overskud eller råd til at holde det fulde website kørende som før.
+Folkets Medie blev oprettet for at få vigtige informationer og nyheder ud til den danske befolkning — fordi de statsfinansierede mainstream-medier i alt for høj grad kører propaganda og dagsordener, der ikke hænger sammen med virkeligheden. Vi har villet være et frit medie uden propaganda. Nyheder fra folket til folket.
 
-At drive en uafhængig platform koster — både i penge til hosting og værktøjer, og i den tid og det mentale overskud det kræver at holde sitet opdateret, sikkert og tilgængeligt. Den kapacitet har jeg ikke lige nu. Derfor lukker den gamle opsætning ned.
+Nu er det tid til en ærlig besked.
 
-**Men indholdet forsvinder ikke.**
+Jeg har ikke længere tid, overskud eller råd til at holde sitet kørende, som det har kørt indtil nu. At drive en uafhængig platform er frivilligt arbejde. Det koster penge, tid og energi — og den kapacitet er der ikke mere hos mig lige nu.
 
-Alle artiklerne (og dokumentar, links og om-siden) er flyttet til et åbent arkiv:
+Derfor lukker den gamle side ned.
 
-👉 **https://mattomadsen.github.io/folketsmedie/**
+Men det betyder ikke, at det hele bare skal forsvinde.
 
-### Kort fortalt
-- Artiklerne er bevaret
-- Dokumentar kan stadig ses via de platforme, de ligger på
-- Enklere drift end den gamle WordPress-side
-- Del linket, så andre også kan finde arkivet
+Alle artiklerne er bevaret i et åbent arkiv:
 
-Målet er ikke at bygge noget nyt og fancy — det er at bevare det, der allerede er skrevet.
+👉 https://mattomadsen.github.io/folketsmedie/
 
-Tak til alle der har læst, delt og støttet undervejs.
+Tak til frivillige og læsere. Gem og del arkiv-linket.
 
 Matt  
-Folkets Medie
+Stifter, Folkets Medie
