@@ -18,14 +18,14 @@ const { slug } = Astro.params;
 const article = getArticle(slug!);
 if (!article) throw new Error(`Article not found: ${slug}`);
 
-const body = cleanHtml(article.content);
 const base = import.meta.env.BASE_URL;
+const body = cleanHtml(article.content, base);
 const img = articleImage(article, base);
 ---
 
 <BaseLayout title={article.title} description={article.excerpt || article.title} current="home">
   <article class="narrow">
-    <a class="back" href={base}>← Artikler</a>
+    <a class="back" href={base}>← Alle artikler</a>
     <header class="article-header">
       <time class="meta-line" datetime={article.date}>{formatDate(article.date)}</time>
       <h1>{article.title}</h1>

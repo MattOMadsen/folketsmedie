@@ -9,11 +9,11 @@ interface Props {
 
 const {
   title,
-  description = 'Folkets Medie — artikler og dokumentar (arkiv).',
+  description = 'Folkets Medie — nyheder, artikler og dokumentar. Statisk arkiv.',
   current,
 } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const fullTitle = title === 'Folkets Medie' ? title : `${title} · Folkets Medie`;
+const fullTitle = title === 'Folkets Medie' ? `${title} · Nyheder fra folket` : `${title} · Folkets Medie`;
 ---
 
 <!doctype html>
@@ -22,15 +22,25 @@ const fullTitle = title === 'Folkets Medie' ? title : `${title} · Folkets Medie
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0b0c" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap"
+      rel="stylesheet"
+    />
     <title>{fullTitle}</title>
   </head>
   <body>
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="logo" href={base}>Folkets <span>Medie</span></a>
-        <nav class="nav" aria-label="Menu">
+        <a class="logo" href={base}>
+          Folkets <span>Medie</span>
+          <small>Arkiv</small>
+        </a>
+        <nav class="nav" aria-label="Hovedmenu">
           <a href={base} aria-current={current === 'home' ? 'page' : undefined}>Artikler</a>
           <a href={`${base}dokumentar/`} aria-current={current === 'dokumentar' ? 'page' : undefined}>Dokumentar</a>
           <a href={`${base}nyttige-links/`} aria-current={current === 'links' ? 'page' : undefined}>Links</a>
@@ -44,7 +54,10 @@ const fullTitle = title === 'Folkets Medie' ? title : `${title} · Folkets Medie
     </main>
 
     <footer class="site-footer">
-      <p>Folkets Medie · statisk arkiv · video streamer fra Rumble m.fl.</p>
+      <div class="site-footer__inner">
+        <p><strong>Folkets Medie</strong> — nyheder fra folket til folket</p>
+        <p>Video streamer fra Rumble, Bitchute m.fl. · Statisk arkiv</p>
+      </div>
     </footer>
   </body>
 </html>

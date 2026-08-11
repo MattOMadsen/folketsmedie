@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { data, cleanHtml } from '../../lib/content';
 
 const page = data.pages.nyttige_links;
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Nyttige links" current="links">
@@ -12,7 +13,7 @@ const page = data.pages.nyttige_links;
     </header>
     {
       page ? (
-        <div class="prose" set:html={cleanHtml(page.content)} />
+        <div class="prose" set:html={cleanHtml(page.content, base)} />
       ) : (
         <p>Indhold mangler.</p>
       )
