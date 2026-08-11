@@ -1,6 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getArticles, getArticle, cleanHtml, formatDate } from '../../lib/content';
+import {
+  getArticles,
+  getArticle,
+  cleanHtml,
+  formatDate,
+  articleImage,
+} from '../../lib/content';
 
 export function getStaticPaths() {
   return getArticles().map((a) => ({
@@ -10,26 +16,21 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 const article = getArticle(slug!);
-if (!article) {
-  throw new Error(`Article not found: ${slug}`);
-}
+if (!article) throw new Error(`Article not found: ${slug}`);
 
 const body = cleanHtml(article.content);
 const base = import.meta.env.BASE_URL;
+const img = articleImage(article, base);
 ---
 
 <BaseLayout title={article.title} description={article.excerpt || article.title} current="home">
   <article class="narrow">
-    <a class="back" href={base}>← Alle artikler</a>
+    <a class="back" href={base}>← Artikler</a>
     <header class="article-header">
-      <time class="article-meta" datetime={article.date}>{formatDate(article.date)}</time>
+      <time class="meta-line" datetime={article.date}>{formatDate(article.date)}</time>
       <h1>{article.title}</h1>
     </header>
-    {
-      article.featured_image && (
-        <img class="featured" src={article.featured_image} alt="" loading="eager" />
-      )
-    }
+    {img && <img class="featured" src={img} alt="" loading="eager" />}
     <div class="prose" set:html={body} />
   </article>
 </BaseLayout>

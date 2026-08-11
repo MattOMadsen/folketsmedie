@@ -12,7 +12,7 @@ const { slug } = Astro.params;
 const video = getVideo(slug!);
 if (!video) throw new Error(`Video not found: ${slug}`);
 
-const body = cleanHtml(video.content);
+const body = cleanHtml(video.content || '');
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -20,14 +20,24 @@ const base = import.meta.env.BASE_URL;
   <article class="narrow">
     <a class="back" href={`${base}dokumentar/`}>← Dokumentar</a>
     <header class="article-header">
-      <time class="article-meta" datetime={video.date}>{formatDate(video.date)}</time>
+      <time class="meta-line" datetime={video.date}>{formatDate(video.date)}</time>
       <h1>{video.title}</h1>
     </header>
+
     {
-      video.featured_image && (
+      video.embed_html ? (
+        <div set:html={video.embed_html} />
+      ) : video.watch_url ? (
+        <p class="video-link">
+          <a href={video.watch_url} target="_blank" rel="noopener">
+            Se video ↗
+          </a>
+        </p>
+      ) : video.featured_image ? (
         <img class="featured" src={video.featured_image} alt="" />
-      )
+      ) : null
     }
-    <div class="prose" set:html={body} />
+
+    {body && <div class="prose" set:html={body} />}
   </article>
 </BaseLayout>

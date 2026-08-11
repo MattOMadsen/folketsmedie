@@ -5,17 +5,16 @@ import { data, cleanHtml } from '../../lib/content';
 const page = data.pages.nyttige_links;
 ---
 
-<BaseLayout title="Nyttige links" description="Nyttige links fra Folkets Medie" current="links">
+<BaseLayout title="Nyttige links" current="links">
   <article class="narrow">
-    <section class="hero">
-      <div class="badge">Ressourcer</div>
+    <header class="page-intro">
       <h1>{page?.title || 'Nyttige links'}</h1>
-    </section>
+    </header>
     {
       page ? (
         <div class="prose" set:html={cleanHtml(page.content)} />
       ) : (
-        <p class="prose">Indhold mangler i backup — udfyldes senere.</p>
+        <p>Indhold mangler.</p>
       )
     }
   </article>

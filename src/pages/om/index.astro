@@ -5,17 +5,16 @@ import { data, cleanHtml } from '../../lib/content';
 const page = data.pages.om;
 ---
 
-<BaseLayout title="Om Folkets Medie" description="Om Folkets Medie" current="om">
+<BaseLayout title="Om Folkets Medie" current="om">
   <article class="narrow">
-    <section class="hero">
-      <div class="badge">Om FM</div>
+    <header class="page-intro">
       <h1>{page?.title || 'Om Folkets Medie'}</h1>
-    </section>
+    </header>
     {
       page ? (
         <div class="prose" set:html={cleanHtml(page.content)} />
       ) : (
-        <p class="prose">Indhold mangler i backup — udfyldes senere.</p>
+        <p>Indhold mangler.</p>
       )
     }
   </article>
