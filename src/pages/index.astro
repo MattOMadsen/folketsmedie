@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { getArticles, data } from '../lib/content';
+
+const articles = getArticles();
+---
+
+<BaseLayout title="Folkets Medie" current="home">
+  <section class="hero">
+    <div class="badge">Arkiv · backup {data.backup_date}</div>
+    <h1>Nyheder fra folket til folket</h1>
+    <p>
+      Statisk arkiv med artikler, dokumentarfilm og nyttige links.
+      Designet til at kunne leve videre på GitHub Pages — uafhængigt af WordPress.
+    </p>
+  </section>
+
+  <div class="note">
+    <strong>v0.1 · start med det vi har.</strong>
+    {articles.length} artikler importeret fra sep. 2023-backup.
+    Medier hentes stadig fra folketsmedie.dk indtil de er pakket lokalt.
+    Nyere artikler (efter aug. 2023) kommer med, når din friske backup er klar.
+  </div>
+
+  <div class="toolbar">
+    <p class="count">{articles.length} artikler</p>
+  </div>
+
+  <div class="grid">
+    {articles.map((a) => <ArticleCard article={a} />)}
+  </div>
+</BaseLayout>

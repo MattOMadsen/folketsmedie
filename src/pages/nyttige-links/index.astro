@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { data, cleanHtml } from '../../lib/content';
+
+const page = data.pages.nyttige_links;
+---
+
+<BaseLayout title="Nyttige links" description="Nyttige links fra Folkets Medie" current="links">
+  <article class="narrow">
+    <section class="hero">
+      <div class="badge">Ressourcer</div>
+      <h1>{page?.title || 'Nyttige links'}</h1>
+    </section>
+    {
+      page ? (
+        <div class="prose" set:html={cleanHtml(page.content)} />
+      ) : (
+        <p class="prose">Indhold mangler i backup — udfyldes senere.</p>
+      )
+    }
+  </article>
+</BaseLayout>

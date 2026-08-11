@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getArticles, getArticle, cleanHtml, formatDate } from '../../lib/content';
+
+export function getStaticPaths() {
+  return getArticles().map((a) => ({
+    params: { slug: a.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const article = getArticle(slug!);
+if (!article) {
+  throw new Error(`Article not found: ${slug}`);
+}
+
+const body = cleanHtml(article.content);
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title={article.title} description={article.excerpt || article.title} current="home">
+  <article class="narrow">
+    <a class="back" href={base}>← Alle artikler</a>
+    <header class="article-header">
+      <time class="article-meta" datetime={article.date}>{formatDate(article.date)}</time>
+      <h1>{article.title}</h1>
+    </header>
+    {
+      article.featured_image && (
+        <img class="featured" src={article.featured_image} alt="" loading="eager" />
+      )
+    }
+    <div class="prose" set:html={body} />
+  </article>
+</BaseLayout>

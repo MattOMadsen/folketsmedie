@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getVideos, data, cleanHtml, formatDate } from '../../lib/content';
+
+const videos = getVideos();
+const page = data.pages.dokumentar;
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Dokumentar" description="Dokumentarfilm fra Folkets Medie" current="dokumentar">
+  <section class="hero">
+    <div class="badge">Video</div>
+    <h1>{page?.title || 'Dokumentar film'}</h1>
+    <p>
+      Dokumentarer og videoer fra arkivet ({videos.length} stk. i sep. 2023-backup).
+      Embeds peger typisk på Rumble/YouTube m.fl.
+    </p>
+  </section>
+
+  {
+    page?.content && (
+      <div class="narrow prose" style="margin-bottom: 2rem" set:html={cleanHtml(page.content)} />
+    )
+  }
+
+  <div class="grid">
+    {
+      videos.map((v) => (
+        <article class="card">
+          <a href={`${base}dokumentar/${v.slug}/`}>
+            {v.featured_image ? (
+              <img class="card__img" src={v.featured_image} alt="" loading="lazy" />
+            ) : (
+              <div class="card__img-placeholder">▶ Dokumentar</div>
+            )}
+            <div class="card__body">
+              <time class="card__date" datetime={v.date}>
+                {formatDate(v.date)}
+              </time>
+              <h2 class="card__title">{v.title}</h2>
+            </div>
+          </a>
+        </article>
+      ))
+    }
+  </div>
+</BaseLayout>

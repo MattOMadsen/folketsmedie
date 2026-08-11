@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { data, cleanHtml } from '../../lib/content';
+
+const page = data.pages.om;
+---
+
+<BaseLayout title="Om Folkets Medie" description="Om Folkets Medie" current="om">
+  <article class="narrow">
+    <section class="hero">
+      <div class="badge">Om FM</div>
+      <h1>{page?.title || 'Om Folkets Medie'}</h1>
+    </section>
+    {
+      page ? (
+        <div class="prose" set:html={cleanHtml(page.content)} />
+      ) : (
+        <p class="prose">Indhold mangler i backup — udfyldes senere.</p>
+      )
+    }
+  </article>
+</BaseLayout>
