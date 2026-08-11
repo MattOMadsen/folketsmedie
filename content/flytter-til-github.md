@@ -1,4 +1,4 @@
-# Folkets Medie flytter: Arkivet lever videre på GitHub
+# Folkets Medie flytter: Arkivet lever videre
 
 Kære læsere,
 
@@ -8,15 +8,17 @@ At drive en uafhængig platform koster — både i penge til hosting og værktø
 
 **Men indholdet forsvinder ikke.**
 
-Alle artiklerne (og dokumentar, links og om-siden) er flyttet til et statisk arkiv på GitHub, så I stadig kan finde det:
+Alle artiklerne (og dokumentar, links og om-siden) er flyttet til et åbent arkiv:
 
 👉 **https://mattomadsen.github.io/folketsmedie/**
 
 ### Kort fortalt
 - Artiklerne er bevaret
-- Dokumentar streamer fra Rumble/Bitchute m.fl.
-- Enklere og billigere drift end WordPress
+- Dokumentar kan stadig ses via de platforme, de ligger på
+- Enklere drift end den gamle WordPress-side
 - Del linket, så andre også kan finde arkivet
+
+Målet er ikke at bygge noget nyt og fancy — det er at bevare det, der allerede er skrevet.
 
 Tak til alle der har læst, delt og støttet undervejs.
 
