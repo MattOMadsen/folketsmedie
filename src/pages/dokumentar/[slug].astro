@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ShareBar from '../../components/ShareBar.astro';
+import EngageBar from '../../components/EngageBar.astro';
 import { getVideos, getVideo, cleanHtml } from '../../lib/content';
 
 export function getStaticPaths() {
@@ -40,12 +40,24 @@ const shareText = (video.excerpt || video.title).replace(/\s+/g, ' ').trim().sli
       ) : null
     }
 
-    <ShareBar title={video.title} url={shareUrl} text={shareText} />
+    <EngageBar
+      placement="top"
+      slug={video.slug}
+      title={video.title}
+      url={shareUrl}
+      text={shareText}
+    />
 
     {
       showBody && <div class="prose" set:html={body} />
     }
 
-    <ShareBar title={video.title} url={shareUrl} text={shareText} />
+    <EngageBar
+      placement="bottom"
+      slug={video.slug}
+      title={video.title}
+      url={shareUrl}
+      text={shareText}
+    />
   </article>
 </BaseLayout>

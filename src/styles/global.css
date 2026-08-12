@@ -482,22 +482,117 @@ img {
   color: var(--accent);
 }
 
+/* —— Engage bar (like + share) —— */
+.engage-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin: 0 0 1.5rem;
+}
+
+.engage-bar--bottom {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.engage-bar__like {
+  display: flex;
+}
+
+.like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem 0.55rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(232, 184, 74, 0.35);
+  background: rgba(232, 184, 74, 0.1);
+  color: var(--accent);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 650;
+  cursor: pointer;
+  line-height: 1;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    color 0.15s,
+    transform 0.12s,
+    box-shadow 0.15s;
+}
+
+.like-btn:hover:not(:disabled) {
+  border-color: rgba(232, 184, 74, 0.65);
+  background: rgba(232, 184, 74, 0.18);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.like-btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.like-btn__heart {
+  display: block;
+  color: var(--accent-2);
+  transition: transform 0.2s, color 0.15s;
+}
+
+.like-btn:hover:not(:disabled) .like-btn__heart {
+  transform: scale(1.12);
+}
+
+.like-btn.is-liked {
+  border-color: rgba(196, 92, 58, 0.55);
+  background: rgba(196, 92, 58, 0.16);
+  color: #f0c4b4;
+}
+
+.like-btn.is-liked .like-btn__heart {
+  color: #e07050;
+  animation: like-pop 0.35s ease;
+}
+
+.like-btn__count {
+  min-width: 1.25rem;
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.25);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-soft);
+  text-align: center;
+}
+
+.like-btn.is-liked .like-btn__count {
+  background: rgba(0, 0, 0, 0.3);
+  color: #f5d6cc;
+}
+
+@keyframes like-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* —— Share bar —— */
 .share-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.65rem 0.85rem;
-  margin: 0 0 1.5rem;
+  margin: 0;
   padding: 0.85rem 1rem;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-}
-
-.prose + .share-bar,
-.doc-player + .share-bar + .prose {
-  /* spacing handled by margins */
 }
 
 .prose + .share-bar {

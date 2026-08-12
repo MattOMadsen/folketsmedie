@@ -1,0 +1,22 @@
+---
+import LikeButton from './LikeButton.astro';
+import ShareBar from './ShareBar.astro';
+
+interface Props {
+  slug: string;
+  title: string;
+  url: string;
+  text?: string;
+  /** Extra class for bottom placement */
+  placement?: 'top' | 'bottom';
+}
+
+const { slug, title, url, text = '', placement = 'top' } = Astro.props;
+---
+
+<div class:list={['engage-bar', placement === 'bottom' && 'engage-bar--bottom']}>
+  <div class="engage-bar__like">
+    <LikeButton slug={slug} />
+  </div>
+  <ShareBar title={title} url={url} text={text} />
+</div>

@@ -1,0 +1,201 @@
+---
+interface Props {
+  /** Unique id for this page (article/doc slug) */
+  slug: string;
+  /** Optional label */
+  label?: string;
+}
+
+const { slug, label = 'Synes godt om' } = Astro.props;
+// Safe key for external counter (alphanumeric + hyphen)
+const counterKey = slug
+  .toLowerCase()
+  .replace(/[^a-z0-9-]+/g, '-')
+  .replace(/^-+|-+$/g, '')
+  .slice(0, 80) || 'page';
+---
+
+<button
+  type="button"
+  class="like-btn"
+  data-like-slug={slug}
+  data-like-key={counterKey}
+  aria-pressed="false"
+  aria-label={label}
+  title={label}
+>
+  <span class="like-btn__icon" aria-hidden="true">
+    <svg class="like-btn__heart" viewBox="0 0 24 24" width="18" height="18">
+      <path
+        fill="currentColor"
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+      ></path>
+    </svg>
+  </span>
+  <span class="like-btn__label">{label}</span>
+  <span class="like-btn__count" data-like-count>…</span>
+</button>
+
+<script>
+  const NS = 'folketsmedie';
+  const STORAGE_LIKED = 'fm-liked-v1';
+  const STORAGE_COUNTED = 'fm-like-counted-v1';
+
+  type Store = Record<string, boolean>;
+
+  function readStore(key: string): Store {
+    try {
+      return JSON.parse(localStorage.getItem(key) || '{}') as Store;
+    } catch {
+      return {};
+    }
+  }
+
+  function writeStore(key: string, data: Store) {
+    try {
+      localStorage.setItem(key, JSON.stringify(data));
+    } catch {
+      /* private mode */
+    }
+  }
+
+  function formatCount(n: number): string {
+    if (!Number.isFinite(n) || n < 0) return '0';
+    if (n >= 10000) return `${(n / 1000).toFixed(1).replace(/\.0$/, '')}k`;
+    return String(n);
+  }
+
+  async function fetchCount(counterKey: string): Promise<number> {
+    const res = await fetch(
+      `https://abacus.jasoncameron.dev/get/${encodeURIComponent(NS)}/${encodeURIComponent(counterKey)}`,
+      { credentials: 'omit' }
+    );
+    if (!res.ok) throw new Error('get failed');
+    const data = (await res.json()) as { value?: number };
+    return typeof data.value === 'number' ? data.value : 0;
+  }
+
+  async function hitCount(counterKey: string): Promise<number> {
+    const res = await fetch(
+      `https://abacus.jasoncameron.dev/hit/${encodeURIComponent(NS)}/${encodeURIComponent(counterKey)}`,
+      { credentials: 'omit' }
+    );
+    if (!res.ok) throw new Error('hit failed');
+    const data = (await res.json()) as { value?: number };
+    return typeof data.value === 'number' ? data.value : 0;
+  }
+
+  function allButtons(slug: string): HTMLButtonElement[] {
+    return Array.from(document.querySelectorAll<HTMLButtonElement>(`.like-btn[data-like-slug="${CSS.escape(slug)}"]`));
+  }
+
+  function paint(slug: string, liked: boolean, count: number | null) {
+    for (const btn of allButtons(slug)) {
+      btn.classList.toggle('is-liked', liked);
+      btn.setAttribute('aria-pressed', liked ? 'true' : 'false');
+      const label = btn.querySelector('.like-btn__label');
+      if (label) label.textContent = liked ? 'Liket' : 'Synes godt om';
+      const countEl = btn.querySelector<HTMLElement>('[data-like-count]');
+      if (countEl && count !== null) countEl.textContent = formatCount(count);
+      btn.disabled = false;
+    }
+  }
+
+  async function initLikeButtons() {
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.like-btn[data-like-key]');
+    if (!buttons.length) return;
+
+    // Group by slug so we only fetch once per page
+    const bySlug = new Map<string, { key: string; btns: HTMLButtonElement[] }>();
+    buttons.forEach((btn) => {
+      if (btn.dataset.likeReady === '1') return;
+      const slug = btn.dataset.likeSlug || '';
+      const key = btn.dataset.likeKey || slug;
+      if (!slug) return;
+      const g = bySlug.get(slug) || { key, btns: [] };
+      g.btns.push(btn);
+      bySlug.set(slug, g);
+    });
+
+    const likedStore = readStore(STORAGE_LIKED);
+    const countedStore = readStore(STORAGE_COUNTED);
+
+    for (const [slug, { key, btns }] of bySlug) {
+      btns.forEach((b) => {
+        b.dataset.likeReady = '1';
+      });
+
+      const liked = !!likedStore[slug];
+      paint(slug, liked, null);
+
+      try {
+        const count = await fetchCount(key);
+        paint(slug, liked, count);
+        // remember last known count on each btn
+        btns.forEach((b) => {
+          b.dataset.likeCountVal = String(count);
+        });
+      } catch {
+        // Offline / API down — show 0 or local-only
+        const fallback = liked ? 1 : 0;
+        paint(slug, liked, fallback);
+        btns.forEach((b) => {
+          b.dataset.likeCountVal = String(fallback);
+        });
+      }
+
+      const onClick = async (e: Event) => {
+        const btn = e.currentTarget as HTMLButtonElement;
+        if (btn.dataset.likeBusy === '1') return;
+        const s = btn.dataset.likeSlug || slug;
+        const k = btn.dataset.likeKey || key;
+        const storeLiked = readStore(STORAGE_LIKED);
+        const storeCounted = readStore(STORAGE_COUNTED);
+        const isLiked = !!storeLiked[s];
+        let count = parseInt(btn.dataset.likeCountVal || '0', 10) || 0;
+
+        if (isLiked) {
+          // Unlike (UI only — count stays, no re-hit on re-like after unlike)
+          delete storeLiked[s];
+          writeStore(STORAGE_LIKED, storeLiked);
+          paint(s, false, count);
+          return;
+        }
+
+        // Like
+        btn.dataset.likeBusy = '1';
+        allButtons(s).forEach((b) => {
+          b.disabled = true;
+        });
+
+        storeLiked[s] = true;
+        writeStore(STORAGE_LIKED, storeLiked);
+
+        // Only increment remote once per browser
+        if (!storeCounted[s]) {
+          try {
+            count = await hitCount(k);
+            storeCounted[s] = true;
+            writeStore(STORAGE_COUNTED, storeCounted);
+          } catch {
+            count = count + 1; // optimistic local
+          }
+        }
+
+        allButtons(s).forEach((b) => {
+          b.dataset.likeCountVal = String(count);
+          b.dataset.likeBusy = '0';
+          b.disabled = false;
+        });
+        paint(s, true, count);
+      };
+
+      btns.forEach((b) => {
+        b.addEventListener('click', onClick);
+      });
+    }
+  }
+
+  initLikeButtons();
+  document.addEventListener('astro:page-load', initLikeButtons);
+</script>
