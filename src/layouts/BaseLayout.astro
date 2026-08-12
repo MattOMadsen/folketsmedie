@@ -46,7 +46,7 @@ const desc = (description || '').replace(/\s+/g, ' ').trim().slice(0, 300);
 ---
 
 <!doctype html>
-<html lang="da">
+<html lang="da" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -64,6 +64,7 @@ const desc = (description || '').replace(/\s+/g, ' ').trim().slice(0, 300);
     <meta property="og:description" content={desc} />
     <meta property="og:url" content={canonical} />
     {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <link rel="image_src" href={ogImage} />}
     {ogImage && <meta property="og:image:secure_url" content={ogImage} />}
     {ogImage && <meta property="og:image:alt" content={title} />}
     {ogImage && ogImage.toLowerCase().endsWith('.png') && <meta property="og:image:type" content="image/png" />}

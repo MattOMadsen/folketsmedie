@@ -18,7 +18,7 @@ const composed = parts.join('\n\n');
 const encodedComposed = encodeURIComponent(composed);
 
 const xHref = `https://twitter.com/intent/tweet?text=${encodedComposed}`;
-const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedComposed}`;
 const tgHref = `https://t.me/share/url?url=${encodedUrl}&text=${encodeURIComponent(
   [title.trim(), teaser && teaser !== title.trim() ? teaser : '', 'Læs mere her:'].filter(Boolean).join('\n\n')
 )}`;
@@ -47,6 +47,7 @@ const mailHref = `mailto:?subject=${encodedTitle}&body=${encodedComposed}`;
     <a
       class="share-btn share-btn--fb"
       href={fbHref}
+      data-share-fb
       target="_blank"
       rel="noopener noreferrer"
       title="Del på Facebook"
@@ -103,6 +104,54 @@ const mailHref = `mailto:?subject=${encodedTitle}&body=${encodedComposed}`;
 
       const copyBtn = bar.querySelector<HTMLButtonElement>('[data-share-copy]');
       const copyLabel = bar.querySelector<HTMLElement>('[data-share-copy-label]');
+
+      async function copyShareText(): Promise<boolean> {
+        const payload = text.includes(url) ? text : `${text}\n\nLæs mere her:\n${url}`;
+        try {
+          await navigator.clipboard.writeText(payload);
+          return true;
+        } catch {
+          try {
+            window.prompt('Kopiér teksten og sæt den ind i opslaget:', payload);
+            return true;
+          } catch {
+            return false;
+          }
+        }
+      }
+
+      function flashHint(msg: string) {
+        let hint = document.querySelector<HTMLElement>('[data-share-hint]');
+        if (!hint) {
+          hint = document.createElement('div');
+          hint.className = 'share-hint';
+          hint.setAttribute('data-share-hint', '1');
+          hint.setAttribute('role', 'status');
+          document.body.appendChild(hint);
+        }
+        hint.textContent = msg;
+        hint.classList.add('is-on');
+        window.setTimeout(() => hint?.classList.remove('is-on'), 4200);
+      }
+
+      const fbBtn = bar.querySelector<HTMLAnchorElement>('[data-share-fb]');
+      fbBtn?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const copied = await copyShareText();
+        if (copied) {
+          flashHint('Teksten er kopieret. Sæt den ind i Facebook-opslaget (Ctrl+V / hold inde → Sæt ind).');
+        }
+        const w = 640;
+        const h = 720;
+        const left = Math.max(0, Math.round(window.screenX + (window.outerWidth - w) / 2));
+        const top = Math.max(0, Math.round(window.screenY + (window.outerHeight - h) / 2));
+        const popup = window.open(
+          fbBtn.href,
+          'fm-fb-share',
+          `popup=yes,width=${w},height=${h},left=${left},top=${top}`
+        );
+        if (!popup) window.location.href = fbBtn.href;
+      });
 
       copyBtn?.addEventListener('click', async () => {
         try {
