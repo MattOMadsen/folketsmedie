@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ShareBar from '../../components/ShareBar.astro';
 import { getVideos, getVideo, cleanHtml } from '../../lib/content';
 
 export function getStaticPaths() {
@@ -17,6 +18,11 @@ const base = import.meta.env.BASE_URL;
 const body = cleanHtml(video.content || '', base);
 // Strip aiovg gallery HTML noise from body if we have embeds
 const showBody = !video.embed_html && body.length > 80;
+
+const site = String(import.meta.env.SITE || 'https://mattomadsen.github.io').replace(/\/$/, '');
+const path = `${base}dokumentar/${video.slug}/`.replace(/\/{2,}/g, '/');
+const shareUrl = `${site}${path.startsWith('/') ? path : `/${path}`}`;
+const shareText = (video.excerpt || video.title).replace(/\s+/g, ' ').trim().slice(0, 200);
 ---
 
 <BaseLayout title={video.title} current="dokumentar">
@@ -34,8 +40,12 @@ const showBody = !video.embed_html && body.length > 80;
       ) : null
     }
 
+    <ShareBar title={video.title} url={shareUrl} text={shareText} />
+
     {
       showBody && <div class="prose" set:html={body} />
     }
+
+    <ShareBar title={video.title} url={shareUrl} text={shareText} />
   </article>
 </BaseLayout>

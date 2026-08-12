@@ -482,6 +482,114 @@ img {
   color: var(--accent);
 }
 
+/* —— Share bar —— */
+.share-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 0.85rem;
+  margin: 0 0 1.5rem;
+  padding: 0.85rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.prose + .share-bar,
+.doc-player + .share-bar + .prose {
+  /* spacing handled by margins */
+}
+
+.prose + .share-bar {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.share-bar__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.share-bar__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  flex: 1;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-soft);
+  font-family: var(--font);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  line-height: 1;
+  transition: border-color 0.15s, background 0.15s, color 0.15s, transform 0.12s;
+}
+
+.share-btn:hover {
+  color: var(--text);
+  border-color: rgba(232, 184, 74, 0.45);
+  background: rgba(232, 184, 74, 0.1);
+  transform: translateY(-1px);
+}
+
+.share-btn svg {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.share-btn--x:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.share-btn--fb:hover {
+  border-color: rgba(24, 119, 242, 0.55);
+  background: rgba(24, 119, 242, 0.15);
+  color: #8ab4f8;
+}
+
+.share-btn--tg:hover {
+  border-color: rgba(41, 170, 225, 0.55);
+  background: rgba(41, 170, 225, 0.12);
+  color: #7dd3fc;
+}
+
+.share-btn--copy.is-copied {
+  border-color: rgba(158, 201, 168, 0.55);
+  background: rgba(158, 201, 168, 0.14);
+  color: var(--link);
+}
+
+.share-btn--native {
+  border-color: rgba(232, 184, 74, 0.4);
+  background: rgba(232, 184, 74, 0.12);
+  color: var(--accent);
+}
+
+@media (max-width: 520px) {
+  .share-btn span {
+    /* keep short labels on small screens — buttons stay readable */
+  }
+  .share-bar {
+    padding: 0.75rem 0.8rem;
+  }
+}
+
 /* —— Footer —— */
 .site-footer {
   border-top: 1px solid var(--border-soft);
