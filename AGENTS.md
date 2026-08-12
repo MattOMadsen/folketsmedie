@@ -25,6 +25,8 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 
 Den dækker FM-stemme, struktur, kilder (X + alternative), billeder, `export.json`-felter, Open Graph og deploy (inkl. `.nojekyll`).
 
+**Godkendelse:** Vis altid den færdige kladde her i chatten først. Udgiv aldrig en artikel, før brugeren har læst og godkendt den. Ingen tidsplanlagt publicering uden eksplicit ok.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build
