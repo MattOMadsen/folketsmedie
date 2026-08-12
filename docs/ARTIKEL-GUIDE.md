@@ -7,6 +7,19 @@ Mål: artikler der lyder som **Folkets Medie** — skarpe, kildenære, fra folke
 
 ---
 
+## 0. Stående regler (Matt)
+
+1. **Research før skrivning.** Slå datoer, citater og myndighedstekster efter. Skriv ikke noget, der ikke kan belægges. Ingen opdigtede «stadig» eller «på én gang».
+2. **Kladde i chatten først.** Matt læser og godkender. Ingen udgivelse, ingen tidsplan, før han siger ja.
+3. **Når han siger hvordan det skal være:** skriv det ned her og i `AGENTS.md`. Glem det ikke næste gang.
+4. **Ved godkendt udgivelse:**
+   - billeder der passer (lokalt under `public/media/featured/`, ingen døde folketsmedie.dk-URL’er, ingen AI-ansigter af navngivne personer, ingen ulæselig tekst på billedet)
+   - links til kilder og til de omtalte på X
+   - gerne et kort, relevant videoklip (ikke nødvendigvis hele mødet)
+   - HTML i `export.json`, featured absolut + lokal sti, så build + `gh-pages`
+
+---
+
 ## 1. Stemme og vinkel
 
 ### Hvad FM er

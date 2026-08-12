@@ -23,9 +23,12 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 
 **Før du skriver eller publicerer en artikel:** læs `docs/ARTIKEL-GUIDE.md`.
 
-Den dækker FM-stemme, struktur, kilder (X + alternative), billeder, `export.json`-felter, Open Graph og deploy (inkl. `.nojekyll`).
+### Stående ordrer fra Matt (skriv ned, når han siger hvordan det skal være)
 
-**Godkendelse:** Vis altid den færdige kladde her i chatten først. Udgiv aldrig en artikel, før brugeren har læst og godkendt den. Ingen tidsplanlagt publicering uden eksplicit ok.
+- **Kladde først.** Vis den færdige artikel her i chatten. Udgiv aldrig før han har læst og godkendt.
+- **Research først.** Tjek datoer, citater, myndighedstekster og X-kilder. Ingen gætteri, ingen «tre ting på én gang» hvis det ikke er sandt.
+- **Ved udgivelse (efter ok):** billeder der passer, lokale featured-filer, links til kilder og til navngivne personer på X, gerne relevant kort video. Deploy til `gh-pages`.
+- **Når Matt siger hvordan noget skal være:** skriv det ind i denne fil og i `docs/ARTIKEL-GUIDE.md` med det samme.
 
 ## Documentation
 

@@ -4,7 +4,7 @@ from pathlib import Path
 
 EXPORT = Path(__file__).resolve().parents[1] / "data" / "export.json"
 
-CONTENT = r"""<p class="wp-block-paragraph">I en tid, hvor Google, OpenAI og de statsnære medier bestemmer, hvilke spørgsmål der er «ansvarlige» at stille, bygger <a href="https://x.com/elonmusk" target="_blank" rel="noopener">Elon Musk</a> noget andet: en AI, der ikke skal opdrage dig. Den hedder Grok. Den kører på X. Og i denne uge kom tre ting på én gang — <strong>Grok 4.6</strong>, <strong>Grok Build</strong> og <strong>Grok Bot</strong>.</p>
+CONTENT = r"""<p class="wp-block-paragraph">I en tid, hvor Google, OpenAI og de statsnære medier bestemmer, hvilke spørgsmål der er «ansvarlige» at stille, bygger <a href="https://x.com/elonmusk" target="_blank" rel="noopener">Elon Musk</a> noget andet: en AI, der ikke skal opdrage dig. Den hedder Grok. Den kører på X. I denne uge landede den nye model <strong>Grok 4.6</strong> — og dagen før kom <strong>Grok Bot</strong> i beta. <strong>Grok Build</strong>, agenten på computeren, har været ude siden slutningen af maj. Nu kører den på 4.6.</p>
 
 <p class="wp-block-paragraph">Det er ikke en gadget-anmeldelse. Det er et magtskifte. I årevis har Big Tech og «fact check»-maskinen bestemt, hvad der må siges om vacciner, køn, grænser og krig. Musk købte X, fyrede censurholdet og satte en AI ind, der i det mindste <em>kan</em> svare uden at bede om tilladelse hos redaktionen på DR.</p>
 
@@ -27,7 +27,7 @@ CONTENT = r"""<p class="wp-block-paragraph">I en tid, hvor Google, OpenAI og de 
 
 <h2 class="wp-block-heading">Grok Build: en AI, der skriver og bygger — på din maskine</h2>
 
-<p class="wp-block-paragraph"><strong>Grok Build</strong> er ikke en chat i en browser-fælde. Det er en kodningsagent, der kører på computeren — terminal, planlægning, under-agenter, hele pakken. xAI åbnede selve «selen» som open source i juli. Nu kører den på 4.6.</p>
+<p class="wp-block-paragraph"><strong>Grok Build</strong> er ikke en chat i en browser-fælde. Det er en kodningsagent, der kører på computeren — terminal, planlægning, under-agenter. xAI åbnede den i tidlig beta <strong>25. maj 2026</strong> og lagde selve «selen» som open source i juli. Det er altså ikke nyt i denne uge. Det nye er, at Build nu kører på 4.6.</p>
 
 <p class="wp-block-paragraph">For Folkets Medie er pointen enkel: Du kan bruge et værktøj, der ikke ejes af Google eller Microsofts moralpoliti. Du kan bygge sider, arkiver, scripts — uden at en «safety»-afdeling i Californien først skal godkende emnet. Det her arkiv er i øvrigt blandt de steder, hvor netop den slags værktøjer bruges i praksis. Ikke som reklame. Som arbejdsredskab.</p>
 
@@ -60,13 +60,14 @@ CONTENT = r"""<p class="wp-block-paragraph">I en tid, hvor Google, OpenAI og de 
 
 <h2 class="wp-block-heading">Konklusion</h2>
 
-<p class="wp-block-paragraph">Denne uge landede 4.6. Botten er ude. Build kører på din maskine. Musk taler allerede om 4.7 og SpaceX-data.</p>
+<p class="wp-block-paragraph">4.6 er ude. Botten er i beta. Build har kørt i over en måned — nu med den nye model. Musk taler allerede om 4.7 og SpaceX-data.</p>
 
 <p class="wp-block-paragraph">Prøv det selv. Læs kilderne. Og husk, hvorfor det overhovedet findes: fordi de andre modeller blev trænet til at tie, når sandheden blev ubekvem.</p>
 
 <p class="wp-block-paragraph"><strong>Kilder:</strong>
 <a href="https://x.ai/news/grok-4-6" target="_blank" rel="noopener">xAI: Introducing Grok 4.6</a> ·
 <a href="https://x.ai/news/introducing-grok-bot" target="_blank" rel="noopener">xAI: Introducing Grok Bot</a> ·
+<a href="https://x.ai/news/grok-build-cli" target="_blank" rel="noopener">xAI: Introducing Grok Build (25. maj 2026)</a> ·
 <a href="https://x.ai/build" target="_blank" rel="noopener">Grok Build</a> ·
 <a href="https://x.com/SpaceXAI/status/2087562800982077492" target="_blank" rel="noopener">@SpaceXAI 12. aug</a> ·
 <a href="https://x.com/elonmusk/status/2087601785833951705" target="_blank" rel="noopener">@elonmusk om 4.6</a> ·
@@ -77,10 +78,10 @@ CONTENT = r"""<p class="wp-block-paragraph">I en tid, hvor Google, OpenAI og de 
 
 article = {
     "id": 1000003,
-    "title": "Musk ruller Grok 4.6, Grok Build og Grok Bot ud — AI uden Google-filter",
+    "title": "Grok 4.6 er ude — Musk, Build og Bot uden Google-filter",
     "slug": "musk-grok-4-6-grok-build-grok-bot-uden-google-filter",
-    "date": "2026-08-13 08:00:00",
-    "excerpt": "Samme uge: ny Grok-model, en agent på din computer, og en bot der arbejder videre, når du går. Musk bygger det, Big Tech ikke tør — en AI uden deres censurfilter.",
+    "date": "2026-08-13 12:00:00",
+    "excerpt": "Grok 4.6 landede 12. august. Grok Bot kom i beta dagen før. Grok Build har været ude siden maj — nu på den nye model. Musk bygger det, Big Tech ikke tør.",
     "content": CONTENT,
     "featured_image": "https://mattomadsen.github.io/folketsmedie/media/featured/grok-musk-xai-natkontor.jpg",
     "featured_image_local": "/media/featured/grok-musk-xai-natkontor.jpg",
