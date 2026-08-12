@@ -23,9 +23,21 @@ const site = String(import.meta.env.SITE || 'https://mattomadsen.github.io').rep
 const path = `${base}dokumentar/${video.slug}/`.replace(/\/{2,}/g, '/');
 const shareUrl = `${site}${path.startsWith('/') ? path : `/${path}`}`;
 const shareText = (video.excerpt || video.title).replace(/\s+/g, ' ').trim().slice(0, 200);
+const ogImage = video.featured_image
+  ? /^https?:\/\//i.test(video.featured_image)
+    ? video.featured_image
+    : `${site}${video.featured_image.startsWith('/') ? video.featured_image : `/${video.featured_image}`}`
+  : null;
 ---
 
-<BaseLayout title={video.title} current="dokumentar">
+<BaseLayout
+  title={video.title}
+  description={video.excerpt || video.title}
+  current="dokumentar"
+  pageUrl={shareUrl}
+  image={ogImage}
+  ogType="article"
+>
   <article class="narrow">
     <a class="back" href={`${base}dokumentar/`}>← Dokumentar</a>
     <header class="article-header">

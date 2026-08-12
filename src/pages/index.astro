@@ -14,9 +14,24 @@ const excerpt =
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, 220);
+const site = String(import.meta.env.SITE || 'https://mattomadsen.github.io').replace(/\/$/, '');
+const homeUrl = `${site}${base.endsWith('/') ? base : `${base}/`}`;
+const homeOgImage =
+  featImg && /^https?:\/\//i.test(featImg)
+    ? featImg
+    : featImg
+      ? `${site}${featImg.startsWith('/') ? featImg : `/${featImg}`}`
+      : null;
 ---
 
-<BaseLayout title="Folkets Medie" current="home" description="Nyheder, artikler og dokumentar fra Folkets Medie.">
+<BaseLayout
+  title="Folkets Medie"
+  current="home"
+  description="Nyheder, artikler og dokumentar fra Folkets Medie."
+  pageUrl={homeUrl}
+  image={homeOgImage}
+  ogType="website"
+>
   <header class="page-intro">
     <h1>Nyheder fra folket til folket</h1>
     <p>{articles.length} artikler · uafhængigt arkiv uden WordPress</p>

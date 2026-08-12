@@ -27,9 +27,23 @@ const site = String(import.meta.env.SITE || 'https://mattomadsen.github.io').rep
 const path = `${base}artikel/${article.slug}/`.replace(/\/{2,}/g, '/');
 const shareUrl = `${site}${path.startsWith('/') ? path : `/${path}`}`;
 const shareText = (article.excerpt || article.title).replace(/\s+/g, ' ').trim().slice(0, 200);
+// Absolute image for SoMe (Open Graph / Twitter)
+const ogImage =
+  img && /^https?:\/\//i.test(img)
+    ? img
+    : img
+      ? `${site}${img.startsWith('/') ? img : `/${img}`}`
+      : article.featured_image || null;
 ---
 
-<BaseLayout title={article.title} description={article.excerpt || article.title} current="home">
+<BaseLayout
+  title={article.title}
+  description={article.excerpt || article.title}
+  current="home"
+  pageUrl={shareUrl}
+  image={ogImage}
+  ogType="article"
+>
   <article class="narrow">
     <a class="back" href={base}>← Alle artikler</a>
     <header class="article-header">

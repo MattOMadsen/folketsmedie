@@ -5,15 +5,44 @@ interface Props {
   title: string;
   description?: string;
   current?: string;
+  /** Absolute page URL for Open Graph / Twitter */
+  pageUrl?: string;
+  /** Absolute image URL for social previews (og:image) */
+  image?: string | null;
+  /** og:type — article or website */
+  ogType?: 'article' | 'website';
 }
 
 const {
   title,
   description = 'Folkets Medie — nyheder, artikler og dokumentar. Statisk arkiv.',
   current,
+  pageUrl,
+  image,
+  ogType = 'website',
 } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const fullTitle = title === 'Folkets Medie' ? `${title} · Nyheder fra folket` : `${title} · Folkets Medie`;
+
+const site = String(import.meta.env.SITE || 'https://mattomadsen.github.io').replace(/\/$/, '');
+
+function toAbsolute(url: string | null | undefined): string | undefined {
+  if (!url) return undefined;
+  const u = url.trim();
+  if (!u) return undefined;
+  if (/^https?:\/\//i.test(u)) return u;
+  const path = u.startsWith('/') ? u : `/${u}`;
+  return `${site}${path}`;
+}
+
+const canonical =
+  toAbsolute(pageUrl) ||
+  toAbsolute(`${base}`.replace(/\/?$/, '/') ) ||
+  `${site}${base.endsWith('/') ? base : `${base}/`}`;
+
+const defaultShareImage = toAbsolute(`${base}media/featured/folkets-medie-paa-github-laptop.jpg`);
+const ogImage = toAbsolute(image) || defaultShareImage;
+const desc = (description || '').replace(/\s+/g, ' ').trim().slice(0, 300);
 ---
 
 <!doctype html>
@@ -21,10 +50,32 @@ const fullTitle = title === 'Folkets Medie' ? `${title} · Nyheder fra folket` :
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
+    <meta name="description" content={desc} />
     <meta name="theme-color" content="#0a0b0c" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+
+    <!-- Open Graph (Facebook, LinkedIn, m.fl.) -->
+    <meta property="og:site_name" content="Folkets Medie" />
+    <meta property="og:locale" content="da_DK" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonical} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta property="og:image:secure_url" content={ogImage} />}
+    {ogImage && <meta property="og:image:alt" content={title} />}
+    {ogImage && <meta property="og:image:width" content="1200" />}
+    {ogImage && <meta property="og:image:height" content="630" />}
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={desc} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+    {ogImage && <meta name="twitter:image:alt" content={title} />}
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
