@@ -19,6 +19,12 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
+## Folkets Medie — artikler
+
+**Før du skriver eller publicerer en artikel:** læs `docs/ARTIKEL-GUIDE.md`.
+
+Den dækker FM-stemme, struktur, kilder (X + alternative), billeder, `export.json`-felter, Open Graph og deploy (inkl. `.nojekyll`).
+
 ## Documentation
 
 Full documentation: https://docs.astro.build

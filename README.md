@@ -6,10 +6,16 @@ Statisk arkiv af [folketsmedie.dk](https://www.folketsmedie.dk) — artikler, do
 
 ## Indhold
 
-- 410 artikler (inkl. sync fra live API)
+- 400+ artikler (inkl. sync fra live API + manuelle opslag)
 - 26 dokumentarfilm (stream via Rumble / Bitchute / YouTube)
 - Interne links pejer på dette arkiv
 - Video uploades **ikke** til GitHub
+- Like- og deleknapper + Open Graph til SoMe
+
+## Skriv nye artikler
+
+Se den fulde note: **[docs/ARTIKEL-GUIDE.md](docs/ARTIKEL-GUIDE.md)**  
+(stemme, struktur, kilder, billeder, `export.json`, deploy-faldgruber).
 
 ## Lokalt
 
@@ -20,4 +26,4 @@ npm run dev
 
 ## Deploy
 
-Push til `main` → GitHub Actions → GitHub Pages.
+Byg med `npm run build`, sørg for `dist/.nojekyll`, commit kilde til `main`, deploy `dist/` til `gh-pages`.
