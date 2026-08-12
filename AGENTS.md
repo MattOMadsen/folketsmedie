@@ -1,3 +1,14 @@
+## Deploy
+
+After source changes that should be public: build and push `gh-pages`.
+The live site is GitHub Pages from `gh-pages`, not `main`.
+Always deploy unless the user says not to.
+
+```
+npm run build
+# publish dist/ to origin/gh-pages (keep .nojekyll)
+```
+
 ## Development
 
 When starting the dev server, use background mode:
