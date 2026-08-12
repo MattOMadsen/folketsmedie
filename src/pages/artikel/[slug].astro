@@ -8,6 +8,7 @@ import {
   formatDate,
   articleImage,
   shareTeaser,
+  shareImageUrl,
 } from '../../lib/content';
 
 export function getStaticPaths() {
@@ -33,13 +34,7 @@ const shareText = shareTeaser({
   content: article.content,
   max: 240,
 });
-// Absolute image for SoMe (Open Graph / Twitter)
-const ogImage =
-  img && /^https?:\/\//i.test(img)
-    ? img
-    : img
-      ? `${site}${img.startsWith('/') ? img : `/${img}`}`
-      : article.featured_image || null;
+const ogImage = shareImageUrl(img, site);
 ---
 
 <BaseLayout

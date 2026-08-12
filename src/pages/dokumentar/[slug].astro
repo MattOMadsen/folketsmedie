@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import EngageBar from '../../components/EngageBar.astro';
-import { getVideos, getVideo, cleanHtml, shareTeaser } from '../../lib/content';
+import { getVideos, getVideo, cleanHtml, shareTeaser, shareImageUrl } from '../../lib/content';
 
 export function getStaticPaths() {
   return getVideos().map((v) => ({
@@ -28,11 +28,7 @@ const shareText = shareTeaser({
   content: video.content,
   max: 240,
 });
-const ogImage = video.featured_image
-  ? /^https?:\/\//i.test(video.featured_image)
-    ? video.featured_image
-    : `${site}${video.featured_image.startsWith('/') ? video.featured_image : `/${video.featured_image}`}`
-  : null;
+const ogImage = shareImageUrl(video.featured_image, site);
 ---
 
 <BaseLayout

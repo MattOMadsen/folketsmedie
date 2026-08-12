@@ -80,7 +80,35 @@ export function articleImage(a: Article, base: string): string | null {
     const p = a.featured_image_local.replace(/^\//, '');
     return `${base}${p}`;
   }
-  return a.featured_image;
+  const feat = a.featured_image;
+  // folketsmedie.dk er nede — brug ikke de gamle WP-URL'er (SoMe viser så intet billede)
+  if (feat && /^https?:\/\//i.test(feat) && !/folketsmedie\.dk/i.test(feat)) {
+    return feat;
+  }
+  return null;
+}
+
+/** Absolut billed-URL til Open Graph. Kun adresser der faktisk kan hentes. */
+export function shareImageUrl(
+  localOrRemote: string | null | undefined,
+  site: string
+): string | null {
+  if (!localOrRemote) return null;
+  const u = localOrRemote.trim();
+  if (!u) return null;
+  if (/folketsmedie\.dk/i.test(u)) return null;
+  if (/^https?:\/\//i.test(u)) return u;
+  const path = u.startsWith('/') ? u : `/${u}`;
+  return `${site.replace(/\/$/, '')}${path}`;
+}
+
+/** Fuld delingstekst: titel, uddrag, så link på egen linje. */
+export function shareMessage(title: string, teaser: string, url: string): string {
+  const parts: string[] = [title.replace(/\s+/g, ' ').trim()];
+  const t = (teaser || '').trim();
+  if (t && t !== parts[0]) parts.push(t);
+  parts.push(`Læs mere her:\n${url}`);
+  return parts.join('\n\n');
 }
 
 /** HTML-brødtekst til ren tekst til SoMe / meta. */

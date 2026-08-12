@@ -11,16 +11,21 @@ const { title, url, text = '' } = Astro.props;
 const encodedUrl = encodeURIComponent(url);
 const encodedTitle = encodeURIComponent(title);
 const teaser = (text || '').trim();
-const composed = teaser && teaser !== title ? `${title}\n\n${teaser}` : title;
+const parts = [title.trim()];
+if (teaser && teaser !== title.trim()) parts.push(teaser);
+parts.push(`Læs mere her:\n${url}`);
+const composed = parts.join('\n\n');
 const encodedComposed = encodeURIComponent(composed);
 
-const xHref = `https://twitter.com/intent/tweet?text=${encodedComposed}&url=${encodedUrl}`;
+const xHref = `https://twitter.com/intent/tweet?text=${encodedComposed}`;
 const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
-const tgHref = `https://t.me/share/url?url=${encodedUrl}&text=${encodedComposed}`;
-const mailHref = `mailto:?subject=${encodedTitle}&body=${encodedComposed}%0A%0A${encodedUrl}`;
+const tgHref = `https://t.me/share/url?url=${encodedUrl}&text=${encodeURIComponent(
+  [title.trim(), teaser && teaser !== title.trim() ? teaser : '', 'Læs mere her:'].filter(Boolean).join('\n\n')
+)}`;
+const mailHref = `mailto:?subject=${encodedTitle}&body=${encodedComposed}`;
 ---
 
-<div class="share-bar" data-share-url={url} data-share-title={title} data-share-text={text || title}>
+<div class="share-bar" data-share-url={url} data-share-title={title} data-share-text={composed}>
   <span class="share-bar__label">Del</span>
   <div class="share-bar__actions">
     <a
@@ -101,7 +106,7 @@ const mailHref = `mailto:?subject=${encodedTitle}&body=${encodedComposed}%0A%0A$
 
       copyBtn?.addEventListener('click', async () => {
         try {
-          await navigator.clipboard.writeText(url);
+          await navigator.clipboard.writeText(text.includes(url) ? text : `${text}\n\nLæs mere her:\n${url}`);
           if (copyLabel) {
             const prev = copyLabel.textContent;
             copyLabel.textContent = 'Kopieret!';
@@ -128,7 +133,11 @@ const mailHref = `mailto:?subject=${encodedTitle}&body=${encodedComposed}%0A%0A$
           '<svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg><span>Del</span>';
         native.addEventListener('click', async () => {
           try {
-            await navigator.share({ title, text, url });
+            await navigator.share({
+              title,
+              text: text.includes(url) ? text : `${text}\n\nLæs mere her:\n${url}`,
+              url,
+            });
           } catch {
             /* cancelled */
           }
