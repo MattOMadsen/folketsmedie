@@ -10,12 +10,14 @@ interface Props {
 const { title, url, text = '' } = Astro.props;
 const encodedUrl = encodeURIComponent(url);
 const encodedTitle = encodeURIComponent(title);
-const encodedText = encodeURIComponent(text || title);
+const teaser = (text || '').trim();
+const composed = teaser && teaser !== title ? `${title}\n\n${teaser}` : title;
+const encodedComposed = encodeURIComponent(composed);
 
-const xHref = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
+const xHref = `https://twitter.com/intent/tweet?text=${encodedComposed}&url=${encodedUrl}`;
 const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
-const tgHref = `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`;
-const mailHref = `mailto:?subject=${encodedTitle}&body=${encodedText}%0A%0A${encodedUrl}`;
+const tgHref = `https://t.me/share/url?url=${encodedUrl}&text=${encodedComposed}`;
+const mailHref = `mailto:?subject=${encodedTitle}&body=${encodedComposed}%0A%0A${encodedUrl}`;
 ---
 
 <div class="share-bar" data-share-url={url} data-share-title={title} data-share-text={text || title}>

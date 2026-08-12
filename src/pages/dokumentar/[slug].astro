@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import EngageBar from '../../components/EngageBar.astro';
-import { getVideos, getVideo, cleanHtml } from '../../lib/content';
+import { getVideos, getVideo, cleanHtml, shareTeaser } from '../../lib/content';
 
 export function getStaticPaths() {
   return getVideos().map((v) => ({
@@ -22,7 +22,12 @@ const showBody = !video.embed_html && body.length > 80;
 const site = String(import.meta.env.SITE || 'https://mattomadsen.github.io').replace(/\/$/, '');
 const path = `${base}dokumentar/${video.slug}/`.replace(/\/{2,}/g, '/');
 const shareUrl = `${site}${path.startsWith('/') ? path : `/${path}`}`;
-const shareText = (video.excerpt || video.title).replace(/\s+/g, ' ').trim().slice(0, 200);
+const shareText = shareTeaser({
+  title: video.title,
+  excerpt: video.excerpt,
+  content: video.content,
+  max: 240,
+});
 const ogImage = video.featured_image
   ? /^https?:\/\//i.test(video.featured_image)
     ? video.featured_image
@@ -32,7 +37,7 @@ const ogImage = video.featured_image
 
 <BaseLayout
   title={video.title}
-  description={video.excerpt || video.title}
+  description={shareText || video.title}
   current="dokumentar"
   pageUrl={shareUrl}
   image={ogImage}

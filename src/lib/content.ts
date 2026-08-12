@@ -83,6 +83,53 @@ export function articleImage(a: Article, base: string): string | null {
   return a.featured_image;
 }
 
+/** HTML-brødtekst til ren tekst til SoMe / meta. */
+export function htmlToPlainText(html: string): string {
+  return (html || '')
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function clipSentence(text: string, max: number): string {
+  const t = text.replace(/\s+/g, ' ').trim();
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max);
+  const at = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('! '), cut.lastIndexOf('? '), cut.lastIndexOf(' '));
+  const clipped = (at > max * 0.45 ? cut.slice(0, at) : cut).replace(/[.,;:–—-]+\s*$/, '');
+  return `${clipped}…`;
+}
+
+/**
+ * Uddrag til deling: excerpt hvis det er rigtig brødtekst, ellers start af artiklen.
+ * Overskriften holdes ude — den sendes separat som titel.
+ */
+export function shareTeaser(input: {
+  title: string;
+  excerpt?: string | null;
+  content: string;
+  max?: number;
+}): string {
+  const max = input.max ?? 240;
+  const title = (input.title || '').replace(/\s+/g, ' ').trim();
+  const excerpt = (input.excerpt || '').replace(/\s+/g, ' ').trim();
+  const excerptOk =
+    excerpt.length >= 40 && excerpt.toLowerCase() !== title.toLowerCase();
+  let source = excerptOk ? excerpt : htmlToPlainText(input.content);
+  if (title && source.toLowerCase().startsWith(title.toLowerCase())) {
+    source = source.slice(title.length).replace(/^[\s:–—-]+/, '');
+  }
+  return clipSentence(source, max);
+}
+
 function rumbleEmbed(id: string): string {
   return `<div class="video-embed"><iframe src="https://rumble.com/embed/${id}/" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture; fullscreen" loading="lazy" title="Video" referrerpolicy="origin"></iframe></div>`;
 }

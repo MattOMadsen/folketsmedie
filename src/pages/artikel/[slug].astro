@@ -7,6 +7,7 @@ import {
   cleanHtml,
   formatDate,
   articleImage,
+  shareTeaser,
 } from '../../lib/content';
 
 export function getStaticPaths() {
@@ -26,7 +27,12 @@ const img = articleImage(article, base);
 const site = String(import.meta.env.SITE || 'https://mattomadsen.github.io').replace(/\/$/, '');
 const path = `${base}artikel/${article.slug}/`.replace(/\/{2,}/g, '/');
 const shareUrl = `${site}${path.startsWith('/') ? path : `/${path}`}`;
-const shareText = (article.excerpt || article.title).replace(/\s+/g, ' ').trim().slice(0, 200);
+const shareText = shareTeaser({
+  title: article.title,
+  excerpt: article.excerpt,
+  content: article.content,
+  max: 240,
+});
 // Absolute image for SoMe (Open Graph / Twitter)
 const ogImage =
   img && /^https?:\/\//i.test(img)
@@ -38,7 +44,7 @@ const ogImage =
 
 <BaseLayout
   title={article.title}
-  description={article.excerpt || article.title}
+  description={shareText || article.title}
   current="home"
   pageUrl={shareUrl}
   image={ogImage}
