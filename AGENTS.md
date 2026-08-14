@@ -29,6 +29,12 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 - **Research først.** Tjek datoer, citater, myndighedstekster og X-kilder. Ingen gætteri, ingen «tre ting på én gang» hvis det ikke er sandt.
 - **Ved udgivelse (efter ok):** billeder der passer, lokale featured-filer, links til kilder og til navngivne personer på X, gerne relevant kort video. Deploy til `gh-pages`.
 - **Når Matt siger hvordan noget skal være:** skriv det ind i denne fil og i `docs/ARTIKEL-GUIDE.md` med det samme.
+- **Dansk sprog, ikke oversættelsesdansk.** Skriv, som man siger det herhjemme. Ikke copy-paste fra engelsk.
+  - Brug **ikke** de franske tegn « ». På dansk: »sådan« eller almindelige anførselstegn.
+  - *Released* er **ikke** »sluppet«. Skriv *offentliggjort*, *lagt frem* eller *lagt ud*.
+  - Oversæt og forklar engelske betegnelser: *defensive briefings* → advarende briefinger; *task force* → arbejdsgruppe (engelsk navn i parentes første gang); *viral clip* → det klip, der går viralt; *narrative to neutralize* → fortælling, der skulle slås ned.
+  - Ikke TV-amerikansk: »Læs den sætning igen«, »Håndjern er der endnu ingen af«, »den interne maskine bag«.
+  - whitehouse.gov og andre URL’er hører hjemme i kildelinjen, ikke som mundret brødtekst (sig »Det Hvide Hus’ hjemmeside«).
 
 ## Documentation
 

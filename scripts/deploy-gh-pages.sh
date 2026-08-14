@@ -14,7 +14,7 @@ git add -A
 if git diff --cached --quiet; then
   echo "no gh-pages changes"
 else
-  git commit -m "Deploy: Fauci-SMS om gravide (07:00)"
+  git commit -m "${COMMIT_MSG:-Deploy: opdater gh-pages}"
   git push origin gh-pages
 fi
 cd "$ROOT"

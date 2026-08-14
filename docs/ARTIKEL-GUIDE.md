@@ -264,6 +264,16 @@ Du behøver **ikke** indkode like/share i HTML-indholdet.
 - Navne: fuldt navn første gang (Anthony Fauci, Rochelle Walensky, Rand Paul…).  
 - Undgå unødvendig engelsk jargon; forklar (“5. amendment” = retten til ikke at inkriminere sig selv).  
 
+### Dansk, ikke oversættelsesdansk (Matt, 14. aug. 2026)
+
+Artiklen skal lyde, som om den er skrevet på dansk — ikke som en ordret oversættelse fra X eller Just the News.
+
+- **Ikke** de franske anførselstegn « ». Brug »sådan« eller almindelige citationstegn.
+- *Released* / *dropped* er **ikke** »sluppet«. Skriv *offentliggjort*, *lagt frem* eller *lagt ud*.
+- Oversæt og forklar: *defensive briefings* → advarende briefinger; *task force* → arbejdsgruppe (engelsk navn i parentes første gang); *viral clip* → det klip, der går viralt; *narrative to neutralize* → fortælling, der skulle slås ned; *machine behind* → det apparat, der kørte bag.
+- Ikke amerikansk TV-retorik: »Læs den sætning igen«, »Håndjern er der endnu ingen af«.
+- Domæner som whitehouse.gov hører til i kildelinjen. I brødtekst: »Det Hvide Hus’ hjemmeside«.  
+
 ---
 
 ## 10. Kort checkliste (print / copy)
