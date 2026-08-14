@@ -271,7 +271,7 @@ Artiklen skal lyde, som om den er skrevet på dansk — ikke som en ordret overs
 - **Ikke** de franske anførselstegn « ». Brug »sådan« eller almindelige citationstegn.
 - *Released* / *dropped* er **ikke** »sluppet«. Skriv *offentliggjort*, *lagt frem* eller *lagt ud*.
 - Oversæt og forklar: *defensive briefings* → advarende briefinger; *task force* → arbejdsgruppe (engelsk navn i parentes første gang); *viral clip* → det klip, der går viralt; *narrative to neutralize* → fortælling, der skulle slås ned; *machine behind* → det apparat, der kørte bag.
-- Ikke amerikansk TV-retorik: »Læs den sætning igen«, »Håndjern er der endnu ingen af«.
+- Ikke amerikansk TV-retorik: »Læs den sætning igen«, »Håndjern er der endnu ingen af«, »Læs Hegseth« (skriv *hvad* de skal læse: »Læs, hvad Hegseth sagde i Panama«).
 - Domæner som whitehouse.gov hører til i kildelinjen. I brødtekst: »Det Hvide Hus’ hjemmeside«.  
 
 ---

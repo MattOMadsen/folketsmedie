@@ -33,7 +33,7 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
   - Brug **ikke** de franske tegn « ». På dansk: »sådan« eller almindelige anførselstegn.
   - *Released* er **ikke** »sluppet«. Skriv *offentliggjort*, *lagt frem* eller *lagt ud*.
   - Oversæt og forklar engelske betegnelser: *defensive briefings* → advarende briefinger; *task force* → arbejdsgruppe (engelsk navn i parentes første gang); *viral clip* → det klip, der går viralt; *narrative to neutralize* → fortælling, der skulle slås ned.
-  - Ikke TV-amerikansk: »Læs den sætning igen«, »Håndjern er der endnu ingen af«, »den interne maskine bag«.
+  - Ikke TV-amerikansk: »Læs den sætning igen«, »Læs Hegseth«, »Håndjern er der endnu ingen af«, »den interne maskine bag«. Skriv hvad læseren skal læse.
   - whitehouse.gov og andre URL’er hører hjemme i kildelinjen, ikke som mundret brødtekst (sig »Det Hvide Hus’ hjemmeside«).
 
 ## Documentation
