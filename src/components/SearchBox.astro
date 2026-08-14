@@ -1,0 +1,27 @@
+---
+interface Props {
+  id?: string;
+  value?: string;
+  compact?: boolean;
+  autofocus?: boolean;
+}
+
+const { id = 'q', value = '', compact = false, autofocus = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<form class:list={['search-box', compact && 'search-box--compact']} action={`${base}soeg/`} method="get" role="search">
+  <label class="visually-hidden" for={id}>Søg i arkivet</label>
+  <input
+    class="search-box__input"
+    type="search"
+    name="q"
+    id={id}
+    value={value}
+    placeholder="Søg artikler og film…"
+    autocomplete="off"
+    enterkeyhint="search"
+    autofocus={autofocus}
+  />
+  <button class="search-box__btn" type="submit">Søg</button>
+</form>

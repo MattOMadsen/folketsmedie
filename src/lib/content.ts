@@ -56,14 +56,22 @@ export const data = exportData as ExportData;
 const articleSlugs = new Set(data.articles.map((a) => a.slug));
 const docSlugs = new Set(data.videos.map((v) => v.slug));
 
+/** Artikler med fremtidig dato vises først, når build-tid er passeret. */
+export function isPublished(date: string, now = Date.now()): boolean {
+  const t = new Date(String(date).replace(' ', 'T')).getTime();
+  return Number.isFinite(t) && t <= now;
+}
+
 export function getArticles(): Article[] {
-  return [...data.articles].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  return [...data.articles]
+    .filter((a) => isPublished(a.date))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export function getArticle(slug: string): Article | undefined {
-  return data.articles.find((a) => a.slug === slug);
+  const a = data.articles.find((x) => x.slug === slug);
+  if (!a || !isPublished(a.date)) return undefined;
+  return a;
 }
 
 /** Documentaries only (from /dokumentar-film/), not misc site videos */

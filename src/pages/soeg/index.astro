@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SearchBox from '../../components/SearchBox.astro';
+
+const base = import.meta.env.BASE_URL;
+const site = String(import.meta.env.SITE || 'https://mattomadsen.github.io').replace(/\/$/, '');
+const pageUrl = `${site}${base}soeg/`;
+---
+
+<BaseLayout
+  title="Søg"
+  current="soeg"
+  description="Søg i Folkets Medies artikler og dokumentarfilm."
+  pageUrl={pageUrl}
+>
+  <header class="page-intro">
+    <h1>Søg i arkivet</h1>
+    <p>Find artikler og dokumentar efter titel, emne eller navn. Virker uden Google.</p>
+  </header>
+
+  <div class="search-page">
+    <SearchBox id="soeg-q" autofocus />
+    <p class="search-page__status" id="soeg-status" aria-live="polite"></p>
+    <div class="search-results" id="soeg-results"></div>
+  </div>
+</BaseLayout>
+
+<script define:vars={{ base }}>
+  function foldDa(s) {
+    return String(s || '')
+      .toLowerCase()
+      .replace(/æ/g, 'ae')
+      .replace(/ø/g, 'oe')
+      .replace(/å/g, 'aa')
+      .normalize('NFD')
+      .replace(/\p{M}/gu, '')
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+  }
+
+  function tokens(q) {
+    return foldDa(q)
+      .split(/\s+/)
+      .filter((w) => w.length >= 2);
+  }
+
+  function scoreItem(item, toks) {
+    const title = foldDa(item.title);
+    const slug = foldDa(String(item.slug || '').replace(/-/g, ' '));
+    let score = 0;
+    for (const t of toks) {
+      if (!item.hay.includes(t)) return 0;
+      if (title === t) score += 80;
+      else if (title.startsWith(t)) score += 50;
+      else if (title.includes(t)) score += 30;
+      if (slug.includes(t)) score += 12;
+      score += 8;
+    }
+    return score;
+  }
+
+  function fmtDate(iso) {
+    try {
+      return new Date(String(iso).replace(' ', 'T')).toLocaleDateString('da-DK', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+    } catch {
+      return iso;
+    }
+  }
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  const statusEl = document.getElementById('soeg-status');
+  const resultsEl = document.getElementById('soeg-results');
+  const input = document.getElementById('soeg-q');
+  const indexUrl = `${base}soegeindex.json`;
+  let cache = null;
+
+  async function loadIndex() {
+    if (cache) return cache;
+    const res = await fetch(indexUrl);
+    if (!res.ok) throw new Error('index');
+    const data = await res.json();
+    cache = data.items || [];
+    return cache;
+  }
+
+  function render(q) {
+    const toks = tokens(q);
+    if (!toks.length) {
+      statusEl.textContent = 'Skriv mindst to bogstaver. Prøv fx fauci, vaccine eller ukraine.';
+      resultsEl.innerHTML = '';
+      return;
+    }
+    const hits = cache
+      .map((item) => ({ item, score: scoreItem(item, toks) }))
+      .filter((x) => x.score > 0)
+      .sort((a, b) => b.score - a.score || String(b.item.date).localeCompare(String(a.item.date)))
+      .slice(0, 80)
+      .map((x) => x.item);
+
+    const n = hits.length;
+    statusEl.textContent =
+      n === 0
+        ? `Ingen træf på "${q.trim()}". Prøv et andet ord.`
+        : n === 1
+          ? '1 træf'
+          : `${n} træf`;
+
+    resultsEl.innerHTML = hits
+      .map((h) => {
+        const kind = h.kind === 'dokumentar' ? 'Dokumentar' : 'Artikel';
+        const img = h.image
+          ? `<img class="search-hit__img" src="${escapeHtml(h.image)}" alt="" loading="lazy" width="160" height="100" />`
+          : `<div class="search-hit__ph">${h.kind === 'dokumentar' ? '▶' : 'FM'}</div>`;
+        return `<a class="search-hit" href="${escapeHtml(h.href)}">
+          ${img}
+          <span class="search-hit__body">
+            <span class="search-hit__kind">${kind}</span>
+            <strong class="search-hit__title">${escapeHtml(h.title)}</strong>
+            ${h.excerpt ? `<span class="search-hit__ex">${escapeHtml(h.excerpt)}</span>` : ''}
+            <time class="search-hit__date" datetime="${escapeHtml(h.date)}">${escapeHtml(fmtDate(h.date))}</time>
+          </span>
+        </a>`;
+      })
+      .join('');
+  }
+
+  async function runFromUrl() {
+    const q = new URLSearchParams(location.search).get('q') || '';
+    if (input && q && !input.value) input.value = q;
+    statusEl.textContent = 'Søger…';
+    try {
+      await loadIndex();
+      render((input && input.value) || q);
+    } catch {
+      statusEl.textContent = 'Søgeindekset kunne ikke hentes. Prøv at opdatere siden.';
+    }
+  }
+
+  let t = 0;
+  if (input) {
+    input.addEventListener('input', () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        const q = input.value.trim();
+        const url = new URL(location.href);
+        if (q) url.searchParams.set('q', q);
+        else url.searchParams.delete('q');
+        history.replaceState(null, '', url);
+        if (cache) render(q);
+      }, 160);
+    });
+  }
+
+  runFromUrl();
+</script>

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import SearchBox from '../components/SearchBox.astro';
 
 interface Props {
   title: string;
@@ -97,9 +98,11 @@ const desc = (description || '').replace(/\s+/g, ' ').trim().slice(0, 300);
         <nav class="nav" aria-label="Hovedmenu">
           <a href={base} aria-current={current === 'home' ? 'page' : undefined}>Artikler</a>
           <a href={`${base}dokumentar/`} aria-current={current === 'dokumentar' ? 'page' : undefined}>Dokumentar</a>
+          <a href={`${base}soeg/`} aria-current={current === 'soeg' ? 'page' : undefined}>Søg</a>
           <a href={`${base}nyttige-links/`} aria-current={current === 'links' ? 'page' : undefined}>Links</a>
           <a href={`${base}om/`} aria-current={current === 'om' ? 'page' : undefined}>Om</a>
         </nav>
+        {current !== 'soeg' && <SearchBox id="nav-q" compact />}
       </div>
     </header>
 
@@ -110,7 +113,7 @@ const desc = (description || '').replace(/\s+/g, ' ').trim().slice(0, 300);
     <footer class="site-footer">
       <div class="site-footer__inner">
         <p><strong>Folkets Medie</strong> — nyheder fra folket til folket</p>
-        <p>Video streamer fra Rumble, Bitchute m.fl. · Statisk arkiv</p>
+        <p>Video streamer fra Rumble, Bitchute m.fl. · Statisk arkiv · <a href={`${base}soeg/`}>Søg</a></p>
       </div>
     </footer>
   </body>
