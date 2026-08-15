@@ -27,12 +27,21 @@ article = {
 
 <p class="wp-block-paragraph">Colombia bliver ifølge ham det <strong>19. medlem</strong> af koalitionen (Americas Counter-Cartel Coalition). Colombias forsvarsminister <strong>Jorge Eduardo Mora</strong> sagde på samme møde, at tiden er inde til, at kartellerne møder hele regionens styrke, anført af USA.</p>
 
-<p class="wp-block-paragraph">Det er det stik modsatte af linjen under Gustavo Petro: tale, våbenhvile, »total fred«. El Tigre lagde forhandlingerne med de bevæbnede grupper døde. Han har lovet at jagte dem som skadedyr, bygge kæmpefængsler og stille sig i Trumps »skjold over Amerika«.</p>
+<p class="wp-block-paragraph">Det er det stik modsatte af linjen under Gustavo Petro: tale, våbenhvile, »total fred«. El Tigre lagde forhandlingerne med de bevæbnede grupper døde. Han har lovet kæmpefængsler og at stille sig i Trumps »skjold over Amerika«.</p>
+
+<p class="wp-block-paragraph">I valgkampen sagde han det rent ud til Associated Press: Han vil udrydde narkoterror og dem, han har erklæret for militære mål, <em>like cockroaches, like rats</em> — som kakerlakker, som rotter — og slippe »Guds vrede« løs, som landet ikke har set før. Han lovede <strong>ti mega-fængsler</strong>.</p>
+
+<p class="wp-block-paragraph">Det citat kører nu rundt i et klip på X. Det er ikke en ny anmodning fra i nat. Det er den samme linje, han gik til valg på — og som Hegseth nu siger, Colombia har bedt USA om at hjælpe med at føre ud i livet. Petro ville ikke åbne den dør.</p>
 
 <p class="wp-block-paragraph">Ved indsættelsen lovede USA omkring <strong>en milliard dollar</strong>. Det er politik. Det er også et signal: Washington har fået en dør, Petro holdt lukket.</p>
 
 <figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">
 <blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="en" dir="ltr">JUST IN: Colombia's new President El Tigre asks President Trump to deploy US military against drug cartels.</p>&mdash; BRICS News (@BRICSinfo) <a href="https://twitter.com/BRICSinfo/status/2088329265469169965">August 14, 2026</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></figure>
+
+<figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">
+<blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="en" dir="ltr">IT'S OFFICIAL: Colombia's new right-wing President El Tigre has just asked President Trump to deploy the US MILITARY against drug cartels, inside Colombia. "End them like cockroaches. Like rats."</p>&mdash; Eric Daugherty (@EricLDaugh) <a href="https://twitter.com/EricLDaugh/status/2088402215656710620">August 14, 2026</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div></figure>
 
@@ -65,7 +74,9 @@ article = {
 
 <p class="wp-block-paragraph"><strong>Kilder:</strong>
 <a href="https://x.com/BRICSinfo/status/2088329265469169965" target="_blank" rel="noopener">@BRICSinfo på X</a> ·
+<a href="https://x.com/EricLDaugh/status/2088402215656710620" target="_blank" rel="noopener">@EricLDaugh (klip)</a> ·
 <a href="https://x.com/PeteHegseth" target="_blank" rel="noopener">@PeteHegseth</a> ·
+<a href="https://apnews.com/article/abelardo-de-la-espriella-trump-colombia-petro-cepeda-election-crime-bukele-643a808af732c35e240949d69171d65f" target="_blank" rel="noopener">Associated Press, citat fra valgkampen</a> ·
 <a href="https://www.washingtonpost.com/world/2026/08/14/new-president-asks-trump-bring-deadly-antidrug-campaign-colombia/" target="_blank" rel="noopener">Washington Post, 14. august 2026</a> ·
 <a href="https://www.bbc.com/news/articles/cy9wy3y0e5wo" target="_blank" rel="noopener">BBC om indsættelse og 1 milliard dollar</a> ·
 <a href="https://www.telegraph.co.uk/us/news/2026/08/14/colombia-asks-trump-deploy-us-military-drug-cartels/" target="_blank" rel="noopener">The Telegraph</a>.</p>
