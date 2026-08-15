@@ -14,17 +14,23 @@ const teaser = (text || '').trim();
 const bodyParts = [title.trim()];
 if (teaser && teaser !== title.trim()) bodyParts.push(teaser);
 const body = bodyParts.join('\n\n');
-const composed = `${body}\n\nLæs mere her:\n${url}`;
-const encodedBody = encodeURIComponent(body);
+const lead = body ? `${body}\n\nLæs mere her:` : 'Læs mere her:';
+const composed = `${lead}\n${url}`;
+const encodedLead = encodeURIComponent(lead);
 const encodedComposed = encodeURIComponent(composed);
 
 const xHref = `https://twitter.com/intent/tweet?text=${encodedComposed}`;
-const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedBody}`;
-const tgHref = `https://t.me/share/url?url=${encodedUrl}&text=${encodedBody}`;
+const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedLead}`;
+const tgHref = `https://t.me/share/url?url=${encodedUrl}&text=${encodedLead}`;
 const mailHref = `mailto:?subject=${encodedTitle}&body=${encodedComposed}`;
 ---
 
-<div class="share-bar" data-share-url={url} data-share-title={title} data-share-text={composed}>
+<div
+  class="share-bar"
+  data-share-url={url}
+  data-share-title={title}
+  data-share-body={body}
+>
   <span class="share-bar__label">Del</span>
   <div class="share-bar__actions">
     <a
@@ -99,12 +105,9 @@ const mailHref = `mailto:?subject=${encodedTitle}&body=${encodedComposed}`;
 
       const url = bar.dataset.shareUrl || location.href;
       const title = bar.dataset.shareTitle || document.title;
-      const composed = bar.dataset.shareText || `${title}\n\nLæs mere her:\n${url}`;
-      const bodyOnly = composed
-        .replace(/\n\nLæs mere her:\n[\s\S]*$/i, '')
-        .replace(url, '')
-        .replace(/\n{3,}/g, '\n\n')
-        .trim();
+      const body = (bar.dataset.shareBody || title).trim();
+      const lead = `${body}\n\nLæs mere her:`;
+      const composed = `${lead}\n${url}`;
 
       const copyBtn = bar.querySelector<HTMLButtonElement>('[data-share-copy]');
       const copyLabel = bar.querySelector<HTMLElement>('[data-share-copy-label]');
@@ -188,7 +191,7 @@ const mailHref = `mailto:?subject=${encodedTitle}&body=${encodedComposed}`;
           try {
             await navigator.share({
               title,
-              text: bodyOnly || title,
+              text: lead,
               url,
             });
           } catch {
