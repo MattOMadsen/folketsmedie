@@ -35,8 +35,23 @@ article = {
 
 <p class="wp-block-paragraph">Svaret fra FN’s klimapanel er, at vanddamp følger med, når det bliver varmere, og at CO2 er knappen. Det er deres model. Det er ikke det samme som, at 0,043 procent retfærdiggør at lukke landbrug, stål og billig strøm.</p>
 
+<h2 class="wp-block-heading">Mennesket er en lille slange på et stort kredsløb</h2>
+
+<p class="wp-block-paragraph">Robin Monotti peger på et andet tal, I næsten aldrig hører: Den naturlige udveksling af CO2 mellem luft, planter og hav er <strong>mange gange større</strong> end det, mennesker puster ud på et år. Tom Nelson citerer den samme pointe: de naturlige udledninger hvert år er i størrelsesorden <strong>tyve gange</strong> de menneskeskabte. IPCC’s eget kulstofkredsløb viser det samme mønster. Mennesket er en lille slange på et stort kredsløb — typisk nogle få procent af den årlige trafik.</p>
+
+<p class="wp-block-paragraph">Monotti regner videre: Hvis vanddamp og skyer står for omkring 80 procent af drivhuseffekten, og CO2 for omkring 20, og menneskets andel af det årlige CO2-kredsløb er omkring 5 procent, så lander menneskets bid i hans regnestykke på omkring <strong>én procent</strong> af den samlede drivhuseffekt. Det er hans gangestykke. Det er ikke NOAA’s officielle tabel. Hold de to ting adskilt.</p>
+
+<p class="wp-block-paragraph">Det, I skal holde fast i, er forskellen på <em>trafik</em> og <em>beholdning</em>. Hvert år går hundredvis af milliarder ton kulstof frem og tilbage. Det meste går ind igen i planter og hav. Det, der er steget siden 1750 — fra cirka 280 ppm til 429 — er den lille rest, der bliver hængende, når slangen er større den ene vej. IPCC siger, at den rest kommer fra os. Kritikere siger, at naturen stadig sluger omkring halvdelen af det, vi sender op. Begge dele kan være sande på samme tid. Ingen af dem gør 0,043 procent til hele politikken.</p>
+
+<p class="wp-block-paragraph">NASA har desuden målt, at mere CO2 gør planeten <strong>grønnere</strong>. Flere blade. Mere vækst. Det er planteføde. Ikke bare et affaldsprodukt fra en skorsten.</p>
+
 <figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">
 <blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="en" dir="ltr">Consider the physics of planetary scale: Carbon dioxide makes up just 0.042% of our atmosphere.</p>&mdash; Peter Clack (@PeterDClack) <a href="https://twitter.com/PeterDClack/status/2088397591583264808">August 14, 2026</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></figure>
+
+<figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">
+<blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="en" dir="ltr">Not only man made CO2 is only 5% of yearly CO2, but total CO2 in the atmosphere, including 95% natural, is ONLY 20% of the greenhouse gas effect, as 80% is water vapour!</p>&mdash; Robin Monotti (@robinmonotti) <a href="https://twitter.com/robinmonotti/status/2088226153265848662">August 14, 2026</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div></figure>
 
@@ -60,10 +75,12 @@ article = {
 
 <h2 class="wp-block-heading">Konklusion</h2>
 
-<p class="wp-block-paragraph">Læs Clacks opslag. Slå NOAA’s kurve op. Spørg så, hvorfor et sporstof på 0,043 procent skal styre jeres varme, jeres mad og jeres industri — mens havet og vanddampen stadig er det, der fylder planeten.</p>
+<p class="wp-block-paragraph">Læs Clack. Læs Monotti. Slå NOAA’s kurve op. Spørg så, hvorfor et sporstof på 0,043 procent — og en lille slange på et kæmpe kredsløb — skal styre jeres varme, jeres mad og jeres industri.</p>
 
 <p class="wp-block-paragraph"><strong>Kilder:</strong>
 <a href="https://x.com/PeterDClack/status/2088397591583264808" target="_blank" rel="noopener">@PeterDClack på X</a> ·
+<a href="https://x.com/robinmonotti/status/2088226153265848662" target="_blank" rel="noopener">@robinmonotti</a> ·
+<a href="https://x.com/TomANelson/status/2087856703173747121" target="_blank" rel="noopener">@TomANelson</a> ·
 <a href="https://gml.noaa.gov/ccgg/trends/" target="_blank" rel="noopener">NOAA Mauna Loa, juli 2026: 429,12 ppm</a> ·
 <a href="https://www.co2.earth/daily-co2" target="_blank" rel="noopener">Dagligt CO2, 12. august 2026</a>.</p>
 """,
