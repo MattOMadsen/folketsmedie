@@ -11,17 +11,16 @@ const { title, url, text = '' } = Astro.props;
 const encodedUrl = encodeURIComponent(url);
 const encodedTitle = encodeURIComponent(title);
 const teaser = (text || '').trim();
-const parts = [title.trim()];
-if (teaser && teaser !== title.trim()) parts.push(teaser);
-parts.push(`Læs mere her:\n${url}`);
-const composed = parts.join('\n\n');
+const bodyParts = [title.trim()];
+if (teaser && teaser !== title.trim()) bodyParts.push(teaser);
+const body = bodyParts.join('\n\n');
+const composed = `${body}\n\nLæs mere her:\n${url}`;
+const encodedBody = encodeURIComponent(body);
 const encodedComposed = encodeURIComponent(composed);
 
 const xHref = `https://twitter.com/intent/tweet?text=${encodedComposed}`;
-const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedComposed}`;
-const tgHref = `https://t.me/share/url?url=${encodedUrl}&text=${encodeURIComponent(
-  [title.trim(), teaser && teaser !== title.trim() ? teaser : '', 'Læs mere her:'].filter(Boolean).join('\n\n')
-)}`;
+const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedBody}`;
+const tgHref = `https://t.me/share/url?url=${encodedUrl}&text=${encodedBody}`;
 const mailHref = `mailto:?subject=${encodedTitle}&body=${encodedComposed}`;
 ---
 
@@ -100,13 +99,18 @@ const mailHref = `mailto:?subject=${encodedTitle}&body=${encodedComposed}`;
 
       const url = bar.dataset.shareUrl || location.href;
       const title = bar.dataset.shareTitle || document.title;
-      const text = bar.dataset.shareText || title;
+      const composed = bar.dataset.shareText || `${title}\n\nLæs mere her:\n${url}`;
+      const bodyOnly = composed
+        .replace(/\n\nLæs mere her:\n[\s\S]*$/i, '')
+        .replace(url, '')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
 
       const copyBtn = bar.querySelector<HTMLButtonElement>('[data-share-copy]');
       const copyLabel = bar.querySelector<HTMLElement>('[data-share-copy-label]');
 
       async function copyShareText(): Promise<boolean> {
-        const payload = text.includes(url) ? text : `${text}\n\nLæs mere her:\n${url}`;
+        const payload = composed;
         try {
           await navigator.clipboard.writeText(payload);
           return true;
@@ -155,7 +159,7 @@ const mailHref = `mailto:?subject=${encodedTitle}&body=${encodedComposed}`;
 
       copyBtn?.addEventListener('click', async () => {
         try {
-          await navigator.clipboard.writeText(text.includes(url) ? text : `${text}\n\nLæs mere her:\n${url}`);
+          await navigator.clipboard.writeText(composed);
           if (copyLabel) {
             const prev = copyLabel.textContent;
             copyLabel.textContent = 'Kopieret!';
@@ -184,7 +188,7 @@ const mailHref = `mailto:?subject=${encodedTitle}&body=${encodedComposed}`;
           try {
             await navigator.share({
               title,
-              text: text.includes(url) ? text : `${text}\n\nLæs mere her:\n${url}`,
+              text: bodyOnly || title,
               url,
             });
           } catch {
