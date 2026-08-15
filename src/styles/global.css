@@ -59,6 +59,13 @@ img {
   display: block;
 }
 
+/* —— Fast top (støtte + menu) —— */
+.site-top {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
 /* —— Støtte-bjælke —— */
 .support-bar {
   background: #1a1610;
@@ -90,11 +97,8 @@ img {
 
 /* —— Header —— */
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
   min-height: var(--header-h);
-  background: rgba(10, 11, 12, 0.88);
+  background: rgba(10, 11, 12, 0.94);
   backdrop-filter: blur(16px) saturate(1.2);
   border-bottom: 1px solid var(--border-soft);
 }
