@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import SearchBox from '../components/SearchBox.astro';
+import SupportBanner from '../components/SupportBanner.astro';
 
 interface Props {
   title: string;
@@ -89,6 +90,7 @@ const desc = (description || '').replace(/\s+/g, ' ').trim().slice(0, 300);
     <title>{fullTitle}</title>
   </head>
   <body>
+    <SupportBanner />
     <header class="site-header">
       <div class="site-header__inner">
         <a class="logo" href={base}>
@@ -100,6 +102,7 @@ const desc = (description || '').replace(/\s+/g, ' ').trim().slice(0, 300);
           <a href={`${base}dokumentar/`} aria-current={current === 'dokumentar' ? 'page' : undefined}>Dokumentar</a>
           <a href={`${base}soeg/`} aria-current={current === 'soeg' ? 'page' : undefined}>Søg</a>
           <a href={`${base}nyttige-links/`} aria-current={current === 'links' ? 'page' : undefined}>Links</a>
+          <a href={`${base}stoet/`} aria-current={current === 'stoet' ? 'page' : undefined}>Støt</a>
           <a href={`${base}om/`} aria-current={current === 'om' ? 'page' : undefined}>Om</a>
         </nav>
         {current !== 'soeg' && <SearchBox id="nav-q" compact />}
@@ -113,7 +116,11 @@ const desc = (description || '').replace(/\s+/g, ' ').trim().slice(0, 300);
     <footer class="site-footer">
       <div class="site-footer__inner">
         <p><strong>Folkets Medie</strong> — nyheder fra folket til folket</p>
-        <p>Video streamer fra Rumble, Bitchute m.fl. · Statisk arkiv · <a href={`${base}soeg/`}>Søg</a></p>
+        <p>
+          Video streamer fra Rumble, Bitchute m.fl. · Statisk arkiv ·
+          <a href={`${base}soeg/`}>Søg</a> ·
+          <a href={`${base}stoet/`}>Støt os</a>
+        </p>
       </div>
     </footer>
   </body>

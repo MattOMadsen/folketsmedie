@@ -29,6 +29,11 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 - **Research først.** Tjek datoer, citater, myndighedstekster og X-kilder. Ingen gætteri, ingen «tre ting på én gang» hvis det ikke er sandt.
 - **Ved udgivelse (efter ok):** billeder der passer, lokale featured-filer, links til kilder og til navngivne personer på X, gerne relevant kort video. Deploy til `gh-pages`.
 - **Når Matt siger hvordan noget skal være:** skriv det ind i denne fil og i `docs/ARTIKEL-GUIDE.md` med det samme.
+- **Støtte (15. aug. 2026):** Bjælke + side `/stoet/`. Tekst om at hjælpe Folkets Medie tilbage på en rigtig hjemmeside.
+  - Mail: `mattomadsen@proton.me`
+  - MobilePay: `28896782` (offentligt kun nummeret — ikke hvis hvis konto)
+  - Overførsel: reg. `9070`, konto `8060896667`
+  - Ingen reklamer. Frivilligt. Arkivet er midlertidigt.
 - **Dansk sprog, ikke oversættelsesdansk.** Skriv, som man siger det herhjemme. Ikke copy-paste fra engelsk.
   - Brug **ikke** de franske tegn « ». På dansk: »sådan« eller almindelige anførselstegn.
   - *Released* er **ikke** »sluppet«. Skriv *offentliggjort*, *lagt frem* eller *lagt ud*.

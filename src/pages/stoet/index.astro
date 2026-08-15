@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+const site = String(import.meta.env.SITE || 'https://mattomadsen.github.io').replace(/\/$/, '');
+---
+
+<BaseLayout
+  title="Støt os"
+  current="stoet"
+  description="Hjælp med at få Folkets Medie tilbage på en rigtig hjemmeside. Ingen reklamer. Ingen statsstøtte."
+  pageUrl={`${site}${base}stoet/`}
+>
+  <article class="narrow">
+    <header class="page-intro">
+      <h1>Støt Folkets Medie</h1>
+      <p>Hjælp med at få os tilbage på en rigtig hjemmeside.</p>
+    </header>
+
+    <div class="prose">
+      <p>
+        Folkets Medie er et frit medie uden propaganda. Nyheder fra folket til folket. Siden drives af frivillige
+        og små bidrag fra jer — ikke af staten, ikke af reklamer.
+      </p>
+      <p>
+        Den gamle side er nede. Arkivet her på GitHub er et værn, så artiklerne ikke forsvinder. Det er ikke det
+        endelige hjem. Målet er eget domæne og en rigtig hjemmeside igen.
+      </p>
+      <p>Lommen er ikke bundløs. Alt, I sender, går til drift og til at få siden hjem.</p>
+
+      <h2>Sådan kan I hjælpe</h2>
+      <ul>
+        <li>
+          <strong>Mail:</strong>
+          <a href="mailto:mattomadsen@proton.me">mattomadsen@proton.me</a>
+        </li>
+        <li><strong>MobilePay:</strong> 28896782</li>
+        <li><strong>Bankoverførsel:</strong> reg. 9070 · konto 8060896667</li>
+      </ul>
+      <p>Skriv gerne et par ord på overførslen, så vi kan sige tak.</p>
+      <p>
+        Læs også <a href={`${base}om/`}>om Folkets Medie</a>.
+      </p>
+    </div>
+  </article>
+</BaseLayout>
