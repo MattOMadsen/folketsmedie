@@ -180,7 +180,8 @@ Ved flere kilder:
 **Husk** `/folketsmedie/`-prefix — ellers 404 på GitHub Pages.
 
 ### Indhold i billeder
-- Atmosfære / symbolik / dokument-stemning er fint.
+- **Relevant for *denne* artikel (Matt, 15. aug. 2026).** Ikke endnu et mørkt skrivebord med en stak mapper. Vælg motiv, der peger på emnet: Andes og ruter til kokain, grænsehegn til Mexico, laboratorium til vaccine, osv. Dokument-stemning kun når historien *er* dokumenter.
+- Atmosfære / symbolik er fint, hvis den kan genkendes som sagen.
 - **Ingen** ulæselig AI-tekst på billedet (logoer og “fake screenshots” med garbled text).
 - **Ingen** billeder af rigtige navngivne personer uden rigtigt referencefoto (brug hellere symbolik).
 - `alt`-tekst: kort, dansk, meningsfuld.

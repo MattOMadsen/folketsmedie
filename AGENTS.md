@@ -28,6 +28,7 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 - **Kladde først.** Vis den færdige artikel her i chatten. Udgiv aldrig før han har læst og godkendt.
 - **Research først.** Tjek datoer, citater, myndighedstekster og X-kilder. Ingen gætteri, ingen «tre ting på én gang» hvis det ikke er sandt.
 - **Ved udgivelse (efter ok):** billeder der passer, lokale featured-filer, links til kilder og til navngivne personer på X, gerne relevant kort video. Deploy til `gh-pages`.
+- **Billeder skal ligne historien (15. aug. 2026).** Ikke det samme skrivebord med en stak papir igen. Colombia = Andes/grænse/kartel-rute. Mexico = Rio Grande/hegn. FBI-dokumenter må gerne være arkiv — men kun når artiklen *er* papirer. Ingen navngivne ansigter uden rigtigt foto. Ingen ulæselig tekst på billedet.
 - **Når Matt siger hvordan noget skal være:** skriv det ind i denne fil og i `docs/ARTIKEL-GUIDE.md` med det samme.
 - **Støtte (15. aug. 2026):** Bjælke + side `/stoet/`. Tekst om at hjælpe Folkets Medie tilbage på en rigtig hjemmeside.
   - Mail: `mattomadsen@proton.me`
