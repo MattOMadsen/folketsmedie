@@ -13,7 +13,8 @@ Mål: artikler der lyder som **Folkets Medie** — skarpe, kildenære, fra folke
 2. **Kladde i chatten først.** Matt læser og godkender. Ingen udgivelse, ingen tidsplan, før han siger ja.
 3. **Når han siger hvordan det skal være:** skriv det ned her og i `AGENTS.md`. Glem det ikke næste gang.
 4. **Støtte (15. aug. 2026).** Bjælke øverst + siden `/stoet/`. Hjælp med at få Folkets Medie tilbage på en rigtig hjemmeside. Mail: mattomadsen@proton.me. MobilePay: 28896782 (kun nummeret offentligt). Overførsel: 9070 / 8060896667. Ingen reklamer.
-5. **Ved godkendt udgivelse:**
+5. **Facebook (15. aug. 2026).** Efter deploy kan scriptet `scripts/post-facebook.py` slå den seneste artikel op på Folkets Medies Facebook-side — som det gamle WordPress-plugin. Kræver Page-id og Page-token i `~/.folketsmedie/facebook.env` (ikke i git). RSS: `/folketsmedie/feed.xml`.
+6. **Ved godkendt udgivelse:**
    - billeder der passer (lokalt under `public/media/featured/`, ingen døde folketsmedie.dk-URL’er, ingen AI-ansigter af navngivne personer, ingen ulæselig tekst på billedet)
    - links til kilder og til de omtalte på X
    - gerne et kort, relevant videoklip (ikke nødvendigvis hele mødet)

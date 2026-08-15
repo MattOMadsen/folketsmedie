@@ -21,3 +21,13 @@ cd "$ROOT"
 git worktree remove -f "$WT"
 git branch -f gh-pages origin/gh-pages
 echo "deploy done $(date -Iseconds)"
+# Valgfri Facebook-opslag, hvis token ligger i ~/.folketsmedie/facebook.env
+if python3 "$ROOT/scripts/post-facebook.py"; then
+  if ! git -C "$ROOT" diff --quiet -- data/facebook-posted.json 2>/dev/null; then
+    git -C "$ROOT" add data/facebook-posted.json
+    if ! git -C "$ROOT" diff --cached --quiet; then
+      git -C "$ROOT" commit -m "Facebook: marker seneste artikel som slået op" || true
+      git -C "$ROOT" push origin main || true
+    fi
+  fi
+fi
