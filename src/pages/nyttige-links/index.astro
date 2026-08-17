@@ -28,7 +28,7 @@ function hrefFor(slug: string) {
       linkGroups.map((g) => (
         <article class="card">
           <a href={hrefFor(g.slug)}>
-            <div class="card__ph">→</div>
+            <img class="card__img" src={`${base}${g.image.replace(/^\//, '')}`} alt="" loading="lazy" />
             <div class="card__body">
               <p class="card__date">{g.kicker}</p>
               <h2 class="card__title">{g.title}</h2>

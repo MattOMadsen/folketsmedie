@@ -21,6 +21,7 @@ const base = import.meta.env.BASE_URL;
       <h1>{group.title}</h1>
       <p>{group.intro}</p>
     </header>
+    <img class="featured" src={`${base}${group.image.replace(/^\//, '')}`} alt="" />
     <ul class="link-list">
       {
         group.links.map((l) => (

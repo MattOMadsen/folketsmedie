@@ -9,6 +9,7 @@ export type LinkGroup = {
   title: string;
   kicker: string;
   intro: string;
+  image: string;
   links: UsefulLink[];
 };
 
@@ -18,6 +19,7 @@ export const linkGroups: LinkGroup[] = [
     title: 'Video-podcasts',
     kicker: 'Heltene på nettet',
     intro: 'Kanaler Folkets Medie henviste til på Rumble.',
+    image: '/media/links/video-bloggere.jpg',
     links: [
       { title: 'And We Know', href: 'https://rumble.com/c/AndWeKnow' },
       { title: 'X22 Report', href: 'https://rumble.com/c/X22Report' },
@@ -31,6 +33,7 @@ export const linkGroups: LinkGroup[] = [
     title: 'Telegram-grupper',
     kicker: 'Nyheder uden filter',
     intro: 'Kanaler fra den gamle Nyttige links-side. Nogle kan være lukket siden.',
+    image: '/media/links/telegram-grupper.jpg',
     links: [
       { title: 'Folkets Medie', href: 'https://t.me/Folkets_Medie' },
       { title: 'Tommy Robinson News', href: 'https://t.me/TommyRobinsonNews' },
@@ -56,6 +59,7 @@ export const linkGroups: LinkGroup[] = [
     title: 'Udenlandske medier',
     kicker: 'Medier uden for Danmark',
     intro: 'Udenlandske sider Folkets Medie samlede under Nyttige links.',
+    image: '/media/links/udenlandske-medier.jpg',
     links: [
       { title: 'The Gateway Pundit', href: 'https://www.thegatewaypundit.com/' },
       { title: 'LifeSiteNews', href: 'https://www.lifesitenews.com/' },
