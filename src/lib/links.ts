@@ -14,32 +14,6 @@ export type LinkGroup = {
 
 export const linkGroups: LinkGroup[] = [
   {
-    slug: 'danske-frihedskaempere',
-    title: 'Danske frihedskæmpere',
-    kicker: 'De danske helte',
-    intro: 'Frihedskæmpere og medier fra Danmark.',
-    links: [
-      {
-        title: 'Viktors Demofonbil',
-        href: 'https://www.demofonbil.dk/',
-        note: 'Viktor kører land og rige rundt og demonstrerer.',
-      },
-      { title: 'Per Brændgaard', href: 'https://perbraendgaard.dk/' },
-      { title: 'Danmarks frie fjernsyn', href: 'https://www.danmarksfriefjernsyn.dk/' },
-      { title: 'Dissens Media', href: 'https://fbf.one/dissens/' },
-      {
-        title: 'OOC',
-        href: 'https://www.ooc.one/',
-        note: 'Organisationen til Oplysning om Corona.',
-      },
-      {
-        title: 'Frihedsbevægelsens Fællesråd',
-        href: 'https://fbf.one/',
-        note: 'FBF.',
-      },
-    ],
-  },
-  {
     slug: 'video-bloggere',
     title: 'Video-podcasts',
     kicker: 'Heltene på nettet',
@@ -47,7 +21,6 @@ export const linkGroups: LinkGroup[] = [
     links: [
       { title: 'And We Know', href: 'https://rumble.com/c/AndWeKnow' },
       { title: 'X22 Report', href: 'https://rumble.com/c/X22Report' },
-      { title: 'James Red Pills America', href: 'https://rumble.com/c/JamesRedPillsAmerica' },
       { title: 'RedPill78', href: 'https://rumble.com/c/RedPill78' },
       { title: 'SantaSurfing', href: 'https://rumble.com/user/SantaSurfing' },
       { title: 'Folkets Medie på Rumble', href: 'https://rumble.com/user/Folketsmedie' },
@@ -76,8 +49,6 @@ export const linkGroups: LinkGroup[] = [
       { title: 'Resist the Mainstream', href: 'https://t.me/ResisttheMainstream' },
       { title: 'One America News Network', href: 'https://t.me/OANNTV' },
       { title: 'KanekoaTheGreat', href: 'https://t.me/KanekoaTheGreat' },
-      { title: 'Steve Bannon’s War Room', href: 'https://t.me/steve_bannon' },
-      { title: 'COVID-19 Agenda', href: 'https://t.me/COVID19agenda' },
     ],
   },
   {
@@ -93,7 +64,6 @@ export const linkGroups: LinkGroup[] = [
       { title: 'InfoWars', href: 'https://www.infowars.com/' },
       { title: 'NTD', href: 'https://www.ntd.com/' },
       { title: 'The Exposé', href: 'https://theexpose.uk/' },
-      { title: 'Free World News', href: 'https://freeworldnews.tv/' },
     ],
   },
 ];
