@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import EngageBar from '../../components/EngageBar.astro';
-import { getVideos, getVideo, cleanHtml, shareTeaser, shareImageUrl } from '../../lib/content';
+import { getVideos, getVideo, cleanHtml, shareTeaser, shareImageUrl, videoImage, videoWatchLinks } from '../../lib/content';
 
 export function getStaticPaths() {
   return getVideos().map((v) => ({
@@ -28,7 +28,11 @@ const shareText = shareTeaser({
   content: video.content,
   max: 240,
 });
-const ogImage = shareImageUrl(video.featured_image, site);
+const poster = videoImage(video, base);
+const ogImage = shareImageUrl(poster, site);
+const watchLinks = videoWatchLinks(
+  `${video.embed_html || ''} ${video.watch_url ? `href="${video.watch_url}"` : ''}`
+);
 ---
 
 <BaseLayout
@@ -47,10 +51,19 @@ const ogImage = shareImageUrl(video.featured_image, site);
 
     {
       video.embed_html ? (
-        <div class="doc-player" set:html={video.embed_html} />
-      ) : video.featured_image ? (
-        <img class="featured" src={video.featured_image} alt="" />
+        <div class="doc-player" set:html={cleanHtml(video.embed_html, base)} />
+      ) : poster ? (
+        <img class="featured" src={poster} alt="" />
       ) : null
+    }
+    {
+      watchLinks.length > 0 && (
+        <p class="video-link">
+          {watchLinks.map((l) => (
+            <a href={l.href} target="_blank" rel="noopener">{l.label} ↗</a>
+          ))}
+        </p>
+      )
     }
 
     <EngageBar

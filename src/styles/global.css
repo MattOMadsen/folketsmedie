@@ -653,6 +653,12 @@ img {
   margin: 1rem 0;
 }
 
+.video-link {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
 .video-link a {
   display: inline-flex;
   align-items: center;

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getVideos } from '../../lib/content';
+import { getVideos, videoImage } from '../../lib/content';
 
 const videos = getVideos();
 const base = import.meta.env.BASE_URL;
@@ -19,8 +19,8 @@ const base = import.meta.env.BASE_URL;
       videos.map((v) => (
         <article class="card">
           <a href={`${base}dokumentar/${v.slug}/`}>
-            {v.featured_image ? (
-              <img class="card__img" src={v.featured_image} alt="" loading="lazy" />
+            {videoImage(v, base) ? (
+              <img class="card__img" src={videoImage(v, base)!} alt="" loading="lazy" />
             ) : (
               <div class="card__ph">▶ Film</div>
             )}

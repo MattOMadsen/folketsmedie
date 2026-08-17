@@ -167,16 +167,60 @@ export function shareTeaser(input: {
 }
 
 function rumbleEmbed(id: string): string {
-  return `<div class="video-embed"><iframe src="https://rumble.com/embed/${id}/" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture; fullscreen" loading="lazy" title="Video" referrerpolicy="origin"></iframe></div>`;
+  return `<div class="video-embed"><iframe src="https://rumble.com/embed/${id}/?pub=rylwh" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture; fullscreen" loading="lazy" title="Video"></iframe></div>`;
 }
 
 function youtubeEmbed(id: string): string {
-  return `<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/${id}" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture; fullscreen" loading="lazy" title="Video" referrerpolicy="origin"></iframe></div>`;
+  return `<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/${id}" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture; fullscreen" loading="lazy" title="Video"></iframe></div>`;
 }
 
 function genericEmbed(src: string): string {
   const safe = src.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
-  return `<div class="video-embed"><iframe src="${safe}" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture; fullscreen" loading="lazy" title="Video" referrerpolicy="origin"></iframe></div>`;
+  return `<div class="video-embed"><iframe src="${safe}" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture; fullscreen" loading="lazy" title="Video"></iframe></div>`;
+}
+
+export function videoImage(v: Video, base: string): string | null {
+  const feat = v.featured_image;
+  if (feat && !/^https?:\/\//i.test(feat)) {
+    const p = feat.replace(/^\//, '');
+    return `${normBase(base)}${p}`;
+  }
+  if (feat && /^https?:\/\//i.test(feat) && !/folketsmedie\.dk/i.test(feat)) {
+    return feat;
+  }
+  return null;
+}
+
+export function videoWatchLinks(html: string): { href: string; label: string }[] {
+  const links: { href: string; label: string }[] = [];
+  const seen = new Set<string>();
+  const add = (href: string, label: string) => {
+    if (!href || seen.has(href)) return;
+    seen.add(href);
+    links.push({ href, label });
+  };
+  const srcs = [...html.matchAll(/\bsrc=["']([^"']+)["']/gi)].map((m) => m[1].replace(/&amp;/g, '&'));
+  const hrefs = [...html.matchAll(/\bhref=["']([^"']+)["']/gi)].map((m) => m[1].replace(/&amp;/g, '&'));
+  for (const src of [...srcs, ...hrefs]) {
+    const rumble = src.match(/rumble\.com\/embed\/([a-zA-Z0-9]+)/i);
+    if (rumble) {
+      add(`https://rumble.com/embed/${rumble[1]}/`, 'Åbn på Rumble');
+      continue;
+    }
+    const yt = src.match(/(?:youtube\.com\/embed\/|youtube-nocookie\.com\/embed\/)([a-zA-Z0-9_-]+)/i);
+    if (yt) {
+      add(`https://www.youtube.com/watch?v=${yt[1]}`, 'Åbn på YouTube');
+      continue;
+    }
+    if (/bitchute\.com/i.test(src)) {
+      add(src.replace('/embed/', '/video/'), 'Åbn på BitChute');
+      continue;
+    }
+    if (/^https?:\/\//i.test(src) && !/folketsmedie\.dk/i.test(src)) {
+      add(src, 'Åbn videoen et andet sted');
+    }
+  }
+  return links;
 }
 
 function embedFromSrc(src: string): string {

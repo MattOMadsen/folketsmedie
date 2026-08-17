@@ -1,4 +1,4 @@
-import { getArticles, getVideos, htmlToPlainText, articleImage, type Article, type Video } from './content';
+import { getArticles, getVideos, htmlToPlainText, articleImage, videoImage, type Article, type Video } from './content';
 
 export type SearchKind = 'artikel' | 'dokumentar';
 
@@ -59,7 +59,7 @@ export function buildSearchIndex(base: string): SearchItem[] {
       date: v.date,
       excerpt,
       href: `${b}dokumentar/${v.slug}/`,
-      image: v.featured_image,
+      image: videoImage(v, b),
       hay,
     };
   });
