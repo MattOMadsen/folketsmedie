@@ -278,8 +278,17 @@ function mapInternalPath(pathname: string): string | null | 'keep-media' {
   ) {
     return 'om/';
   }
-  if (path.startsWith('/nyttige-links')) {
+  if (path === '/nyttige-links' || path === '/nyttige-links/') {
     return 'nyttige-links/';
+  }
+  const nl = path.match(/^\/nyttige-links\/([^/]+)\/?$/i);
+  if (nl) {
+    const slug = nl[1];
+    if (slug === 'udenlandske-medier') return 'udenlandske-medier/';
+    return `nyttige-links/${slug}/`;
+  }
+  if (path.startsWith('/udenlandske-medier')) {
+    return 'udenlandske-medier/';
   }
   if (
     path.startsWith('/kontakt') ||

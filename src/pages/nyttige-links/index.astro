@@ -1,22 +1,42 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { data, cleanHtml } from '../../lib/content';
+import { linkGroups } from '../../lib/links';
 
-const page = data.pages.nyttige_links;
 const base = import.meta.env.BASE_URL;
+
+function hrefFor(slug: string) {
+  if (slug === 'udenlandske-medier') return `${base}udenlandske-medier/`;
+  return `${base}nyttige-links/${slug}/`;
+}
 ---
 
-<BaseLayout title="Nyttige links" current="links">
-  <article class="narrow">
-    <header class="page-intro">
-      <h1>{page?.title || 'Nyttige links'}</h1>
-    </header>
+<BaseLayout
+  title="Nyttige links"
+  description="Danske medier, video-podcasts, Telegram-grupper og udenlandske sider fra Folkets Medie."
+  current="links"
+>
+  <header class="page-intro">
+    <h1>Nyttige links</h1>
+    <p>
+      Listerne er fra den gamle Folkets Medie-side. Linkene går ud af arkivet — nogle sider
+      kan være flyttet eller lukket.
+    </p>
+  </header>
+
+  <div class="grid">
     {
-      page ? (
-        <div class="prose" set:html={cleanHtml(page.content, base)} />
-      ) : (
-        <p>Indhold mangler.</p>
-      )
+      linkGroups.map((g) => (
+        <article class="card">
+          <a href={hrefFor(g.slug)}>
+            <div class="card__ph">→</div>
+            <div class="card__body">
+              <p class="card__date">{g.kicker}</p>
+              <h2 class="card__title">{g.title}</h2>
+              <p class="card__date">{g.intro}</p>
+            </div>
+          </a>
+        </article>
+      ))
     }
-  </article>
+  </div>
 </BaseLayout>

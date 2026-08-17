@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { linkGroups, getLinkGroup } from '../../lib/links';
+
+export function getStaticPaths() {
+  return linkGroups
+    .filter((g) => g.slug !== 'udenlandske-medier')
+    .map((g) => ({ params: { slug: g.slug } }));
+}
+
+const { slug } = Astro.params;
+const group = getLinkGroup(slug!);
+if (!group) throw new Error(`Ukendt link-liste: ${slug}`);
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title={group.title} description={group.intro} current="links">
+  <article class="narrow">
+    <a class="back" href={`${base}nyttige-links/`}>← Nyttige links</a>
+    <header class="page-intro">
+      <h1>{group.title}</h1>
+      <p>{group.intro}</p>
+    </header>
+    <ul class="link-list">
+      {
+        group.links.map((l) => (
+          <li>
+            <a href={l.href} target="_blank" rel="noopener noreferrer">
+              {l.title}
+            </a>
+            {l.note && <span>{l.note}</span>}
+          </li>
+        ))
+      }
+    </ul>
+  </article>
+</BaseLayout>
