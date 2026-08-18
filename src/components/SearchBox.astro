@@ -1,27 +1,125 @@
 ---
 interface Props {
   id?: string;
-  value?: string;
   compact?: boolean;
-  autofocus?: boolean;
 }
 
-const { id = 'q', value = '', compact = false, autofocus = false } = Astro.props;
+const { id = 'q', compact = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 
-<form class:list={['search-box', compact && 'search-box--compact']} action={`${base}soeg/`} method="get" role="search">
-  <label class="visually-hidden" for={id}>Søg i arkivet</label>
+<div class:list={['search-box', compact && 'search-box--compact']} data-search-live data-base={base}>
+  <label class="visually-hidden" for={id}>Søg artikler</label>
   <input
     class="search-box__input"
     type="search"
     name="q"
     id={id}
-    value={value}
-    placeholder="Søg artikler og film…"
+    placeholder="Søg artikler…"
     autocomplete="off"
     enterkeyhint="search"
-    autofocus={autofocus}
   />
-  <button class="search-box__btn" type="submit">Søg</button>
-</form>
+  <div class="search-live" hidden></div>
+</div>
+
+<script>
+  function foldDa(s) {
+    return String(s || '')
+      .toLowerCase()
+      .replace(/æ/g, 'ae')
+      .replace(/ø/g, 'oe')
+      .replace(/å/g, 'aa')
+      .normalize('NFD')
+      .replace(/\p{M}/gu, '')
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+  }
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  let cache = null;
+
+  async function loadIndex(base) {
+    if (cache) return cache;
+    const res = await fetch(`${base}soegeindex.json`);
+    if (!res.ok) throw new Error('index');
+    const data = await res.json();
+    cache = (data.items || []).filter((it) => it.kind === 'artikel');
+    return cache;
+  }
+
+  function hitsFor(q, items) {
+    const toks = foldDa(q).split(/\s+/).filter((w) => w.length >= 2);
+    if (!toks.length) return [];
+    return items
+      .map((item) => {
+        const title = foldDa(item.title);
+        let score = 0;
+        for (const t of toks) {
+          if (!item.hay.includes(t)) return { item, score: 0 };
+          if (title.includes(t)) score += 30;
+          score += 8;
+        }
+        return { item, score };
+      })
+      .filter((x) => x.score > 0)
+      .sort((a, b) => b.score - a.score || String(b.item.date).localeCompare(String(a.item.date)))
+      .slice(0, 8)
+      .map((x) => x.item);
+  }
+
+  function bindSearch() {
+    document.querySelectorAll('[data-search-live]').forEach((box) => {
+      if (box.dataset.bound === '1') return;
+      const input = box.querySelector('input');
+      const panel = box.querySelector('.search-live');
+      const base = box.getAttribute('data-base') || '/';
+      if (!input || !panel) return;
+      box.dataset.bound = '1';
+
+      let t = 0;
+      async function run() {
+        const q = input.value.trim();
+        if (q.length < 2) {
+          panel.hidden = true;
+          panel.innerHTML = '';
+          return;
+        }
+        try {
+          const items = await loadIndex(base);
+          const hits = hitsFor(q, items);
+          if (!hits.length) {
+            panel.hidden = false;
+            panel.innerHTML = `<p class="search-live__empty">Ingen artikler på “${escapeHtml(q)}”</p>`;
+            return;
+          }
+          panel.hidden = false;
+          panel.innerHTML = hits
+            .map((h) => `<a class="search-live__hit" href="${escapeHtml(h.href)}"><strong>${escapeHtml(h.title)}</strong></a>`)
+            .join('');
+        } catch {
+          panel.hidden = false;
+          panel.innerHTML = '<p class="search-live__empty">Søgning kunne ikke hentes.</p>';
+        }
+      }
+
+      input.addEventListener('input', () => {
+        clearTimeout(t);
+        t = setTimeout(run, 140);
+      });
+      input.addEventListener('focus', run);
+      document.addEventListener('click', (e) => {
+        if (!box.contains(e.target)) panel.hidden = true;
+      });
+    });
+  }
+
+  bindSearch();
+  document.addEventListener('astro:page-load', bindSearch);
+</script>
