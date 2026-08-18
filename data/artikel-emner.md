@@ -17,7 +17,7 @@
 - Fra: Peter Imanuelsen (@PeterSweden7)
 - Tid: 15. aug. 2026
 - Kort: PeterSweden skriver, at alle nye biler i EU nu skal have et system, der overvåger førerens ansigt. Han kalder det naivt at tro, det ikke senere bliver brugt til at krænke privatlivet.
-- Status: gemt. Ikke skrevet. Ikke publiceret. Tjek ved skrivning: GSR2 / Driver Drowsiness and Attention Warning / DDAW, hvad der faktisk er lovkrav fra 2024/2026, og hvad der er kamera vs. rattet.
+- Status: udgivet 18. aug. 2026. Slug: eu-kamera-i-nye-biler-addw-overvaager-foereren.
 
 ## 2026-08-15 — Thimerosal: FDA-direktør og manglende sikkerhedstest
 
