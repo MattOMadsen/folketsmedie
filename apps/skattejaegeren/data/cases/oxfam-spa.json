@@ -1,0 +1,62 @@
+{
+  "slug": "oxfam-spa",
+  "title": "Oxfam: 103 mio. om året til «just societies» og klima",
+  "status": "approved",
+  "priority": 2,
+  "tags": [
+    "danida",
+    "oxfam",
+    "partnerskab",
+    "officiel"
+  ],
+  "amountDkk": 103000000,
+  "amountLabel": "103 mio. kr./år",
+  "amountKind": "official",
+  "summary": "103 mio./år (UM + Oxfam). Resultatrapport 2025: 12 lande, 47% humanitært spor, 17% climate justice.",
+  "angle": "Stor pengetank med venstreorienteret profil. Humanitært indslag findes — men også masser af politik.",
+  "depth": {
+    "status": "approved",
+    "headline": "Forstået på almindeligt dansk",
+    "body": [
+      "Oxfam Danmark får ca. 103 millioner kr. om året fra Udenrigsministeriet. De arbejder i 12 lande med humanitært arbejde, «retfærdige samfund» og klimaretfærdighed.",
+      "**Hvad går pengene til?** SPA-partnerskab: humanitært (Leaving No-One Behind ca. 47 %), Just Societies ca. 36 %, Climate Justice ca. 17 %. De siger, at 81,6 % af lande-forbrug går til lokale partnere. Der er også oplysning i Danmark.",
+      "**Politisk farve (vores vurdering):** Venstre / global justice. Oxfam er internationalt kendt for progressiv politik (skat, ulighed, klima, gender). Ikke en højreorienteret hjælpeorganisation.",
+      "**Hvad kunne det være herhjemme?** **103.0 mio. kr.** kunne ca. dække **187 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller give **ca. 10.000 kr. i lavere bundskat** til **10.300 personer** med gennemsnitsindkomst (BT-model).",
+      "**Derfor er det vigtigt:** Når du hører «ulandsbistand», tænker mange på mad, medicin og rent vand. En stor del af det, vi dokumenterer her, er **politik, oplysning og aktivisme** — ofte med en progressiv (venstreorienteret) dagsorden. Det er lovligt. Det er dit valg, om det er klogt.",
+      "**Officielt:** 103 mio. kr./år (UM-tabel). Oxfam.dk bekræfter samme tal."
+    ],
+    "sources": [
+      {
+        "title": "UM partnerskabstabel — 103 mio.",
+        "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+        "kind": "official"
+      },
+      {
+        "title": "Oxfam om Danida-partnerskab",
+        "url": "https://oxfam.dk/om-os/partnerskaber/danida/",
+        "kind": "official"
+      },
+      {
+        "title": "Oxfam Results Report 2025 (PDF)",
+        "url": "https://oxfam.dk/wp-content/uploads/2026/07/Oxfam_Denmark_Results_Report-2025.pdf",
+        "kind": "official"
+      },
+      {
+        "title": "Oxfam Results Report 2024 (PDF)",
+        "url": "https://oxfam.dk/wp-content/uploads/2025/08/Oxfam-Denmark-Results-Report-2024-Update-August-2025-2.pdf",
+        "kind": "official"
+      }
+    ]
+  },
+  "relatedPosts": [],
+  "plainLead": "Oxfam Danmark får ca. 103 millioner kr. om året fra Udenrigsministeriet. De arbejder i 12 lande med humanitært arbejde, «retfærdige samfund» og klimaretfærdighed.",
+  "whatMoneyFor": "SPA-partnerskab: humanitært (Leaving No-One Behind ca. 47 %), Just Societies ca. 36 %, Climate Justice ca. 17 %. De siger, at 81,6 % af lande-forbrug går til lokale partnere. Der er også oplysning i Danmark.",
+  "orientation": "venstre",
+  "orientationLabel": "Venstre / global justice",
+  "orientationNote": "Oxfam er internationalt kendt for progressiv politik (skat, ulighed, klima, gender). Ikke en højreorienteret hjælpeorganisation.",
+  "homeCompare": {
+    "text": "**103.0 mio. kr.** kunne ca. dække **187 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller give **ca. 10.000 kr. i lavere bundskat** til **10.300 personer** med gennemsnitsindkomst (BT-model).",
+    "nursesApprox": 187.3,
+    "taxPeopleApprox": 10300
+  }
+}

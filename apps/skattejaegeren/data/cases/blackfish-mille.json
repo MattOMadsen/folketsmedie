@@ -1,0 +1,47 @@
+{
+  "slug": "blackfish-mille",
+  "title": "1,5 mio. til natur-TV på DR1",
+  "status": "approved",
+  "priority": 3,
+  "tags": [
+    "open",
+    "cisu",
+    "medier",
+    "official"
+  ],
+  "amountDkk": 1500000,
+  "amountLabel": "1.500.000 kr. (OpEn)",
+  "amountKind": "official",
+  "summary": "OpEn 1,5 mio. til DR1-serieafsnit. Formidling til danske seere — ikke felt-nødhjælp.",
+  "angle": "Må udviklingsbistand betale DR-dokumentarer? Det sker — og du betaler.",
+  "depth": {
+    "status": "approved",
+    "headline": "Forstået på almindeligt dansk",
+    "body": [
+      "Blackfish har fået 1,5 millioner kr. fra OpEn til et afsnit af en naturdokumentar («Mille og Verdens skove»), der skal på DR1.",
+      "**Hvad går pengene til?** TV-produktion: dokumentar om skove, dyr og klima med kobling til danske projekter. Samlet budget 2,35 mio.; staten dækker 1,5 mio.",
+      "**Politisk farve (vores vurdering):** Grøn / progressiv formidling. Klima, truede arter og «bæredygtig handling» — grøn progressiv dagsorden i underholdningsformat.",
+      "**Hvad kunne det være herhjemme?** **1.5 mio. kr.** kunne ca. dække **3 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller give **ca. 10.000 kr. i lavere bundskat** til **150 personer** med gennemsnitsindkomst (BT-model).",
+      "**Derfor er det vigtigt:** Når du hører «ulandsbistand», tænker mange på mad, medicin og rent vand. En stor del af det, vi dokumenterer her, er **politik, oplysning og aktivisme** — ofte med en progressiv (venstreorienteret) dagsorden. Det er lovligt. Det er dit valg, om det er klogt.",
+      "**Bevilling:** 1.500.000 kr. · **budget:** 2.350.000 kr. · pulje: **OpEn**."
+    ],
+    "sources": [
+      {
+        "title": "CISU: Mille og Verdens skove (1.500.000 kr.)",
+        "url": "https://cisu.dk/cisu-i-verden/bevillingsoversigt/bevilling/?id=517121a1-b278-4574-9d5c-e37eeb469fa3",
+        "kind": "official"
+      }
+    ]
+  },
+  "relatedPosts": [],
+  "plainLead": "Blackfish har fået 1,5 millioner kr. fra OpEn til et afsnit af en naturdokumentar («Mille og Verdens skove»), der skal på DR1.",
+  "whatMoneyFor": "TV-produktion: dokumentar om skove, dyr og klima med kobling til danske projekter. Samlet budget 2,35 mio.; staten dækker 1,5 mio.",
+  "orientation": "venstre",
+  "orientationLabel": "Grøn / progressiv formidling",
+  "orientationNote": "Klima, truede arter og «bæredygtig handling» — grøn progressiv dagsorden i underholdningsformat.",
+  "homeCompare": {
+    "text": "**1.5 mio. kr.** kunne ca. dække **3 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller give **ca. 10.000 kr. i lavere bundskat** til **150 personer** med gennemsnitsindkomst (BT-model).",
+    "nursesApprox": 2.7,
+    "taxPeopleApprox": 150
+  }
+}

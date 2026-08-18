@@ -1,0 +1,55 @@
+{
+  "slug": "statens-kunstfond",
+  "title": "Statens Kunstfond: millioner til kunst — ikke til ældrepleje",
+  "status": "approved",
+  "priority": 6,
+  "tags": [
+    "kultur",
+    "kunstfond",
+    "baronen",
+    "spareplan"
+  ],
+  "amountDkk": 27800000,
+  "amountLabel": "27,8 mio. kr. (2025, claim)",
+  "amountKind": "claim",
+  "summary": "Kunstfond-spor uden for Danida. Relevant som prioriteringsspejl: kultur vs. velfærd.",
+  "angle": "Når der er råd til kunst i NY, men ikke til creme i Struer, er det et politisk valg — uanset kasse.",
+  "depth": {
+    "status": "approved",
+    "headline": "Forstået på almindeligt dansk",
+    "body": [
+      "Baronen har peget på Kunstfonden: residencies, udstillinger og projekter for mange millioner. Det er kulturstøtte, ikke ulandsbistand — men det er samme skattediskussion: hvad får lov at koste?",
+      "**Hvad går pengene til?** Billedkunst, residencies (fx New York), udstillinger. Claim ca. **27,8 mio.** i en runde — se kilder i sagen.",
+      "**Politisk farve (vores vurdering):** Kulturelt progressiv (typisk). Kunststøtte er ikke parti, men samtidskunst og «hybrid mutation»-type projekter ligger kulturelt til venstre for midten.",
+      "**Hvad kunne det være herhjemme?** **27.8 mio. kr.** kunne ca. dække **51 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller give **ca. 10.000 kr. i lavere bundskat** til **2.780 personer** med gennemsnitsindkomst (BT-model).",
+      "**Derfor er det vigtigt:** Når du hører «ulandsbistand», tænker mange på mad, medicin og rent vand. En stor del af det, vi dokumenterer her, er **politik, oplysning og aktivisme** — ofte med en progressiv (venstreorienteret) dagsorden. Det er lovligt. Det er dit valg, om det er klogt."
+    ],
+    "sources": [
+      {
+        "title": "Baronen: 27,8 mio. billedkunst (X)",
+        "url": "https://x.com/oresundsbaron/status/2086090346891534727",
+        "kind": "research"
+      },
+      {
+        "title": "Baronen: Hybrid Mutation 200.000 (X)",
+        "url": "https://x.com/oresundsbaron/status/2086044804387942797",
+        "kind": "research"
+      }
+    ]
+  },
+  "relatedPosts": [
+    "2086090346891534727",
+    "2086044804387942797",
+    "2086060022824378407"
+  ],
+  "plainLead": "Baronen har peget på Kunstfonden: residencies, udstillinger og projekter for mange millioner. Det er kulturstøtte, ikke ulandsbistand — men det er samme skattediskussion: hvad får lov at koste?",
+  "whatMoneyFor": "Billedkunst, residencies (fx New York), udstillinger. Claim ca. **27,8 mio.** i en runde — se kilder i sagen.",
+  "orientation": "venstre",
+  "orientationLabel": "Kulturelt progressiv (typisk)",
+  "orientationNote": "Kunststøtte er ikke parti, men samtidskunst og «hybrid mutation»-type projekter ligger kulturelt til venstre for midten.",
+  "homeCompare": {
+    "text": "**27.8 mio. kr.** kunne ca. dække **51 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller give **ca. 10.000 kr. i lavere bundskat** til **2.780 personer** med gennemsnitsindkomst (BT-model).",
+    "nursesApprox": 50.5,
+    "taxPeopleApprox": 2780
+  }
+}

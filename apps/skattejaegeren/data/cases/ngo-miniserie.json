@@ -1,0 +1,55 @@
+{
+  "slug": "ngo-miniserie",
+  "title": "Baronens NGO-liste: over 28 mio. i navngivne eksempler",
+  "status": "approved",
+  "priority": 4,
+  "tags": [
+    "danida",
+    "ngo",
+    "baronen",
+    "claim"
+  ],
+  "amountDkk": 28700000,
+  "amountLabel": "≥28,7 mio. kr. (sum af claims)",
+  "amountKind": "claim",
+  "summary": "Samlet claim-liste fra Baronens serie. Status: blandet verificeret / delvist / åbent.",
+  "angle": "Serien er indgangen. Vores job er at gøre hvert tal efterprøveligt på dansk.",
+  "depth": {
+    "status": "approved",
+    "headline": "Forstået på almindeligt dansk",
+    "body": [
+      "På X har Baronen gennemgået en række NGO’er med konkrete beløb: Ghana Venskab, Female Freedom, Crossing Borders m.fl. Vi matcher dem ét for ét med officielle kilder.",
+      "**Hvad går pengene til?** Forskellige CISU/Danida-spor. Sum af claims ca. **28,7 mio.** — flere er delvist bekræftet (Ghana, Female Freedom), andre under verifikation.",
+      "**Politisk farve (vores vurdering):** Samling af overvejende venstreprojekter. De nævnte org har typisk DEI, køn, klima eller queer-aktivisme som omdrejningspunkt.",
+      "**Hvad kunne det være herhjemme?** **28.7 mio. kr.** kunne ca. dække **52 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller give **ca. 10.000 kr. i lavere bundskat** til **2.870 personer** med gennemsnitsindkomst (BT-model).",
+      "**Derfor er det vigtigt:** Når du hører «ulandsbistand», tænker mange på mad, medicin og rent vand. En stor del af det, vi dokumenterer her, er **politik, oplysning og aktivisme** — ofte med en progressiv (venstreorienteret) dagsorden. Det er lovligt. Det er dit valg, om det er klogt.",
+      "Summen af disse claims ≈ **28,7 mio. kr.** — kun et udsnit. Næste skridt for Skattejægeren: matche hvert tal med CISU-bevillingsarkiv / OpenAid / aktindsigt."
+    ],
+    "sources": [
+      {
+        "title": "Baronen: NGO-mini-serie opsummering (X)",
+        "url": "https://x.com/oresundsbaron/status/2083221437041479686",
+        "kind": "research"
+      },
+      {
+        "title": "CISU funding (til verifikation)",
+        "url": "https://cisu.dk/en/funding/civil-society-fund/",
+        "kind": "official"
+      }
+    ]
+  },
+  "relatedPosts": [
+    "2083221437041479686",
+    "2002304077615759548"
+  ],
+  "plainLead": "På X har Baronen gennemgået en række NGO’er med konkrete beløb: Ghana Venskab, Female Freedom, Crossing Borders m.fl. Vi matcher dem ét for ét med officielle kilder.",
+  "whatMoneyFor": "Forskellige CISU/Danida-spor. Sum af claims ca. **28,7 mio.** — flere er delvist bekræftet (Ghana, Female Freedom), andre under verifikation.",
+  "orientation": "venstre",
+  "orientationLabel": "Samling af overvejende venstreprojekter",
+  "orientationNote": "De nævnte org har typisk DEI, køn, klima eller queer-aktivisme som omdrejningspunkt.",
+  "homeCompare": {
+    "text": "**28.7 mio. kr.** kunne ca. dække **52 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller give **ca. 10.000 kr. i lavere bundskat** til **2.870 personer** med gennemsnitsindkomst (BT-model).",
+    "nursesApprox": 52.2,
+    "taxPeopleApprox": 2870
+  }
+}

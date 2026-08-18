@@ -1,0 +1,27 @@
+{
+  "id": "eu-parlament-aktiviteter",
+  "title": "Aktiviteter i Europa-Parlamentet og fravær",
+  "year": "2019-2024",
+  "ourSeverity": 3,
+  "shortDesc": "Messerschmidt blev kritiseret for lavt fremmøde og begrænset aktivitet i Europa-Parlamentet.",
+  "longDesc": "Messerschmidt blev kritiseret for lavt fremmøde og begrænset aktivitet i Europa-Parlamentet, mens han samtidig modtog fuld løn og godtgørelser.",
+  "mediaLinks": [
+    {
+      "name": "DR og EUobserver",
+      "url": "https://www.dr.dk/nyheder/politik/messerschmidt-eu-parlament"
+    }
+  ],
+  "consequences": "Kritik for lavt fremmøde trods fuld løn.",
+  "whatShouldHaveHappened": {
+    "title": "Større ansvarlighed",
+    "content": "Der burde have været større fokus på at leve op til de forventninger der er til folkevalgte i Europa-Parlamentet."
+  },
+  "lastUpdated": "2026-06-11",
+  "relatedTopics": [
+    "eu-politics"
+  ],
+  "otherPoliticians": [
+    "Henrik Dahl",
+    "Pia Kjærsgaard"
+  ]
+}

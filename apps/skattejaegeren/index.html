@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skattejægeren — danske skattekroner før ideologisk bistand</title>
+  <meta name="description" content="Borgerlig tracker: hvad Danmark bruger på ulandsbistand, LGBTQ- og klima-aktivisme — mens skoler og ældre mangler. Kilder på hver sag." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-top">
+  <nav class="house-switch" aria-label="Vælg sted">
+    <div class="house-switch__inner">
+      <a href="https://mattomadsen.github.io/folketsmedie/">Folkets Medie</a>
+      <a href="https://mattomadsen.github.io/skandale.dk/">Skandale</a>
+      <a href="https://mattomadsen.github.io/skattejaegeren/" aria-current="page">Skattejægeren</a>
+    </div>
+  </nav>
+  <div class="support-bar" role="region" aria-label="Støt projektet">
+    <p>
+      Hjælp med at få projektet ud på en rigtig hjemmeside.
+      <a href="https://mattomadsen.github.io/folketsmedie/stoet/">Støt os</a>
+    </p>
+  </div>
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="#/">
+        <span class="brand-mark"></span>
+        Skattejægeren
+      </a>
+      <nav class="nav" aria-label="Hovedmenu">
+        <a href="#/" data-nav="home">Overblik</a>
+        <a href="#/projekter" data-nav="udforsk">Udforsk</a>
+        <a href="#/indsigt" data-nav="indsigt">Indsigt</a>
+        <a href="#/om" data-nav="om">Om</a>
+      </nav>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Skift tema" title="Lys/mørk">◐</button>
+    </div>
+  </header>
+  </div>
+
+  <section class="stats" id="stats" aria-label="Ulandsbistand i tal">
+    <div class="stats-inner">
+      <div class="stat">
+        <p class="stat-label">Ulandsbistand 2026</p>
+        <p class="stat-value" id="stat-year">23,2 mia.</p>
+        <p class="stat-unit">kroner i år</p>
+      </div>
+      <div class="stat">
+        <p class="stat-label">Seneste 10 år</p>
+        <p class="stat-value" id="stat-10">187 mia.</p>
+        <p class="stat-unit">kroner ca.</p>
+      </div>
+      <div class="stat">
+        <p class="stat-label">Pr. indbygger</p>
+        <p class="stat-value" id="stat-per">3.800</p>
+        <p class="stat-unit">kr. · alle danskere</p>
+      </div>
+      <div class="stat accent">
+        <p class="stat-label">BT: skattelettelse</p>
+        <p class="stat-value" id="stat-tax">10.000</p>
+        <p class="stat-unit">kr. · gns. indkomst</p>
+      </div>
+    </div>
+    <p class="stats-footnote">
+      3.800 kr. = 23,2 mia. ÷ ca. 6,1 mio. indbyggere.
+      10.000 kr. = BT: hvis bistanden bruges til lavere bundskat for gennemsnitsindkomst.
+    </p>
+  </section>
+
+  <main id="app" class="app"></main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>Danskere først · borgerlig · kilder på hver sag · <a href="https://x.com/MattieDanmark" target="_blank" rel="noopener">@MattieDanmark</a> · tak til <a href="https://borgerjournalisten.dk/" target="_blank" rel="noopener">Borgerjournalisten</a> / <a href="https://x.com/NamelessCoder" target="_blank" rel="noopener">@NamelessCoder</a></p>
+      <div class="footer-links">
+        <a href="#/projekter">Udforsk</a>
+        <a href="#/indsigt">Indsigt</a>
+        <a href="#/om">Om</a>
+        <a href="https://x.com/MattieDanmark" target="_blank" rel="noopener">@MattieDanmark</a>
+        <a href="https://x.com/NamelessCoder" target="_blank" rel="noopener">@NamelessCoder</a>
+        <a href="https://borgerjournalisten.dk/" target="_blank" rel="noopener">Borgerjournalisten</a>
+        <a href="https://github.com/MattOMadsen/skattejaegeren">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      if (window.self !== window.top) {
+        document.querySelectorAll('.house-switch, .support-bar').forEach(function (el) { el.remove(); });
+        return;
+      }
+      if (location.hostname === 'mattomadsen.github.io' && /\/skattejaegeren(\/|$)/i.test(location.pathname)) {
+        location.replace('https://mattomadsen.github.io/folketsmedie/skattejaegeren/' + location.search + location.hash);
+      }
+    })();
+  </script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

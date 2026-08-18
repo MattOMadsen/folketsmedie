@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sammenlign to politikere | Skandale.dk – Politisk gennemsigtighed</title>
+    <meta name="description" content="Sammenlign danske politikere side om side på skandaler, økonomisk støtte, internationale netværk og brudte valgløfter. Få et faktabaseret overblik.">
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/dark-mode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-serif {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+        }
+
+        .politician-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .metric-box {
+            transition: transform 0.2s ease;
+        }
+        
+        .metric-box:hover {
+            transform: translateY(-2px);
+        }
+
+        .tab-btn {
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .tab-btn.active {
+            border-bottom-color: #c8102e;
+            color: #c8102e;
+            font-weight: 600;
+        }
+        
+        .dark .tab-btn.active {
+            border-bottom-color: #f87171;
+            color: #f87171;
+        }
+
+        .scandal-item, .donor-item, .promise-item, .network-item {
+            transition: background-color 0.2s ease;
+        }
+        
+        .donor-item:hover, .network-item:hover, .scandal-item:hover {
+            background-color: #f1f5f9;
+            cursor: pointer;
+        }
+        
+        .dark .donor-item:hover, .dark .network-item:hover, .dark .scandal-item:hover {
+            background-color: #374151;
+        }
+
+        .nav-active {
+            color: #c8102e;
+            font-weight: 600;
+        }
+        
+        .dark .nav-active {
+            color: #f87171;
+        }
+
+        .comparison-header {
+            background: linear-gradient(to right, #f8fafc, white);
+        }
+        
+        .dark .comparison-header {
+            background: linear-gradient(to right, #1f2937, #111827);
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            .politician-card { box-shadow: none !important; border: 1px solid #e5e7eb !important; }
+        }
+        
+        .politician-option:hover { background-color: #f1f5f9; }
+        .dark .politician-option:hover { background-color: #374151; }
+        
+        .selected-politician {
+            border-color: #c8102e;
+            background-color: #fef2f2;
+        }
+        
+        .dark .selected-politician {
+            background-color: #450a0a;
+            border-color: #f87171;
+        }
+
+        .loading-placeholder {
+            animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .modal {
+            animation: modalPopIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes modalPopIn {
+            from { opacity: 0; transform: scale(0.8) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .tab-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .tab-scroll::-webkit-scrollbar { display: none; }
+
+        .custom-scroll {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .politician-option {
+            min-height: 44px;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        @media (max-width: 767px) {
+            .comparison-header { padding-left: 1rem; padding-right: 1rem; }
+            .politician-card .tab-content { padding-left: 1rem; padding-right: 1rem; }
+            .tab-btn {
+                min-width: 5.25rem;
+                flex-shrink: 0;
+                padding: 0.75rem 0.625rem;
+                font-size: 0.8125rem;
+            }
+            .compare-name { font-size: 1.25rem; line-height: 1.3; }
+            .compare-role { display: block; margin-top: 0.25rem; }
+            .party-badge { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+            #comparison-area.has-mobile-bar { padding-bottom: 5.5rem; }
+            .mobile-modal-panel {
+                width: 100%;
+                max-height: 92vh;
+                border-radius: 1.25rem 1.25rem 0 0;
+                margin-top: auto;
+            }
+        }
+
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            #mobile-compare-bar {
+                padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+            }
+            body.has-mobile-compare-bar {
+                padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+
+    <!-- Navbar indlæses via js/navbar.js -->
+
+    <!-- Hero -->
+    <div class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="max-w-3xl">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter heading-serif">Sammenlign to politikere</h1>
+                <p class="mt-3 text-base sm:text-xl text-gray-600 dark:text-gray-400">
+                    Få et faktabaseret, side-om-side overblik over skandaler, økonomisk støtte, internationale netværk og brudte valgløfter.
+                </p>
+                <div class="mt-4 flex items-center gap-x-4 text-sm">
+                    <div class="flex items-center gap-x-2 text-green-600 dark:text-green-400">
+                        <i class="fas fa-check-circle"></i>
+                        <span id="politician-count">–</span> politikere
+                    </div>
+                    <div class="flex items-center gap-x-2 text-gray-500 dark:text-gray-400">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Opdateret løbende</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Selection Area -->
+        <div class="mb-8 no-print">
+            <div class="flex items-end justify-between mb-4">
+                <div>
+                    <h2 class="text-2xl font-semibold tracking-tight">Vælg to politikere</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">Søg og klik for at vælge. Du kan bytte om når som helst.</p>
+                </div>
+                <button onclick="resetComparison()" 
+                        class="flex items-center gap-x-2 px-4 py-2.5 text-sm font-medium rounded-xl border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors min-h-[44px]">
+                    <i class="fas fa-undo"></i>
+                    <span class="hidden sm:inline">Nulstil</span>
+                </button>
+            </div>
+
+            <div id="politician-loading" class="flex items-center justify-center gap-x-2 py-6 text-sm text-gray-500 dark:text-gray-400">
+                <i class="fas fa-spinner fa-spin text-red-600"></i>
+                <span>Indlæser politikere...</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <!-- Politician 1 -->
+                <div class="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 p-5">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="font-semibold flex items-center gap-x-2">
+                            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 dark:bg-red-950 text-red-600 dark:text-red-400 text-xs font-bold">1</span>
+                            <span>Politiker 1</span>
+                        </div>
+                        <div id="p1-selected-badge" class="hidden text-xs px-3 py-1 bg-red-100 dark:bg-red-950 text-red-600 dark:text-red-400 rounded-full font-medium items-center gap-x-1">
+                            <i class="fas fa-check text-xs"></i> <span id="p1-selected-name"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative mb-3">
+                        <input type="text" id="search1" 
+                               class="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-gray-950 border border-gray-300 dark:border-gray-700 rounded-2xl text-sm focus:outline-none focus:border-red-500 dark:focus:border-red-400"
+                               placeholder="Søg efter navn eller parti..." 
+                               oninput="filterPoliticians(1)">
+                        <i class="fas fa-search absolute left-4 top-3.5 text-gray-400"></i>
+                    </div>
+                    
+                    <div id="politician-list-1" 
+                         class="max-h-[42vh] sm:max-h-[220px] overflow-y-auto border border-gray-200 dark:border-gray-700 rounded-2xl bg-white dark:bg-gray-950 p-1 custom-scroll">
+                    </div>
+                </div>
+
+                <!-- Politician 2 -->
+                <div class="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 p-5">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="font-semibold flex items-center gap-x-2">
+                            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 dark:bg-red-950 text-red-600 dark:text-red-400 text-xs font-bold">2</span>
+                            <span>Politiker 2</span>
+                        </div>
+                        <div id="p2-selected-badge" class="hidden text-xs px-3 py-1 bg-red-100 dark:bg-red-950 text-red-600 dark:text-red-400 rounded-full font-medium items-center gap-x-1">
+                            <i class="fas fa-check text-xs"></i> <span id="p2-selected-name"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative mb-3">
+                        <input type="text" id="search2" 
+                               class="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-gray-950 border border-gray-300 dark:border-gray-700 rounded-2xl text-sm focus:outline-none focus:border-red-500 dark:focus:border-red-400"
+                               placeholder="Søg efter navn eller parti..." 
+                               oninput="filterPoliticians(2)">
+                        <i class="fas fa-search absolute left-4 top-3.5 text-gray-400"></i>
+                    </div>
+                    
+                    <div id="politician-list-2" 
+                         class="max-h-[42vh] sm:max-h-[220px] overflow-y-auto border border-gray-200 dark:border-gray-700 rounded-2xl bg-white dark:bg-gray-950 p-1 custom-scroll">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-4">
+                <button onclick="swapPoliticians()" 
+                        class="flex items-center gap-x-2 px-5 py-2.5 text-sm font-medium rounded-2xl bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all active:scale-[0.985]">
+                    <i class="fas fa-exchange-alt mr-2"></i>
+                    Byt om på de to politikere
+                </button>
+            </div>
+        </div>
+
+        <!-- Comparison Results Area -->
+        <div id="comparison-area" class="hidden">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-y-3 mb-5 no-print">
+                <div class="min-w-0">
+                    <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">Sammenligning</h2>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 truncate" id="comparison-subtitle"></p>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-x-2 shrink-0">
+                    <button onclick="shareComparison()" 
+                            class="flex items-center justify-center gap-x-2 px-4 py-2.5 text-sm font-medium rounded-2xl border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors min-h-[44px]">
+                        <i class="fas fa-link"></i>
+                        Del link
+                    </button>
+                    
+                    <button onclick="exportComparisonToPDF()" 
+                            id="export-pdf-btn"
+                            class="flex items-center justify-center gap-x-2 px-4 py-2.5 text-sm font-medium rounded-2xl bg-red-600 hover:bg-red-700 text-white transition-colors min-h-[44px]">
+                        <i class="fas fa-file-pdf"></i>
+                        Eksporter til PDF
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <!-- Politician 1 Card -->
+                <div id="p1-card" class="politician-card bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+                    <div class="comparison-header px-4 sm:px-6 pt-5 sm:pt-6 pb-4 border-b border-gray-100 dark:border-gray-800">
+                        <div class="flex items-start gap-x-3 sm:gap-x-4">
+                            <div id="p1-avatar" 
+                                 class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center text-white text-xl sm:text-2xl font-bold shadow-inner">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 id="p1-name" class="compare-name text-2xl font-semibold tracking-tight break-words"></h3>
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-x-2 mt-1 min-w-0">
+                                    <span id="p1-party-badge" class="party-badge text-xs sm:text-sm"></span>
+                                    <span id="p1-role" class="compare-role text-sm text-gray-500 dark:text-gray-400"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="px-4 sm:px-6 pt-4 sm:pt-5 pb-4">
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3" id="p1-metrics"></div>
+                    </div>
+                    
+                    <div class="px-4 sm:px-6">
+                        <div class="tab-scroll flex border-b border-gray-200 dark:border-gray-700 text-sm">
+                            <button onclick="switchTab(1, 'scandals')" class="tab-btn active flex-1 text-center" data-tab="scandals-1">Skandaler</button>
+                            <button onclick="switchTab(1, 'support')" class="tab-btn flex-1 text-center" data-tab="support-1">Støtte</button>
+                            <button onclick="switchTab(1, 'promises')" class="tab-btn flex-1 text-center" data-tab="promises-1">Løfter</button>
+                            <button onclick="switchTab(1, 'networks')" class="tab-btn flex-1 text-center" data-tab="networks-1">Netværk</button>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 sm:p-6">
+                        <div id="p1-scandals" class="tab-content"></div>
+                        <div id="p1-support" class="tab-content hidden"></div>
+                        <div id="p1-promises" class="tab-content hidden"></div>
+                        <div id="p1-networks" class="tab-content hidden"></div>
+                    </div>
+                </div>
+
+                <!-- Politician 2 Card -->
+                <div id="p2-card" class="politician-card bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+                    <div class="comparison-header px-4 sm:px-6 pt-5 sm:pt-6 pb-4 border-b border-gray-100 dark:border-gray-800">
+                        <div class="flex items-start gap-x-3 sm:gap-x-4">
+                            <div id="p2-avatar" 
+                                 class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center text-white text-xl sm:text-2xl font-bold shadow-inner">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 id="p2-name" class="compare-name text-2xl font-semibold tracking-tight break-words"></h3>
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-x-2 mt-1 min-w-0">
+                                    <span id="p2-party-badge" class="party-badge text-xs sm:text-sm"></span>
+                                    <span id="p2-role" class="compare-role text-sm text-gray-500 dark:text-gray-400"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="px-4 sm:px-6 pt-4 sm:pt-5 pb-4">
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3" id="p2-metrics"></div>
+                    </div>
+                    
+                    <div class="px-4 sm:px-6">
+                        <div class="tab-scroll flex border-b border-gray-200 dark:border-gray-700 text-sm">
+                            <button onclick="switchTab(2, 'scandals')" class="tab-btn active flex-1 text-center" data-tab="scandals-2">Skandaler</button>
+                            <button onclick="switchTab(2, 'support')" class="tab-btn flex-1 text-center" data-tab="support-2">Støtte</button>
+                            <button onclick="switchTab(2, 'promises')" class="tab-btn flex-1 text-center" data-tab="promises-2">Løfter</button>
+                            <button onclick="switchTab(2, 'networks')" class="tab-btn flex-1 text-center" data-tab="networks-2">Netværk</button>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 sm:p-6">
+                        <div id="p2-scandals" class="tab-content"></div>
+                        <div id="p2-support" class="tab-content hidden"></div>
+                        <div id="p2-promises" class="tab-content hidden"></div>
+                        <div id="p2-networks" class="tab-content hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center text-xs text-gray-500 dark:text-gray-400 no-print">
+                Data hentes automatisk fra de officielle JSON-filer. Klik på en skandale for at læse mere, eller på en donor/netværk for at se andre politikere.
+            </div>
+        </div>
+        
+        <!-- Empty state -->
+        <div id="empty-state" class="text-center py-12 px-6 bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800">
+            <div class="mx-auto w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center mb-4">
+                <i class="fas fa-balance-scale text-3xl text-gray-400"></i>
+            </div>
+            <h3 class="font-semibold text-lg">Vælg to politikere ovenfor</h3>
+            <p class="text-gray-500 dark:text-gray-400 mt-2 max-w-md mx-auto">
+                Brug søgefeltene til at finde politikere, klik på dem for at vælge, og se en detaljeret sammenligning.
+            </p>
+        </div>
+
+    </main>
+
+    <!-- Mobil handlingslinje (kun når sammenligning er aktiv) -->
+    <div id="mobile-compare-bar" class="hidden fixed bottom-0 inset-x-0 z-40 md:hidden no-print border-t border-gray-200 dark:border-gray-800 bg-white/95 dark:bg-gray-900/95 backdrop-blur px-4 pt-3">
+        <div class="grid grid-cols-2 gap-2 max-w-lg mx-auto">
+            <button onclick="shareComparison()" 
+                    class="flex items-center justify-center gap-x-2 px-3 py-3 text-sm font-medium rounded-2xl border border-gray-300 dark:border-gray-700 min-h-[44px]">
+                <i class="fas fa-link"></i>
+                Del
+            </button>
+            <button onclick="exportComparisonToPDF()" 
+                    id="export-pdf-btn-mobile"
+                    class="flex items-center justify-center gap-x-2 px-3 py-3 text-sm font-medium rounded-2xl bg-red-600 hover:bg-red-700 text-white min-h-[44px]">
+                <i class="fas fa-file-pdf"></i>
+                PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 mt-12 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-sm text-gray-500 dark:text-gray-400">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-y-4">
+                <div>
+                    Skandale.dk — Uafhængig gennemsigtighed i dansk politik. 
+                    <span class="hidden md:inline">•</span> 
+                    <a href="om.html" class="hover:underline">Læs mere om projektet</a>
+                </div>
+                <div class="flex items-center gap-x-4">
+                    <a href="#" class="hover:text-gray-700 dark:hover:text-gray-300">Kilder & metodik</a>
+                    <span>•</span>
+                    <a href="#" class="hover:text-gray-700 dark:hover:text-gray-300">Bidrag med viden</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Related Modal -->
+    <div id="related-modal" class="hidden fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="SammenlignModals.hideRelatedModal()"></div>
+        
+        <div class="modal mobile-modal-panel relative bg-white dark:bg-gray-900 sm:rounded-3xl shadow-2xl sm:max-w-lg w-full max-h-[85vh] sm:max-h-[80vh] overflow-hidden border border-gray-200 dark:border-gray-700">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                <h3 id="related-modal-title" class="font-semibold text-lg pr-8"></h3>
+                <button onclick="SammenlignModals.hideRelatedModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="p-6 overflow-y-auto max-h-[60vh]" id="related-modal-content"></div>
+            
+            <div class="px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 text-xs text-gray-500 dark:text-gray-400">
+                Klik på en politiker for at erstatte den i sammenligningen.
+            </div>
+        </div>
+    </div>
+
+    <!-- Scandal Modal -->
+    <div id="scandal-modal" class="hidden fixed inset-0 z-[110] flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="SammenlignModals.hideScandalModal()"></div>
+        
+        <div class="modal mobile-modal-panel relative bg-white dark:bg-gray-900 sm:rounded-3xl shadow-2xl sm:max-w-2xl w-full max-h-[92vh] sm:max-h-[85vh] overflow-hidden border border-gray-200 dark:border-gray-700">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950">
+                <div>
+                    <h3 id="scandal-modal-title" class="font-semibold text-xl"></h3>
+                    <div id="scandal-modal-severity" class="mt-1"></div>
+                </div>
+                <button onclick="SammenlignModals.hideScandalModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="p-6 overflow-y-auto max-h-[65vh] space-y-6" id="scandal-modal-content"></div>
+            
+            <div class="px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-950 flex justify-end">
+                <button onclick="SammenlignModals.hideScandalModal()" 
+                        class="px-5 py-2 text-sm font-medium rounded-2xl border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    Luk
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/version.js"></script>
+    <script src="js/pwa.js"></script>
+    <script src="js/navbar.js"></script>
+
+    <!-- Modulære scripts -->
+    <script src="js/site-stats.js"></script>
+    <script src="js/sammenlign/sammenlign-data.js"></script>
+    <script src="js/sammenlign/sammenlign-pdf.js"></script>
+    <script src="js/sammenlign/sammenlign-render.js"></script>
+    <script src="js/sammenlign/sammenlign-modals.js"></script>
+    <script src="js/sammenlign/sammenlign-init.js"></script>
+
+    <script>
+        window.onload = () => SammenlignInit.init();
+    </script>
+</body>
+</html>

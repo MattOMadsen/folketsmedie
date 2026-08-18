@@ -1,0 +1,1447 @@
+{
+  "updated": "2026-08-11",
+  "note": "Kun projekter med ordentlig dansk tekst. Rå CISU-lister ligger i OpEn-katalog + absurd-lister. SPA-partnere er uddybet.",
+  "projects": [
+    {
+      "id": "fant-ballon-dor",
+      "title": "FANT — Ballon d'Or + satire-radio (vores gravning)",
+      "amountDkk": 3021823,
+      "amountKind": "official",
+      "org": "For a new tomorrow (FANT)",
+      "pool": "OpEn + oplysningspulje",
+      "country": "Danmark",
+      "whatFor": "1,50 mio. satirisk seriefodbold-kåring, 1,50 mio. r8Dio-satire, 25k Coldplay i Parken.",
+      "angle": "Fandt vi i OpEn-kataloget.",
+      "sources": [{"title": "CISU: Ballon d'Or", "url": "https://cisu.dk/en/cisu-in-the-world/grants/grant/?id=bc109116-59ac-41b3-9dd8-e526ce7256c3", "kind": "official"}],
+      "researchers": [],
+      "caseSlug": "fant-ballon-dor",
+      "plainLead": "FANT: 3,02 mio. til satire og seriefodbold-content i Danmark.",
+      "homeCompare": {"text": "**3.021.823 kr.** ≈ **5–6 sygeplejerske-år**.", "nursesApprox": 5.5, "taxPeopleApprox": 302},
+      "profile": ""
+    },
+    {
+      "id": "dgi-gstep",
+      "title": "DGI Midtjylland — G-STEP (vores gravning)",
+      "amountDkk": 4799512,
+      "amountKind": "official",
+      "org": "DGI Midtjylland",
+      "pool": "CISU (8 slåede af 14 poster)",
+      "country": "Ghana",
+      "whatFor": "Sport + køn + SRHR + duty bearers i Nordghana. Gulv 4,80 mio.",
+      "angle": "Fandt vi i kataloget.",
+      "sources": [{"title": "CISU: G-STEP", "url": "https://cisu.dk/en/cisu-in-the-world/grants/grant/?id=cc8c185d-336c-4a1d-a612-1c8814d13f11", "kind": "official"}],
+      "researchers": [],
+      "caseSlug": "dgi-gstep",
+      "plainLead": "DGI Midt: mindst 4,80 mio. CISU — G-STEP er sport, køn og SRHR i Ghana.",
+      "homeCompare": {"text": "**4.799.512 kr.** ≈ **9 sygeplejerske-år**.", "nursesApprox": 8.7, "taxPeopleApprox": 480},
+      "profile": ""
+    },
+    {
+      "id": "axis-uddannelse",
+      "title": "AXIS — equity-program 16,64 mio. (vores gravning)",
+      "amountDkk": 16640000,
+      "amountKind": "official",
+      "org": "Axis",
+      "pool": "CISU PROGRAM 2022–26",
+      "country": "Ghana, Peru, Bolivia",
+      "whatFor": "16,64 mio. til equity/inclusion i uddannelse. Plus 1,86 mio. køn/affald 2026–29.",
+      "angle": "Gik efter 1,9 mio., fandt 16,6 mio.",
+      "sources": [{"title": "CISU: AXIS-program", "url": "https://cisu.dk/en/cisu-in-the-world/grants/grant/?id=0cfcd2a2-2ecd-484d-bad7-0855f6765b69", "kind": "official"}],
+      "researchers": [],
+      "caseSlug": "axis-uddannelse",
+      "plainLead": "AXIS: 16,64 mio. CISU-program om equity og inclusion i tre lande.",
+      "homeCompare": {"text": "**16.640.000 kr.** ≈ **30 sygeplejerske-år**.", "nursesApprox": 30.3, "taxPeopleApprox": 1664},
+      "profile": ""
+    },
+    {
+      "id": "rapolitics-react",
+      "title": "Rapolitics — Re:Act (vores gravning)",
+      "amountDkk": 3757351,
+      "amountKind": "official",
+      "org": "Rapolitics",
+      "pool": "CISU / OpEn (7 bevillinger)",
+      "country": "Danmark, Palæstina, Bolivia",
+      "whatFor": "Hiphop-rettigheder i DK (Roskilde, køn/seksualitet), Palæstina-debat via rap, ældre hiphop-center i Bolivia. Sum 3.757.351 kr.",
+      "angle": "Fandt vi i CISU-kataloget — ikke hos Baronen.",
+      "sources": [
+        {
+          "title": "CISU: Re:Act vol.2",
+          "url": "https://cisu.dk/en/cisu-in-the-world/grants/grant/?id=6249a7be-876f-47f2-82e0-afc15040b8c6",
+          "kind": "official"
+        }
+      ],
+      "researchers": [],
+      "caseSlug": "rapolitics-react",
+      "plainLead": "Rapolitics: 3,76 mio. CISU, heraf 1,5 mio. OpEn til hiphop og Roskilde — vores egen sortering af kataloget.",
+      "homeCompare": {
+        "text": "**3.757.351 kr.** svarer groft til **ca. 7 sygeplejerske-årsværk** — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 376 personer** (BT-model).",
+        "nursesApprox": 6.8,
+        "taxPeopleApprox": 376
+      },
+      "profile": ""
+    },
+    {
+      "id": "folkekirkens-noedhjaelp",
+      "title": "Folkekirkens Nødhjælp — 200 mio. kr./år (SPA)",
+      "amountDkk": 200000000,
+      "amountKind": "official",
+      "org": "Folkekirkens Nødhjælp",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "Folkekirkens Nødhjælp er den største strategiske partner. Staten giver ca. 200 millioner kr. om året — mere end nogen anden enkelt NGO på listen.",
+      "whatFor": "Fast årlig rammebevilling under Danida strategiske partnerskaber 2022–2026. Pengene går til organisationens samlede udviklings- og humanitære arbejde i mange lande (katastrofe, fattigdom, klima, civilsamfund — ifølge org selv). Det er ikke ét lille projekt, men en **fast årlig milliard-andel** til én dansk NGO.",
+      "angle": "Når én organisation får 200 mio./år, er det fair at spørge: hvad er resultaterne, hvor stor er admin/HQ-andelen, og hvad kunne 200 mio. gøre i danske kommuner i stedet?",
+      "profile": "Kirkelig nødhjælpsorganisation med både humanitært og udviklingsarbejde. Størst på SPA-listen.",
+      "homeCompare": {
+        "text": "**200,0 mio. kr./år** svarer groft til **ca. 364 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 20000 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 363.6,
+        "taxPeopleApprox": 20000
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM fordelingstabel",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [],
+      "caseSlug": "strategiske-partnerskaber",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "spa-dansk-flygtningehjaelp",
+      "title": "Dansk Flygtningehjælp — 179 mio. kr./år (SPA)",
+      "amountDkk": 179000000,
+      "amountKind": "official",
+      "org": "Dansk Flygtningehjælp",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "Dansk Flygtningehjælp får ca. 179 millioner kr. om året fra UM — næststørste SPA-partner.",
+      "whatFor": "Strategisk partnerskab 2022–2026. Fokus typisk flygtninge, beskyttelse og humanitære indsatser internationalt. Beløbet er den **årlige faste bevilling** fra staten, ikke private indsamlinger.",
+      "angle": "Flygtninge-arbejde er et af de formål mange forbinder med bistand. Alligevel er det værd at holde styr på skalaen: næsten 180 mio. skattekroner om året til én org.",
+      "profile": "Humanitær/flygtninge-profil.",
+      "homeCompare": {
+        "text": "**179,0 mio. kr./år** svarer groft til **ca. 325 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 17900 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 325.5,
+        "taxPeopleApprox": 17900
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM partnerskabstabel 2022–2026",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "strategiske-partnerskaber",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "spa-dansk-rode-kors",
+      "title": "Dansk Røde Kors — 154 mio. kr./år (SPA)",
+      "amountDkk": 154000000,
+      "amountKind": "official",
+      "org": "Dansk Røde Kors",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "Dansk Røde Kors får ca. 154 millioner kr. om året fra UM — en af de tre største SPA-partnere.",
+      "whatFor": "OFFICIEL UM: 154 mio. kr./år 2022–2026. Røde Kors arbejder humanitært med sundhed, beskyttelse og katastrofe internationalt. Pengene er den faste strategiske partnerskabsbevilling — en del af de 1,264 mia. kr./år til 18 organisationer.",
+      "angle": "Klassisk humanitær aktør. Størrelsen alene (over 1,5 mia. over 10 år ved uændret niveau) kræver offentlig kontrol.",
+      "profile": "Humanitær / sundhed.",
+      "homeCompare": {
+        "text": "**154,0 mio. kr./år** svarer groft til **ca. 280 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 15400 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 280.0,
+        "taxPeopleApprox": 15400
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM partnerskabstabel 2022–2026",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "strategiske-partnerskaber",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "ms-spa-2025-budget",
+      "title": "MS ActionAid SPA 2025 — budget-split",
+      "amountDkk": 151470000,
+      "amountKind": "official",
+      "org": "ActionAid Denmark / MS",
+      "pool": "Danida SPA II + top-ups",
+      "country": "16 SPA-lande + globale enheder",
+      "period": "2025",
+      "whatFor": "Egen rapport: grant income 151,47 mio., forbrug 149,97 mio. (99%). Split: 87,2 mio. (58%) til partnere; 24,5 mio. (16%) HQ DK; 21,2 mio. (14%) non-HQ program; 9,7 mio. Global Entity; 4,7 mio. AAI; 2,7 mio. IPE. Mål: demokrati, climate justice, youth in crises.",
+      "angle": "Når kun 58% går som transfer, og 16% bliver på HQ i København, er det legitimt at spørge: hvor meget er felt-hjælp, og hvor meget er apparat?",
+      "sources": [
+        {
+          "title": "MS SPA Results 2025",
+          "url": "https://ms.dk/api/media/file/AADK%20SPAII%20REPORT%20_2025.pdf",
+          "kind": "official"
+        }
+      ],
+      "researchers": [],
+      "caseSlug": "ms-actionaid",
+      "plainLead": "Egen rapport: grant income 151,47 mio., forbrug 149,97 mio. (99%). Split: 87,2 mio. (58%) til partnere; 24,5 mio. (16%) HQ DK; 21,2 mio. (14%) non-HQ program; 9,7 mio. Global Entity; 4,7 mio. AAI; 2,7",
+      "homeCompare": {
+        "text": "**151,5 mio. kr./år** svarer groft til **ca. 275 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 15147 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 275.4,
+        "taxPeopleApprox": 15147
+      },
+      "profile": ""
+    },
+    {
+      "id": "ms-partnerskab-fuld",
+      "title": "MS ActionAid — 129 mio. kr./år (SPA)",
+      "amountDkk": 129000000,
+      "amountKind": "official",
+      "org": "MS ActionAid",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "MS ActionAid får 129 millioner kr. om året. Deres egen rapport viser, at kun 58 % går som transfer til partnere — 16 % er HQ i Danmark.",
+      "whatFor": "Strategisk partnerskab (UM 129 mio./år). 2025-resultatrapport: total ca. 150 mio. inkl. top-ups; budget split med bl.a. transfer til partnere 58 %, HQ DK 16 %, IPE 2 %. Fokus: demokrati, climate justice, youth in crises. UM-sag C1975 om uregelmæssigheder i Uganda (627k).",
+      "angle": "«Nødhjælp»-brandet dækker over et stort apparat til advocacy og HQ. Se egen sag for bars.",
+      "profile": "Progressiv global justice-NGO.",
+      "homeCompare": {
+        "text": "**129,0 mio. kr./år** svarer groft til **ca. 235 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 12900 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 234.5,
+        "taxPeopleApprox": 12900
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM 129 mio.",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "MS SPA Results 2025 PDF",
+          "url": "https://ms.dk/api/media/file/AADK%20SPAII%20REPORT%20_2025.pdf",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron",
+        "Statsstyret"
+      ],
+      "caseSlug": "ms-actionaid",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "ms-zambia-y4p",
+      "title": "MS ActionAid — Youth4Parliament Zambia",
+      "amountDkk": 129000000,
+      "amountKind": "official",
+      "amountNote": "129 mio. er hele årlige MS-partnerskab; Y4P er en del af aktiviteterne",
+      "org": "Mellemfolkeligt Samvirke / ActionAid DK",
+      "pool": "Strategisk partnerskab Danida",
+      "country": "Zambia m.fl.",
+      "period": "2022–2026 partnerskab",
+      "whatFor": "UM: 129 mio. kr./år. MS SPA-rapport 2025: total forbrug ca. 150 mio. (inkl. top-ups). 58% transfer til partnere; 16% HQ DK; 2% IPE. SO: Democracy, Climate Justice, Youth in Crises. 16 SPA-lande. UM C1975: 4,7 mio. til AA Uganda 2024; 627k uregelmæssigheder under tilbagebetaling.",
+      "angle": "Politisk mobilisering i udlandet betalt af dig — mens regeringen advarer mod udenlandsk indblanding hjemme.",
+      "sources": [
+        {
+          "title": "UM 129 mio.",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "MS SPA Results 2025 PDF",
+          "url": "https://ms.dk/api/media/file/AADK%20SPAII%20REPORT%20_2025.pdf",
+          "kind": "official"
+        },
+        {
+          "title": "UM C1975 Uganda",
+          "url": "https://um.dk/media/2bojzbzk/c1975-report-1.pdf",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron",
+        "Statsstyret"
+      ],
+      "caseSlug": "ms-actionaid",
+      "plainLead": "UM: 129 mio. kr./år. MS SPA-rapport 2025: total forbrug ca. 150 mio. (inkl. top-ups). 58% transfer til partnere; 16% HQ DK; 2% IPE. SO: Democracy, Climate Justice, Youth in Crises. 16 SPA-lande. UM C1",
+      "homeCompare": {
+        "text": "**129,0 mio. kr./år** svarer groft til **ca. 235 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 12900 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 234.5,
+        "taxPeopleApprox": 12900
+      },
+      "profile": ""
+    },
+    {
+      "id": "spa-red-barnet",
+      "title": "Red Barnet — 114 mio. kr./år (SPA)",
+      "amountDkk": 114000000,
+      "amountKind": "official",
+      "org": "Red Barnet",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "Red Barnet får ca. 114 millioner kr. om året — Save the Children-familien med fast Danida-ramme.",
+      "whatFor": "OFFICIEL UM: 114 mio. kr./år som strategisk partner 2022–2026. Fokus på børns rettigheder, beskyttelse og uddannelse internationalt. Det er den faste årlige statsbevilling, ikke bare indsamlede midler.",
+      "angle": "Børn er et stærkt brand. 114 mio./år er stadig en politisk prioritering midt i kommunale spareplaner.",
+      "profile": "Børn / rettigheder.",
+      "homeCompare": {
+        "text": "**114,0 mio. kr./år** svarer groft til **ca. 207 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 11400 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 207.3,
+        "taxPeopleApprox": 11400
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM partnerskabstabel 2022–2026",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "strategiske-partnerskaber",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "oxfam-spa-2025",
+      "title": "Oxfam Danmark SPA 2025 — resultater",
+      "amountDkk": 103000000,
+      "amountKind": "official",
+      "org": "Oxfam Danmark",
+      "pool": "Danida strategisk partnerskab",
+      "country": "12 lande + DK engagement",
+      "period": "2025 (SPA 2022–2026)",
+      "whatFor": "103 mio./år (UM+Oxfam). Rapport 2025: 12 lande; 396k mennesker; 105 lokale partnere; 81,6% af lande-forbrug til partnere; budget-mix Leaving No-One Behind 47% / Just Societies 36% / Climate Justice 17%. Public engagement i Danmark.",
+      "angle": "Mere humanitær profil end MS i egne tal — men stadig climate/gender advocacy og dansk opinionsdannelse på skattekroner.",
+      "sources": [
+        {
+          "title": "Oxfam Results 2025 PDF",
+          "url": "https://oxfam.dk/wp-content/uploads/2026/07/Oxfam_Denmark_Results_Report-2025.pdf",
+          "kind": "official"
+        },
+        {
+          "title": "Oxfam Danida-side",
+          "url": "https://oxfam.dk/om-os/partnerskaber/danida/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [],
+      "caseSlug": "oxfam-spa",
+      "plainLead": "103 mio./år (UM+Oxfam). Rapport 2025: 12 lande; 396k mennesker; 105 lokale partnere; 81,6% af lande-forbrug til partnere; budget-mix Leaving No-One Behind 47% / Just Societies 36% / Climate Justice 17",
+      "homeCompare": {
+        "text": "**103,0 mio. kr./år** svarer groft til **ca. 187 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 10300 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 187.3,
+        "taxPeopleApprox": 10300
+      },
+      "profile": ""
+    },
+    {
+      "id": "oxfam-ibis",
+      "title": "Oxfam IBIS — 103 mio. kr./år (SPA)",
+      "amountDkk": 103000000,
+      "amountKind": "official",
+      "org": "Oxfam IBIS",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "Oxfam Danmark (tidl. IBIS) får 103 millioner kr. om året. De rapporterer bl.a. climate justice og «just societies».",
+      "whatFor": "SPA 103 mio./år (2022–2026). Resultatrapport 2025: 12 lande; ca. 47 % Leaving No-One Behind, 36 % Just Societies, 17 % Climate Justice; 81,6 % af lande-forbrug til lokale partnere (ifølge egen rapport).",
+      "angle": "Stor pengetank med progressiv profil. Humanitært indslag findes — også masser af politik.",
+      "profile": "Global justice / humanitært.",
+      "homeCompare": {
+        "text": "**103,0 mio. kr./år** svarer groft til **ca. 187 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 10300 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 187.3,
+        "taxPeopleApprox": 10300
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM fordelingstabel",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "Oxfam om Danida-partnerskab",
+          "url": "https://oxfam.dk/om-os/partnerskaber/danida/",
+          "kind": "org"
+        }
+      ],
+      "researchers": [],
+      "caseSlug": "oxfam-spa",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "sex-samfund-uganda-gender",
+      "title": "Sex & Samfund — Gender Policy Uganda",
+      "amountDkk": 80000000,
+      "amountKind": "claim",
+      "org": "Sex & Samfund + Reproductive Health Uganda",
+      "pool": "Danida strategisk partnerskab (del af bevilling)",
+      "country": "Uganda",
+      "period": "2018–2021 ramme nævnt; aktiviteter løbende",
+      "whatFor": "Baronen: S&S har via partner RHU været med til at forme ‘Gender Policy’ i Uganda — anbefalinger til lovgivning, women’s empowerment, gender responsive budgeting. S&S fik ifølge Baronen 80 mio. som strategisk partner 2018–2021; 22 mio./år i nuværende partnerskabstabel (UM).",
+      "angle": "Skattekroner til ideologisk policy-eksport — ikke medicin og rent vand alene.",
+      "sources": [
+        {
+          "title": "Baronen: Gender Policy Uganda",
+          "url": "https://x.com/oresundsbaron/status/1887818595767566465",
+          "kind": "research"
+        },
+        {
+          "title": "UM: Sex & Samfund 22 mio./år partnerskab",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "sex-samfund-uganda",
+      "plainLead": "Baronen: S&S har via partner RHU været med til at forme ‘Gender Policy’ i Uganda — anbefalinger til lovgivning, women’s empowerment, gender responsive budgeting. S&S fik ifølge Baronen 80 mio. som str",
+      "homeCompare": {
+        "text": "**80,0 mio. kr./år** svarer groft til **ca. 145 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 8000 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 145.5,
+        "taxPeopleApprox": 8000
+      },
+      "profile": ""
+    },
+    {
+      "id": "spa-arbejdsmarkedskonsortiet--3f-di-ulandsse",
+      "title": "Arbejdsmarkedskonsortiet (3F/DI/Ulandssekretariatet) — 74 mio. kr./år (SPA)",
+      "amountDkk": 74000000,
+      "amountKind": "official",
+      "org": "Arbejdsmarkedskonsortiet (3F/DI/Ulandssekretariatet)",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "Arbejdsmarkedskonsortiet (3F, DI, Ulandssekretariatet) får ca. 74 millioner kr. om året.",
+      "whatFor": "SPA-bevilling til fagligt/erhvervsrettet udviklingssamarbejde. Pengene går til et konsortium af danske arbejdsmarkedsaktører — ikke en klassisk nødhjælps-NGO alene.",
+      "angle": "Interessant model: arbejdsmarkedseksport med skattekroner. Kræver samme offentlige kontrol som de øvrige.",
+      "profile": "Arbejdsmarked / kapacitet.",
+      "homeCompare": {
+        "text": "**74,0 mio. kr./år** svarer groft til **ca. 135 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 7400 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 134.5,
+        "taxPeopleApprox": 7400
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM partnerskabstabel 2022–2026",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "strategiske-partnerskaber",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "spa-care-danmark",
+      "title": "CARE Danmark — 55 mio. kr./år (SPA)",
+      "amountDkk": 55000000,
+      "amountKind": "official",
+      "org": "CARE Danmark",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "CARE Danmark får ca. 55 millioner kr. om året som strategisk partner.",
+      "whatFor": "SPA-ramme til CARE’s udviklings- og klimarelaterede arbejde. CARE indgår også i OpEn/civilsamfund-kampagner (fx climate justice med Klimabevægelsen).",
+      "angle": "Mellemstor SPA-partner — stadig over en halv milliard over en 10-årig horisont hvis niveauet holdes.",
+      "profile": "Udvikling / klima / køn.",
+      "homeCompare": {
+        "text": "**55,0 mio. kr./år** svarer groft til **ca. 100 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 5500 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 100.0,
+        "taxPeopleApprox": 5500
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM partnerskabstabel 2022–2026",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "strategiske-partnerskaber",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "spa-caritas-danmark",
+      "title": "Caritas Danmark — 48 mio. kr./år (SPA)",
+      "amountDkk": 48000000,
+      "amountKind": "official",
+      "org": "Caritas Danmark",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "Caritas Danmark får ca. 48 millioner kr. om året som strategisk Danida-partner — katolsk nødhjælp og udvikling med fast statsramme.",
+      "whatFor": "OFFICIEL UM: 48 mio. kr./år under strategiske partnerskaber 2022–2026. Caritas er den katolske kirkes hjælpeorganisation i Danmark. Pengene er den faste årlige partnerskabsbevilling (ikke det samme som private kirkekollekter). Del af den samlede SPA-ramme på 1,264 mia. kr./år til 18 organisationer.",
+      "angle": "Kirkelig humanitær aktør i den store statslige række. Samme krav om gennemsigtighed som de øvrige.",
+      "profile": "Kirkelig / humanitær.",
+      "homeCompare": {
+        "text": "**48,0 mio. kr./år** svarer groft til **ca. 87 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 4800 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 87.3,
+        "taxPeopleApprox": 4800
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM partnerskabstabel 2022–2026",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "strategiske-partnerskaber",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "spa-planbornefonden",
+      "title": "PlanBørnefonden — 43 mio. kr./år (SPA)",
+      "amountDkk": 43000000,
+      "amountKind": "official",
+      "org": "PlanBørnefonden",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "PlanBørnefonden får ca. 43 millioner kr. om året fra Udenrigsministeriet til børne- og pigerettigheder internationalt.",
+      "whatFor": "OFFICIEL UM: 43 mio. kr./år i SPA 2022–2026. Plan er del af Plan International-familien og arbejder typisk med børn, piger, uddannelse og beskyttelse. Beløbet er den faste årlige statsbevilling — oven i evt. private sponsorater.",
+      "angle": "Børn sælger budskabet. Skattekronerne skal stadig kunne spores til resultater.",
+      "profile": "Børn / piger.",
+      "homeCompare": {
+        "text": "**43,0 mio. kr./år** svarer groft til **ca. 78 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 4300 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 78.2,
+        "taxPeopleApprox": 4300
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM partnerskabstabel 2022–2026",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "strategiske-partnerskaber",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "spa-adra-danmark",
+      "title": "ADRA Danmark — 38 mio. kr./år (SPA)",
+      "amountDkk": 38000000,
+      "amountKind": "official",
+      "org": "ADRA Danmark",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "ADRA Danmark får ca. 38 millioner kr. om året. ADRA er adventistkirkens udviklings- og nødhjælpsarm.",
+      "whatFor": "OFFICIEL UM: 38 mio. kr./år som strategisk partner 2022–2026. Pengene går til ADRA’s internationale indsatser under Danida-partnerskabet. Det er en kirkelig NGO med fast plads i milliard-rammen til 18 partnere.",
+      "angle": "Endnu en trosbaseret partner finansieret af alle skatteydere — uanset tro.",
+      "profile": "Kirkelig / udvikling.",
+      "homeCompare": {
+        "text": "**38,0 mio. kr./år** svarer groft til **ca. 69 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 3800 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 69.1,
+        "taxPeopleApprox": 3800
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM partnerskabstabel 2022–2026",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "strategiske-partnerskaber",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "kirke-udland",
+      "title": "Danske Kirke i Udlandet",
+      "amountDkk": 35400000,
+      "amountKind": "claim",
+      "org": "Den Danske Kirke i Udlandet",
+      "pool": "Statsstøtte (ifølge MikeHunt / årsrapport 2024)",
+      "country": "Sydslesvig + resten af verden",
+      "whatFor": "Ifølge research: ca. 16,9 mio. til Sydslesvig + 18,5 mio. til danskere i verden. Anden kasse end Danida SPA, men relevant prioriteringsdebat.",
+      "angle": "Traditionel/kirkelig profil — spejl til venstre-NGO’erne.",
+      "sources": [
+        {
+          "title": "MikeHuntHurts89: 35,4 mio. kirke",
+          "url": "https://x.com/MikeHuntHurts89/status/2083284810911695119",
+          "kind": "research"
+        }
+      ],
+      "researchers": [
+        "MikeHuntHurts89"
+      ],
+      "caseSlug": "kirke-udland",
+      "plainLead": "Danske Kirke i Udlandet: ca. 35,4 mio. kr. (claim fra årsrapport-spor) til kirkelig betjening — ikke klassisk ulandsbistand.",
+      "homeCompare": {
+        "text": "**35,4 mio. kr./år** svarer groft til **ca. 64 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 3540 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 64.4,
+        "taxPeopleApprox": 3540
+      },
+      "profile": ""
+    },
+    {
+      "id": "kunstfond-runde-maj-2025",
+      "title": "Statens Kunstfond — én uddelingsrunde maj 2025",
+      "amountDkk": 29264298,
+      "amountKind": "official",
+      "org": "Statens Kunstfond / Projektstøtteudvalget for Billedkunst",
+      "pool": "Flere billedkunst-puljer",
+      "country": "Danmark / internationalt",
+      "period": "Møde 6.–9. maj 2025",
+      "whatFor": "OFFICIEL: 1.091 ansøgninger, 552 imødekommet, tilsagn for 29.264.298 kr. (ansøgt i alt 104 mio.). Inkl. residencies, værkproduktion, udstillingsprogrammer. Samme skatteyder som Danida-debatten — anden kasse.",
+      "angle": "Én komité. Én weekend. 29 millioner. Prioritering er et politisk valg.",
+      "sources": [
+        {
+          "title": "Kunstfond referat møde 27 (PDF)",
+          "url": "https://www.kunst.dk/fileadmin/user_upload/Kunst_dk/Dokumenter/Referater/Billedkunst/Projektstoetteudvalg_2022-2025/Referat__m%C3%B8de_nr._27__6._-_9._maj_2025__Projektst%C3%B8tteudvalget_for_Billedkunst.pdf",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "statens-kunstfond",
+      "plainLead": "OFFICIEL: 1.091 ansøgninger, 552 imødekommet, tilsagn for 29.264.298 kr. (ansøgt i alt 104 mio.). Inkl. residencies, værkproduktion, udstillingsprogrammer. Samme skatteyder som Danida-debatten — anden",
+      "homeCompare": {
+        "text": "**29,3 mio. kr./år** svarer groft til **ca. 53 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 2926 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 53.2,
+        "taxPeopleApprox": 2926
+      },
+      "profile": ""
+    },
+    {
+      "id": "spa-sex---samfund",
+      "title": "Sex & Samfund — 22 mio. kr./år (SPA)",
+      "amountDkk": 22000000,
+      "amountKind": "official",
+      "org": "Sex & Samfund",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "Sex & Samfund får 22 millioner kr. om året som strategisk partner — plus store OpEn-poster til barnevognsmarch i Danmark.",
+      "whatFor": "SPA 22 mio./år til seksuel og reproduktiv sundhed/rettigheder internationalt. Derudover OpEn-bevillinger til oplysning i DK (barnevogn). Se sager om Uganda gender policy og barnevogn.",
+      "angle": "Lille SPA-beløb sammenlignet med Folkekirkens Nødhjælp — men høj profil og tydelig normativ dagsorden.",
+      "profile": "SRSR / køn.",
+      "homeCompare": {
+        "text": "**22,0 mio. kr./år** svarer groft til **ca. 40 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 2200 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 40.0,
+        "taxPeopleApprox": 2200
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM partnerskabstabel 2022–2026",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "sex-samfund-uganda",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "spa-international-media-support",
+      "title": "International Media Support — 21 mio. kr./år (SPA)",
+      "amountDkk": 21000000,
+      "amountKind": "official",
+      "org": "International Media Support",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "International Media Support får ca. 21 millioner kr. om året.",
+      "whatFor": "International Media Support får ca. 21 millioner kr. om året. SPA til medie- og ytringsfrihedsarbejde internationalt. Støtte til journalistik og medier i skrøbelige lande. Kilde: UM strategiske partnerskaber / vores sagsmappe. Beløb: 21000000 kr.",
+      "angle": "Pressefrihed er legitimt — det er stadig en fast årlig skattekroner-post, der bør kunne efterprøves.",
+      "profile": "Medier / ytringsfrihed.",
+      "homeCompare": {
+        "text": "**21,0 mio. kr./år** svarer groft til **ca. 38 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 2100 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 38.2,
+        "taxPeopleApprox": 2100
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM partnerskabstabel 2022–2026",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "strategiske-partnerskaber",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "spa-mission-ost",
+      "title": "Mission Øst — 21 mio. kr./år (SPA)",
+      "amountDkk": 21000000,
+      "amountKind": "official",
+      "org": "Mission Øst",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "Mission Øst får ca. 21 millioner kr. om året.",
+      "whatFor": "Mission Øst får ca. 21 millioner kr. om året. Kristen nødhjælps- og udviklingsorganisation med SPA-aftale — typisk Østeuropa, Kaukasus, Asien (ifølge org-profil). Kilde: UM strategiske partnerskaber / vores sagsmappe. Beløb: 21000000 kr.",
+      "angle": "Kirkelig partner i SPA-rækken.",
+      "profile": "Kirkelig / nødhjælp.",
+      "homeCompare": {
+        "text": "**21,0 mio. kr./år** svarer groft til **ca. 38 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 2100 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 38.2,
+        "taxPeopleApprox": 2100
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM partnerskabstabel 2022–2026",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "strategiske-partnerskaber",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "spa-wwf",
+      "title": "WWF — 17 mio. kr./år (SPA)",
+      "amountDkk": 17000000,
+      "amountKind": "official",
+      "org": "WWF",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "WWF får ca. 17 millioner kr. om året som strategisk partner.",
+      "whatFor": "Natur- og klimarelateret udviklingssamarbejde under SPA. Ikke OpEn-content alene — men WWF indgår også i den grønne dagsorden.",
+      "angle": "Natur/klima med statsramme — prioritering vs. velfærd er stadig et politisk valg.",
+      "profile": "Natur / klima.",
+      "homeCompare": {
+        "text": "**17,0 mio. kr./år** svarer groft til **ca. 31 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 1700 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 30.9,
+        "taxPeopleApprox": 1700
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM partnerskabstabel 2022–2026",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "strategiske-partnerskaber",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "spa-verdens-skove",
+      "title": "Verdens Skove — 16 mio. kr./år (SPA)",
+      "amountDkk": 16000000,
+      "amountKind": "official",
+      "org": "Verdens Skove",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "Verdens Skove får ca. 16 millioner kr. om året — plus OpEn-projekter som Avatar-engagement.",
+      "whatFor": "Verdens Skove får ca. 16 millioner kr. om året — plus OpEn-projekter som Avatar-engagement. SPA til skov- og klimarelateret arbejde. Derudover OpEn-poster til dansk oplysning (fx Avatar-inspireret engagement). Kilde: UM strategiske partnerskaber / vores sagsmappe. Beløb: 16000000 kr.",
+      "angle": "SPA + OpEn = både felt/politik ude og popkultur-engagement hjemme.",
+      "profile": "Skov / klima.",
+      "homeCompare": {
+        "text": "**16,0 mio. kr./år** svarer groft til **ca. 29 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 1600 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 29.1,
+        "taxPeopleApprox": 1600
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM partnerskabstabel 2022–2026",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "strategiske-partnerskaber",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "spa-danmission",
+      "title": "Danmission — 15 mio. kr./år (SPA)",
+      "amountDkk": 15000000,
+      "amountKind": "official",
+      "org": "Danmission",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "Danmission får ca. 15 millioner kr. om året — folkekirkelig mission og udvikling med statsramme.",
+      "whatFor": "OFFICIEL UM: 15 mio. kr./år under SPA 2022–2026. Danmission kombinerer kirkeligt og udviklingsarbejde. Beløbet er mindre end toppen af listen, men stadig 15 mio. skattekroner hvert år.",
+      "angle": "Bunden af SPA-listen beløbsmæssigt — stadig offentlig prioritering.",
+      "profile": "Kirkelig / mission & udvikling.",
+      "homeCompare": {
+        "text": "**15,0 mio. kr./år** svarer groft til **ca. 27 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 1500 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 27.3,
+        "taxPeopleApprox": 1500
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM partnerskabstabel 2022–2026",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "strategiske-partnerskaber",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "spa-sos-bornebyerne",
+      "title": "SOS Børnebyerne — 15 mio. kr./år (SPA)",
+      "amountDkk": 15000000,
+      "amountKind": "official",
+      "org": "SOS Børnebyerne",
+      "pool": "Strategisk partnerskab 2022–2026 (UM/Danida)",
+      "country": "Flere lande",
+      "period": "2022–2026 (årlig ramme)",
+      "plainLead": "SOS Børnebyerne får ca. 15 millioner kr. om året som strategisk partner — plus enkelte CISU-projekter om bl.a. børns rettigheder og kønsbaseret vold.",
+      "whatFor": "OFFICIEL UM: 15 mio. kr./år i SPA. SOS er kendt for børnebyer og familieprogrammer. Derudover findes CISU-poster (fx Zanzibar om børns rettigheder/GBV) i vores sample. SPA er den faste store ramme.",
+      "angle": "Børnebrand + statsramme. Se også civilsamfund-kataloget for enkeltprojekter.",
+      "profile": "Børn / familier.",
+      "homeCompare": {
+        "text": "**15,0 mio. kr./år** svarer groft til **ca. 27 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 1500 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 27.3,
+        "taxPeopleApprox": 1500
+      },
+      "sources": [
+        {
+          "title": "UM: Strategiske partnerskaber 2022–2026 (fordeling)",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        },
+        {
+          "title": "UM partnerskabstabel 2022–2026",
+          "url": "https://um.dk/danida/samarbejspartnere/civ-org/stoetteform/ny-runde-strategiske-partnerskaber-2022-2026/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "strategiske-partnerskaber",
+      "verification": "um_spa_table"
+    },
+    {
+      "id": "ghana-venskab",
+      "title": "Ghana Venskab",
+      "amountDkk": 11000000,
+      "amountKind": "claim",
+      "org": "Ghana Venskab",
+      "pool": "Danida / CISU-spor (ifølge Baronen)",
+      "country": "Ghana",
+      "whatFor": "Udviklingsprogrammer i Ghana (bl.a. Empowerment for Life) finansieret primært af CISU/Danida. Regnskab 2021: ca. 10,1 mio. indtægter, heraf ca. 9,8 mio. CISU-program. BJ 2024: 11,4 mio. stat, 3 ansatte, løn ca. 1,83 mio.",
+      "angle": "Næsten hele foreningen er skattefinansieret. Se sag for regnskab og BJ-tal.",
+      "sources": [
+        {
+          "title": "Baronen NGO-mini-serie",
+          "url": "https://x.com/oresundsbaron/status/2083221437041479686",
+          "kind": "research"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "ngo-miniserie",
+      "plainLead": "Ghana Venskab i Aarhus får ifølge Borgerjournalisten ca. 11,4 mio. kr. fra staten i 2024 — ca. 95 % af budgettet.",
+      "homeCompare": {
+        "text": "**11,4 mio. kr./år** svarer groft til **ca. 21 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 1140 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 20.7,
+        "taxPeopleApprox": 1140
+      },
+      "profile": ""
+    },
+    {
+      "id": "crossing-borders",
+      "title": "Crossing Borders",
+      "amountDkk": 9072790,
+      "amountKind": "official",
+      "org": "Crossing Borders",
+      "pool": "CISU (ni bevillinger, start 2021+)",
+      "country": "Indien, Ghana, Uganda, Zambia, Nigeria, Zimbabwe, Marokko, DK",
+      "whatFor": "Officiel CISU-sum 9.072.790 kr. (2021+): verdensmål, woman empowerment, youth/radio, Folkemøde 10k. Årsrapport: også NDF, Nordisk Råd, EU, fonde.",
+      "angle": "Baronens 9 mio. er nu CISU-tal. Se sag.",
+      "sources": [
+        {
+          "title": "Annual Report 2023",
+          "url": "https://crossingborders.dk/wp-content/uploads/2024/05/Crossing-Borders-Annual-Report-2023.pdf",
+          "kind": "org"
+        },
+        {
+          "title": "Baronen NGO-mini-serie",
+          "url": "https://x.com/oresundsbaron/status/2083221437041479686",
+          "kind": "research"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "crossing-borders",
+      "plainLead": "Crossing Borders: ni CISU-bevillinger fra 2021+ giver 9.072.790 kr. til verdensmål, woman empowerment og youth — ikke nødhjælp.",
+      "homeCompare": {
+        "text": "**9.072.790 kr.** svarer groft til **ca. 16–17 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 907 personer** (BT-model).",
+        "nursesApprox": 16.5,
+        "taxPeopleApprox": 907
+      },
+      "profile": ""
+    },
+    {
+      "id": "colombia-solidaritet",
+      "title": "Colombia Solidaritet",
+      "amountDkk": 4098441,
+      "amountKind": "official",
+      "org": "Colombia Solidaritet",
+      "pool": "CISU (12 bevillinger på org-siden)",
+      "country": "Colombia / Danmark",
+      "whatFor": "Officiel CISU-sum 4.098.441 kr.: Popular Brigades, Protesta Digna, FLD, agroøkologi, LGBT+ i fængsel, DK-oplysning inkl. Pacto Histórico.",
+      "angle": "BJ’s knap 4 mio. er CISU-tal. Se sag.",
+      "sources": [
+        {
+          "title": "Baronen NGO-mini-serie",
+          "url": "https://x.com/oresundsbaron/status/2083221437041479686",
+          "kind": "research"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "colombia-solidaritet",
+      "plainLead": "Colombia Solidaritet: 4.098.441 kr. i 12 CISU-bevillinger til protestret, FLD, agroøkologi og LGBT+ — ikke klassisk nødhjælp.",
+      "homeCompare": {
+        "text": "**4.098.441 kr.** svarer groft til **ca. 7 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 410 personer** (BT-model).",
+        "nursesApprox": 7.5,
+        "taxPeopleApprox": 410
+      },
+      "profile": ""
+    },
+    {
+      "id": "100-for-boernene",
+      "title": "100% for Børnene",
+      "amountDkk": 2685876,
+      "amountKind": "official",
+      "org": "100% for Børnene",
+      "pool": "Danida / CISU-spor (claim)",
+      "country": "Ghana, Kenya, Ukraine",
+      "whatFor": "100% for Børnene: CISU 2,69 mio. til youth advocacy i Ghana; BJ siger ca. 3,5 mio. stat i 2024. YOUTH ON BOARD: unge i Ghana skal presse på for uddannelse. BJ: 2 årsværk, løn 1,18 mio., ca. 65 % statsfinansieret. Kilde: UM strategiske partnerskaber / vores sagsmappe. Beløb: 2685876 kr.",
+      "angle": "Advocacy — ikke kun skolebyggeri. Se sag.",
+      "sources": [
+        {
+          "title": "Baronen NGO-mini-serie",
+          "url": "https://x.com/oresundsbaron/status/2083221437041479686",
+          "kind": "research"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "100-for-boernene",
+      "plainLead": "100% for Børnene: CISU 2,69 mio. til youth advocacy i Ghana; BJ siger ca. 3,5 mio. stat i 2024.",
+      "homeCompare": {
+        "text": "**3,5 mio. kr./år** svarer groft til **ca. 6 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 350 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 6.4,
+        "taxPeopleApprox": 350
+      },
+      "profile": ""
+    },
+    {
+      "id": "barnevognsmarch-ss",
+      "title": "Barnevognsmarcher — Sex & Samfund (3 CISU-poster)",
+      "amountDkk": 2646370,
+      "amountKind": "official",
+      "org": "Sex & Samfund",
+      "pool": "OpEn (UM via CISU)",
+      "country": "Danmark",
+      "period": "2025/2026 (Mors Dag-marches)",
+      "whatFor": "Sum: OpEn 1.498.642 + civilsamfund 948.366 + OpEn 2024 199.362 = 2.646.370 kr. Marches og oplysning i DK — ikke felt-nødhjælp. Se flagskibssag.",
+      "angle": "Danskere først: millioner til gåture mens velfærd skæres.",
+      "sources": [
+        {
+          "title": "CISU 2025/26 1.498.642",
+          "url": "https://cisu.dk/cisu-i-verden/bevillingsoversigt/bevilling/?id=0edadb48-12c6-4679-8385-791836ec315d",
+          "kind": "official"
+        },
+        {
+          "title": "CISU civilsamfund 948.366",
+          "url": "https://cisu.dk/cisu-i-verden/bevillingsoversigt/bevilling/?id=debbb821-330f-46d1-9c51-8e66e014ae52",
+          "kind": "official"
+        },
+        {
+          "title": "CISU 2024 199.362",
+          "url": "https://cisu.dk/cisu-i-verden/bevillingsoversigt/bevilling/?id=ca2cf5bd-b95f-4c1c-9c19-27295644a285",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron",
+        "MikeHuntHurts89"
+      ],
+      "caseSlug": "barnevogn-og-prioritering",
+      "amountNote": "CISU/OpEn bevilget 1.498.642 kr. Samlet budget 2.198.642 kr. (egenfinansiering rest).",
+      "plainLead": "Over 2,6 mio. kr. i tre CISU-bevillinger til barnevognsmarcher i Danmark.",
+      "homeCompare": {
+        "text": "**2,65 mio.** ≈ ca. 5 sygeplejerske-årsværk.",
+        "nursesApprox": 4.8,
+        "taxPeopleApprox": 265
+      },
+      "profile": ""
+    },
+    {
+      "id": "female-freedom",
+      "title": "Female Freedom",
+      "amountDkk": 1199006,
+      "amountKind": "official",
+      "org": "Female Freedom",
+      "pool": "CISU (3 poster i sample)",
+      "country": "Sydafrika",
+      "whatFor": "Female Freedom: ca. 1,2 mio. kr. via CISU til LGBTQI+-aktivisme (tre poster). MaThoko’s Footsteps (2×~500k) + OpEn 199k. CVR 43447203, stiftet 2022. Matcher Baronen/BJ.",
+      "angle": "Lille forening, store ideologiske formål, CISU-sum bekræftet.",
+      "sources": [
+        {
+          "title": "CISU sample / Female Freedom",
+          "url": "https://cisu.dk/en/cisu-in-the-world/member-organisations/member/?id=5edc6a16-3af5-467c-a8d1-8fd339c91fe0",
+          "kind": "official"
+        },
+        {
+          "title": "Proff CVR 43447203",
+          "url": "https://www.proff.dk/firma/female-freedom/k%C3%B8benhavn-v/pleje-og-omsorgstjenester/0PV82RI10K7",
+          "kind": "official"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "female-freedom",
+      "verification": "verified_cisu_sum_2026-08-11",
+      "plainLead": "Female Freedom: ca. 1,2 mio. kr. via CISU til LGBTQI+-aktivisme (tre poster).",
+      "homeCompare": {
+        "text": "**1,2 mio. kr./år** svarer groft til **ca. 2 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 120 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 2.2,
+        "taxPeopleApprox": 120
+      },
+      "profile": ""
+    },
+    {
+      "id": "biorap-orangutang",
+      "title": "BIO RAP PROJEKTET (Orangutang Fonden)",
+      "amountDkk": 797786,
+      "amountKind": "official",
+      "org": "Orangutang Fonden / Save the Orangutan",
+      "pool": "OpEn (UM via CISU)",
+      "country": "Danmark (formidling) / Borneo-afsæt",
+      "period": "15.08.2024 – 01.07.2025",
+      "whatFor": "OFFICIEL: Op imod 85 % af danske børn/unge har klimabekymringer. Projektet tager afsæt i udviklingsprojekt på indonesisk Borneo og formidler klima/biodiversitet — bl.a. via rap/kultur (den omdiskuterede orangutang-rap). Bevilget 797.786 kr., 100 % af budget. Dette er OpEn-oplysning, ikke klassisk felt-nødhjælp.",
+      "angle": "Du betalte næsten 800.000 kr. for klima-rap og formidling. Om orangutangerne fik mere skov ud af det, er ikke dokumenteret i bevillingsteksten.",
+      "sources": [
+        {
+          "title": "CISU: BIO RAP PROJEKTET (797.786 kr.)",
+          "url": "https://cisu.dk/cisu-i-verden/bevillingsoversigt/bevilling/?id=f3fd5102-4ea1-44c5-8c45-77b89bcf554e",
+          "kind": "official"
+        },
+        {
+          "title": "Baronen om orangutang-rap",
+          "url": "https://x.com/oresundsbaron/status/2086460030191067593",
+          "kind": "research"
+        },
+        {
+          "title": "MikeHunt: YouTube efter copyright",
+          "url": "https://x.com/MikeHuntHurts89/status/2083975777322987558",
+          "kind": "research"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron",
+        "MikeHuntHurts89"
+      ],
+      "caseSlug": "orangutang-rap",
+      "amountNote": "CISU/OpEn 797.786 kr. — matcher Baronens ~800.000 kr.",
+      "plainLead": "OFFICIEL: Op imod 85 % af danske børn/unge har klimabekymringer. Projektet tager afsæt i udviklingsprojekt på indonesisk Borneo og formidler klima/biodiversitet — bl.a. via rap/kultur (den omdiskutere",
+      "homeCompare": {
+        "text": "**0,8 mio. kr./år** svarer groft til **ca. 1 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 80 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 1.5,
+        "taxPeopleApprox": 80
+      },
+      "profile": ""
+    },
+    {
+      "id": "ms-uganda-c1975",
+      "title": "ActionAid Uganda — UM uregelmæssighedssag",
+      "amountDkk": 627452,
+      "amountKind": "official",
+      "org": "ActionAid Uganda via AADK",
+      "pool": "Del af MS SPA (sub-grant 4,7 mio. i 2024)",
+      "country": "Uganda",
+      "period": "2023–2025 sag",
+      "whatFor": "UM C1975: 4,7 mio. til AA Uganda i 2024 under MS-partnerskab. Whistleblower + forensic audit: ineligible salary increases m.m. 627.452 kr. under mistanke — tilbagebetaling aftalt. Country Director suspended.",
+      "angle": "Kontrolsvigt i kæden. Småt ift. 129 mio. — men bevis på at «pengene går derned» ikke er det samme som «pengene bruges korrekt».",
+      "sources": [
+        {
+          "title": "UM C1975 PDF",
+          "url": "https://um.dk/media/2bojzbzk/c1975-report-1.pdf",
+          "kind": "official"
+        }
+      ],
+      "researchers": [],
+      "caseSlug": "ms-actionaid",
+      "plainLead": "UM C1975: 4,7 mio. til AA Uganda i 2024 under MS-partnerskab. Whistleblower + forensic audit: ineligible salary increases m.m. 627.452 kr. under mistanke — tilbagebetaling aftalt. Country Director sus",
+      "homeCompare": {
+        "text": "**0,6 mio. kr./år** svarer groft til **ca. 1 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 63 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 1.1,
+        "taxPeopleApprox": 63
+      },
+      "profile": ""
+    },
+    {
+      "id": "hybrid-mutation",
+      "title": "Hybrid Mutation (Statens Kunstfond)",
+      "amountDkk": 200000,
+      "amountKind": "official",
+      "org": "Ann Kristin Hettervik Lislegaard",
+      "pool": "Statens Kunstfond — billedkunst",
+      "country": "DK / international turné",
+      "whatFor": "Baronen: 200.000 kr. til 5 skulpturer; omtale af uddøde fuglelyde, tegning under hypnose, hybrid-animationer. Baronen: 200.000 kr. til 5 skulpturer; omtale af uddøde fuglelyde, tegning under hypnose, hybrid-animationer. Kilde: UM strategiske partnerskaber / vores sagsmappe. Beløb: 200000 kr.",
+      "angle": "Samme skatteyder — anden kasse end Danida. Prioritering er pointen.",
+      "sources": [
+        {
+          "title": "Kunstfond referat maj 2025 (PDF)",
+          "url": "https://www.kunst.dk/fileadmin/user_upload/Kunst_dk/Dokumenter/Referater/Billedkunst/Projektstoetteudvalg_2022-2025/Referat__m%C3%B8de_nr._27__6._-_9._maj_2025__Projektst%C3%B8tteudvalget_for_Billedkunst.pdf",
+          "kind": "official"
+        },
+        {
+          "title": "Baronen: Hybrid Mutation",
+          "url": "https://x.com/oresundsbaron/status/2086044804387942797",
+          "kind": "research"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "statens-kunstfond",
+      "amountNote": "Bekræftet i Statens Kunstfond referat møde 27 (6.–9. maj 2025): 200.000 kr. til AKHL / Hybrid-skulpturer.",
+      "plainLead": "Baronen: 200.000 kr. til 5 skulpturer; omtale af uddøde fuglelyde, tegning under hypnose, hybrid-animationer.",
+      "homeCompare": {
+        "text": "**0,2 mio. kr./år** svarer groft til **ca. 0 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 20 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 0.4,
+        "taxPeopleApprox": 20
+      },
+      "profile": ""
+    },
+    {
+      "id": "politiken-forhal",
+      "title": "JP/Politikens Hus — udstillinger i forhal",
+      "amountDkk": 200000,
+      "amountKind": "official",
+      "org": "JP/POLITIKENS HUS A/S",
+      "pool": "Statens Kunstfond — etårigt udstillingsprogram",
+      "country": "Danmark",
+      "period": "Maj 2025-runde",
+      "whatFor": "OFFICIEL: 200.000 kr. til årsprogram i Politikens Forhal. Mediehus med egen mediestøtte får også kunststøtte til udstillinger i eget hus.",
+      "angle": "Dobbelt statsstøtte-logik: mediestøtte + kunstfond.",
+      "sources": [
+        {
+          "title": "Kunstfond referat maj 2025",
+          "url": "https://www.kunst.dk/fileadmin/user_upload/Kunst_dk/Dokumenter/Referater/Billedkunst/Projektstoetteudvalg_2022-2025/Referat__m%C3%B8de_nr._27__6._-_9._maj_2025__Projektst%C3%B8tteudvalget_for_Billedkunst.pdf",
+          "kind": "official"
+        },
+        {
+          "title": "Baronen om Politiken-udstillinger",
+          "url": "https://x.com/oresundsbaron/status/2086060022824378407",
+          "kind": "research"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "statens-kunstfond",
+      "plainLead": "OFFICIEL: 200.000 kr. til årsprogram i Politikens Forhal. Mediehus med egen mediestøtte får også kunststøtte til udstillinger i eget hus.",
+      "homeCompare": {
+        "text": "**0,2 mio. kr./år** svarer groft til **ca. 0 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 20 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 0.4,
+        "taxPeopleApprox": 20
+      },
+      "profile": ""
+    },
+    {
+      "id": "tore-hallas-residency",
+      "title": "Tore Hallas Larsen — udenlandsk residency",
+      "amountDkk": 200000,
+      "amountKind": "official",
+      "org": "Tore Hallas Larsen",
+      "pool": "Statens Kunstfond — ophold på udenlandske residencies",
+      "country": "USA (ISCP New York omtalt)",
+      "period": "Bevilget maj 2025-runde",
+      "whatFor": "OFFICIEL i maj-2025-referat: 200.000 kr. til Tore Hallas Larsen. Baronen knytter det til ISCP New York / kunstnerisk ophold.",
+      "angle": "Skatteyder betaler netværk og ophold i NY. Det er lovligt — men er det velfærd?",
+      "sources": [
+        {
+          "title": "Kunstfond referat maj 2025",
+          "url": "https://www.kunst.dk/fileadmin/user_upload/Kunst_dk/Dokumenter/Referater/Billedkunst/Projektstoetteudvalg_2022-2025/Referat__m%C3%B8de_nr._27__6._-_9._maj_2025__Projektst%C3%B8tteudvalget_for_Billedkunst.pdf",
+          "kind": "official"
+        },
+        {
+          "title": "Baronen: kilder til residency",
+          "url": "https://x.com/oresundsbaron/status/2086075194167226587",
+          "kind": "research"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron"
+      ],
+      "caseSlug": "statens-kunstfond",
+      "plainLead": "OFFICIEL i maj-2025-referat: 200.000 kr. til Tore Hallas Larsen. Baronen knytter det til ISCP New York / kunstnerisk ophold.",
+      "homeCompare": {
+        "text": "**0,2 mio. kr./år** svarer groft til **ca. 0 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 20 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 0.4,
+        "taxPeopleApprox": 20
+      },
+      "profile": ""
+    },
+    {
+      "id": "kaffestop-rwanda",
+      "title": "Kaffestop i Rwanda",
+      "amountDkk": 149200,
+      "amountKind": "official",
+      "org": "Lasse Schoeber",
+      "pool": "OpEn (UM via CISU)",
+      "country": "Rwanda",
+      "period": "21.10.2024 – 31.10.2025",
+      "whatFor": "Rejse til Rwanda ifm. cykel-VM. Instagram, video og podcast til Mandsholdets ~72.000 følgere. ‘Bygge et lille kaffestop’ og invitere lokale / cykelhold til at fortælle historier om grøn omstilling, ligestilling og sportsfællesskab.",
+      "angle": "100 % statsfinansieret content-tur. Ikke klassisk nødhjælp — oplysning med flybilletter og mælkeskum.",
+      "sources": [
+        {
+          "title": "CISU bevillingsside (officiel)",
+          "url": "https://cisu.dk/cisu-i-verden/bevillingsoversigt/bevilling/?id=9640e38a-5768-4390-b624-11ffdd342ab9",
+          "kind": "official"
+        },
+        {
+          "title": "MikeHuntHurts89: Kaffestop",
+          "url": "https://x.com/MikeHuntHurts89/status/2084223617148108834",
+          "kind": "research"
+        },
+        {
+          "title": "MikeHuntHurts89: habilitet / bevillingsudvalg",
+          "url": "https://x.com/MikeHuntHurts89/status/2084339602899214485",
+          "kind": "research"
+        }
+      ],
+      "researchers": [
+        "MikeHuntHurts89"
+      ],
+      "caseSlug": "kaffestop-rwanda",
+      "verification": "verified_cisu_2026-08-11",
+      "plainLead": "Rejse til Rwanda ifm. cykel-VM. Instagram, video og podcast til Mandsholdets ~72.000 følgere. ‘Bygge et lille kaffestop’ og invitere lokale / cykelhold til at fortælle historier om grøn omstilling, li",
+      "homeCompare": {
+        "text": "**0,1 mio. kr./år** svarer groft til **ca. 0 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller **ca. 10.000 kr. i lavere bundskat** til **ca. 15 personer** med gennemsnitsindkomst (BT-model).",
+        "nursesApprox": 0.3,
+        "taxPeopleApprox": 15
+      },
+      "profile": ""
+    },
+    {
+      "id": "bt-borgerlig-tabloid",
+      "title": "BT Borgerlig Tabloid: Baronen i mainstream-medie",
+      "amountDkk": 0,
+      "amountKind": "estimate",
+      "amountNote": "Ikke en bevilling — medie-validering af research-sporet",
+      "org": "B.T. / Joachim B. Olsen",
+      "pool": "Mediedækning",
+      "country": "Danmark",
+      "period": "3. august 2026",
+      "whatFor": "Podcast-afsnit «Baronen af Øresund: Hvor mange mennesker redder de ved at gå en tur!?» på BT’s Borgerlig Tabloid. Vært Joachim B. Olsen. Promotekst: næsten 23 mia. kr. i udviklingsbistand — mere end videregående uddannelser og politi. Eksempler fra offentligt tilgængelige projekter. Chefredaktør Simon Richard forsvarede efterfølgende interviewet. Kritikere (bl.a. Enhedslisten i Altinget) angreb anonymitet — men bekræftede at eksemplerne «ligger offentligt tilgængeligt».",
+      "angle": "Når et landsdækkende medie giver plads til tallene — og ikke trækker dem tilbage — styrkes kravet om at følge pengene. Vi verificerer stadig selv via CISU/UM.",
+      "sources": [
+        {
+          "title": "X: Baronen poster interview",
+          "url": "https://x.com/oresundsbaron/status/2084253347566031129",
+          "kind": "research"
+        },
+        {
+          "title": "BT: Borgerlig Tabloid episode-side",
+          "url": "https://www.bt.dk/podcast/borgerlig-tabloid/baronen-af-resund-hvor-mange-mennesker-redder-de-ved-at-g-en-tur",
+          "kind": "media"
+        },
+        {
+          "title": "YouTube: BT afsnit",
+          "url": "https://www.youtube.com/watch?v=VL70ZqwKxBI",
+          "kind": "media"
+        },
+        {
+          "title": "Altinget: EL-kritik (eksempler offentligt tilgængelige)",
+          "url": "https://www.altinget.dk/artikel/strategichef-bt-naar-eklatant-lavpunkt-naar-de-promoverer-anonym-hoejreekstrem-og-antidemokratisk-kilde",
+          "kind": "media"
+        },
+        {
+          "title": "X: Baronen om BT/chefredaktør",
+          "url": "https://x.com/oresundsbaron/status/2087071522234007835",
+          "kind": "research"
+        }
+      ],
+      "researchers": [
+        "oresundsbaron",
+        "JoachimBOlsen"
+      ],
+      "caseSlug": "bt-mediedækning",
+      "plainLead": "Podcast-afsnit «Baronen af Øresund: Hvor mange mennesker redder de ved at gå en tur!?» på BT’s Borgerlig Tabloid. Vært Joachim B. Olsen. Promotekst: næsten 23 mia. kr. i udviklingsbistand — mere end v",
+      "profile": ""
+    },
+    {
+      "id": "cisu-skala",
+      "title": "CISU bevillingsoversigt — 3.288 poster",
+      "amountDkk": 0,
+      "amountKind": "estimate",
+      "amountNote": "Ikke ét beløb — skala-indikator. CISU lister 3.288 bevillinger på tværs af puljer (historik).",
+      "org": "CISU (forvalter UM-midler)",
+      "pool": "Civilsamfund, OpEn, DERF, Klima m.fl.",
+      "country": "Global + Danmark (oplysning)",
+      "whatFor": "Den offentlige mine: tusindvis af navngivne projekter. Alene OpEn har 200+ poster (podcasts, film, marches, festivals). Det er her “kaffestop” og “barnevogn” findes side om side med reelle udviklingsprojekter.",
+      "angle": "Problemet er ikke at data mangler — det er at næsten ingen graver i den.",
+      "sources": [
+        {
+          "title": "CISU bevillingsoversigt",
+          "url": "https://cisu.dk/cisu-i-verden/bevillingsoversigt/",
+          "kind": "official"
+        }
+      ],
+      "researchers": [],
+      "caseSlug": "civilsamfundspuljen",
+      "plainLead": "Den offentlige mine: tusindvis af navngivne projekter. Alene OpEn har 200+ poster (podcasts, film, marches, festivals). Det er her “kaffestop” og “barnevogn” findes side om side med reelle udviklingsp",
+      "profile": ""
+    },
+    {
+      "id": "lgbt-kenya-empowering-voices",
+      "title": "Empowering Voices — LGBTIQ+ Kenya (3,48 mio.)",
+      "amountDkk": 3481892,
+      "amountKind": "official",
+      "org": "LGBT+Danmark",
+      "pool": "Civilsamfundspuljen - Programme Small",
+      "country": "Kenya",
+      "plainLead": "3.481.892 kr. til at styrke LGBTIQ+-bevægelsen i Kenya sammen med Pema Kenya.",
+      "whatFor": "CISU-program: community empowerment, stakeholder engagement, advocacy/ledelse for «LGBTIQ+ Inclusive Society». Hele budgettet er statsbevilget. Se flagskibssag.",
+      "angle": "Ideologisk eksport med skattekroner — danskere først.",
+      "profile": "LGBTQ+ / advocacy",
+      "homeCompare": {
+        "text": "**3,48 mio.** ≈ ca. 6 sygeplejerske-årsværk.",
+        "nursesApprox": 6.3,
+        "taxPeopleApprox": 348
+      },
+      "sources": [
+        {
+          "title": "CISU Empowering Voices Kenya",
+          "url": "https://cisu.dk/cisu-i-verden/bevillingsoversigt/bevilling/?id=0e8572bd-7687-4e1c-8228-f62e40f3c3e2",
+          "kind": "official"
+        }
+      ],
+      "caseSlug": "lgbt-kenya-empowering-voices",
+      "verification": "verified_cisu_flagship"
+    }
+  ]
+}

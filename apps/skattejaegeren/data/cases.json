@@ -1,0 +1,26 @@
+{
+  "updated": "2026-08-11",
+  "movedTo": "data/cases/",
+  "note": "Sager er split til data/cases/<slug>.json. Brug index.json + filer. Denne fil genbygges ikke automatisk.",
+  "slugs": [
+    "barnevogn-og-prioritering",
+    "bt-mediedækning",
+    "kaffestop-rwanda",
+    "strategiske-partnerskaber",
+    "global-aktion",
+    "lgbt-danmark-cisu",
+    "ms-actionaid",
+    "oxfam-spa",
+    "sex-samfund-uganda",
+    "amnesty-open",
+    "civilsamfundspuljen",
+    "female-freedom",
+    "ghana-venskab",
+    "ngo-miniserie",
+    "crossing-borders",
+    "orangutang-rap",
+    "statens-kunstfond",
+    "information-mediestoette",
+    "kirke-udland"
+  ]
+}
