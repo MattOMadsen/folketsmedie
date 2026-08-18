@@ -1,5 +1,14 @@
 # Emner til senere (ingen kladde — først når Matt spørger)
 
+## 2026-08-17 — Florida: ivermectin-studie mod kræft
+
+- Link: https://x.com/JoeTippensl/status/2089487504734879965
+- Fra: Joe Tippens (@JoeTippensl)
+- Tid: 17. aug. 2026, 23:00 UTC
+- Kort: Tippens skriver, at Florida lancerer et studie af ivermectin for at se, om det kan helbrede kræft. Video (~2:40) på opslaget.
+- Video: https://video.twimg.com/amplify_video/2089487345477185536/vid/avc1/888x500/Q1za88bXpLNi62rB.mp4
+- Status: udgivet 18. aug. 2026. Slug: florida-tester-ivermectin-mod-kraeft-universitetet-fase-2.
+
 ## 2026-08-15 — Solcreme og hudkræft
 
 - Link: https://x.com/NicHulscher/status/2088621268316602534
