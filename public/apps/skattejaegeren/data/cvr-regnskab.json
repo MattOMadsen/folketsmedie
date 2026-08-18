@@ -1,0 +1,219 @@
+{
+  "updated": "2026-08-11",
+  "sourceNote": "Offentlige stamdata + tilgængelige årsrapporter. Ikke fuld virk.dk API (kvote/CF).",
+  "orgs": [
+    {
+      "id": "ghana-venskab",
+      "name": "Ghana Venskab",
+      "legalName": "Ghana Venskab",
+      "cvr": "10021979",
+      "form": "Forening",
+      "founded": "1985-10-23",
+      "address": "Klosterport 4T, 3, 8000 Aarhus C",
+      "status": "Aktiv",
+      "employeesApprox": 3,
+      "virkSearch": "https://datacvr.virk.dk/enhed/virksomhed/10021979",
+      "proff": "https://www.proff.dk/firma/ghana-venskab/aarhus-c/medlemsorganisationer/05YT0BI10PU",
+      "website": "https://www.ghanavenskab.dk/",
+      "orgClaims": {
+        "annualTurnover": "Mere end 11 mio. kr. (egen hjemmeside)",
+        "funding": "Danida, CISU, fonde og private bidragsydere",
+        "mainProgram": "Empowerment for Life (E4L) 2024–2027",
+        "bj2024": "11,4 mio. stat / 12,1 mio. budget; løn 1,83 mio. til 3 årsværk (Borgerjournalisten)"
+      },
+      "regnskab": [
+        {
+          "year": 2021,
+          "source": "Årsrapport 2021 (Civilstyrelsen/revideret)",
+          "sourceUrl": "https://www.civilstyrelsen.dk/Media/638039311281595922/20-72-00560%20%C3%85rsregnskab%202021%20-%20Ghana%20Venskab.pdf",
+          "indtægterIAltDkk": 10090342,
+          "udviklingsaktiviteterDkk": 10037706,
+          "cisuProgramBevillingNote": "E4L fra CISU ca. 9,8 mio. (ledelsesberetning); note programbevilling CISU 9.818.000 kr.",
+          "cisuProgramBevillingDkk": 9818000,
+          "aaretsResultatDkk": 64445,
+          "egenkapitalNote": "ca. 1,44 mio. kr. nævnt i beretning",
+          "angle": "Næsten hele indtægten er udviklingsaktiviteter/CISU — ikke privat fundraising."
+        }
+      ],
+      "caseSlug": "ghana-venskab",
+      "baronenClaimDkk": 11000000,
+      "matchNote": "BJ 2024 + regnskab 2021 + org >11 mio. Kilde: borgerjournalisten.dk"
+    },
+    {
+      "id": "crossing-borders",
+      "name": "Crossing Borders",
+      "legalName": "Crossing Borders",
+      "cvr": "32166121",
+      "form": "Forening",
+      "founded": "2009",
+      "address": "Søtorvet 5, 3 / Nørre Allé 7, København",
+      "status": "Konkursdekret listet 12.11.2025 (auktioner.dk) — site stadig oppe",
+      "employeesApprox": 5,
+      "virkSearch": "https://datacvr.virk.dk/enhed/virksomhed/32166121",
+      "proff": "https://www.proff.dk/firma/crossing-borders/-/-/32166121",
+      "website": "https://crossingborders.dk/",
+      "orgClaims": {
+        "fundingPartners": "CISU, New Democracy Fund, Nordic Council, EU, Egmont, Spar Nord, Tuborg, BUPL, GLOBUS m.fl. (AR 2024)",
+        "publicFunding": "Org indrømmer heavy dependence on public funding (AR 2024)"
+      },
+      "regnskab": [],
+      "regnskabNote": "CISU 2021+: ni bevillinger = 9.072.790 kr. (officielle grant-sider). Årsrapport 2023+2024 bekræfter CISU/NDF/Nordisk Råd. Ingen fuld resultatopgørelse i AR-PDF. Konkursdekret listet 12.11.2025 på auktioner.dk.",
+      "caseSlug": "crossing-borders",
+      "baronenClaimDkk": 9000000,
+      "officialCisuSum2021Dkk": 9072790,
+      "matchNote": "BJ 9m+ 2021-25 = bekræftet CISU-sum 9,07 mio. https://borgerjournalisten.dk/",
+      "annualReports": [
+        {
+          "year": 2024,
+          "url": "https://usercontent.one/wp/crossingborders.dk/wp-content/uploads/2025/03/Crossing-Borders-Annual-Report-2024.pdf"
+        },
+        {
+          "year": 2023,
+          "url": "https://usercontent.one/wp/crossingborders.dk/wp-content/uploads/2024/05/Crossing-Borders-Annual-Report-2023.pdf"
+        }
+      ]
+    },
+    {
+      "id": "female-freedom",
+      "name": "Female Freedom",
+      "legalName": "Female Freedom",
+      "cvr": "43447203",
+      "form": "Forening",
+      "founded": "2022-06-21",
+      "address": "c/o Troels Kolster, Viktoriagade 16C 3., 1655 København V",
+      "status": "Aktiv",
+      "employeesApprox": null,
+      "virkSearch": "https://datacvr.virk.dk/enhed/virksomhed/43447203",
+      "website": "https://cisu.dk/en/cisu-in-the-world/member-organisations/member/?id=5edc6a16-3af5-467c-a8d1-8fd339c91fe0",
+      "orgClaims": {
+        "funding": "CISU OpEn/civilsamfund — 3 bevillinger i katalog, sum ca. 1,2 mio. kr."
+      },
+      "regnskab": [],
+      "regnskabNote": "CVR og årsregnskab endnu ikke matchet i offentlige registre her. Beløb fra CISU-katalog (OpEn/sample).",
+      "cisuSumDkk": 1199006,
+      "cisuCount": 3,
+      "cisuExamples": [
+        "In MaThoko’s Footsteps: Re-indiginizing LGBTQI+ Youth Activism (499.940 kr.)",
+        "In MaThoko’s Footsteps: LGBTQI+ Youth Activists (499.786 kr.)",
+        "Female Freedom (199.280 kr.)"
+      ],
+      "baronenClaimDkk": 1200000,
+      "matchNote": "Baronen ~1,2 mio. ≈ CISU-sum 1.199.006 kr. (3 poster). CVR 43447203 fundet.",
+      "proff": "https://www.proff.dk/firma/female-freedom/k%C3%B8benhavn-v/pleje-og-omsorgstjenester/0PV82RI10K7",
+      "caseSlug": "female-freedom"
+    },
+    {
+      "id": "lgbt-danmark",
+      "name": "LGBT+ Danmark",
+      "legalName": "LGBT+ Danmark, Landsforeningen for bøsser, lesbiske, biseksuelle og transpersoner",
+      "cvr": "23072513",
+      "form": "Forening",
+      "founded": null,
+      "address": "Vestergade 18E, 2. sal, 1456 København K",
+      "status": "Aktiv",
+      "employeesApprox": 27,
+      "virkSearch": "https://datacvr.virk.dk/enhed/virksomhed/23072513",
+      "website": "https://lgbt.dk/",
+      "orgClaims": {
+        "annualTurnover": "Indtægter 25,2 mio. kr. i 2025 (årsregnskab)",
+        "funding": "Driftstilskud Ligestillingsministeriet 4,5 mio. + projektindtægter 14,8 mio. (CISU m.fl.)"
+      },
+      "regnskab": [
+        {
+          "year": 2025,
+          "source": "Årsrapport 2025 (revideret, Dansk Revision)",
+          "sourceUrl": "https://lgbt.dk/wp-content/uploads/2026/06/Aarsrapport_LGBT_Danmark_2025_1305526.pdf",
+          "indtægterIAltDkk": 25181092,
+          "projektindtægterDkk": 14795772,
+          "driftstilskudStatDkk": 4500000,
+          "aaretsResultatDkk": 1386634,
+          "egenkapitalNote": "4.116.445 kr. pr. 31.12.2025",
+          "cisuProgramBevillingNote": "Flere CISU-projekter i note 17–18 (Ukraine, Kenya, Ghana, Armenien, Moldova m.fl.)",
+          "cisuProgramBevillingDkk": 11064029,
+          "angle": "Projektindtægter > driftsindtægter. Offentlig finansiering er rygraden (stat+kommune+projekter)."
+        }
+      ],
+      "cisuSumDkk": 11064029,
+      "cisuCount": 10,
+      "caseSlug": "lgbt-danmark-cisu",
+      "matchNote": "Regnskab 2025 + CISU-sample (10 poster, 11,1 mio.) bekræfter stor offentlig/projektfinansiering."
+    },
+    {
+      "id": "global-aktion",
+      "name": "Global Aktion",
+      "legalName": "Global Aktion (tidl. Afrika Kontakt)",
+      "cvr": "13729107",
+      "form": "Forening",
+      "founded": null,
+      "address": "Wesselsgade 2 / København N (se org)",
+      "status": "Aktiv",
+      "employeesApprox": null,
+      "virkSearch": "https://datacvr.virk.dk/enhed/virksomhed/13729107",
+      "proff": "https://www.proff.dk/firma/global-aktion/kc3b8benhavn-k/medlemsorganisationer/GJQNB7I10PU",
+      "website": "https://globalaktion.dk/",
+      "orgClaims": {
+        "funding": "CISU civilsamfund + klima/miljø-puljer; regnskaber på org-hjemmeside"
+      },
+      "regnskab": [
+        {
+          "year": 2024,
+          "source": "Årsregnskab 2024 (revideret)",
+          "sourceUrl": "https://drive.google.com/file/d/1BddSLY5PHdU8HFlLrb5jnco_QmByDkxG/view",
+          "indtægterIAltDkk": 2508607,
+          "aaretsResultatDkk": 247268,
+          "egenkapitalNote": "770.488 kr. pr. 31.12.2024",
+          "cisuProgramBevillingDkk": 11625898,
+          "cisuProgramBevillingNote": "CISU-sample (8 poster, multi-år) — ikke samme som års-revenue. Interim reports i note 11.",
+          "angle": "Års-revenue ~2,5 mio. (overhead/løn/donationer). CISU-portefølje 11,6 mio. multi-år i sample."
+        },
+        {
+          "year": 2023,
+          "source": "Årsregnskab 2023",
+          "sourceUrl": "https://globalaktion.dk/wp-content/uploads/2024/02/Aarsregnskab-Global-Aktion-2023.pdf",
+          "indtægterIAltDkk": 2169786,
+          "aaretsResultatDkk": -78792,
+          "angle": "Underskud 79k. EU contingent liability ~0,9 mio. anerkendes ikke."
+        }
+      ],
+      "regnskabNote": null,
+      "cisuSumDkk": 11625898,
+      "cisuCount": 8,
+      "cisuExamples": [
+        "Peasants' rights achieve climate justice (3.556.657 kr.)",
+        "Pathway to Climate Justice (3.368.765 kr.)",
+        "Building Climate Justice Advocacy (1.999.146 kr.)"
+      ],
+      "caseSlug": "global-aktion",
+      "matchNote": "Regnskab 2024 indlæst. CISU-sum er multi-år portefølje."
+    },
+    {
+      "id": "100-for-boernene",
+      "name": "100% for Børnene",
+      "legalName": "100 % for Børnene",
+      "cvr": "31841178",
+      "form": "Forening",
+      "founded": "2008-12-01",
+      "address": "c/o Ubuntu Huset, Købmagergade 43, 1., 1150 København K",
+      "status": "Aktiv",
+      "employeesApprox": 4,
+      "virkSearch": "https://datacvr.virk.dk/enhed/virksomhed/31841178",
+      "proff": "https://www.proff.dk/firma/100-for-b%C3%B8rnene/-/-/31841178",
+      "website": "https://100pct.org/",
+      "orgClaims": {
+        "raisedSince2022": "Ca. 31,9 mio. kr. indsamlet siden 2022 (org engelsk side)",
+        "reach": "Ca. 47.110 børn/unge via 24 indsatser siden 2022 (org)",
+        "bj2024": "3,5 mio. stat ~65% budget; løn 1,18 mio. til 2 årsværk (Borgerjournalisten)"
+      },
+      "regnskab": [],
+      "regnskabNote": "Fuld årsrapport ikke hentet endnu (org-site WAF). CISU-bevilling 2.685.876 kr. i sample.",
+      "cisuSumDkk": 2685876,
+      "cisuCount": 1,
+      "cisuExamples": [
+        "YOUTH ON BOARD: Engendering Youth Voices in Ghana’s Education (2.685.876 kr.)"
+      ],
+      "caseSlug": "100-for-boernene",
+      "baronenClaimDkk": 3500000,
+      "matchNote": "BJ 3,5 mio. 2024 + CISU 2,69 mio. i sample. https://borgerjournalisten.dk/"
+    }
+  ]
+}

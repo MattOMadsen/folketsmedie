@@ -1,0 +1,20 @@
+{
+  "id": "arbejdspladser-2019",
+  "title": "Vi lover at skabe flere arbejdspladser og stoppe arbejdsløsheden",
+  "year": "2019",
+  "whatHappened": "Selvom arbejdsløsheden generelt er lav, er der stadig store udfordringer med langtidsledighed blandt unge og ikke-vestlige indvandrere.",
+  "sources": [
+    {
+      "text": "Danmarks Statistik – Ledighed og beskæftigelse",
+      "url": "https://www.dst.dk/da/Statistik/emner/arbejde-og-indkomst/ledighed"
+    },
+    {
+      "text": "Beskæftigelsesministeriet",
+      "url": "https://www.bm.dk/"
+    },
+    {
+      "text": "Berlingske / AE – Nye job og reformer",
+      "url": "https://www.berlingske.dk/oekonomi"
+    }
+  ]
+}

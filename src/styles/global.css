@@ -31,6 +31,21 @@ html {
   scroll-behavior: smooth;
 }
 
+body.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.app-frame {
+  flex: 1;
+  width: 100%;
+  border: 0;
+  background: #0a0b0c;
+  display: block;
+}
+
 body {
   margin: 0;
   min-height: 100vh;

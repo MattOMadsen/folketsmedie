@@ -1,0 +1,47 @@
+{
+  "slug": "dreamtown-metropolis",
+  "title": "Dreamtown: 1,5 mio. til verdensmål i Københavns gader",
+  "status": "approved",
+  "priority": 4,
+  "tags": [
+    "open",
+    "cisu",
+    "ungdom",
+    "official"
+  ],
+  "amountDkk": 1499867,
+  "amountLabel": "1.499.867 kr. (OpEn)",
+  "amountKind": "official",
+  "summary": "OpEn 1.499.867 kr. til Metropolis i København. Engagement herhjemme, betalt som bistand.",
+  "angle": "Verdensmålene starter i Indre By — bogstaveligt talt. Er det «ulandsbistand»?",
+  "depth": {
+    "status": "approved",
+    "headline": "Forstået på almindeligt dansk",
+    "body": [
+      "Dreamtown har fået ca. 1,5 millioner kr. til «Metropolis»: et interaktivt univers om FN’s verdensmål og bæredygtige byer — midt i København.",
+      "**Hvad går pengene til?** Stationer i byen, undervisning, gymnasiesamarbejde i København. Målgruppen er danske unge.",
+      "**Politisk farve (vores vurdering):** Venstre / verdensmål & ungdom. FN’s verdensmål, grøn byudvikling og unges engagement — progressiv dagsorden.",
+      "**Hvad kunne det være herhjemme?** **1.5 mio. kr.** kunne ca. dække **3 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller give **ca. 10.000 kr. i lavere bundskat** til **150 personer** med gennemsnitsindkomst (BT-model).",
+      "**Derfor er det vigtigt:** Når du hører «ulandsbistand», tænker mange på mad, medicin og rent vand. En stor del af det, vi dokumenterer her, er **politik, oplysning og aktivisme** — ofte med en progressiv (venstreorienteret) dagsorden. Det er lovligt. Det er dit valg, om det er klogt.",
+      "**Bevilling:** 1.499.867 kr. · **OpEn**."
+    ],
+    "sources": [
+      {
+        "title": "CISU: Metropolis",
+        "url": "https://cisu.dk/cisu-i-verden/bevillingsoversigt/bevilling/?id=c5c8dacb-83f1-47d3-9f36-535941784475",
+        "kind": "official"
+      }
+    ]
+  },
+  "relatedPosts": [],
+  "plainLead": "Dreamtown har fået ca. 1,5 millioner kr. til «Metropolis»: et interaktivt univers om FN’s verdensmål og bæredygtige byer — midt i København.",
+  "whatMoneyFor": "Stationer i byen, undervisning, gymnasiesamarbejde i København. Målgruppen er danske unge.",
+  "orientation": "venstre",
+  "orientationLabel": "Venstre / verdensmål & ungdom",
+  "orientationNote": "FN’s verdensmål, grøn byudvikling og unges engagement — progressiv dagsorden.",
+  "homeCompare": {
+    "text": "**1.5 mio. kr.** kunne ca. dække **3 sygeplejerske-årsværk** (ca. 550.000 kr. pr. stilling) — eller give **ca. 10.000 kr. i lavere bundskat** til **150 personer** med gennemsnitsindkomst (BT-model).",
+    "nursesApprox": 2.7,
+    "taxPeopleApprox": 150
+  }
+}

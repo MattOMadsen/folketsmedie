@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om projektet | Skandale.dk</title>
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="js/dark-mode.js"></script>
+    <style>
+        .prose-custom { max-width: 65ch; }
+        .section-anchor { scroll-margin-top: 80px; }
+
+        .donation-box {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+        }
+        .dark .donation-box {
+            background: linear-gradient(180deg, #111827 0%, #0f172a 100%);
+            border-color: rgba(200, 16, 46, 0.22);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        }
+        .donation-box__block {
+            background: rgba(248, 250, 252, 0.9);
+        }
+        .dark .donation-box__block {
+            background: rgba(15, 23, 42, 0.65);
+            border-color: rgba(71, 85, 105, 0.55);
+        }
+        .donation-box__bank {
+            background: #ffffff;
+        }
+        .dark .donation-box__bank {
+            background: rgba(30, 41, 59, 0.85);
+            border-color: rgba(71, 85, 105, 0.6);
+        }
+        .donation-box__qr-wrap {
+            background: #ffffff;
+            box-shadow: 0 2px 12px rgba(15, 23, 42, 0.08);
+        }
+        .dark .donation-box__qr-wrap {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-gray-950 text-slate-900 dark:text-slate-100" data-site-meta="full">
+
+    <!-- Navbar indlæses via js/navbar.js -->
+
+    <div class="max-w-7xl mx-auto px-6 pt-10 pb-20">
+        
+        <!-- Hero / Header -->
+        <div class="flex flex-col md:flex-row md:items-center gap-x-6 mb-12">
+            <div class="w-16 h-16 bg-[#C8102E] dark:bg-red-700 rounded-2xl flex items-center justify-center flex-shrink-0 mb-4 md:mb-0">
+                <i class="fa-solid fa-balance-scale text-white text-4xl"></i>
+            </div>
+            <div class="flex-1">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Om Skandale.dk</h1>
+                <p class="text-xl text-slate-600 dark:text-slate-400 mt-2">Et uafhængigt projekt for større gennemsigtighed i dansk politik</p>
+                
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-200 dark:bg-gray-800 text-slate-700 dark:text-slate-300">
+                        <i class="fa-solid fa-users mr-1.5"></i> <span id="om-politician-count">… politikere</span>
+                    </span>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">
+                        <i class="fa-solid fa-landmark mr-1.5"></i> <span id="om-folketing-count">… i Folketinget</span>
+                    </span>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-400">
+                        <i class="fa-solid fa-flag mr-1.5"></i> <span id="om-party-count">… partier</span>
+                    </span>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">
+                        <i class="fa-solid fa-sync-alt mr-1.5"></i> Opdateret løbende
+                    </span>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400">
+                        <i class="fa-solid fa-balance-scale mr-1.5"></i> Fakta-baseret
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kort intro + live statistik -->
+        <div class="prose prose-slate dark:prose-invert max-w-none mb-6 prose-custom">
+            <p class="text-lg text-slate-700 dark:text-slate-300">
+                Skandale.dk samler offentligt tilgængelige oplysninger om politiske skandaler, økonomisk støtte, 
+                internationale netværk og brudte valgløfter – alt på ét sted. Målet er at give danskerne et bedre 
+                grundlag for at forstå magtforhold og ansvar i dansk politik.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+            <div class="bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-800 rounded-2xl p-4 text-center">
+                <div class="text-2xl font-bold text-[#C8102E] dark:text-red-400" id="om-scandal-count">…</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Skandaler</div>
+            </div>
+            <div class="bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-800 rounded-2xl p-4 text-center">
+                <div class="text-2xl font-bold text-[#C8102E] dark:text-red-400" id="om-promise-count">…</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Brudte løfter</div>
+            </div>
+            <div class="bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-800 rounded-2xl p-4 text-center">
+                <div class="text-2xl font-bold text-[#C8102E] dark:text-red-400" id="om-avg-severity">…</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Gns. alvorlighed</div>
+            </div>
+            <div class="bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-800 rounded-2xl p-4 text-center">
+                <div class="text-2xl font-bold text-[#C8102E] dark:text-red-400" id="om-party-count-stat">…</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Partier dækket</div>
+            </div>
+        </div>
+
+        <div class="mb-10">
+            <p class="text-sm text-slate-500 dark:text-slate-400 mb-2">Fordeling pr. parti</p>
+            <div id="om-party-breakdown" class="flex flex-wrap gap-2">
+                <span class="text-xs text-slate-400">Indlæser…</span>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm mb-12 border-b border-slate-200 dark:border-gray-800 pb-6">
+            <a href="#hvad-er" class="text-[#C8102E] dark:text-red-400 hover:underline">Hvad er Skandale.dk?</a>
+            <a href="#hvorfor" class="text-[#C8102E] dark:text-red-400 hover:underline">Hvorfor findes siden?</a>
+            <a href="#metodik" class="text-[#C8102E] dark:text-red-400 hover:underline">Hvordan indsamles data?</a>
+            <a href="#kilder" class="text-[#C8102E] dark:text-red-400 hover:underline">Kilder & troværdighed</a>
+            <a href="#fremtid" class="text-[#C8102E] dark:text-red-400 hover:underline">Fremtidsplaner</a>
+            <a href="#bidrag" class="text-[#C8102E] dark:text-red-400 hover:underline">Sådan kan du bidrage</a>
+            <a href="#doner" class="text-[#C8102E] dark:text-red-400 hover:underline">Støt projektet</a>
+            <a href="#udvikler" class="text-[#C8102E] dark:text-red-400 hover:underline">Om udvikleren</a>
+        </div>
+
+        <!-- Hvad er Skandale.dk? -->
+        <section id="hvad-er" class="section-anchor mb-14">
+            <h2 class="text-3xl font-semibold tracking-tight mb-4 flex items-center gap-x-3">
+                <i class="fa-solid fa-info-circle text-[#C8102E] dark:text-red-500"></i> 
+                Hvad er Skandale.dk?
+            </h2>
+            <div class="prose prose-slate dark:prose-invert max-w-none prose-custom text-slate-700 dark:text-slate-300">
+                <p>
+                    Skandale.dk er et uafhængigt, nonprofit projekt, der har til formål at skabe større gennemsigtighed 
+                    i dansk politik. Siden samler og præsenterer offentligt tilgængelige oplysninger om politiske skandaler, 
+                    økonomisk støtte fra interesseorganisationer, internationale netværk (f.eks. WEF, Young Global Leaders) 
+                    og brudte valgløfter – alt samlet på ét overskueligt sted.
+                </p>
+                <p>
+                    Projektet er bygget som en statisk hjemmeside med ren HTML, Tailwind CSS og vanilla JavaScript. 
+                    Alle data ligger i åbne JSON-filer, så alle kan se, hvordan informationen er struktureret.
+                </p>
+            </div>
+        </section>
+
+        <!-- Hvorfor findes siden? -->
+        <section id="hvorfor" class="section-anchor mb-14">
+            <h2 class="text-3xl font-semibold tracking-tight mb-4 flex items-center gap-x-3">
+                <i class="fa-solid fa-question-circle text-[#C8102E] dark:text-red-500"></i> 
+                Hvorfor findes siden?
+            </h2>
+            <div class="prose prose-slate dark:prose-invert max-w-none prose-custom text-slate-700 dark:text-slate-300">
+                <p>
+                    Dansk politik lider under manglende gennemsigtighed. Mange vælgere oplever, at løfter bliver brudt, 
+                    og at information om magtforhold, donationer og netværk er spredt ud over mange forskellige kilder – 
+                    eller slet ikke tilgængelig på en overskuelig måde.
+                </p>
+                <p>
+                    Skandale.dk er et forsøg på at samle denne information og gøre den let tilgængelig for alle. 
+                    Målet er ikke at dømme eller tage politisk stilling, men at give folk et bedre faktabaseret grundlag 
+                    for at forstå, hvem der har magten, hvem der støtter hvem, og hvilke løfter der bliver holdt – eller ikke holdt.
+                </p>
+            </div>
+        </section>
+
+        <!-- Hvordan indsamles data? (Metodik) -->
+        <section id="metodik" class="section-anchor mb-14">
+            <h2 class="text-3xl font-semibold tracking-tight mb-4 flex items-center gap-x-3">
+                <i class="fa-solid fa-database text-[#C8102E] dark:text-red-500"></i> 
+                Hvordan indsamles data?
+            </h2>
+            <div class="prose prose-slate dark:prose-invert max-w-none prose-custom text-slate-700 dark:text-slate-300">
+                <p>
+                    Dataen vedligeholdes manuelt i separate JSON-filer – én fil pr. politiker. Dette giver fuld kontrol 
+                    og gør det nemt at versionere og verificere informationen.
+                </p>
+                <p>
+                    Kilder stammer primært fra:
+                </p>
+                <ul class="list-disc pl-6">
+                    <li>Offentlige medier og undersøgende journalistik</li>
+                    <li>Rigsrevisionen og andre officielle kontrolorganer</li>
+                    <li>Folketingets åbne data og dokumenter</li>
+                    <li>Domme og officielle afgørelser</li>
+                    <li>Partiernes egne hjemmesider og pressemeddelelser</li>
+                </ul>
+                <p class="mt-4">
+                    Der tilføjes kun skandaler og oplysninger, der kan dokumenteres med konkrete, offentligt tilgængelige kilder. 
+                    Spekulationer og upålidelige rygter udelades.
+                </p>
+            </div>
+        </section>
+
+        <!-- Kilder & troværdighed + Alvorlighed -->
+        <section id="kilder" class="section-anchor mb-14">
+            <h2 class="text-3xl font-semibold tracking-tight mb-4 flex items-center gap-x-3">
+                <i class="fa-solid fa-shield-alt text-[#C8102E] dark:text-red-500"></i> 
+                Kilder & troværdighed
+            </h2>
+            <div class="prose prose-slate dark:prose-invert max-w-none prose-custom text-slate-700 dark:text-slate-300">
+                <p>
+                    Hver skandale indeholder kildehenvisninger direkte i modalen. Vi vurderer alvorligheden på en 
+                    skala (lav / middel / høj / kritisk) baseret på:
+                </p>
+                <ul class="list-disc pl-6">
+                    <li>Økonomisk omfang og konsekvenser for samfundet</li>
+                    <li>Brud på tillid mellem vælgere og politikere</li>
+                    <li>Om der er tale om systematiske eller gentagne forhold</li>
+                    <li>Officiel dokumentation (domme, Rigsrevisionens rapporter mv.)</li>
+                </ul>
+                <p class="mt-4">
+                    Vi bestræber os på neutralitet og undgår at tage politisk stilling. Formålet er transparens – 
+                    ikke fordømmelse. Bias i kilder forsøges udlignet ved at krydstjekke flere uafhængige kilder, 
+                    hvor det er muligt.
+                </p>
+            </div>
+        </section>
+
+        <!-- Fremtidsplaner -->
+        <section id="fremtid" class="section-anchor mb-14">
+            <h2 class="text-3xl font-semibold tracking-tight mb-4 flex items-center gap-x-3">
+                <i class="fa-solid fa-rocket text-[#C8102E] dark:text-red-500"></i> 
+                Fremtidsplaner
+            </h2>
+            <div class="prose prose-slate dark:prose-invert max-w-none prose-custom text-slate-700 dark:text-slate-300">
+                <p>Projektet er under løbende udvikling. Status på de vigtigste områder:</p>
+                <ul class="list-none pl-0 space-y-2">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span><strong>Kommentarer &amp; fælles stjerne-bedømmelser</strong> – implementeret via Supabase</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span><strong>40+ politikere</strong> – løbende udvidelse via manifest.json</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span><strong>Dark mode, mobil polish og sammenlign</strong> – på plads på tværs af sider</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amber-400 mt-1 text-[0.5rem]"></i><span><strong>Flere donor- og netværksdata</strong> – mange profiler har endnu tomme affiliations</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amber-400 mt-1 text-[0.5rem]"></i><span><strong>Forbedret PDF-eksport</strong> – planlagt</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-slate-400 mt-1 text-[0.5rem]"></i><span><strong>PWA offline &amp; admin-dashboard</strong> – planlagt</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sådan kan du bidrage -->
+        <section id="bidrag" class="section-anchor mb-14">
+            <h2 class="text-3xl font-semibold tracking-tight mb-4 flex items-center gap-x-3">
+                <i class="fa-solid fa-hands-helping text-[#C8102E] dark:text-red-500"></i> 
+                Sådan kan du bidrage
+            </h2>
+            <div class="prose prose-slate dark:prose-invert max-w-none prose-custom text-slate-700 dark:text-slate-300">
+                <p>
+                    Projektet drives af én person med begrænsede ressourcer. Den bedste måde at hjælpe på er at sende 
+                    <strong>verificerbare tips med kilder</strong> — ikke at redigere datafiler direkte.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 mb-6">
+                <div class="bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-800 rounded-2xl p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-[#C8102E]/10 flex items-center justify-center">
+                            <i class="fa-solid fa-paper-plane text-[#C8102E]"></i>
+                        </div>
+                        <h3 class="font-semibold text-lg text-slate-900 dark:text-white">Send et tip</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Manglende skandaler, forkerte oplysninger, nye internationale netværk, donationer eller brudte løfter? 
+                        Brug kontaktformularen — jo mere præcis kilde, jo hurtigere kan det verificeres.
+                    </p>
+                    <a href="kontakt.html" class="inline-flex items-center gap-2 mt-4 text-sm font-semibold text-[#C8102E] dark:text-red-400 hover:underline">
+                        Gå til kontaktformularen <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-800 rounded-2xl p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-[#C8102E]/10 flex items-center justify-center">
+                            <i class="fa-solid fa-share-nodes text-[#C8102E]"></i>
+                        </div>
+                        <h3 class="font-semibold text-lg text-slate-900 dark:text-white">Del og spred budskabet</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Jo flere der kender til projektet, jo større pres for gennemsigtighed. Del en profil, en skandale 
+                        eller netværkssiden med andre, der vil have fakta frem for rygter.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-amber-50/80 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/40 rounded-2xl p-6 mb-6">
+                <h3 class="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-check-double text-amber-600 dark:text-amber-400"></i>
+                    Et godt tip indeholder
+                </h3>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-700 dark:text-slate-300">
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-user text-[#C8102E] mt-0.5 text-xs"></i><span>Hvilket politiker det handler om</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-link text-[#C8102E] mt-0.5 text-xs"></i><span>Link til artikel, dom eller officielt dokument</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-calendar text-[#C8102E] mt-0.5 text-xs"></i><span>Hvornår det skete (år eller periode)</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-globe text-[#C8102E] mt-0.5 text-xs"></i><span>Type: skandale, netværk, donation eller løfte</span></li>
+                </ul>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-4">
+                    Tips uden kilder kan desværre sjældent bruges. Spekulationer og konspirationsteorier uden dokumentation tilføjes ikke.
+                </p>
+            </div>
+
+            <div class="prose prose-slate dark:prose-invert max-w-none prose-custom text-slate-700 dark:text-slate-300 mb-8">
+                <p>
+                    <strong>Politikere og journalister:</strong> Godkendte brugere kan foreslå ændringer via det password-beskyttede 
+                    admin-dashboard på siden. Spørg via <a href="kontakt.html" class="text-[#C8102E] dark:text-red-400 hover:underline">kontaktformularen</a>, 
+                    hvis du vil have adgang.
+                </p>
+            </div>
+
+            <div id="doner" class="section-anchor donation-box p-8 md:p-10 rounded-3xl my-4 border border-slate-200">
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#C8102E]/10 dark:bg-[#C8102E]/20 mb-4">
+                        <i class="fa-solid fa-hand-holding-heart text-[#C8102E] dark:text-red-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-3 text-slate-900 dark:text-white">Støt projektet</h3>
+                    <p class="text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-xl mx-auto">
+                        Siden ligger midlertidigt på GitHub Pages. Vi ejer ikke skandale.dk. Hjælp med at få den ud på en rigtig hjemmeside — uden reklamer.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                    <div class="donation-box__block rounded-2xl border border-slate-200 p-6 text-center">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">MobilePay</p>
+                        <p class="text-3xl font-bold tracking-wide text-slate-900 dark:text-white font-mono">28896782</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-3">Kun nummeret. Ingen kontonavn.</p>
+                    </div>
+                    <div class="donation-box__block rounded-2xl border border-slate-200 p-6 text-center">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">Bankoverførsel</p>
+                        <p class="text-lg text-slate-900 dark:text-white">Reg. <span class="font-bold font-mono">9070</span></p>
+                        <p class="text-lg text-slate-900 dark:text-white mt-1">Konto <span class="font-bold font-mono">8060896667</span></p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-3">Skriv gerne "Skandale" i beskedfeltet</p>
+                    </div>
+                </div>
+
+                <p class="text-center text-sm text-slate-600 dark:text-slate-400 mt-6">
+                    Mail:
+                    <a href="mailto:mattomadsen@proton.me" class="font-semibold text-[#C8102E] dark:text-red-400 hover:underline">mattomadsen@proton.me</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Om udvikleren -->
+        <section id="udvikler" class="section-anchor mb-16">
+            <h2 class="text-3xl font-semibold tracking-tight mb-4 flex items-center gap-x-3">
+                <i class="fa-solid fa-user text-[#C8102E] dark:text-red-500"></i> 
+                Om udvikleren
+            </h2>
+            <div class="prose prose-slate dark:prose-invert max-w-none prose-custom text-slate-700 dark:text-slate-300">
+                <p>
+                    Skandale.dk drives af Matt Madsen som et personligt, uafhængigt initiativ uden tilknytning til 
+                    politiske partier, interesseorganisationer eller kommercielle interesser.
+                </p>
+                <p>
+                    Projektet er startet ud fra en overbevisning om, at borgerne har ret til at kunne gennemskue 
+                    de beslutninger, der bliver truffet på deres vegne – og at transparens er en forudsætning for 
+                    et velfungerende demokrati.
+                </p>
+            </div>
+        </section>
+
+        <!-- Senest opdateret + kontakt -->
+        <div class="border-t border-slate-200 dark:border-gray-800 pt-8 text-sm text-slate-500 dark:text-slate-400">
+            <p>
+                <strong>Senest opdateret:</strong> <span id="om-last-updated">…</span>
+            </p>
+            <p class="mt-2">
+                Har du spørgsmål eller feedback til projektet? Kontaktmuligheder udvikles løbende.
+            </p>
+        </div>
+
+    </div>
+
+    <script src="js/version.js"></script>
+    <script src="js/site-stats.js"></script>
+    <script src="js/om-stats.js"></script>
+    <script src="js/pwa.js"></script>
+    <script src="js/navbar.js"></script>
+</body>
+</html>

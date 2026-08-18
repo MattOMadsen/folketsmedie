@@ -1,0 +1,61 @@
+{
+  "slug": "kaffestop-rwanda",
+  "title": "149.200 kr. til kaffestop og Instagram i Rwanda",
+  "status": "approved",
+  "priority": 0,
+  "tags": [
+    "open",
+    "mikehunt",
+    "officiel",
+    "symbol"
+  ],
+  "amountDkk": 149200,
+  "amountLabel": "149.200 kr.",
+  "amountKind": "official",
+  "summary": "Officiel CISU-bevilling på 149.200 kr. til Lasse Schoeber: Rwanda-rejse ifm. cykel-VM, content og kaffestop. Hele budgettet dækket af staten.",
+  "angle": "Det er ikke «hjælp til de fattigste». Det er skatteyderbetalt content-tur med en god historie. Småt beløb — stort princip.",
+  "depth": {
+    "status": "approved",
+    "headline": "Forstået på almindeligt dansk",
+    "body": [
+      "En dansker har fået hele budgettet dækket af staten til at rejse til Rwanda under cykel-VM, lave indhold til Instagram og podcast — og «bygge et lille kaffestop».",
+      "**Hvad går pengene til?** Fly, ophold og formidling: video, podcast og Instagram til Mandsholdets følgere, plus et lille kaffestop hvor lokale og cykelhold kan fortælle historier. **100 % statsfinansieret** via OpEn.",
+      "**Politisk farve (vores vurdering):** Progressiv oplysning. Formålet er grøn omstilling, ligestilling og sportsfællesskab — klassiske progressive temaer, pakket som content-rejse.",
+      "**Hvad kunne det være herhjemme?** **149.200 kr.** svarer groft til **0.3 sygeplejerske-årsværk** — eller **ca. 10.000 kr. i lavere skat** til **15 personer** (BT-model).",
+      "**Derfor er det vigtigt:** Når du hører «ulandsbistand», tænker mange på mad, medicin og rent vand. En stor del af det, vi dokumenterer her, er **politik, oplysning og aktivisme** — ofte med en progressiv (venstreorienteret) dagsorden. Det er lovligt. Det er dit valg, om det er klogt.",
+      "CISU’s bevillingsside bekræfter **149.200 kr.** fra **OpEn** (Udenrigsministeriets oplysnings- og engagementspulje) til organisationen Lasse Schoeber, projekt **‘Kaffestop i Rwanda’**, periode 21.10.2024–31.10.2025. Samlet budget = bevilget beløb (100 % dækket)."
+    ],
+    "sources": [
+      {
+        "title": "CISU: Kaffestop i Rwanda (officiel bevilling)",
+        "url": "https://cisu.dk/cisu-i-verden/bevillingsoversigt/bevilling/?id=9640e38a-5768-4390-b624-11ffdd342ab9",
+        "kind": "official"
+      },
+      {
+        "title": "MikeHuntHurts89: Kaffestop",
+        "url": "https://x.com/MikeHuntHurts89/status/2084223617148108834",
+        "kind": "research"
+      },
+      {
+        "title": "MikeHuntHurts89: Lolland vs Danida",
+        "url": "https://x.com/MikeHuntHurts89/status/2086486242548428847",
+        "kind": "research"
+      }
+    ]
+  },
+  "relatedPosts": [
+    "2084223617148108834",
+    "2084339602899214485",
+    "2086486242548428847"
+  ],
+  "plainLead": "En dansker har fået hele budgettet dækket af staten til at rejse til Rwanda under cykel-VM, lave indhold til Instagram og podcast — og «bygge et lille kaffestop».",
+  "whatMoneyFor": "Fly, ophold og formidling: video, podcast og Instagram til Mandsholdets følgere, plus et lille kaffestop hvor lokale og cykelhold kan fortælle historier. **100 % statsfinansieret** via OpEn.",
+  "orientation": "venstre",
+  "orientationLabel": "Progressiv oplysning",
+  "orientationNote": "Formålet er grøn omstilling, ligestilling og sportsfællesskab — klassiske progressive temaer, pakket som content-rejse.",
+  "homeCompare": {
+    "text": "**149.200 kr.** svarer groft til **0.3 sygeplejerske-årsværk** — eller **ca. 10.000 kr. i lavere skat** til **15 personer** (BT-model).",
+    "nursesApprox": 0.3,
+    "taxPeopleApprox": 15
+  }
+}

@@ -3,11 +3,12 @@ interface Props {
   current?: 'fm' | 'skandale' | 'skattejaegeren';
 }
 const { current = 'fm' } = Astro.props;
+const base = import.meta.env.BASE_URL;
 
 const sites = [
-  { id: 'fm', label: 'Folkets Medie', href: 'https://mattomadsen.github.io/folketsmedie/' },
-  { id: 'skandale', label: 'Skandale', href: 'https://mattomadsen.github.io/skandale.dk/' },
-  { id: 'skattejaegeren', label: 'Skattejægeren', href: 'https://mattomadsen.github.io/skattejaegeren/' },
+  { id: 'fm', label: 'Folkets Medie', href: base },
+  { id: 'skandale', label: 'Skandale', href: `${base}skandale/` },
+  { id: 'skattejaegeren', label: 'Skattejægeren', href: `${base}skattejaegeren/` },
 ] as const;
 ---
 

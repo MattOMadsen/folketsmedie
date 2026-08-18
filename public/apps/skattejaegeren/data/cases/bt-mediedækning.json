@@ -1,0 +1,62 @@
+{
+  "slug": "bt-mediedækning",
+  "title": "Når tallene rammer BT og hele Danmark",
+  "status": "approved",
+  "priority": 0,
+  "tags": [
+    "medier",
+    "baronen",
+    "bt",
+    "validering"
+  ],
+  "amountDkk": 23200000000,
+  "amountLabel": "ca. 23 mia. (ramme i podcast)",
+  "amountKind": "reported",
+  "summary": "BT Borgerlig Tabloid 3. aug. 2026. 23 mia. i promo. Kritik og forsvar. Vi bruger BT som platform, ikke som facit.",
+  "angle": "Medier kan ikke erstatte CISU-links — men de kan tvinge politikerne til at forholde sig.",
+  "depth": {
+    "status": "approved",
+    "headline": "Forstået på almindeligt dansk",
+    "body": [
+      "I august 2026 kom debatten ud af X-boblen: Baronen var i BT’s podcast, og chefredaktøren forsvarede det. Kritikere angreb anonymitet — men indrømmede, at eksemplerne ligger offentligt.",
+      "**Hvad går pengene til?** Ikke en bevilling, men rammen: **ca. 23 mia.** i udviklingsbistand om året, som BT sammenlignede med politi og uddannelser.",
+      "**Politisk farve (vores vurdering):** Neutral (mediedækning). Sagen handler om pressen og debatten — ikke om ét projekts ideologi.",
+      "**Hvad kunne det være herhjemme?** Ca. 23.2 mia. kr. svarer groft til **42.000 sygeplejerske-årsværk** — eller **ca. 10.000 kr. i lavere bundskat** til ca. 2.3 mio. personer med gennemsnitsindkomst (BT-model).",
+      "**Derfor er det vigtigt:** Når du hører «ulandsbistand», tænker mange på mad, medicin og rent vand. En stor del af det, vi dokumenterer her, er **politik, oplysning og aktivisme** — ofte med en progressiv (venstreorienteret) dagsorden. Det er lovligt. Det er dit valg, om det er klogt.",
+      "**X-opslag:** https://x.com/oresundsbaron/status/2084253347566031129 — video/podcast-promo (~32 min / længere video-upload).",
+      "**Vores linje:** Vi behandler BT som **medieplatform og social validering**, ikke som erstatning for CISU/UM. De konkrete tal vi har låst (barnevogn, BIO RAP, kaffestop, partnerskaber) står på officielle sider uafhængigt af podcasten."
+    ],
+    "sources": [
+      {
+        "title": "X: interview-post",
+        "url": "https://x.com/oresundsbaron/status/2084253347566031129",
+        "kind": "research"
+      },
+      {
+        "title": "BT podcast episode",
+        "url": "https://www.bt.dk/podcast/borgerlig-tabloid/baronen-af-resund-hvor-mange-mennesker-redder-de-ved-at-g-en-tur",
+        "kind": "media"
+      },
+      {
+        "title": "Altinget kritik (EL)",
+        "url": "https://www.altinget.dk/artikel/strategichef-bt-naar-eklatant-lavpunkt-naar-de-promoverer-anonym-hoejreekstrem-og-antidemokratisk-kilde",
+        "kind": "media"
+      }
+    ]
+  },
+  "relatedPosts": [
+    "2084253347566031129",
+    "2087071522234007835",
+    "2086920527436730876"
+  ],
+  "plainLead": "I august 2026 kom debatten ud af X-boblen: Baronen var i BT’s podcast, og chefredaktøren forsvarede det. Kritikere angreb anonymitet — men indrømmede, at eksemplerne ligger offentligt.",
+  "whatMoneyFor": "Ikke en bevilling, men rammen: **ca. 23 mia.** i udviklingsbistand om året, som BT sammenlignede med politi og uddannelser.",
+  "orientation": "neutral",
+  "orientationLabel": "Neutral (mediedækning)",
+  "orientationNote": "Sagen handler om pressen og debatten — ikke om ét projekts ideologi.",
+  "homeCompare": {
+    "text": "Ca. 23.2 mia. kr. svarer groft til **42.000 sygeplejerske-årsværk** — eller **ca. 10.000 kr. i lavere bundskat** til ca. 2.3 mio. personer med gennemsnitsindkomst (BT-model).",
+    "nursesApprox": 42181.8,
+    "taxPeopleApprox": 2320000
+  }
+}

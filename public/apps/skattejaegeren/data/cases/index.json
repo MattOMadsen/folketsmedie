@@ -1,0 +1,95 @@
+{
+  "updated": "2026-08-13",
+  "editorial": {
+    "stance": "borgerlig-national",
+    "owner": "@MattieDanmark",
+    "ownerUrl": "https://x.com/MattieDanmark",
+    "approval": "manual",
+    "primarySource": "@oresundsbaron",
+    "contributors": [
+      {
+        "name": "Claus Due",
+        "handle": "@NamelessCoder",
+        "url": "https://x.com/NamelessCoder",
+        "role": "Borgerjournalisten.dk — platform + graveartikler (Danida/OpEn m.m.); forsvarer fakta frem for personangreb"
+      },
+      {
+        "name": "Baronen af Øresund",
+        "handle": "@oresundsbaron",
+        "url": "https://x.com/oresundsbaron",
+        "role": "Primær research / X-serie om bistand"
+      }
+    ],
+    "secondaryQueued": [
+      "Borgerjournalisten.dk / @NamelessCoder",
+      "@Statsstyret",
+      "@MikeHuntHurts89",
+      "Facebook m.fl."
+    ],
+    "for": [
+      "Danske borgere først — skoler, ældre, sundhed og tryghed herhjemme",
+      "Gennemsigtighed: skattekroner skal kunne spores til konkrete formål",
+      "Prioritering: hårdt tjente penge skal ikke smides væk på ideologiske prestigeprojekter"
+    ],
+    "against": [
+      "Venstrefløjens identitets- og LGBTQ+-eksport betalt af danske skatteydere",
+      "OpEn/«oplysning» der er marches, hiphop, content og HQ i København — ikke nødhjælp",
+      "Milliarder til lande og dagsordener, der ikke deler danske interesser, mens kommunerne skærer"
+    ],
+    "disclaimer": "Privat, uafhængig side drevet i borgerlig ånd. Ikke tilknyttet Baronen, Mike Hunt, Statsstyret eller myndigheder. Citater er korte uddrag med link. Beløb mærket claim vs official. Kilder: CISU, UM, regnskaber, Borgerjournalisten m.fl.",
+    "mediaPartners": [
+      {
+        "name": "Borgerjournalisten.dk",
+        "url": "https://borgerjournalisten.dk/",
+        "note": "Danida/OpEn-graveartikler — drevet af Claus Due (@NamelessCoder). Vi linker og krediterer."
+      }
+    ]
+  },
+  "totals": {
+    "strategicPartnershipsAnnualDkk": 1264000000,
+    "strategicPartnershipsNote": "Officielt: UM — 1,264 mia. kr./år til 18 strategiske partnerskaber 2022–2026",
+    "civilSocietyPuljeClaim2026Dkk": 200000000,
+    "openPuljeWithCivilClaim2026Dkk": 221000000,
+    "developmentAidClaimTotalDkk": 23000000000,
+    "perDaneApproxStrategicPartnerships": "Ca. 210 kr./dansker/år alene til strategiske partnerskaber (1,264 mia / ~6 mio indbyggere — groft regnestykke)"
+  },
+  "slugs": [
+    "barnevogn-og-prioritering",
+    "lgbt-kenya-empowering-voices",
+    "ms-actionaid",
+    "crossing-borders",
+    "rapolitics-react",
+    "fant-ballon-dor",
+    "dgi-gstep",
+    "axis-uddannelse",
+    "lgbt-danmark-cisu",
+    "bt-mediedækning",
+    "kaffestop-rwanda",
+    "strategiske-partnerskaber",
+    "global-aktion",
+    "oxfam-spa",
+    "sex-samfund-uganda",
+    "100-for-boernene",
+    "amnesty-open",
+    "blackfish-mille",
+    "civilsamfundspuljen",
+    "danwatch-klima",
+    "female-freedom",
+    "colombia-solidaritet",
+    "dreamtown-metropolis",
+    "ghana-venskab",
+    "ngo-miniserie",
+    "orangutang-rap",
+    "statens-kunstfond",
+    "information-mediestoette",
+    "kirke-udland"
+  ],
+  "note": "Én fil pr. sag: data/cases/<slug>.json. index.json = metadata + slug-liste. Udvid depth.body for mere gravning.",
+  "flagships": [
+    "barnevogn-og-prioritering",
+    "lgbt-kenya-empowering-voices",
+    "ms-actionaid",
+    "crossing-borders",
+    "lgbt-danmark-cisu"
+  ]
+}
