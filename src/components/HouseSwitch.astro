@@ -1,0 +1,23 @@
+---
+interface Props {
+  current?: 'fm' | 'skandale' | 'skattejaegeren';
+}
+const { current = 'fm' } = Astro.props;
+
+const sites = [
+  { id: 'fm', label: 'Folkets Medie', href: 'https://mattomadsen.github.io/folketsmedie/' },
+  { id: 'skandale', label: 'Skandale', href: 'https://mattomadsen.github.io/skandale.dk/' },
+  { id: 'skattejaegeren', label: 'Skattejægeren', href: 'https://mattomadsen.github.io/skattejaegeren/' },
+] as const;
+---
+
+<nav class="house-switch" aria-label="Vælg sted">
+  <div class="house-switch__inner">
+    {sites.map((s) => (
+      <a
+        href={s.href}
+        aria-current={current === s.id ? 'page' : undefined}
+      >{s.label}</a>
+    ))}
+  </div>
+</nav>
