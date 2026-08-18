@@ -106,8 +106,14 @@ const desc = (description || '').replace(/\s+/g, ' ').trim().slice(0, 300);
           <a href={base} aria-current={current === 'home' ? 'page' : undefined}>Artikler</a>
           <a href={`${base}dokumentar/`} aria-current={current === 'dokumentar' ? 'page' : undefined}>Dokumentar</a>
           <a href={`${base}nyttige-links/`} aria-current={current === 'links' ? 'page' : undefined}>Links</a>
-          <a href={`${base}stoet/`} aria-current={current === 'stoet' ? 'page' : undefined}>Støt</a>
-          <a href={`${base}om/`} aria-current={current === 'om' ? 'page' : undefined}>Om</a>
+          <details class:list={['nav-drop', (current === 'om' || current === 'kontakt' || current === 'stoet') && 'is-on']}>
+            <summary>Om</summary>
+            <div class="nav-drop__menu">
+              <a href={`${base}om/`} aria-current={current === 'om' ? 'page' : undefined}>Om projektet</a>
+              <a href={`${base}kontakt/`} aria-current={current === 'kontakt' ? 'page' : undefined}>Kontakt os</a>
+              <a href={`${base}stoet/`} aria-current={current === 'stoet' ? 'page' : undefined}>Støt os</a>
+            </div>
+          </details>
         </nav>
         <SearchBox id="nav-q" compact />
       </div>
@@ -122,7 +128,9 @@ const desc = (description || '').replace(/\s+/g, ' ').trim().slice(0, 300);
       <div class="site-footer__inner">
         <p><strong>Folkets Medie</strong> — nyheder fra folket til folket</p>
         <p>
-          Video streamer fra Rumble, Bitchute m.fl. · Statisk arkiv ·
+          Video streamer fra Rumble, Bitchute m.fl. ·
+          <a href={`${base}om/`}>Om</a> ·
+          <a href={`${base}kontakt/`}>Kontakt</a> ·
           <a href={`${base}stoet/`}>Støt os</a>
         </p>
       </div>

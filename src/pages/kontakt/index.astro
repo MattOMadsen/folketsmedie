@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+const site = String(import.meta.env.SITE || 'https://mattomadsen.github.io').replace(/\/$/, '');
+---
+
+<BaseLayout
+  title="Kontakt os"
+  current="kontakt"
+  description="Skriv til Folkets Medie — også om Politiske skandaler og Skattejægeren."
+  pageUrl={`${site}${base}kontakt/`}
+>
+  <article class="narrow">
+    <header class="page-intro">
+      <h1>Kontakt os</h1>
+      <p>Én postkasse til alle tre rum.</p>
+    </header>
+
+    <div class="prose">
+      <p>
+        Skriv om artikler, politiske skandaler, Skattejægeren, fejl, kilder eller bare et hej.
+      </p>
+      <ul>
+        <li>
+          <strong>Mail:</strong>
+          <a href="mailto:mattomadsen@proton.me">mattomadsen@proton.me</a>
+        </li>
+      </ul>
+      <p>
+        Læs <a href={`${base}om/`}>om projektet</a>, eller
+        <a href={`${base}stoet/`}>støt os</a> hvis du vil hjælpe siden hjem.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

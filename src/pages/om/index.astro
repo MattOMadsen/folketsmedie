@@ -1,22 +1,57 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { data, cleanHtml } from '../../lib/content';
 
-const page = data.pages.om;
 const base = import.meta.env.BASE_URL;
+const site = String(import.meta.env.SITE || 'https://mattomadsen.github.io').replace(/\/$/, '');
 ---
 
-<BaseLayout title="Om Folkets Medie" current="om">
+<BaseLayout
+  title="Om projektet"
+  current="om"
+  description="Folkets Medie, politiske skandaler og Skattejægeren — ét hus, tre rum. Uafhængigt og uden reklamer."
+  pageUrl={`${site}${base}om/`}
+>
   <article class="narrow">
     <header class="page-intro">
-      <h1>{page?.title || 'Om Folkets Medie'}</h1>
+      <h1>Om projektet</h1>
+      <p>Ét hus. Tre rum. Samme udgiver.</p>
     </header>
-    {
-      page ? (
-        <div class="prose" set:html={cleanHtml(page.content, base)} />
-      ) : (
-        <p>Indhold mangler.</p>
-      )
-    }
+
+    <div class="prose">
+      <p>
+        Folkets Medie er et frit medie uden propaganda. Nyheder fra folket til folket. Under samme tag ligger
+        <a href={`${base}skandale/`}>Politiske skandaler</a> og
+        <a href={`${base}skattejaegeren/`}>Skattejægeren</a> — hver med sin side, men samme linje: kilder, ikke statsfortælling.
+      </p>
+      <p>
+        Siden ligger midlertidigt på GitHub Pages. Det er et værn, indtil der er råd til en rigtig hjemmeside.
+        Ingen reklamer. Ingen statsstøtte. Frivilligt.
+      </p>
+
+      <h2>De tre rum</h2>
+      <ul>
+        <li>
+          <strong>Folkets Medie</strong> — artikler og dokumentar.
+        </li>
+        <li>
+          <strong>Politiske skandaler</strong> — skandaler, støtte, netværk og brudte løfter i dansk politik.
+        </li>
+        <li>
+          <strong>Skattejægeren</strong> — danske skattekroner i ulandsbistand og NGO-puljer.
+        </li>
+      </ul>
+
+      <h2>Kontakt os</h2>
+      <p>
+        Skriv til <a href="mailto:mattomadsen@proton.me">mattomadsen@proton.me</a>, eller gå til
+        <a href={`${base}kontakt/`}>kontakt-siden</a>.
+      </p>
+
+      <h2>Støt os</h2>
+      <p>
+        Hjælp med at få det hele ud på en rigtig hjemmeside. MobilePay, overførsel og mere står på
+        <a href={`${base}stoet/`}>Støt os</a>.
+      </p>
+    </div>
   </article>
 </BaseLayout>
