@@ -3,7 +3,7 @@
 ## 2026-08-19 — ByggePiloten
 
 - Site: https://byggepiloten.dk
-- X: https://x.com/MattieDanmark/status/2078805816728248675 (beta åben 19. juli 2026)
+- X: https://x.com/Byggepiloten/status/2090016490237911467
 - Status: udgivet 19. aug. 2026. Slug: byggepiloten-gratis-bud-fra-lokale-haandvaerkere.
 
 ## 2026-08-18/19 — USA-rente + Asien-aktier
@@ -13,6 +13,7 @@
 - Status: gemt til senere. Matt overvejer udgivelse ca. kl. 14. Ikke udgivet.
 - Ekstra 19. aug.: https://x.com/robin_j_brooks/status/2089687660814008687 (globale obligationer, USA + Frankrig). Ligget i kladden, ikke skrevet ind.
 - Ekstra 19. aug.: https://x.com/puckrin/status/2090009878630940799 (35 % vs 100 % gæld/BNP; 0,1 % ≈ 379 mia. — tjek tal). Ikke skrevet ind.
+- Ekstra 19. aug.: https://x.com/BullTheoryio/status/2089744552429265076 (Korea 30Y 4,787 % rekord; intet gældsloft — tjek). Ikke skrevet ind.
 
 ## 2026-08-18 — England: betalt for ikke at levere mad
 

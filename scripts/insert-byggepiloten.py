@@ -22,7 +22,7 @@ article = {
 </figure>
 
 <figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter"><div class="wp-block-embed__wrapper">
-<blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="da" dir="ltr">ByggePiloten beta er nu åben! Endelig en nem og gratis måde at få håndværkere til dit næste projekt.</p>&mdash; Mattie Danmark (@MattieDanmark) <a href="https://twitter.com/MattieDanmark/status/2078805816728248675">July 19, 2026</a></blockquote>
+<blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="da" dir="ltr">Håndværkerfirma? Her er jeres næste jobs. På ByggePiloten ser I opgaver fra private i jeres område.</p>&mdash; ByggePiloten (@Byggepiloten) <a href="https://twitter.com/Byggepiloten/status/2090016490237911467">August 19, 2026</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div></figure>
 
@@ -66,7 +66,7 @@ article = {
 
 <p class="wp-block-paragraph"><strong>Kilder:</strong>
 <a href="https://byggepiloten.dk" target="_blank" rel="noopener">ByggePiloten</a> ·
-<a href="https://x.com/MattieDanmark/status/2078805816728248675" target="_blank" rel="noopener">@MattieDanmark på X, 19. juli 2026</a>.</p>
+<a href="https://x.com/Byggepiloten/status/2090016490237911467" target="_blank" rel="noopener">@Byggepiloten på X</a>.</p>
 """,
     "featured_image": "https://mattomadsen.github.io/folketsmedie/media/featured/byggepiloten-hus-vaerktoej.jpg",
     "featured_image_local": "/media/featured/byggepiloten-hus-vaerktoej.jpg",
