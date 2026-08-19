@@ -15,38 +15,12 @@ async function loadDetailsInBackground() {
   if (detailsLoadStarted || !window.politicians?.length || !window.SiteStats) return;
   detailsLoadStarted = true;
 
-  const all = window.politicians;
-  const visibleIds = new Set(getVisiblePoliticiansForEnrichment().map(p => p.id));
-
-  await SiteStats.enrichSummariesBatch(all, 6);
-
-  getVisiblePoliticiansForEnrichment().forEach(p => {
-    if (typeof window.updatePoliticianCard === 'function') {
-      window.updatePoliticianCard(p);
+  const needsCounts = window.politicians.some(p => !p._summaryLoaded);
+  if (needsCounts) {
+    await SiteStats.enrichSummariesBatch(window.politicians, 6);
+    if (typeof window.renderPoliticians === 'function') {
+      window.renderPoliticians();
     }
-  });
-
-  if (typeof window.renderStatsSnapshot === 'function') {
-    window.renderStatsSnapshot();
-  }
-
-  for (let i = 0; i < all.length; i += 3) {
-    const batch = all.slice(i, i + 3);
-    await Promise.all(
-      batch.map(p => window.loadPoliticianDetails(p).catch(() => p))
-    );
-
-    batch.forEach(p => {
-      if (visibleIds.has(p.id) && typeof window.updatePoliticianCard === 'function') {
-        window.updatePoliticianCard(p);
-      }
-    });
-
-    await new Promise(resolve => setTimeout(resolve, 16));
-  }
-
-  if (typeof window.buildCrossReferenceIndices === 'function') {
-    window.buildCrossReferenceIndices();
   }
 
   if (typeof window.renderStatsSnapshot === 'function') {
@@ -71,7 +45,7 @@ function showHomeLoadError(message) {
       <div class="col-span-full rounded-3xl border border-red-200 bg-red-50 dark:bg-red-950/40 dark:border-red-800 p-6 text-red-800 dark:text-red-200">
         <p class="font-semibold mb-2">Kunne ikke indlæse politikere</p>
         <p class="text-sm mb-4">${message}</p>
-        <button type="button" onclick="window.location.reload()" class="px-4 py-2 rounded-xl bg-[#C8102E] text-white text-sm font-medium">Prøv igen</button>
+        <button type="button" onclick="window.location.reload()" class="px-4 py-2 rounded-xl bg-[#e8b84a] text-[#0a0b0c] text-sm font-medium">Prøv igen</button>
       </div>
     `;
   }
@@ -209,11 +183,11 @@ function initFolketingFilter() {
   chips.forEach(chip => {
     chip.onclick = () => {
       chips.forEach(c => {
-        c.classList.remove('active', 'bg-[#C8102E]', 'text-white', 'shadow-sm');
+        c.classList.remove('active', 'bg-[#e8b84a]', 'bg-[#C8102E]', 'text-[#0a0b0c]', 'text-white', 'shadow-sm');
         c.classList.add('text-slate-700', 'dark:text-slate-300', 'hover:bg-white/60', 'dark:hover:bg-slate-700/60');
       });
 
-      chip.classList.add('active', 'bg-[#C8102E]', 'text-white', 'shadow-sm');
+      chip.classList.add('active', 'bg-[#e8b84a]', 'text-[#0a0b0c]', 'shadow-sm');
       chip.classList.remove('text-slate-700', 'dark:text-slate-300', 'hover:bg-white/60', 'dark:hover:bg-slate-700/60');
 
       currentFolketingFilter = chip.dataset.folketing || 'folketing';
@@ -237,7 +211,7 @@ function initPartyFilterChips() {
 
   let html = `
     <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory">
-      <button class="party-chip active shrink-0 snap-start px-5 py-2 text-sm font-medium rounded-full transition-colors bg-[#C8102E] text-white shadow-sm" data-party="">
+      <button class="party-chip active shrink-0 snap-start px-5 py-2 text-sm font-medium rounded-full transition-colors bg-[#e8b84a] text-[#0a0b0c] shadow-sm" data-party="">
         Alle partier
       </button>
   `;
@@ -263,11 +237,11 @@ function setupPartyFilterListeners() {
     if (!chip) return;
 
     container.querySelectorAll('.party-chip').forEach(c => {
-      c.classList.remove('active', 'bg-[#C8102E]', 'text-white', 'shadow-sm');
+      c.classList.remove('active', 'bg-[#e8b84a]', 'bg-[#C8102E]', 'text-[#0a0b0c]', 'text-white', 'shadow-sm');
       c.classList.add('border-slate-300', 'dark:border-slate-600', 'text-slate-700', 'dark:text-slate-300', 'hover:bg-slate-100', 'dark:hover:bg-slate-700');
     });
 
-    chip.classList.add('active', 'bg-[#C8102E]', 'text-white', 'shadow-sm');
+    chip.classList.add('active', 'bg-[#e8b84a]', 'text-[#0a0b0c]', 'shadow-sm');
     chip.classList.remove('border-slate-300', 'dark:border-slate-600', 'text-slate-700', 'dark:text-slate-300', 'hover:bg-slate-100', 'dark:hover:bg-slate-700');
 
     currentPartyFilter = chip.dataset.party || '';

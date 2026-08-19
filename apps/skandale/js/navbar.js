@@ -8,7 +8,7 @@ function loadNavbar() {
             <div class="house-switch__inner">
                 <a href="https://mattomadsen.github.io/folketsmedie/">Folkets Medie</a>
                 <a href="https://mattomadsen.github.io/folketsmedie/skandale/" aria-current="page">Politiske skandaler</a>
-                <a href="https://mattomadsen.github.io/skattejaegeren/">Skattejægeren</a>
+                <a href="https://mattomadsen.github.io/folketsmedie/skattejaegeren/">Skattejægeren</a>
             </div>
         </nav>
         <div class="support-bar no-print" role="region" aria-label="Støt projektet">

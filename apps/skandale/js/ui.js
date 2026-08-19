@@ -115,7 +115,7 @@ function buildPoliticianCardHTML(politician) {
 
   return `
     <div onclick="window.openPoliticianModal(${politician.id})"
-         class="politician-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 cursor-pointer hover:border-[#C8102E]/30 dark:hover:border-[#C8102E]/50 shadow-sm hover:shadow-md group"
+         class="politician-card bg-[#161a1c] border border-[#2a3236] rounded-3xl p-6 cursor-pointer hover:border-[#e8b84a]/50 shadow-sm hover:shadow-md group"
          data-id="${politician.id}">
       <div class="flex items-start justify-between mb-4">
         ${avatarHTML}
@@ -126,15 +126,15 @@ function buildPoliticianCardHTML(politician) {
         </div>
       </div>
 
-      <div class="font-bold text-xl mb-1 group-hover:text-[#C8102E] transition-colors">${politician.name}</div>
+      <div class="font-bold text-xl mb-1 group-hover:text-[#e8b84a] transition-colors">${politician.name}</div>
 
       <div class="flex items-center gap-x-3 text-xs text-slate-500 dark:text-slate-400 mb-2">
         <div class="flex items-center gap-x-1">
-          <i class="fa-solid fa-exclamation-triangle text-[#C8102E]"></i>
+          <i class="fa-solid fa-exclamation-triangle text-[#e8b84a]"></i>
           <span data-stat="scandals">${scandalLabel} skandaler</span>
         </div>
         <div class="flex items-center gap-x-1">
-          <i class="fa-solid fa-link text-[#C8102E]"></i>
+          <i class="fa-solid fa-link text-[#e8b84a]"></i>
           <span data-stat="promises">${brokenLabel} løfter</span>
         </div>
       </div>

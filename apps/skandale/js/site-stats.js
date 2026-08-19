@@ -10,6 +10,8 @@ function getSiteBasePath() {
 
 const SiteStats = {
   getBasePath: getSiteBasePath,
+  _jsonCache: new Map(),
+  _homeIndexPromise: null,
   PARTY_SHORT: {
     'Socialdemokratiet': 'S',
     'Danmarksdemokraterne': 'DD',
@@ -34,14 +36,26 @@ const SiteStats = {
   },
 
   async fetchJSON(path) {
+    const url = this.resolvePath(path);
+    if (this._jsonCache.has(url)) return this._jsonCache.get(url);
     try {
-      const res = await fetch(this.resolvePath(path));
+      const res = await fetch(url);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
+      const data = await res.json();
+      this._jsonCache.set(url, data);
+      return data;
     } catch (e) {
       console.warn(`[SiteStats] Kunne ikke hente ${path}:`, e);
+      this._jsonCache.set(url, null);
       return null;
     }
+  },
+
+  async loadHomeIndex() {
+    if (!this._homeIndexPromise) {
+      this._homeIndexPromise = this.fetchJSON('data/home-index.json');
+    }
+    return this._homeIndexPromise;
   },
 
   formatDaDate(date = new Date()) {
@@ -153,6 +167,10 @@ const SiteStats = {
   },
 
   async getPoliticianSlugs() {
+    const home = await this.loadHomeIndex();
+    if (home?.politicians?.length) {
+      return home.politicians.map((p) => p.slug).filter(Boolean);
+    }
     const manifest = await this.fetchJSON('data/politicians/manifest.json');
     return manifest?.politicians || [];
   },
@@ -162,6 +180,13 @@ const SiteStats = {
   },
 
   async loadPoliticianCores(slugs) {
+    const home = await this.loadHomeIndex();
+    if (home?.politicians?.length) {
+      const wanted = slugs && slugs.length ? new Set(slugs) : null;
+      return home.politicians
+        .filter((p) => p && (!wanted || wanted.has(p.slug)))
+        .map((p) => ({ ...p, _summaryLoaded: true }));
+    }
     const results = await Promise.all(
       slugs.map(async (slug) => {
         const core = await this.loadPoliticianCore(slug);
@@ -244,6 +269,10 @@ const SiteStats = {
 
   async enrichPoliticianSummary(politician) {
     if (!politician || politician._summaryLoaded) return politician;
+    if (typeof politician._scandalCount === 'number') {
+      politician._summaryLoaded = true;
+      return politician;
+    }
     const slug = politician.slug || this.slugFromName(politician.name);
     const counts = await this.loadCountsForSlug(slug);
     politician._scandalCount = counts.scandalCount;

@@ -6,11 +6,12 @@
     <meta name="theme-color" content="#0a0b0c">
     <title>Politiske skandaler – Folkets Medie</title>
     <link rel="stylesheet" href="css/tailwind.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="manifest" href="manifest.json">
-    <!-- Dark mode script (loades tidligt for at sikre toggle virker) -->
-    <script src="js/dark-mode.js"></script>
+    <script src="js/dark-mode.js?v=2026-08-19"></script>
+    <script src="js/navbar.js?v=2026-08-19"></script>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
 
@@ -52,7 +53,7 @@
 
         <div class="flex flex-col gap-4 mb-6">
             <div id="folketing-filter" class="inline-flex self-start rounded-full border border-slate-200 dark:border-slate-700 p-1 bg-slate-100 dark:bg-slate-800">
-                <button data-folketing="folketing" class="folketing-chip active shrink-0 px-5 py-2 text-sm font-medium rounded-full transition-all bg-[#C8102E] text-white shadow-sm">
+                <button data-folketing="folketing" class="folketing-chip active shrink-0 px-5 py-2 text-sm font-medium rounded-full transition-all bg-[#e8b84a] text-[#0a0b0c] shadow-sm">
                     Folketinget nu
                 </button>
                 <button data-folketing="all" class="folketing-chip shrink-0 px-5 py-2 text-sm font-medium rounded-full transition-all text-slate-700 dark:text-slate-300 hover:bg-white/60 dark:hover:bg-slate-700/60">
@@ -71,7 +72,7 @@
         <!-- Infinite Scroll Loader (ny) -->
         <div id="infinite-scroll-loader" class="hidden justify-center items-center py-8">
             <div class="flex items-center gap-x-3 text-slate-500">
-                <i class="fa-solid fa-spinner fa-spin text-[#C8102E]"></i>
+                <i class="fa-solid fa-spinner fa-spin text-[#e8b84a]"></i>
                 <span class="text-sm">Indlæser flere politikere...</span>
             </div>
         </div>
@@ -81,42 +82,42 @@
             Alle politikere er vist.
         </div>
     </div>
-    <script src="js/site-stats.js?v=2026-06-19"></script>
-    <script src="js/site-meta.js?v=2026-06-19"></script>
-    <script src="js/skeleton-loader.js?v=2026-06-19"></script>
-    <script src="js/data.js?v=2026-06-19"></script>
-    <script src="js/cross-reference.js?v=2026-06-19"></script>
-    <script src="js/stats-snapshot.js?v=2026-06-19"></script>
-    <script src="js/ui.js?v=2026-06-19"></script>
-    <script src="js/search.js?v=2026-06-19"></script>
-    <script src="js/version.js?v=2026-06-19"></script>
-    <script src="js/main.js?v=2026-06-19"></script>
+    <script src="js/site-stats.js?v=2026-08-19"></script>
+    <script src="js/site-meta.js?v=2026-08-19"></script>
+    <script src="js/skeleton-loader.js?v=2026-08-19"></script>
+    <script src="js/data.js?v=2026-08-19"></script>
+    <script src="js/cross-reference.js?v=2026-08-19"></script>
+    <script src="js/stats-snapshot.js?v=2026-08-19"></script>
+    <script src="js/ui.js?v=2026-08-19"></script>
+    <script src="js/search.js?v=2026-08-19"></script>
+    <script src="js/version.js?v=2026-08-19"></script>
+    <script src="js/main.js?v=2026-08-19"></script>
 
     <!-- Modal scripts -->
-    <script src="js/modal-core.js?v=2026-06-19"></script>
-    <script src="js/modal-scandal.js?v=2026-06-19"></script>
-    <script src="js/modal-comments.js?v=2026-06-19"></script>
-    <script src="js/modal-donor.js?v=2026-06-19"></script>
-    <script src="js/modal-affiliations.js?v=2026-06-19"></script>
-    <script src="js/modal-broken-promises.js?v=2026-06-19"></script>
-    <script src="js/modal-stats.js?v=2026-06-19"></script>
-    <script src="js/network-profiles.js?v=2026-06-19"></script>
-    <script src="js/modal-networks.js?v=2026-06-19"></script>
-    <script src="js/modal-network-overview.js?v=2026-06-19"></script>
-    <script src="js/modal-party.js?v=2026-06-19"></script>
-    <script src="js/config/secrets.public.js?v=2026-06-19"></script>
-    <script src="js/supabase-client.js?v=2026-06-19"></script>
-    <script src="js/supabase-data.js?v=2026-06-19"></script>
-    <script src="js/modal-admin.js?v=2026-06-19"></script>
-    <script src="js/modal-add-scandal.js?v=2026-06-19"></script>
+    <script src="js/modal-core.js?v=2026-08-19"></script>
+    <script src="js/modal-scandal.js?v=2026-08-19"></script>
+    <script src="js/modal-comments.js?v=2026-08-19"></script>
+    <script src="js/modal-donor.js?v=2026-08-19"></script>
+    <script src="js/modal-affiliations.js?v=2026-08-19"></script>
+    <script src="js/modal-broken-promises.js?v=2026-08-19"></script>
+    <script src="js/modal-stats.js?v=2026-08-19"></script>
+    <script src="js/network-profiles.js?v=2026-08-19"></script>
+    <script src="js/modal-networks.js?v=2026-08-19"></script>
+    <script src="js/modal-network-overview.js?v=2026-08-19"></script>
+    <script src="js/modal-party.js?v=2026-08-19"></script>
+    <script src="js/config/secrets.public.js?v=2026-08-19"></script>
+    <script src="js/supabase-client.js?v=2026-08-19"></script>
+    <script src="js/supabase-data.js?v=2026-08-19"></script>
+    <script src="js/modal-admin.js?v=2026-08-19"></script>
+    <script src="js/modal-add-scandal.js?v=2026-08-19"></script>
 
     <!-- jsPDF bibliotek (tilføjet så PDF-eksport virker) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="js/modal-pdf-export.js?v=2026-06-19"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <script src="js/modal-pdf-export.js?v=2026-08-19"></script>
 
-    <script src="js/modal-voting.js?v=2026-06-19"></script>
-    <script src="js/modal-share.js?v=2026-06-19"></script>
-    <script src="js/modal-helpers.js?v=2026-06-19"></script>
+    <script src="js/modal-voting.js?v=2026-08-19"></script>
+    <script src="js/modal-share.js?v=2026-08-19"></script>
+    <script src="js/modal-helpers.js?v=2026-08-19"></script>
 
     <!-- Sikkerhedsnet + Robust auto-open fra sammenlign.html -->
     <script>
@@ -156,8 +157,7 @@
         });
     </script>
 
-    <script src="js/pwa.js?v=2026-06-19"></script>
-    <script src="js/navbar.js?v=2026-06-19"></script>
+    <script src="js/pwa.js?v=2026-08-19" defer></script>
 
 </body>
 </html>

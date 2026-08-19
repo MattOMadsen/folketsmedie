@@ -24,6 +24,9 @@ function renderStatsSnapshot() {
                     severityCount++;
                 }
             });
+        } else if (typeof p._severitySum === 'number' && p._severityN) {
+            totalSeverity += p._severitySum;
+            severityCount += p._severityN;
         }
     });
     const avgSeverity = severityCount > 0 ? (totalSeverity / severityCount).toFixed(1) : '—';

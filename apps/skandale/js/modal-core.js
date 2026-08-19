@@ -129,7 +129,6 @@ async function showPoliticianModal(politicianId, targetScandalId = null) {
     }
   }
 
-  // Load scandals dynamically if needed
   if (!politician.scandals && politician.scandalsFile) {
     try {
       const response = await fetch(politician.scandalsFile);
@@ -141,10 +140,6 @@ async function showPoliticianModal(politicianId, targetScandalId = null) {
       console.warn('Kunne ikke loade scandals for', politician.name, e);
       politician.scandals = [];
     }
-  }
-
-  if (typeof window.ensureAllDetailsLoaded === 'function') {
-    await window.ensureAllDetailsLoaded();
   }
 
   currentPolitician = politician;
