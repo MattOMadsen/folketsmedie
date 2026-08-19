@@ -72,8 +72,8 @@ article = {
 <a href="https://byggepiloten.dk" target="_blank" rel="noopener">ByggePiloten</a> ·
 <a href="https://x.com/Byggepiloten/status/2090016490237911467" target="_blank" rel="noopener">@Byggepiloten på X</a>.</p>
 """,
-    "featured_image": "https://mattomadsen.github.io/folketsmedie/media/featured/byggepiloten-hus-vaerktoej.jpg",
-    "featured_image_local": "/media/featured/byggepiloten-hus-vaerktoej.jpg",
+    "featured_image": "https://mattomadsen.github.io/folketsmedie/media/featured/byggepiloten-dine-opgaver.jpg",
+    "featured_image_local": "/media/featured/byggepiloten-dine-opgaver.jpg",
     "source": "manual",
 }
 
