@@ -1,5 +1,25 @@
 # Emner til senere (ingen kladde — først når Matt spørger)
 
+## 2026-08-19 — ByggePiloten
+
+- Site: https://byggepiloten.dk
+- X: https://x.com/MattieDanmark/status/2078805816728248675 (beta åben 19. juli 2026)
+- Status: udgivet 19. aug. 2026. Slug: byggepiloten-gratis-bud-fra-lokale-haandvaerkere.
+
+## 2026-08-18/19 — USA-rente + Asien-aktier
+
+- Links: https://x.com/BullTheoryio/status/2089701926414012875 · https://x.com/macropaperr/status/2089672295484957049 · https://x.com/BullTheoryio/status/2089934848786157738
+- Kladde: `data/kladde-us-rente-asien.md`
+- Status: gemt til senere. Matt overvejer udgivelse ca. kl. 14. Ikke udgivet.
+- Ekstra 19. aug.: https://x.com/robin_j_brooks/status/2089687660814008687 (globale obligationer, USA + Frankrig). Ligget i kladden, ikke skrevet ind.
+- Ekstra 19. aug.: https://x.com/puckrin/status/2090009878630940799 (35 % vs 100 % gæld/BNP; 0,1 % ≈ 379 mia. — tjek tal). Ikke skrevet ind.
+
+## 2026-08-18 — England: betalt for ikke at levere mad
+
+- Link: https://x.com/dejanirasilveir/status/2089798927839007199
+- Kladde: `data/kladde-uk-landmaend-sfi.md`
+- Status: kladde gemt 19. aug. 2026 (`data/kladde-uk-landmaend-sfi.md`). Matt tænker over udgivelse. Ikke udgivet.
+
 ## 2026-08-18 — Morens skyldig (Fauci/NIAID)
 
 - Link: https://x.com/KanekoaTheGreat/status/2089893427932733783
