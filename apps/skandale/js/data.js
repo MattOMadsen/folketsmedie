@@ -21,10 +21,12 @@ async function loadPoliticians() {
     politicians = cores.map((core) => ({
       ...core,
       slug: core.slug || SiteStats.slugFromName(core.name),
-      scandals: [],
-      affiliations: [],
-      economicSupport: [],
-      brokenPromises: [],
+      scandals: Array.isArray(core.scandals) ? core.scandals : [],
+      affiliations: Array.isArray(core.affiliations) ? core.affiliations : [],
+      economicSupport: Array.isArray(core.economicSupport) ? core.economicSupport : [],
+      brokenPromises: Array.isArray(core.brokenPromises) ? core.brokenPromises : [],
+      _scandalCount: typeof core._scandalCount === 'number' ? core._scandalCount : core.scandals?.length,
+      _brokenCount: typeof core._brokenCount === 'number' ? core._brokenCount : core.brokenPromises?.length,
       _detailsLoaded: false
     }));
 

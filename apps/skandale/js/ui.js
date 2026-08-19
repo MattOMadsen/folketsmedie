@@ -57,25 +57,32 @@ window.openPoliticianModal = function(id) {
 };
 
 function getPoliticianStats(politician) {
-  const scandalCount = politician.scandals
-    ? politician.scandals.length
-    : (politician._scandalCount ?? null);
-  const brokenCount = politician.brokenPromises
-    ? politician.brokenPromises.length
-    : (politician._brokenCount ?? null);
+  const loadedScandals = Array.isArray(politician.scandals) && politician.scandals.length > 0
+    ? politician.scandals
+    : null;
+  const loadedPromises = Array.isArray(politician.brokenPromises) && politician.brokenPromises.length > 0
+    ? politician.brokenPromises
+    : null;
+
+  const scandalCount = loadedScandals
+    ? loadedScandals.length
+    : (typeof politician._scandalCount === 'number' ? politician._scandalCount : null);
+  const brokenCount = loadedPromises
+    ? loadedPromises.length
+    : (typeof politician._brokenCount === 'number' ? politician._brokenCount : null);
 
   let avgSeverity = null;
   let userAvgSeverity = null;
   let userRatedCount = 0;
 
-  if (politician.scandals && politician.scandals.length > 0) {
-    const severities = politician.scandals.map(s => s.ourSeverity || s.severity || 3);
+  if (loadedScandals) {
+    const severities = loadedScandals.map(s => s.ourSeverity || s.severity || 3);
     avgSeverity = severities.reduce((a, b) => a + b, 0) / severities.length;
 
     const ratings = getUserRatingsCache();
     const polId = politician.id || politician.name.replace(/\s+/g, '-').toLowerCase();
     let userSum = 0;
-    politician.scandals.forEach(s => {
+    loadedScandals.forEach(s => {
       const scId = s.id || s.title.replace(/\s+/g, '-').toLowerCase();
       const userRating = ratings.get(`userSeverity_${polId}_${scId}`) || 0;
       if (userRating > 0) {
@@ -86,6 +93,8 @@ function getPoliticianStats(politician) {
     if (userRatedCount > 0) {
       userAvgSeverity = userSum / userRatedCount;
     }
+  } else if (typeof politician._severitySum === 'number' && politician._severityN > 0) {
+    avgSeverity = politician._severitySum / politician._severityN;
   }
 
   return { scandalCount, brokenCount, avgSeverity, userAvgSeverity, userRatedCount };
