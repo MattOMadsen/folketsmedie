@@ -1,5 +1,11 @@
 # Emner til senere (ingen kladde — først når Matt spørger)
 
+## 2026-08-18 — Morens skyldig (Fauci/NIAID)
+
+- Link: https://x.com/KanekoaTheGreat/status/2089893427932733783
+- Kladde: `data/kladde-morens.md` (sprog rettet 19. aug. 2026)
+- Status: ikke udgivet. Matt kører solcreme først.
+
 ## 2026-08-17 — Florida: ivermectin-studie mod kræft
 
 - Link: https://x.com/JoeTippensl/status/2089487504734879965
@@ -18,7 +24,7 @@
 - Kilder i tråden:
   - https://www.thefocalpoints.com/p/study-finds-sunscreen-use-linked
   - https://www.valisure.com/valisure-newsroom/valisure-detects-benzene-in-sunscreen
-- Status: gemt. Ikke skrevet. Ikke publiceret.
+- Status: udgivet 19. aug. 2026. Slug: solcreme-hudkraeft-uk-biobank-benzen-hulscher.
 
 ## 2026-08-15 — EU: ansigtskamera i nye biler
 
