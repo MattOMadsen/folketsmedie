@@ -125,7 +125,7 @@ article = {
     "id": 1000014,
     "title": "Kent Nielsen sidder inde — på et forkert grundlag, siger aktindsigten",
     "slug": "kent-nielsen-faengsel-119a-statsstyret-danmarks-faengsler",
-    "date": "2026-08-19 07:00:00",
+    "date": "2026-08-19 06:00:00",
     "excerpt": "Statsstyret har fået aktindsigt i straffen. Kent Nielsen er kun dømt efter § 119 a. Alligevel brugte Danmarks Fængsler trusler og personfarlig kriminalitet til at sende ham ind — to arbejdsdage før afsoning, uden klagevej.",
     "content": CONTENT,
     "featured_image": "https://mattomadsen.github.io/folketsmedie/media/featured/kent-nielsen-faengsel-gang.jpg",
