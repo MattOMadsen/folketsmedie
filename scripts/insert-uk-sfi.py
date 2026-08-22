@@ -9,7 +9,7 @@ article = {
     "id": 1000020,
     "title": "I England kan det bedre betale sig at lade marken stå",
     "slug": "england-bedre-betalt-for-tom-mark-end-for-broed-sfi",
-    "date": "2026-08-22 10:15:00",
+    "date": "2026-08-22 10:08:00",
     "excerpt": "En landmand fik 2.500 pund i tre år for ikke at levere mad. Det er hans lille slat. Staten har selv talt 340.000 hektar ud af drift. Og ministeriet har indrømmet, at pengene blev for gode til at så korn.",
     "content": """<p class="wp-block-paragraph">I en tid, hvor I får at vide, at Europa skal brødføde sig selv, betaler England landmænd for at lade marken stå.</p>
 
