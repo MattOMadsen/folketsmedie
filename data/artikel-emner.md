@@ -2,6 +2,13 @@
 
 Tjek altid live forsiden og `data/export.json` før du foreslår næste artikel. Kladde-filer betyder ikke “ikke ude”.
 
+## 2026-08-22 — GTA 6 uden disk / ejerskab
+
+- X: https://x.com/IamGrokDK/status/2091088360748052677
+- Kladde: `data/kladde-gta6-ingen-disk.md`
+- Status: **udgivet 22. aug. 2026 kl. 17:00.** Slug: gta-6-uden-disk-kode-i-aesken-ejerskab.
+- Fakta: Rockstar/BBC/IGN — fysisk GTA 6 = kode i æske. 30-dages DRM: rapporteret, Sony siger ét tjek. «Kill GTA 6 når 7 kommer» = spekulation.
+
 ## 2026-08-22 — Hvide / Europas andel af verden
 
 - Kladde: `data/kladde-global-hvid-andel.md`
