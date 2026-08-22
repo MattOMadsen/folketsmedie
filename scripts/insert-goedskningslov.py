@@ -9,7 +9,7 @@ article = {
     "id": 1000021,
     "title": "De skal så nu. Reglerne kommer til efteråret. Så kan de pløje det op igen",
     "slug": "landmaend-stormoede-goedskningslov-sproejteforbud-odense",
-    "date": "2026-08-22 12:30:00",
+    "date": "2026-08-22 14:00:00",
     "excerpt": "Landbrug & Fødevarer kalder landmænd til Odense 31. august. Gødskningsloven ventes vedtaget i september — uden de færdige regler. Ministeren har afvist at undtage grøntsager.",
     "content": """<p class="wp-block-paragraph">I en tid, hvor magten kalder det grønt at tage jord ud af drift, skal danske landmænd så næste års afgrøder uden at kende næste års regler.</p>
 
