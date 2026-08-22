@@ -1,5 +1,29 @@
 # Emner til senere (ingen kladde — først når Matt spørger)
 
+Tjek altid live forsiden og `data/export.json` før du foreslår næste artikel. Kladde-filer betyder ikke “ikke ude”.
+
+## 2026-08-22 — Gødskningslov / stormøde Odense 31. aug.
+
+- Kladde: `data/kladde-goedskningslov-stormoede.md`
+- Status: udgivelse planlagt **22. aug. 2026 kl. 12:30**. Slug: landmaend-stormoede-goedskningslov-sproejteforbud-odense.
+- Binder til vildmosekartoflen (live) og UK-SFI (udgives først samme dag).
+
+## 2026-08-20/21 — Ramses II / Mesen / Horus-vejen
+
+- X: https://x.com/Daily_MailUS/status/2090460599159333301
+- Kladde: `data/kladde-ramses-mesen.md`
+- Status: kladde 21. aug. 2026. Ikke udgivet. Matt skal godkende.
+
+## 2026-08-20 — Bessent / Iran-olie / Venezuela
+
+- Live slug: usa-bessent-iran-olie-venezuela-kina
+- Status: **udgivet 20. aug. 2026**.
+
+## 2026-08-20 — Nadja Isaksen / Kent Nielsen
+
+- Live: https://mattomadsen.github.io/folketsmedie/artikel/nadja-isaksen-afviser-kent-nielsen-119a-afsoning/
+- Status: **udgivet 20. aug. 2026** (seneste på forsiden). Ikke næste emne.
+
 ## 2026-08-19 — ByggePiloten
 
 - Site: https://byggepiloten.dk
@@ -14,18 +38,21 @@
 - Ekstra 19. aug.: https://x.com/robin_j_brooks/status/2089687660814008687 (globale obligationer, USA + Frankrig). Ligget i kladden, ikke skrevet ind.
 - Ekstra 19. aug.: https://x.com/puckrin/status/2090009878630940799 (35 % vs 100 % gæld/BNP; 0,1 % ≈ 379 mia. — tjek tal). Ikke skrevet ind.
 - Ekstra 19. aug.: https://x.com/BullTheoryio/status/2089744552429265076 (Korea 30Y 4,787 % rekord; intet gældsloft — tjek). Ikke skrevet ind.
+- Ekstra 19. aug.: https://x.com/SternDrewCrypto/status/2089686224936337850 (Ackman 2020 / guld+swaps nu — tjek tal). Ikke skrevet ind.
+- Ekstra 19. aug.: https://x.com/leshka_eth/status/2089922581638041986 (Jamie Dimon: gearing, “enemy within”, London — tjek citat). Ikke skrevet ind.
+- Ekstra 19. aug.: https://x.com/BullTheoryio/status/2090028796665831771 (Indien, udenlandsk kapital — tjek BBG). Ikke skrevet ind.
 
 ## 2026-08-18 — England: betalt for ikke at levere mad
 
 - Link: https://x.com/dejanirasilveir/status/2089798927839007199
 - Kladde: `data/kladde-uk-landmaend-sfi.md`
-- Status: kladde gemt 19. aug. 2026 (`data/kladde-uk-landmaend-sfi.md`). Matt tænker over udgivelse. Ikke udgivet.
+- Status: **udgivet 22. aug. 2026** (formiddag). Slug: england-bedre-betalt-for-tom-mark-end-for-broed-sfi.
 
 ## 2026-08-18 — Morens skyldig (Fauci/NIAID)
 
 - Link: https://x.com/KanekoaTheGreat/status/2089893427932733783
 - Kladde: `data/kladde-morens.md` (sprog rettet 19. aug. 2026)
-- Status: ikke udgivet. Matt kører solcreme først.
+- Status: **udgivet 20. aug. 2026.** Slug: faucis-raadgiver-morens-skyldig-gmail-foia-ecohealth.
 
 ## 2026-08-17 — Florida: ivermectin-studie mod kræft
 
