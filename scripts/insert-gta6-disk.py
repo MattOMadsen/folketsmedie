@@ -9,7 +9,7 @@ article = {
     "id": 1000023,
     "title": "Du køber ikke GTA 6. Du lejer en tilladelse",
     "slug": "gta-6-uden-disk-kode-i-aesken-ejerskab",
-    "date": "2026-08-22 17:00:00",
+    "date": "2026-08-22 15:25:00",
     "excerpt": "Rockstar sender GTA 6 ud i en æske uden disk — kun en downloadkode. Det handler ikke om plastik. Det handler om, at du ikke længere ejer det, du har betalt for.",
     "content": """<p class="wp-block-paragraph">I en tid, hvor streamingtjenester, cloud og abonnement på alt har vænnet folk til at eje ingenting, gør Rockstar det officielt: den "fysiske" udgave af Grand Theft Auto 6 indeholder <strong>ingen disk</strong>. Bare en kode i en æske. Du betaler fuld pris. Du får en licens.</p>
 
