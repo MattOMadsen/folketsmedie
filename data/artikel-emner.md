@@ -2,11 +2,15 @@
 
 Tjek altid live forsiden og `data/export.json` før du foreslår næste artikel. Kladde-filer betyder ikke “ikke ude”.
 
+## 2026-08-22 — Hvide / Europas andel af verden
+
+- Kladde: `data/kladde-global-hvid-andel.md`
+- Status: udgivelse **22. aug. 2026 kl. 11:30**. Slug: hvide-allerede-minoritet-europa-andel-seks-procent-fn
+
 ## 2026-08-22 — Gødskningslov / stormøde Odense 31. aug.
 
 - Kladde: `data/kladde-goedskningslov-stormoede.md`
-- Status: udgivelse planlagt **22. aug. 2026 kl. 12:30**. Slug: landmaend-stormoede-goedskningslov-sproejteforbud-odense.
-- Binder til vildmosekartoflen (live) og UK-SFI (udgives først samme dag).
+- Status: udgivelse **rykket til 22. aug. 2026 kl. 14:00**. Slug: landmaend-stormoede-goedskningslov-sproejteforbud-odense.
 
 ## 2026-08-20/21 — Ramses II / Mesen / Horus-vejen
 
