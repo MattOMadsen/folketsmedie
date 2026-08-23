@@ -2,6 +2,20 @@
 
 Tjek altid live forsiden og `data/export.json` før du foreslår næste artikel. Kladde-filer betyder ikke “ikke ude”.
 
+## 2026-08-23 — CHD RICO mod AAP
+
+- X: https://x.com/NicHulscher/status/2091188441262301551 (22. aug.) · CHD: https://x.com/ChildrensHD/status/2090861494770573665 (21. aug., skriver "today" — forkert dato)
+- Kladde: `data/kladde-chd-aap-rico.md`
+- Status: **udgivet 23. aug. 2026 kl. 10:50.** Slug: chd-rico-aap-vaccine-shaw-jaffe.
+- Fakta: Shaw v. AAP, 1:26-cv-00171, D.D.C., indgivet **21. jan. 2026**. Afvisningsbegæring 3. apr. Svar 9. jun. AAP reply 14. jul. Ingen dom. Hulschers "lige ramt" = genbrug.
+
+## 2026-08-23 — Korea + Italien: covid-stik og kræft
+
+- X: https://x.com/DawnsMission/status/2091222843480834333
+- Kladde: `data/kladde-korea-italien-kraeft-covid-stik.md`
+- Status: **kladde 23. aug. 2026. Matt skal godkende. Ikke udgivet.**
+- Fakta: Kim m.fl. Biomarker Research 26. sept. 2025 (8,4 mio., 6 cancer-HR). Pescara EXCLI juli 2025 (296k, cancer-indlæggelse HR 1,23, lavere all-cause død). X-opslag: bryst +54 % / blære matcher ikke Korea-tabellen. Dalgleish = citat.
+
 ## 2026-08-23 — Elnet / akutplan / datacentre bagerst
 
 - Kladde: `data/kladde-elnet-akutplan.md`
