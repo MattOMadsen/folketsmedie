@@ -2,6 +2,12 @@
 
 Tjek altid live forsiden og `data/export.json` før du foreslår næste artikel. Kladde-filer betyder ikke “ikke ude”.
 
+## 2026-08-23 — Elnet / akutplan / datacentre bagerst
+
+- Kladde: `data/kladde-elnet-akutplan.md`
+- Status: **udgivet 23. aug. 2026 kl. 08:15.** Slug: elnet-akutplan-datacentre-bagerst-nawa.
+- Fakta: KEFM 29. jun. politisk forståelse (9 partier). Lovforslag fremsat 20. aug. efter 77 høringssvar. Fire kategorier, store datacentre i 4. Ikke i kraft endnu. Andel: dyreste sommer siden 2022.
+
 ## 2026-08-22 — GTA 6 uden disk / ejerskab
 
 - X: https://x.com/IamGrokDK/status/2091088360748052677
