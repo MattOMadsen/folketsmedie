@@ -106,9 +106,10 @@ async function initializeEverything() {
       return;
     }
 
+    const alreadyHydrated = loaded.every(p => p._detailsLoaded);
     const visible = getVisiblePoliticiansForEnrichment();
 
-    if (window.SiteStats) {
+    if (!alreadyHydrated && window.SiteStats) {
       await SiteStats.enrichSummariesBatch(visible, visible.length || 8);
     }
 
@@ -131,7 +132,11 @@ async function initializeEverything() {
       window.setVersion();
     }
 
-    if ('requestIdleCallback' in window) {
+    if (alreadyHydrated) {
+      if (typeof window.buildCrossReferenceIndices === 'function') {
+        window.buildCrossReferenceIndices();
+      }
+    } else if ('requestIdleCallback' in window) {
       requestIdleCallback(() => loadDetailsInBackground(), { timeout: 2500 });
     } else {
       setTimeout(loadDetailsInBackground, 400);
