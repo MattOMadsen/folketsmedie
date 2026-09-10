@@ -32,23 +32,20 @@ html {
 }
 
 body.app-shell {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  height: 100dvh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   overflow: hidden;
 }
 
 .app-frame {
-  flex: 1;
   width: 100%;
   min-height: 0;
+  height: 100%;
   border: 0;
   background: #0a0b0c;
   display: block;
-}
-
-.app-shell .support-bar {
-  flex-shrink: 0;
 }
 
 body {
@@ -158,8 +155,20 @@ img {
 }
 
 .support-bar--foot {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 45;
   border-bottom: none;
   border-top: 1px solid rgba(232, 184, 74, 0.35);
+}
+
+body.app-shell .support-bar--foot {
+  position: relative;
+  left: auto;
+  right: auto;
+  bottom: auto;
 }
 
 /* —— Header —— */
@@ -1113,7 +1122,7 @@ img {
 /* —— Footer —— */
 .site-footer {
   border-top: 1px solid var(--border-soft);
-  padding: 2rem 1.25rem 2.5rem;
+  padding: 2rem 1.25rem 5.5rem;
   background: var(--bg-soft);
 }
 
