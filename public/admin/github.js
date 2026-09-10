@@ -100,9 +100,15 @@ window.FMGit = {
   async rawJson(path) {
     // Ingen Authorization: den header udløser CORS-preflight, som raw.githubusercontent.com afviser.
     const url = `https://raw.githubusercontent.com/${this.repo}/${this.branch}/${path}`;
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`Kunne ikke hente ${path} (${res.status})`);
-    return res.json();
+    try {
+      const res = await fetch(url);
+      if (res.ok) return res.json();
+    } catch {
+      /* fald tilbage til GitHub Contents/blob-API */
+    }
+    const file = await this.getJson(path, null);
+    if (file.data != null) return file.data;
+    throw new Error(`Kunne ikke hente ${path}`);
   },
 
   async listDir(path) {
