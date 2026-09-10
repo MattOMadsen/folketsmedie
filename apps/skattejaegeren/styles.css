@@ -267,6 +267,11 @@ a:hover { color: var(--amber); }
   color: #fff;
 }
 
+.support-bar--foot {
+  border-bottom: none;
+  border-top: 1px solid rgba(232, 184, 74, 0.35);
+}
+
 /* Header — som Folkets Medie */
 .header {
   position: relative;

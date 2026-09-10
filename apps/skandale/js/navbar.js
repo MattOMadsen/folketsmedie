@@ -11,12 +11,6 @@ function loadNavbar() {
                 <a href="https://mattomadsen.github.io/folketsmedie/skattejaegeren/">Skattejægeren</a>
             </div>
         </nav>
-        <div class="support-bar no-print" role="region" aria-label="Støt projektet">
-            <p>
-                Hjælp med at få projektet ud på en rigtig hjemmeside.
-                <a href="https://mattomadsen.github.io/folketsmedie/stoet/" target="_top">Støt os</a>
-            </p>
-        </div>
         <!-- Desktop + Tablet Navbar -->
         <nav class="fm-local-nav no-print">
             <div class="fm-local-nav__inner">
@@ -48,6 +42,13 @@ function loadNavbar() {
 
     // Indsæt navbaren
     document.body.insertAdjacentHTML('afterbegin', navbarHTML);
+    document.body.insertAdjacentHTML('beforeend', `
+        <div class="support-bar support-bar--foot no-print" role="region" aria-label="Støt Folkets Medie">
+            <p>
+                Hjælp med at få Folkets Medie tilbage på en rigtig hjemmeside.
+                <a href="https://mattomadsen.github.io/folketsmedie/stoet/" target="_top">Støt os</a>
+            </p>
+        </div>`);
 
     if (window.self !== window.top) {
         document.querySelectorAll('.house-switch, .support-bar').forEach((el) => el.remove());

@@ -221,6 +221,11 @@ body {
     color: #fff;
 }
 
+.support-bar--foot {
+    border-bottom: none;
+    border-top: 1px solid rgba(232, 184, 74, 0.35);
+}
+
 .dark .support-bar {
     background: #0b0a08;
     border-bottom-color: rgba(232, 184, 74, 0.35);
