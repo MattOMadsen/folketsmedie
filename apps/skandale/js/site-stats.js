@@ -10,8 +10,6 @@ function getSiteBasePath() {
 
 const SiteStats = {
   getBasePath: getSiteBasePath,
-  _jsonCache: new Map(),
-  _homeIndexPromise: null,
   PARTY_SHORT: {
     'Socialdemokratiet': 'S',
     'Danmarksdemokraterne': 'DD',
@@ -28,6 +26,11 @@ const SiteStats = {
     'Socialistisk Folkeparti': 'SF'
   },
 
+  _bundle: null,
+  _bundleReady: false,
+  _bundlePromise: null,
+  _httpCache: new Map(),
+
   resolvePath(path) {
     if (!path || /^https?:\/\//i.test(path)) return path;
     const base = this.getBasePath();
@@ -35,27 +38,64 @@ const SiteStats = {
     return `${base}${normalized}`;
   },
 
-  async fetchJSON(path) {
-    const url = this.resolvePath(path);
-    if (this._jsonCache.has(url)) return this._jsonCache.get(url);
-    try {
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      this._jsonCache.set(url, data);
-      return data;
-    } catch (e) {
-      console.warn(`[SiteStats] Kunne ikke hente ${path}:`, e);
-      this._jsonCache.set(url, null);
-      return null;
-    }
+  normalizeDataPath(path) {
+    return String(path || '').replace(/^\//, '').split('?')[0];
   },
 
-  async loadHomeIndex() {
-    if (!this._homeIndexPromise) {
-      this._homeIndexPromise = this.fetchJSON('data/home-index.json');
+  lookupBundle(path) {
+    if (!this._bundle?.files) return undefined;
+    const key = this.normalizeDataPath(path);
+    if (Object.prototype.hasOwnProperty.call(this._bundle.files, key)) {
+      return this._bundle.files[key];
     }
-    return this._homeIndexPromise;
+    if (key.startsWith('data/')) return null;
+    return undefined;
+  },
+
+  async fetchJSONRaw(path) {
+    const url = this.resolvePath(path);
+    if (this._httpCache.has(url)) return this._httpCache.get(url);
+
+    const pending = (async () => {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+      } catch (e) {
+        console.warn(`[SiteStats] Kunne ikke hente ${path}:`, e);
+        return null;
+      }
+    })();
+
+    this._httpCache.set(url, pending);
+    return pending;
+  },
+
+  async ensureBundle() {
+    if (this._bundleReady) return this._bundle;
+    if (!this._bundlePromise) {
+      this._bundlePromise = (async () => {
+        const data = await this.fetchJSONRaw('data/bundle.json');
+        this._bundle = (data && data.files && typeof data.files === 'object') ? data : null;
+        this._bundleReady = true;
+        return this._bundle;
+      })();
+    }
+    return this._bundlePromise;
+  },
+
+  hasBundle() {
+    return !!(this._bundle && this._bundle.files);
+  },
+
+  async fetchJSON(path) {
+    const key = this.normalizeDataPath(path);
+    if (key !== 'data/bundle.json') {
+      await this.ensureBundle();
+      const fromBundle = this.lookupBundle(path);
+      if (fromBundle !== undefined) return fromBundle;
+    }
+    return this.fetchJSONRaw(path);
   },
 
   formatDaDate(date = new Date()) {
@@ -167,10 +207,6 @@ const SiteStats = {
   },
 
   async getPoliticianSlugs() {
-    const home = await this.loadHomeIndex();
-    if (home?.politicians?.length) {
-      return home.politicians.map((p) => p.slug).filter(Boolean);
-    }
     const manifest = await this.fetchJSON('data/politicians/manifest.json');
     return manifest?.politicians || [];
   },
@@ -180,13 +216,6 @@ const SiteStats = {
   },
 
   async loadPoliticianCores(slugs) {
-    const home = await this.loadHomeIndex();
-    if (home?.politicians?.length) {
-      const wanted = slugs && slugs.length ? new Set(slugs) : null;
-      return home.politicians
-        .filter((p) => p && (!wanted || wanted.has(p.slug)))
-        .map((p) => ({ ...p, _summaryLoaded: true }));
-    }
     const results = await Promise.all(
       slugs.map(async (slug) => {
         const core = await this.loadPoliticianCore(slug);
@@ -269,10 +298,6 @@ const SiteStats = {
 
   async enrichPoliticianSummary(politician) {
     if (!politician || politician._summaryLoaded) return politician;
-    if (typeof politician._scandalCount === 'number') {
-      politician._summaryLoaded = true;
-      return politician;
-    }
     const slug = politician.slug || this.slugFromName(politician.name);
     const counts = await this.loadCountsForSlug(slug);
     politician._scandalCount = counts.scandalCount;
@@ -282,6 +307,11 @@ const SiteStats = {
   },
 
   async loadInBatches(items, fn, batchSize = 6) {
+    if (this.hasBundle() || !items.length) {
+      const results = await Promise.all(items.map(fn));
+      return results.filter(Boolean);
+    }
+
     const results = [];
     for (let i = 0; i < items.length; i += batchSize) {
       const batch = items.slice(i, i + batchSize);
@@ -341,6 +371,10 @@ const SiteStats = {
 
   async enrichSummariesBatch(politicians, batchSize = 6) {
     const list = politicians || [];
+    if (this.hasBundle()) {
+      await Promise.all(list.map(p => this.enrichPoliticianSummary(p)));
+      return list;
+    }
     for (let i = 0; i < list.length; i += batchSize) {
       const batch = list.slice(i, i + batchSize);
       await Promise.all(batch.map(p => this.enrichPoliticianSummary(p)));
@@ -463,3 +497,4 @@ const SiteStats = {
 };
 
 window.SiteStats = SiteStats;
+SiteStats.ensureBundle();

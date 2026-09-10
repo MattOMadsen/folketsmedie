@@ -57,32 +57,25 @@ window.openPoliticianModal = function(id) {
 };
 
 function getPoliticianStats(politician) {
-  const loadedScandals = Array.isArray(politician.scandals) && politician.scandals.length > 0
-    ? politician.scandals
-    : null;
-  const loadedPromises = Array.isArray(politician.brokenPromises) && politician.brokenPromises.length > 0
-    ? politician.brokenPromises
-    : null;
-
-  const scandalCount = loadedScandals
-    ? loadedScandals.length
-    : (typeof politician._scandalCount === 'number' ? politician._scandalCount : null);
-  const brokenCount = loadedPromises
-    ? loadedPromises.length
-    : (typeof politician._brokenCount === 'number' ? politician._brokenCount : null);
+  const scandalCount = politician.scandals
+    ? politician.scandals.length
+    : (politician._scandalCount ?? null);
+  const brokenCount = politician.brokenPromises
+    ? politician.brokenPromises.length
+    : (politician._brokenCount ?? null);
 
   let avgSeverity = null;
   let userAvgSeverity = null;
   let userRatedCount = 0;
 
-  if (loadedScandals) {
-    const severities = loadedScandals.map(s => s.ourSeverity || s.severity || 3);
+  if (politician.scandals && politician.scandals.length > 0) {
+    const severities = politician.scandals.map(s => s.ourSeverity || s.severity || 3);
     avgSeverity = severities.reduce((a, b) => a + b, 0) / severities.length;
 
     const ratings = getUserRatingsCache();
     const polId = politician.id || politician.name.replace(/\s+/g, '-').toLowerCase();
     let userSum = 0;
-    loadedScandals.forEach(s => {
+    politician.scandals.forEach(s => {
       const scId = s.id || s.title.replace(/\s+/g, '-').toLowerCase();
       const userRating = ratings.get(`userSeverity_${polId}_${scId}`) || 0;
       if (userRating > 0) {
@@ -93,8 +86,6 @@ function getPoliticianStats(politician) {
     if (userRatedCount > 0) {
       userAvgSeverity = userSum / userRatedCount;
     }
-  } else if (typeof politician._severitySum === 'number' && politician._severityN > 0) {
-    avgSeverity = politician._severitySum / politician._severityN;
   }
 
   return { scandalCount, brokenCount, avgSeverity, userAvgSeverity, userRatedCount };
@@ -124,7 +115,7 @@ function buildPoliticianCardHTML(politician) {
 
   return `
     <div onclick="window.openPoliticianModal(${politician.id})"
-         class="politician-card bg-[#161a1c] border border-[#2a3236] rounded-3xl p-6 cursor-pointer hover:border-[#e8b84a]/50 shadow-sm hover:shadow-md group"
+         class="politician-card bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 cursor-pointer hover:border-[#C8102E]/30 dark:hover:border-[#C8102E]/50 shadow-sm hover:shadow-md group"
          data-id="${politician.id}">
       <div class="flex items-start justify-between mb-4">
         ${avatarHTML}
@@ -135,15 +126,15 @@ function buildPoliticianCardHTML(politician) {
         </div>
       </div>
 
-      <div class="font-bold text-xl mb-1 group-hover:text-[#e8b84a] transition-colors">${politician.name}</div>
+      <div class="font-bold text-xl mb-1 group-hover:text-[#C8102E] transition-colors">${politician.name}</div>
 
       <div class="flex items-center gap-x-3 text-xs text-slate-500 dark:text-slate-400 mb-2">
         <div class="flex items-center gap-x-1">
-          <i class="fa-solid fa-exclamation-triangle text-[#e8b84a]"></i>
+          <i class="fa-solid fa-exclamation-triangle text-[#C8102E]"></i>
           <span data-stat="scandals">${scandalLabel} skandaler</span>
         </div>
         <div class="flex items-center gap-x-1">
-          <i class="fa-solid fa-link text-[#e8b84a]"></i>
+          <i class="fa-solid fa-link text-[#C8102E]"></i>
           <span data-stat="promises">${brokenLabel} løfter</span>
         </div>
       </div>
