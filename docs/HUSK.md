@@ -22,10 +22,6 @@ Actionen kører først, når workflow-filen ligger på `main` (admin-PR merged).
 
 Se også `docs/ADMIN.md` og `docs/AI-KLADDE.md`.
 
-## Kladde der venter på Matt (10. sep. 2026)
-
-Artikel om ABC-edsaflæggelsen / Harris-debatten ligger som **kladde** i `data/manual.json` (`abc-whistleblower-harris-kampagne-dikterede-debatten`). Udgiv **ikke**, før Matt siger ja.
-
 ## GitHub-token til admin
 
 Stadig nødvendigt for at gemme. Guide: Settings → Developer settings → Fine-grained token → kun repo `folketsmedie` → Contents: Read and write. Tokenet i browseren, ikke i git.
