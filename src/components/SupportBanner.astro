@@ -1,8 +1,9 @@
 ---
 const base = import.meta.env.BASE_URL;
+const { bottom = false } = Astro.props;
 ---
 
-<div class="support-bar" role="region" aria-label="Støt Folkets Medie">
+<div class:list={['support-bar', bottom && 'support-bar--foot']} role="region" aria-label="Støt Folkets Medie">
   <p>
     Hjælp med at få Folkets Medie tilbage på en rigtig hjemmeside.
     <a href={`${base}stoet/`}>Støt os</a>

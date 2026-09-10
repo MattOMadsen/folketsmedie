@@ -152,6 +152,11 @@ img {
   color: #fff;
 }
 
+.support-bar--foot {
+  border-bottom: none;
+  border-top: 1px solid rgba(232, 184, 74, 0.35);
+}
+
 /* —— Header —— */
 .site-header {
   min-height: var(--header-h);
