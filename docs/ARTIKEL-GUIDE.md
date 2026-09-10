@@ -12,7 +12,7 @@ Mål: artikler der lyder som **Folkets Medie** — skarpe, kildenære, fra folke
 1. **Research før skrivning.** Slå datoer, citater og myndighedstekster efter. Skriv ikke noget, der ikke kan belægges. Ingen opdigtede «stadig» eller «på én gang».
 2. **Kladde i chatten først.** Matt læser og godkender. Ingen udgivelse, ingen tidsplan, før han siger ja.
 3. **Når han siger hvordan det skal være:** skriv det ned her og i `AGENTS.md`. Glem det ikke næste gang.
-4. **Admin (10. sep. 2026).** Alle tre sider styres fra `/admin/`. Gem kladde. Udgiv aldrig før Matt trykker Udgiv. AI-kladder via Cursor/Grok — ikke xAI-nøgle i browseren. Se `docs/ADMIN.md`.
+4. **Admin (10. sep. 2026).** Alle tre sider styres fra `/admin/`. Gem kladde. Udgiv aldrig før Matt trykker Udgiv. AI-kladder via Cursor/Grok — ikke xAI-nøgle i browseren. Cursor-opsætning venter, til Matt beder om guide: `docs/HUSK.md`.
 5. **Støtte (15. aug. 2026).** Bjælke øverst + siden `/stoet/`. Hjælp med at få Folkets Medie tilbage på en rigtig hjemmeside. Mail: mattomadsen@proton.me. MobilePay: 28896782 (kun nummeret offentligt). Overførsel: 9070 / 8060896667. Ingen reklamer.
 6. **Facebook (15. aug. 2026).** Efter deploy kan scriptet `scripts/post-facebook.py` slå den seneste artikel op på Folkets Medies Facebook-side — som det gamle WordPress-plugin. Kræver Page-id og Page-token i `~/.folketsmedie/facebook.env` (ikke i git). RSS: `/folketsmedie/feed.xml`.
 7. **Ved godkendt udgivelse:**
