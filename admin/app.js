@@ -41,11 +41,10 @@
     token: '',
     repo: 'MattOMadsen/folketsmedie',
     branch: 'main',
-    aiKey: '',
-    aiBase: 'https://api.x.ai/v1',
-    aiModel: 'grok-4',
     house: houseFromHash(),
     view: 'list',
+    fmFilter: 'all',
+    editorTab: 'skriv',
     status: '',
     statusKind: '',
     busy: false,
@@ -83,6 +82,14 @@
     caseSha: null,
     caseSlug: '',
   };
+
+  let pollTimer = null;
+  function stopPoll() {
+    if (pollTimer) {
+      clearInterval(pollTimer);
+      pollTimer = null;
+    }
+  }
 
   function houseFromHash() {
     const h = (location.hash || '').replace(/^#/, '');
@@ -297,9 +304,6 @@
         token: raw.token || '',
         repo: raw.repo || state.repo,
         branch: raw.branch || 'main',
-        aiKey: raw.aiKey || '',
-        aiBase: raw.aiBase || state.aiBase,
-        aiModel: raw.aiModel || state.aiModel,
       });
     } catch {
       /* ignore */
@@ -313,9 +317,6 @@
         token: state.token,
         repo: state.repo,
         branch: state.branch,
-        aiKey: state.aiKey,
-        aiBase: state.aiBase,
-        aiModel: state.aiModel,
       })
     );
   }
@@ -379,6 +380,7 @@
   }
 
   function setHouse(house) {
+    stopPoll();
     state.house = house;
     state.view = 'list';
     state.q = '';
@@ -408,13 +410,13 @@
     return `
       <div class="login-box card">
         <h1>Admin · Folkets Medie</h1>
-        <p>Én indgang, tre rum — samme opdeling som sitet. Intet går live, før du trykker Udgiv.</p>
+        <p>Én indgang, tre rum. GitHub-token sættes én gang i browseren. Grok kører via Cursor — ingen xAI-nøgle her. Intet går live, før du trykker Udgiv.</p>
         <ul class="house-list">
           <li><strong>Folkets Medie</strong> — artikler</li>
           <li><strong>Politiske skandaler</strong> — politikere, skandaler, brudte løfter</li>
           <li><strong>Skattejægeren</strong> — sager om skattekroner</li>
         </ul>
-        <label>GitHub-token (repo: contents read/write)</label>
+        <label>GitHub-token (contents: read/write på folketsmedie)</label>
         <input id="tok" type="password" autocomplete="off" placeholder="ghp_…" value="${esc(state.token)}">
         <div class="row">
           <div>
@@ -502,16 +504,24 @@
     }
     const list = mergedArticles().filter((a) => {
       const q = state.q.trim().toLowerCase();
+      const draft = a.status === 'draft' || a.status === 'hidden';
+      if (state.fmFilter === 'draft' && !draft) return false;
+      if (state.fmFilter === 'live' && draft) return false;
       if (!q) return true;
       return `${a.title} ${a.slug}`.toLowerCase().includes(q);
     });
     main.innerHTML = `
       <div class="card house-intro">
-        <p>Her styrer du <strong>artiklerne</strong> — samme felter som sitet: titel, slug, dato, uddrag, HTML, featured-billede. Nye og rettede ligger i <code>data/manual.json</code>. Arkivet i <code>export.json</code> overskrives ikke.</p>
+        <p>Artikler som sitet: titel, uddrag, HTML, billede. Kladder i <code>data/manual.json</code>. <strong>Skriv med Cursor</strong> bruger din Grok-build — ingen xAI-nøgle i admin.</p>
       </div>
       <div class="card">
         <div class="actions" style="margin-top:0">
           <button class="btn" id="new-article">Ny artikel</button>
+        </div>
+        <div class="filters" role="tablist">
+          <button data-filter="all" class="${state.fmFilter === 'all' ? 'is-on' : ''}">Alle</button>
+          <button data-filter="draft" class="${state.fmFilter === 'draft' ? 'is-on' : ''}">Kladder</button>
+          <button data-filter="live" class="${state.fmFilter === 'live' ? 'is-on' : ''}">Live</button>
         </div>
         <input class="search" id="q" placeholder="Søg i titel eller slug…" value="${esc(state.q)}">
         <div class="list" id="alist">
@@ -520,7 +530,7 @@
             .map(
               (a) => `<button class="item" data-slug="${esc(a.slug)}">
                 <div class="item-title">${esc(a.title)} ${articleBadge(a)}</div>
-                <div class="item-meta">${esc(a.date)} · ${esc(a.slug)} · ${esc(a.origin || '')}</div>
+                <div class="item-meta">${esc(a.date)} · ${esc(a.slug)}</div>
               </button>`
             )
             .join('')}
@@ -532,6 +542,12 @@
     });
     document.getElementById('q')?.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') renderFm();
+    });
+    document.querySelectorAll('.filters [data-filter]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        state.fmFilter = btn.dataset.filter;
+        renderFm();
+      });
     });
     document.getElementById('new-article')?.addEventListener('click', () => {
       state.article = blankArticle();
@@ -554,61 +570,61 @@
 
   function fmEditorHtml() {
     const a = state.article;
+    const tab = state.editorTab === 'preview' ? 'preview' : 'skriv';
     return `
-      <div class="card">
-        <div class="actions" style="margin-top:0">
-          <button class="btn secondary" id="back">← Alle artikler</button>
-        </div>
-        <div class="row">
-          <div>
-            <label>Titel</label>
-            <input id="a-title" value="${esc(a.title)}">
+      <div class="editor">
+        <div class="card editor-main">
+          <div class="actions" style="margin-top:0">
+            <button class="btn secondary" id="back">← Alle artikler</button>
           </div>
-          <div>
-            <label>Slug</label>
-            <input id="a-slug" value="${esc(a.slug)}" placeholder="bliver lavet ud fra titlen">
+          <div class="row">
+            <div>
+              <label>Titel</label>
+              <input id="a-title" value="${esc(a.title)}">
+            </div>
+            <div>
+              <label>Slug</label>
+              <input id="a-slug" value="${esc(a.slug)}" placeholder="bliver lavet ud fra titlen">
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div>
-            <label>Dato (YYYY-MM-DD HH:MM:SS)</label>
-            <input id="a-date" value="${esc(a.date)}">
+          <div class="row">
+            <div>
+              <label>Dato</label>
+              <input id="a-date" value="${esc(a.date)}">
+            </div>
+            <div>
+              <label>Uddrag</label>
+              <input id="a-excerpt" value="${esc(a.excerpt)}">
+            </div>
           </div>
-          <div>
-            <label>Uddrag</label>
-            <input id="a-excerpt" value="${esc(a.excerpt)}">
+          <div class="filters" role="tablist">
+            <button data-tab="skriv" class="${tab === 'skriv' ? 'is-on' : ''}">Skriv HTML</button>
+            <button data-tab="preview" class="${tab === 'preview' ? 'is-on' : ''}">Forhåndsvisning</button>
           </div>
+          <textarea class="body ${tab === 'preview' ? 'is-hidden' : ''}" id="a-content">${esc(a.content)}</textarea>
+          <iframe id="a-preview" class="preview-frame ${tab === 'skriv' ? 'is-hidden' : ''}" title="Forhåndsvisning"></iframe>
         </div>
-        <label>Noter til AI (hvad er sket, hvad du vil have med)</label>
-        <textarea id="a-notes">${esc(a.notes || '')}</textarea>
-        <label>Kilder til AI (links, en pr. linje)</label>
-        <textarea id="a-sources">${esc(a.sourcesText || '')}</textarea>
-        <div class="row">
-          <div>
-            <label>AI-nøgle (xAI / OpenAI-kompatibel)</label>
-            <input id="ai-key" type="password" value="${esc(state.aiKey)}" placeholder="xai-…">
+        <div class="card editor-side">
+          <h2 class="section">Cursor / Grok</h2>
+          <p class="hint">Ingen xAI-nøgle. Grok kører i din Cursor-build, når du har sat <code>CURSOR_API_KEY</code> én gang på GitHub.</p>
+          <label>Noter (hvad er sket, hvad der skal med)</label>
+          <textarea id="a-notes">${esc(a.notes || '')}</textarea>
+          <label>Kilder (en URL pr. linje)</label>
+          <textarea id="a-sources">${esc(a.sourcesText || '')}</textarea>
+          <div class="actions">
+            <button class="btn" id="ai-write">Skriv med Cursor</button>
+            <a class="btn secondary" href="https://cursor.com/agents" target="_blank" rel="noopener">Åbn Cursor</a>
           </div>
-          <div>
-            <label>Model</label>
-            <input id="ai-model" value="${esc(state.aiModel)}">
+          <label>Featured-billede (jpg/png, gerne 16:9)</label>
+          <input id="a-image" type="file" accept="image/jpeg,image/png,image/webp">
+          <p class="hint">Nuværende: ${esc(a.featured_image_local || 'ingen')}</p>
+          <div class="actions sticky-actions">
+            <button class="btn secondary" id="save-draft">Gem kladde</button>
+            <button class="btn" id="publish">Udgiv</button>
+            <button class="btn secondary" id="hide">Skjul</button>
           </div>
+          <p class="hint">Kladde kommer ikke på forsiden. Udgiv kun når du har læst teksten.</p>
         </div>
-        <label>API-base</label>
-        <input id="ai-base" value="${esc(state.aiBase)}">
-        <div class="actions">
-          <button class="btn" id="ai-write">Bed AI om at skrive kladde</button>
-        </div>
-        <label>Indhold (HTML)</label>
-        <textarea class="body" id="a-content">${esc(a.content)}</textarea>
-        <label>Featured-billede (jpg/png, gerne 16:9)</label>
-        <input id="a-image" type="file" accept="image/jpeg,image/png,image/webp">
-        <p class="hint">Nuværende: ${esc(a.featured_image_local || 'ingen')}</p>
-        <div class="actions">
-          <button class="btn secondary" id="save-draft">Gem kladde</button>
-          <button class="btn" id="publish">Udgiv</button>
-          <button class="btn secondary" id="hide">Skjul</button>
-        </div>
-        <p class="hint">Kladde og skjulte kommer ikke på forsiden. Udgiv skriver til GitHub og sætter status til published. GitHub Actions bygger herefter den live side.</p>
       </div>`;
   }
 
@@ -626,15 +642,21 @@
       sourcesText: document.getElementById('a-sources').value,
       source: 'manual',
     };
-    state.aiKey = document.getElementById('ai-key').value.trim();
-    state.aiModel = document.getElementById('ai-model').value.trim() || 'grok-4';
-    state.aiBase = document.getElementById('ai-base').value.trim() || 'https://api.x.ai/v1';
-    saveLocal();
     return state.article;
+  }
+
+  const PREVIEW_CSS = `html,body{margin:0;padding:16px;background:#0a0b0c;color:#c8c4bb;font-family:"DM Sans",system-ui,sans-serif;line-height:1.65}h2,h3{color:#f2f0eb;font-family:Georgia,serif}a{color:#e8b84a}img{max-width:100%}blockquote{border-left:3px solid #e8b84a;margin:0 0 1em;padding:.8rem 1rem;background:rgba(232,184,74,.08)}`;
+
+  function refreshPreview() {
+    const iframe = document.getElementById('a-preview');
+    const content = document.getElementById('a-content');
+    if (!iframe || !content) return;
+    iframe.srcdoc = `<!doctype html><html><head><meta charset="utf-8"><style>${PREVIEW_CSS}</style></head><body class="prose">${content.value}</body></html>`;
   }
 
   function bindFmEditor() {
     document.getElementById('back')?.addEventListener('click', () => {
+      stopPoll();
       state.view = 'list';
       render();
     });
@@ -642,34 +664,110 @@
       const slug = document.getElementById('a-slug');
       if (slug && !slug.value.trim()) slug.value = slugify(document.getElementById('a-title').value);
     });
+    document.querySelectorAll('[data-tab]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        state.editorTab = btn.dataset.tab;
+        const skriv = document.getElementById('a-content');
+        const prev = document.getElementById('a-preview');
+        document.querySelectorAll('[data-tab]').forEach((b) => b.classList.toggle('is-on', b === btn));
+        skriv?.classList.toggle('is-hidden', state.editorTab === 'preview');
+        prev?.classList.toggle('is-hidden', state.editorTab === 'skriv');
+        if (state.editorTab === 'preview') refreshPreview();
+      });
+    });
+    document.getElementById('a-content')?.addEventListener('input', refreshPreview);
+    refreshPreview();
     document.getElementById('ai-write')?.addEventListener('click', runAi);
     document.getElementById('save-draft')?.addEventListener('click', () => saveArticle('draft'));
     document.getElementById('publish')?.addEventListener('click', () => saveArticle('published'));
     document.getElementById('hide')?.addEventListener('click', () => saveArticle('hidden'));
   }
 
+  async function refreshManual() {
+    const manualFile = await FMGit.getJson('data/manual.json', { articles: [] });
+    state.manual = manualFile.data || { articles: [] };
+    if (!Array.isArray(state.manual.articles)) state.manual.articles = [];
+    state.manualSha = manualFile.sha;
+  }
+
   async function runAi() {
-    readArticleForm();
-    if (!state.aiKey) return setStatus('Sæt en AI-nøgle først.', 'err');
-    const notes = state.article.notes || state.article.title;
-    if (!notes.trim()) return setStatus('Skriv noter eller en titel, AI kan arbejde ud fra.', 'err');
-    setStatus('AI skriver kladde… det tager lidt.');
-    try {
-      const out = await FMAI.chat({
-        apiKey: state.aiKey,
-        baseUrl: state.aiBase,
-        model: state.aiModel,
-        user: `Skriv en Folkets Medie-kladde.\nTitel-udkast: ${state.article.title}\n\nNoter:\n${notes}\n\nKilder:\n${state.article.sourcesText || '(ingen)'}\n`,
-      });
-      if (out.title) document.getElementById('a-title').value = out.title;
-      if (out.slug) document.getElementById('a-slug').value = slugify(out.slug);
-      else document.getElementById('a-slug').value = slugify(out.title || state.article.title);
-      if (out.excerpt) document.getElementById('a-excerpt').value = out.excerpt;
-      if (out.content) document.getElementById('a-content').value = out.content;
-      setStatus('Kladde lagt i felterne. Læs den. Ret den. Udgiv først når du er tilfreds.', 'ok');
-    } catch (err) {
-      setStatus(err.message || 'AI fejlede', 'err');
+    const a = readArticleForm();
+    const notes = a.notes || a.title;
+    if (!notes.trim()) return setStatus('Skriv noter eller en titel, Cursor kan arbejde ud fra.', 'err');
+    if (!a.title) {
+      a.title = notes.trim().split('\n')[0].slice(0, 90);
+      const t = document.getElementById('a-title');
+      if (t) t.value = a.title;
     }
+    if (!a.slug) {
+      a.slug = slugify(a.title || notes);
+      const slugEl = document.getElementById('a-slug');
+      if (slugEl) slugEl.value = a.slug;
+    }
+    setStatus('Gemmer anmodning til Cursor…');
+    try {
+      await saveArticle('draft');
+      const id = `${Date.now()}-${a.slug}`.slice(0, 80);
+      const request = {
+        id,
+        created: new Date().toISOString(),
+        house: 'fm',
+        slug: a.slug,
+        title: a.title || a.slug,
+        notes: a.notes,
+        sources: a.sourcesText,
+        task: FMAI.buildTask(a),
+      };
+      await FMGit.saveJson(
+        `data/ai-requests/open/${id}.json`,
+        request,
+        `AI-anmodning: ${request.title}`
+      );
+      setStatus(
+        'Anmodning lagt i GitHub. Cursor/Grok skriver kladden. Den kommer ind her som kladde — udgiv den ikke før du har læst den. Du kan følge med på cursor.com/agents.',
+        'ok'
+      );
+      startPoll(a.slug);
+    } catch (err) {
+      setStatus(err.message || 'Kunne ikke sende til Cursor', 'err');
+    }
+  }
+
+  function startPoll(slug) {
+    stopPoll();
+    let n = 0;
+    pollTimer = setInterval(async () => {
+      n += 1;
+      if (n > 40) {
+        stopPoll();
+        setStatus('Cursor er stadig i gang, eller CURSOR_API_KEY mangler på GitHub. Åbn cursor.com/agents, eller sæt nøglen én gang under repo → Secrets.', 'err');
+        return;
+      }
+      try {
+        await refreshManual();
+        const found = (state.manual.articles || []).find((x) => x.slug === slug);
+        if (found && found.content && found.content.length > 80) {
+          stopPoll();
+          const notes = state.article.notes;
+          const sourcesText = state.article.sourcesText;
+          state.article = { ...blankArticle(), ...found, notes, sourcesText };
+          if (state.view === 'edit' && state.house === 'fm') {
+            const title = document.getElementById('a-title');
+            if (title) {
+              title.value = found.title || '';
+              document.getElementById('a-slug').value = found.slug || '';
+              document.getElementById('a-excerpt').value = found.excerpt || '';
+              document.getElementById('a-date').value = found.date || '';
+              document.getElementById('a-content').value = found.content || '';
+              refreshPreview();
+            }
+          }
+          setStatus('Kladde fra Cursor ligger i felterne. Læs den. Ret den. Udgiv kun når du er tilfreds.', 'ok');
+        }
+      } catch {
+        /* prøv igen */
+      }
+    }, 8000);
   }
 
   async function saveArticle(status) {
