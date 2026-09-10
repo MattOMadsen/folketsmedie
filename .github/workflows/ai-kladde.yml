@@ -1,0 +1,28 @@
+# Starter Matts Cursor/Grok-build når admin lægger en AI-anmodning.
+# Sæt CURSOR_API_KEY én gang i repo-secrets. Ingen xAI-nøgle.
+
+name: AI-kladde via Cursor
+
+on:
+  push:
+    paths:
+      - 'data/ai-requests/open/*.json'
+  workflow_dispatch:
+
+concurrency:
+  group: ai-kladde
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  launch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Start Cursor-agent
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+          CURSOR_ENVIRONMENT: ${{ vars.CURSOR_ENVIRONMENT }}
+        run: bash scripts/launch-ai-kladde.sh
