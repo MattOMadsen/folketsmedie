@@ -39,13 +39,15 @@ const canonical = `${site}${base}${house}/`;
   <body class="app-shell">
     <div class="site-top">
       <HouseSwitch current={house} />
-      <SupportBanner />
     </div>
     <iframe
       class="app-frame"
       src={iframeSrc}
       title={title}
+      loading="eager"
+      referrerpolicy="no-referrer-when-downgrade"
       transition:persist={`frame-${house}`}
     ></iframe>
+    <SupportBanner bottom />
   </body>
 </html>
