@@ -26,7 +26,7 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 ### Stående ordrer fra Matt (skriv ned, når han siger hvordan det skal være)
 
 - **Kladde først.** Vis den færdige artikel her i chatten. Udgiv aldrig før han har læst og godkendt.
-- **Admin (10. sep. 2026).** Matt styrer alle tre rum fra `/admin/`, delt som sitet: Folkets Medie (artikler), Politiske skandaler (politikere, skandaler, løfter) og Skattejægeren (sager). Kladde gemmes uden at gå live. Udgiv kun når han trykker Udgiv. Kræver GitHub-token i browseren. Se `docs/ADMIN.md`.
+- **Admin (10. sep. 2026).** Matt styrer alle tre rum fra `/admin/`, delt som sitet. Kladde uden at gå live. Udgiv kun når han trykker Udgiv. GitHub-token i browseren. **Ingen xAI-nøgle i admin.** AI-kladder kører via Cursor/Grok-build: sæt `CURSOR_API_KEY` én gang i GitHub Actions secrets. Se `docs/ADMIN.md` og `docs/AI-KLADDE.md`.
 - **Research først.** Tjek datoer, citater, myndighedstekster og X-kilder. Ingen gætteri, ingen «tre ting på én gang» hvis det ikke er sandt.
 - **Ved udgivelse (efter ok):** billeder der passer, lokale featured-filer, links til kilder og til navngivne personer på X, gerne relevant kort video. Deploy til `gh-pages`.
 - **Billeder skal ligne historien (15. aug. 2026).** Ikke det samme skrivebord med en stak papir igen. Colombia = Andes/grænse/kartel-rute. Mexico = Rio Grande/hegn. FBI-dokumenter må gerne være arkiv — men kun når artiklen *er* papirer. Ingen navngivne ansigter uden rigtigt foto. Ingen ulæselig tekst på billedet.
