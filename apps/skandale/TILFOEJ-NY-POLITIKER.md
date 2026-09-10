@@ -50,8 +50,6 @@ Opret disse mapper hvis du vil bruge den nye granulære struktur:
 
 ### 5. Genindlæs siden
 
-Kør `npm run bundle:skandale` (køres også automatisk ved `npm run dev` og `npm run build`), så `data/bundle.json` indeholder den nye politiker.
-
 Hard refresh (Ctrl + Shift + R). Den nye politiker dukker nu automatisk op på:
 
 - Forsiden (i søgning og grid)
