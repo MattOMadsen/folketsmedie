@@ -98,9 +98,34 @@ window.FMGit = {
   },
 
   async rawJson(path) {
+    // Ingen Authorization: den header udløser CORS-preflight, som raw.githubusercontent.com afviser.
     const url = `https://raw.githubusercontent.com/${this.repo}/${this.branch}/${path}`;
-    const res = await fetch(url, { headers: { Authorization: `Bearer ${this.token}` } });
-    if (!res.ok) throw new Error(`Kunne ikke hente ${path} (${res.status})`);
-    return res.json();
+    try {
+      const res = await fetch(url);
+      if (res.ok) return res.json();
+    } catch {
+      /* fald tilbage til GitHub Contents/blob-API */
+    }
+    const file = await this.getJson(path, null);
+    if (file.data != null) return file.data;
+    throw new Error(`Kunne ikke hente ${path}`);
+  },
+
+  async listDir(path) {
+    try {
+      const meta = await this.api(
+        `/contents/${this.encPath(path)}?ref=${encodeURIComponent(this.branch)}`
+      );
+      return Array.isArray(meta) ? meta : [];
+    } catch (err) {
+      if (err.status === 404) return [];
+      throw err;
+    }
+  },
+
+  /** Hent sha (hvis filen findes) og skriv JSON. */
+  async saveJson(path, data, message) {
+    const cur = await this.getJson(path, null);
+    return this.putJson(path, data, cur.sha, message);
   },
 };
