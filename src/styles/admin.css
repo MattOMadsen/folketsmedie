@@ -107,6 +107,10 @@ input, textarea, select {
   font: inherit;
 }
 
+input[readonly] {
+  opacity: 0.75;
+}
+
 textarea {
   min-height: 140px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -223,6 +227,36 @@ button.btn:disabled {
 .login-box {
   max-width: 520px;
   margin: 8vh auto;
+}
+
+.kicker {
+  margin: 0 0 4px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.house-intro p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.house-list {
+  color: var(--text-soft);
+  margin: 0 0 18px;
+  padding-left: 1.15rem;
+  line-height: 1.55;
+}
+
+.section {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+}
+
+textarea.mid {
+  min-height: 200px;
 }
 
 code {

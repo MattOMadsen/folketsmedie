@@ -103,4 +103,22 @@ window.FMGit = {
     if (!res.ok) throw new Error(`Kunne ikke hente ${path} (${res.status})`);
     return res.json();
   },
+
+  async listDir(path) {
+    try {
+      const meta = await this.api(
+        `/contents/${this.encPath(path)}?ref=${encodeURIComponent(this.branch)}`
+      );
+      return Array.isArray(meta) ? meta : [];
+    } catch (err) {
+      if (err.status === 404) return [];
+      throw err;
+    }
+  },
+
+  /** Hent sha (hvis filen findes) og skriv JSON. */
+  async saveJson(path, data, message) {
+    const cur = await this.getJson(path, null);
+    return this.putJson(path, data, cur.sha, message);
+  },
 };
