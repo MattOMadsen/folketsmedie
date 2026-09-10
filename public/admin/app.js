@@ -359,10 +359,18 @@
   async function bootData() {
     applyGit();
     setStatus('Henter artikler…');
-    const [exportData, manualFile] = await Promise.all([
-      FMGit.rawJson('data/export.json'),
-      FMGit.getJson('data/manual.json', { articles: [] }),
-    ]);
+    let exportData = { articles: [] };
+    try {
+      exportData = await FMGit.rawJson('data/export.json');
+    } catch (err) {
+      try {
+        const file = await FMGit.getJson('data/export.json', { articles: [] });
+        exportData = file.data || { articles: [] };
+      } catch {
+        console.warn('Kunne ikke hente arkivet', err);
+      }
+    }
+    const manualFile = await FMGit.getJson('data/manual.json', { articles: [] });
     state.archive = exportData.articles || [];
     state.manual = manualFile.data || { articles: [] };
     if (!Array.isArray(state.manual.articles)) state.manual.articles = [];
