@@ -1,4 +1,5 @@
 import exportData from '../../data/export.json';
+import manualData from '../../data/manual.json';
 
 export type Article = {
   id: number;
@@ -10,6 +11,8 @@ export type Article = {
   featured_image: string | null;
   featured_image_local?: string | null;
   source?: string;
+  /** Kladder og skjulte artikler kommer ikke på sitet, før status er published. */
+  status?: 'draft' | 'published' | 'hidden';
 };
 
 export type SimplePage = {
@@ -53,7 +56,19 @@ export type ExportData = {
 
 export const data = exportData as ExportData;
 
-const articleSlugs = new Set(data.articles.map((a) => a.slug));
+type ManualFile = { articles?: Article[] };
+const manualArticles = ((manualData as ManualFile).articles || []).filter(Boolean);
+
+function mergedArticles(): Article[] {
+  const map = new Map<string, Article>();
+  for (const a of data.articles) map.set(a.slug, a);
+  for (const a of manualArticles) {
+    map.set(a.slug, { ...a, source: a.source || 'manual' });
+  }
+  return [...map.values()];
+}
+
+const articleSlugs = new Set(mergedArticles().map((a) => a.slug));
 const docSlugs = new Set(data.videos.map((v) => v.slug));
 
 /** Artikler med fremtidig dato vises først, når build-tid er passeret. */
@@ -62,15 +77,21 @@ export function isPublished(date: string, now = Date.now()): boolean {
   return Number.isFinite(t) && t <= now;
 }
 
+export function isLiveArticle(a: Article, now = Date.now()): boolean {
+  if (!a) return false;
+  if (a.status === 'draft' || a.status === 'hidden') return false;
+  return isPublished(a.date, now);
+}
+
 export function getArticles(): Article[] {
-  return [...data.articles]
-    .filter((a) => isPublished(a.date))
+  return mergedArticles()
+    .filter((a) => isLiveArticle(a))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export function getArticle(slug: string): Article | undefined {
-  const a = data.articles.find((x) => x.slug === slug);
-  if (!a || !isPublished(a.date)) return undefined;
+  const a = mergedArticles().find((x) => x.slug === slug);
+  if (!a || !isLiveArticle(a)) return undefined;
   return a;
 }
 

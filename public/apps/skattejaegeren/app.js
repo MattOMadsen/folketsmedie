@@ -264,7 +264,7 @@ async function loadCases() {
       })
     )
   );
-  const cases = list.filter(Boolean);
+  const cases = list.filter(Boolean).filter((c) => c.status !== 'draft');
   // priority sort (same as index)
   cases.sort((a, b) => (a.priority ?? 99) - (b.priority ?? 99) || a.slug.localeCompare(b.slug, 'da'));
   return {

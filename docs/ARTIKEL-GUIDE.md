@@ -12,9 +12,10 @@ Mål: artikler der lyder som **Folkets Medie** — skarpe, kildenære, fra folke
 1. **Research før skrivning.** Slå datoer, citater og myndighedstekster efter. Skriv ikke noget, der ikke kan belægges. Ingen opdigtede «stadig» eller «på én gang».
 2. **Kladde i chatten først.** Matt læser og godkender. Ingen udgivelse, ingen tidsplan, før han siger ja.
 3. **Når han siger hvordan det skal være:** skriv det ned her og i `AGENTS.md`. Glem det ikke næste gang.
-4. **Støtte (15. aug. 2026).** Bjælke øverst + siden `/stoet/`. Hjælp med at få Folkets Medie tilbage på en rigtig hjemmeside. Mail: mattomadsen@proton.me. MobilePay: 28896782 (kun nummeret offentligt). Overførsel: 9070 / 8060896667. Ingen reklamer.
-5. **Facebook (15. aug. 2026).** Efter deploy kan scriptet `scripts/post-facebook.py` slå den seneste artikel op på Folkets Medies Facebook-side — som det gamle WordPress-plugin. Kræver Page-id og Page-token i `~/.folketsmedie/facebook.env` (ikke i git). RSS: `/folketsmedie/feed.xml`.
-6. **Ved godkendt udgivelse:**
+4. **Admin (10. sep. 2026).** Alle tre sider styres fra `/admin/` — artikler, politiske skandaler og Skattejægeren, delt i tre rum. Gem kladde. Udgiv aldrig før Matt trykker Udgiv. Se `docs/ADMIN.md`.
+5. **Støtte (15. aug. 2026).** Bjælke øverst + siden `/stoet/`. Hjælp med at få Folkets Medie tilbage på en rigtig hjemmeside. Mail: mattomadsen@proton.me. MobilePay: 28896782 (kun nummeret offentligt). Overførsel: 9070 / 8060896667. Ingen reklamer.
+6. **Facebook (15. aug. 2026).** Efter deploy kan scriptet `scripts/post-facebook.py` slå den seneste artikel op på Folkets Medies Facebook-side — som det gamle WordPress-plugin. Kræver Page-id og Page-token i `~/.folketsmedie/facebook.env` (ikke i git). RSS: `/folketsmedie/feed.xml`.
+7. **Ved godkendt udgivelse:**
    - billeder der passer (lokalt under `public/media/featured/`, ingen døde folketsmedie.dk-URL’er, ingen AI-ansigter af navngivne personer, ingen ulæselig tekst på billedet)
    - links til kilder og til de omtalte på X
    - gerne et kort, relevant videoklip (ikke nødvendigvis hele mødet)
@@ -197,7 +198,7 @@ Sitet sætter automatisk `og:image` og `twitter:image` ud fra featured-billede, 
 
 ## 7. Teknisk: tilføj artikel i arkivet
 
-Artikler lever i **`data/export.json`** under `articles[]`.
+Artikler lever i **`data/export.json`** under `articles[]`. Nye og rettede artikler fra admin ligger i **`data/manual.json`** og overskriver samme slug ved build. Kladder (`status: "draft"`) kommer ikke på sitet.
 
 ### Minimumsfelter
 ```json
