@@ -9,7 +9,7 @@ article = {
     "id": 1000027,
     "title": "Hun kvalte Cora, Dawson og Callan. Så samlede de millioner ind og ville have hende frikendt",
     "slug": "clancy-kvalte-tre-boern-gofundme-naevning-holdt-fast",
-    "date": "2026-09-12 14:00:00",
+    "date": "2026-09-12 11:00:00",
     "excerpt": "Lindsay Clancy kvalte sine tre børn med træningselastik. Elleve nævninge ville have hende erklæret uansvarlig. Den tolvte sagde nej. Venstrefløjen samlede over syv millioner kroner ind.",
     "content": """<p class="wp-block-paragraph">I en tid, hvor tre døde børn kan gøres til en bisætning, mens moren bliver offeret, kører Lindsay Clancy-sagen stadig. Hun kvalte dem. Det er ikke til debat. Debatten handler om, hvorvidt hun skal straffes.</p>
 <p class="wp-block-paragraph">Den 24. januar 2023, i Duxbury uden for Boston, sendte hun sin mand, Patrick, ud efter medicin og takeaway. Anklagerne siger, hun slog ruten op i Apple Maps, så hun vidste, hvor lang tid hun havde. I kælderen kvalte hun Cora på fem, Dawson på tre og Callan på otte måneder med træningselastikker. Cora og Dawson blev erklæret døde samme aften. Callan døde tre dage senere på Boston Children's Hospital.</p>
