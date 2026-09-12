@@ -57,7 +57,7 @@ Derefter: hvad er nyt, hvorfor det er vigtigt, hvad mainstream skjuler.
 2. **Featured-billede** (teknisk: se afsnit 6)  
 3. **Hvad er sket?** / kerneafsnit med fakta  
 4. **2–4 mellemrubrikker** (`h2`) med underpunkter  
-5. **Danmark / “hvad betyder det for os”** (når det giver mening)  
+5. **Danmark / “hvad betyder det for os”** (når det giver mening) — med bid, ikke et slapt “måske kopierer vi det”. Ved censur/ytringer: samme logik sælges her som “hadefulde ytringer” og “trygt onlinemiljø”.  
 6. **Konklusion**  
 7. **Kilder** + evt. X-embed  
 
