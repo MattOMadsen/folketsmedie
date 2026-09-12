@@ -12,9 +12,15 @@ Mål: artikler der lyder som **Folkets Medie** — skarpe, kildenære, fra folke
 1. **Research før skrivning.** Slå datoer, citater og myndighedstekster efter. Skriv ikke noget, der ikke kan belægges. Ingen opdigtede «stadig» eller «på én gang».
 2. **Kladde i chatten først.** Matt læser og godkender. Ingen udgivelse, ingen tidsplan, før han siger ja.
 3. **Når han siger hvordan det skal være:** skriv det ned her og i `AGENTS.md`. Glem det ikke næste gang.
-4. **Støtte (15. aug. 2026).** Bjælke øverst + siden `/stoet/`. Hjælp med at få Folkets Medie tilbage på en rigtig hjemmeside. Mail: mattomadsen@proton.me. MobilePay: 28896782 (kun nummeret offentligt). Overførsel: 9070 / 8060896667. Ingen reklamer.
-5. **Facebook (15. aug. 2026).** Efter deploy kan scriptet `scripts/post-facebook.py` slå den seneste artikel op på Folkets Medies Facebook-side — som det gamle WordPress-plugin. Kræver Page-id og Page-token i `~/.folketsmedie/facebook.env` (ikke i git). RSS: `/folketsmedie/feed.xml`.
-6. **Ved godkendt udgivelse:**
+4. **Intet udgivet må fjernes (Matt, 12. sep. 2026).** En Clancy-deploy kørte `rsync --delete` fra en `export.json`, der manglede to allerede-live artikler. Forsiden faldt fra 441 til 439. Ilhan Omar og Storbritannien-artiklerne virkede stadig som direkte HTML-URL, men var væk fra listen. Det må ikke ske igen.
+   - Blind `rsync --delete` uden først at kopiere manglende live-filer ind i `dist/` er forbudt.
+   - Efter deploy må antallet af artikler på forsiden ikke falde.
+   - `scripts/deploy-gh-pages.sh` kopierer manglende live-filer ind i `dist/` før rsync og afbryder, hvis `artikel/*/index.html` eller forsidens artikeltal ville falde.
+   - Behold `admin/` og `apps/skandale/data/bundle.json` på `gh-pages` — de kommer ikke med i Astro-buildet.
+   - Slå altid live forsiden og `gh-pages` efter, før du deployer. Merge nye artikler ind i den fulde `export.json`. Overskriv ikke et `id`, der allerede er ude (Clancy = 1000029, ikke Ilhans 1000027).
+5. **Støtte (15. aug. 2026).** Bjælke øverst + siden `/stoet/`. Hjælp med at få Folkets Medie tilbage på en rigtig hjemmeside. Mail: mattomadsen@proton.me. MobilePay: 28896782 (kun nummeret offentligt). Overførsel: 9070 / 8060896667. Ingen reklamer.
+6. **Facebook (15. aug. 2026).** Efter deploy kan scriptet `scripts/post-facebook.py` slå den seneste artikel op på Folkets Medies Facebook-side — som det gamle WordPress-plugin. Kræver Page-id og Page-token i `~/.folketsmedie/facebook.env` (ikke i git). RSS: `/folketsmedie/feed.xml`.
+7. **Ved godkendt udgivelse:**
    - billeder der passer (lokalt under `public/media/featured/`, ingen døde folketsmedie.dk-URL’er, ingen AI-ansigter af navngivne personer, ingen ulæselig tekst på billedet)
    - links til kilder og til de omtalte på X
    - gerne et kort, relevant videoklip (ikke nødvendigvis hele mødet)
@@ -216,6 +222,7 @@ Artikler lever i **`data/export.json`** under `articles[]`.
 
 ### `id`
 - Vælg et tal **højere** end eksisterende max (manuelle artikler bruger typisk ≥ 999999 / 1000000).
+- **Aldrig** genbrug et `id`, der allerede sidder på en anden artikel — heller ikke på en anden gren. To artikler med samme `id` betyder, at den ene forsvinder, når de merges.
 
 ### Efter ændring
 ```bash
@@ -233,6 +240,8 @@ touch dist/.nojekyll
 | Intet billede ved deling | Manglende `og:image` / featured ikke absolut / ikke deployed |
 | Billede 404 i artikel | Inline `src` uden `/folketsmedie/` |
 | Artikel ikke øverst | `date` er for gammel |
+| Artikler forsvinder fra forsiden / antallet falder | Blind `rsync --delete` fra en ufuldstændig `export.json`. Kopiér manglende live-filer ind i `dist/` først. Afbryd hvis `artikel/*/index.html` eller forsidens tal ville falde. Intet udgivet må fjernes. |
+| `admin/` eller skandale-`bundle.json` væk | De lever kun på `gh-pages`, ikke i Astro-buildet. Deploy-scriptet skal lægge dem tilbage i `dist/` før rsync. |
 
 ### Hvad sitet automatisk giver
 - Like-knap (øverst + nederst)  
