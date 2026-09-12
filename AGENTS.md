@@ -30,6 +30,12 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 - **Ved udgivelse (efter ok):** billeder der passer, lokale featured-filer, links til kilder og til navngivne personer på X, gerne relevant kort video. Deploy til `gh-pages`.
 - **Billeder skal ligne historien (15. aug. 2026).** Ikke det samme skrivebord med en stak papir igen. Colombia = Andes/grænse/kartel-rute. Mexico = Rio Grande/hegn. FBI-dokumenter må gerne være arkiv — men kun når artiklen *er* papirer. Ingen navngivne ansigter uden rigtigt foto. Ingen ulæselig tekst på billedet.
 - **Når Matt siger hvordan noget skal være:** skriv det ind i denne fil og i `docs/ARTIKEL-GUIDE.md` med det samme.
+- **Intet udgivet må fjernes (Matt, 12. sep. 2026).** En Clancy-deploy kørte `rsync --delete` fra en `export.json`, der manglede to allerede-live artikler. Forsiden faldt fra 441 til 439. Ilhan og Storbritannien virkede stadig som HTML-URL, men var væk fra listen. Det må ikke ske igen.
+  - Blind `rsync --delete` uden først at kopiere manglende live-filer ind i `dist/` er forbudt.
+  - Efter deploy må antallet af artikler på forsiden ikke falde.
+  - `scripts/deploy-gh-pages.sh` kopierer manglende live-filer ind i `dist/` før rsync og afbryder, hvis `artikel/*/index.html` eller forsidens artikeltal ville falde.
+  - Behold `admin/` og `apps/skandale/data/bundle.json` på `gh-pages` — de kommer ikke med i Astro-buildet.
+  - Genbrug aldrig et `id`, der allerede sidder på en anden live artikel (Clancy måtte have 1000029, ellers overskrev den Ilhan 1000027).
 - **Facebook-opslag ved udgivelse.** `scripts/post-facebook.py` kører efter deploy, hvis `~/.folketsmedie/facebook.env` findes (PAGE_ID + PAGE_TOKEN). Ellers spring over. RSS: `/folketsmedie/feed.xml`.
 - **Støtte (15. aug. 2026):** Bjælke + side `/stoet/`. Tekst om at hjælpe Folkets Medie tilbage på en rigtig hjemmeside.
   - Mail: `mattomadsen@proton.me`
