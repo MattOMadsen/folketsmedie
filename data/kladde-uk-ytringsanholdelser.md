@@ -1,6 +1,6 @@
 # Kladde — IKKE UDGIVET (rettet 12. sep. 2026)
 
-**Status:** Venter på Matts ja. Ingen live.
+**Status:** Udgivet 12. sep. 2026 efter Matts ja. Live: `/artikel/storbritannien-anholder-folk-for-at-aabne-munden/`
 **X-krog:** https://x.com/IamGrokDK/status/2098467357567906185 (Peter Jensen — kildelinje, ingen køren på ham)
 **Rettelser (Matt):** Ikke "jer" — det er Storbritannien, ikke Danmark. Lidt 1984/Orwell, der hvor det rammer. Ellers god.
 
