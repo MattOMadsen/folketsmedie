@@ -1,7 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /folketsmedie/admin/
 
 User-agent: facebookexternalhit
 Allow: /
