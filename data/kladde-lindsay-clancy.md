@@ -7,7 +7,85 @@
 
 **Arbejdstitel:** Hun kvalte tre børn. Elleve nævninge ville have hende fri. Den tolvte var en sort mand.
 **Slug:** `lindsay-clancy-kvalte-tre-boern-naevning-holdt-stand`
-**Excerpt:** Lindsay Clancy kvalte Cora, Dawson og Callan. 11 nævninge ville frikende. Den tolvte — en sort mand — sagde nej. Pink t-shirts, millioner på GoFundMe, Oprah og Gayle King.
+**Excerpt:** Lindsay Clancy kvalte Cora, Dawson og Callan. 11 nævninge ville frikende. Den tolvte — en sort mand — sagde nej. Pink t-shirts, over 1,2 millioner dollar, Oprah og Gayle King.
+
+**Tjekket 12. sep. 2026:** GoFundMe Musgrove Family Fund **1.230.423 dollar**, **35.835** donationer, mål 3 mio. Cruz har stadig ikke besluttet omkamp. Retsmøde **29. sep.** Callan: 8 måneder (CBS; AP skrev 7 ved grundlovsforhøret). X-opslag @DerenicByrd: 7.623 likes, 1.231 RT.
+
+---
+
+## Færdig artikel (kladde — ikke i export.json)
+
+**Titel:** Hun kvalte tre børn. Elleve nævninge ville have hende fri. Den tolvte var en sort mand.
+
+I en tid, hvor tre kvalte børn bliver til et sundhedsdebat, står Lindsay Clancy i kørestol i Massachusetts og venter på, om staten vil prøve igen.
+
+Hun kvalte dem. Det bestrider forsvaret ikke. Cora var fem. Dawson var tre. Callan var otte måneder. 24. januar 2023. Kælderen i Duxbury. Træningselastikker om halsen, mens faren var sendt ud efter medicin og takeaway.
+
+Så samlede de over 1,2 millioner dollar. Pink trøjer foran retten: Believe. She Needed Help. Peace For Lindsay. Elleve nævninge ville have hende ud af straffesagen. Den tolvte — den eneste sorte i rummet, en mand i 30'erne — sagde: hun slog tre børn ihjel.
+
+Gayle King på CBS måtte sidde med det et øjeblik.
+
+**Hun sendte faren ud. Så kvalte hun dem**
+
+Lindsay Clancy var 32, jordemoder på Massachusetts General. Hun sendte manden, Patrick, ud efter børnemedicin på CVS og mad fra restauranten ThreeV. Anklageren Jennifer Sprague sagde i retten, at hun først slog tiden op på kortet, så han var væk længe nok. Omkring tyve minutter.
+
+Han kom hjem. Elastikkerne sad stadig. Han rev dem af og tiggede dem om at trække vejret. I 911-optagelsen råber han: hun har slået børnene ihjel. Cora og Dawson var døde. Callan fik pulsen tilbage på hospitalet. Hjernen kom ikke med. Tre dage senere var han også væk.
+
+Hun havde skåret sig i hals og håndled og sprunget ud fra første sal. Lammet fra livet og ned.
+
+Forsvaret, advokat Kevin Reddington: barselspsykose, bipolar, en stemme der beordrede hende til at slå børnene og sig selv ihjel. Tretten præparater på fire måneder. Hun søgte hjælp. Derfor er hun ikke skyldig. I Massachusetts hedder det ikke strafferetligt ansvarlig. Det er ikke fængsel. Det er psykiatri med prøvelse. Bliver hun erklæret rask og ufarlig, kan hun komme ud.
+
+Anklagerne: hun planlagde det. Hun vidste forskel på rigtigt og forkert. Grusomhed. Plymouth-anklageren Timothy Cruz sagde det 4. september, da juryen faldt:
+
+Sagen handler ikke om sundhedsvæsenet, eller hvordan kvinder behandles i det, eller hvilke diagnoser der står i bogen. Den handler om Lindsay Clancy og det, hun gjorde. Den grusomme, beregnede drab på tre uskyldige. Undersøgelsen viste ikke, at det kom af barselsdepression. Børn blev myrdet.
+
+**Elleve ville have hende ud. Forsvaret ville smide den tolvte ud**
+
+Nævninge: ni kvinder, tre mænd. 22 til 70 år. 38 timer over syv dage. Splittet tre gange. Dommer William Sullivan bad dem blive ved. 11–1. Elleve: ikke ansvarlig. Én: skyldig i first-degree murder.
+
+Formanden skrev, at én nægtede at følge bevisbyrden. Reddington ville have ham smidt ud. Appel til Massachusetts' højesteret samme dag. Afvist. Sullivan erklærede mistrial. Ingen dom. Ingen frikendelse.
+
+Nævningen Paula Devlin, der sad på de elleve, gik på CBS Mornings 11. september. Hun kaldte den tolvte arrogant. Hun sagde, at Patricks vidneforklaring drejede hende. Hun sagde også, at den eneste, der stemte skyldig, var en sort mand. Den eneste ikke-hvide i rummet. Alle andre var hvide.
+
+Gayle King: En sort mand er holdout? Whoa. Jeg må sidde med det et øjeblik. Til sidst: fascinerende. Hvor gammel er han? Devlin gættede 30'erne.
+
+Derenic Byrd lagde tegningen ud samme dag. Elleve hvide skriger: stem ikke skyldig. Én sort mand: hun slog tre børn ihjel. Under: COURAGE.
+
+Det er krogen. Ikke fordi farven er historien. Fordi apparatet omkring Clancy tabte scriptet, da den eneste, der nægtede at kalde tre kvalte børn for et sundhedsforløb, var sort.
+
+Cruz har ikke besluttet omkamp. 29. september er der retsmøde. Reddington vil have det overstået. Cruz sagde 4. september: ingen beslutning i dag.
+
+**Pink trøjer, millioner og Oprah**
+
+20. august stod omkring 300 foran retten, mest kvinder, i pink. Believe. She Needed Help. Peace For Lindsay. Fadervor i ring. Flag fra flere lande. Applaus, da Reddington kom ud. Arrangør: Renee Kimball.
+
+GoFundMe hedder The Musgrove Family Fund. Arrangør Brandee Mulligan. Pengene går til forældrene Mike og Paula Musgrove — ikke direkte i Lindsays lomme. De er flyttet fra Connecticut til Massachusetts for at sidde hos hende. 4. september, samme dag som mistrial, hævede de målet fra to til tre millioner dollar. 12. september: 1.230.423 dollar. 35.835 donationer. Siden siger, den ikke tager stilling til skyld. I praksis: apparatet omkring hende.
+
+Oprah Winfrey optog 10. september i Massachusetts. The Lindsay Clancy Case, Understanding Postpartum Psychosis. Gæst: kollegaen Meg Hamp, der vidnede. OB/GYN Dr. Kameelah Phillips fik klapsalver for at sige: husk kvinder, der ikke ligner Lindsay. Ikke samme adgang. Ikke samme uddannelse. Ikke hendes melanin. Ikke hendes privilegium. Der sidder kvinder af farve i fængsel for det samme, I aldrig har hørt om. De skal også have de lyserøde trøjer.
+
+Samme maskine. Drabene bliver et kvindehelbred. Så bliver kvindehelbredet race. De tre navne — Cora, Dawson, Callan — er bagtæppet.
+
+Demokratiske folkevalgte i Massachusetts har været tause. Opdigt ikke, at Biden eller Harris har krævet frikendelse. Det, der er venstrefløjen her, er kulturen: pink Believe, 11 af 12 nævninge, forsøget på at smide den tolvte ud, Oprah, og Gayle King der må sidde ned, fordi den eneste voksne i rummet var sort.
+
+Udenfor råbte nogen til Cruz: I var først interesserede, da børnene var døde. Hvorfor passede I ikke på moren?
+
+**Herhjemme hedder det også, at systemet svigtede**
+
+I Danmark kender vi sangen. Tro hende. Systemet svigtede. Hun var syg. Når hænderne har gjort det, skal historien flyttes over på hospitalet, medicinen og "kvinder i klemme".
+
+Barselspsykose findes. Den er sjælden. Den er ikke det samme som tre børn med elastik om halsen, mens faren er sendt ud efter mad. Den er heller ikke det samme som 35.000 donationer og en t-shirt, der hedder Believe.
+
+Hvis tre lig kan blive til et kvindehelbred, og den eneste, der siger nej, bliver kaldt arrogant, så er det ikke et amerikansk internt slagsmål. Det er den samme maskine, der herhjemme siger, at I skal tro, og at spørgsmålet er had.
+
+**Konklusion**
+
+Hun kvalte Cora, Dawson og Callan. Elleve nævninge ville have hende ud af straffesagen. Den tolvte var en sort mand. De har samlet over 1,2 millioner dollar. Oprah har optaget. Cruz har ikke besluttet omkamp.
+
+Det er ikke en frifindelse. Det er en kultur, der allerede har frifundet hende.
+
+Del det. Læs kilderne. Husk børnenes navne.
+
+**Kilder:** @DerenicByrd 11. sep. · CBS / Gayle King · Reuters, WBUR, Boston Globe 4. sep. · AP (pink rally) · GoFundMe Musgrove Family Fund · Fox / Oprah 10.–11. sep. · NY Post: Gayle King · Boston 25 / AP: Cruz.
 
 ---
 
