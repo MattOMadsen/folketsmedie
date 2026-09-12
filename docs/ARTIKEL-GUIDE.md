@@ -12,11 +12,12 @@ Mål: artikler der lyder som **Folkets Medie** — skarpe, kildenære, fra folke
 1. **Research før skrivning.** Slå datoer, citater og myndighedstekster efter. Skriv ikke noget, der ikke kan belægges. Ingen opdigtede «stadig» eller «på én gang».
 2. **Drop når det ikke holder (12. sep. 2026).** Hvis datoen er forkert, eller kernen ikke kan belægges: ingen artikel. Ingen omskrivning af gammelt som breaking.
 3. **Ikke nedgøre venlige kilder (12. sep. 2026).** Ramte de lidt ved siden af: ret tal og dato i teksten. Kør ikke på dem. Skriv historien, som om læseren ikke har set opslaget.
-4. **Kladde i chatten først.** Matt læser og godkender. Ingen udgivelse, ingen tidsplan, før han siger ja.
-5. **Når han siger hvordan det skal være:** skriv det ned her og i `AGENTS.md`. Glem det ikke næste gang.
-6. **Støtte (15. aug. 2026).** Bjælke øverst + siden `/stoet/`. Hjælp med at få Folkets Medie tilbage på en rigtig hjemmeside. Mail: mattomadsen@proton.me. MobilePay: 28896782 (kun nummeret offentligt). Overførsel: 9070 / 8060896667. Ingen reklamer.
-7. **Facebook (15. aug. 2026).** Efter deploy kan scriptet `scripts/post-facebook.py` slå den seneste artikel op på Folkets Medies Facebook-side — som det gamle WordPress-plugin. Kræver Page-id og Page-token i `~/.folketsmedie/facebook.env` (ikke i git). RSS: `/folketsmedie/feed.xml`.
-8. **Ved godkendt udgivelse:**
+4. **Censur og ytringer (12. sep. 2026).** Folkets Medie er imod censur og imod at anholde folk for at åbne munden. Vold og reelle trusler er en sag. At sige noget er det ikke. Skriv om mennesker, der bliver hentet for at tale — navngivne sager, der er latterlige eller ser ud som chikane. Ikke et kedeligt tal i midten. Danmark-afsnittet skal have bid: samme logik sælges her som "hadefulde ytringer" og "trygt onlinemiljø". Ikke et slapt "måske kopierer vi det".
+5. **Kladde i chatten først.** Matt læser og godkender. Ingen udgivelse, ingen tidsplan, før han siger ja.
+6. **Når han siger hvordan det skal være:** skriv det ned her og i `AGENTS.md`. Glem det ikke næste gang.
+7. **Støtte (15. aug. 2026).** Bjælke øverst + siden `/stoet/`. Hjælp med at få Folkets Medie tilbage på en rigtig hjemmeside. Mail: mattomadsen@proton.me. MobilePay: 28896782 (kun nummeret offentligt). Overførsel: 9070 / 8060896667. Ingen reklamer.
+8. **Facebook (15. aug. 2026).** Efter deploy kan scriptet `scripts/post-facebook.py` slå den seneste artikel op på Folkets Medies Facebook-side — som det gamle WordPress-plugin. Kræver Page-id og Page-token i `~/.folketsmedie/facebook.env` (ikke i git). RSS: `/folketsmedie/feed.xml`.
+9. **Ved godkendt udgivelse:**
    - billeder der passer (lokalt under `public/media/featured/`, ingen døde folketsmedie.dk-URL’er, ingen AI-ansigter af navngivne personer, ingen ulæselig tekst på billedet)
    - links til kilder og til de omtalte på X
    - gerne et kort, relevant videoklip (ikke nødvendigvis hele mødet)
