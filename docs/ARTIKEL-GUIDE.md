@@ -10,11 +10,15 @@ Mål: artikler der lyder som **Folkets Medie** — skarpe, kildenære, fra folke
 ## 0. Stående regler (Matt)
 
 1. **Research før skrivning.** Slå datoer, citater og myndighedstekster efter. Skriv ikke noget, der ikke kan belægges. Ingen opdigtede «stadig» eller «på én gang».
-2. **Kladde i chatten først.** Matt læser og godkender. Ingen udgivelse, ingen tidsplan, før han siger ja.
-3. **Når han siger hvordan det skal være:** skriv det ned her og i `AGENTS.md`. Glem det ikke næste gang.
-4. **Støtte (15. aug. 2026).** Bjælke øverst + siden `/stoet/`. Hjælp med at få Folkets Medie tilbage på en rigtig hjemmeside. Mail: mattomadsen@proton.me. MobilePay: 28896782 (kun nummeret offentligt). Overførsel: 9070 / 8060896667. Ingen reklamer.
-5. **Facebook (15. aug. 2026).** Efter deploy kan scriptet `scripts/post-facebook.py` slå den seneste artikel op på Folkets Medies Facebook-side — som det gamle WordPress-plugin. Kræver Page-id og Page-token i `~/.folketsmedie/facebook.env` (ikke i git). RSS: `/folketsmedie/feed.xml`.
-6. **Ved godkendt udgivelse:**
+2. **Drop når det ikke holder (12. sep. 2026).** Hvis datoen er forkert, eller kernen ikke kan belægges: ingen artikel. Ingen omskrivning af gammelt som breaking.
+3. **Ikke nedgøre venlige kilder (12. sep. 2026).** Ramte de lidt ved siden af: ret tal og dato i teksten. Kør ikke på dem. Skriv historien, som om læseren ikke har set opslaget.
+4. **Censur og ytringer (12. sep. 2026).** Folkets Medie er imod censur og imod at anholde folk for at åbne munden. Vold og reelle trusler er en sag. At sige noget er det ikke. Skriv om mennesker, der bliver hentet for at tale — navngivne sager, der er latterlige eller ser ud som chikane. Ikke et kedeligt tal i midten. Danmark-afsnittet skal have bid: samme logik sælges her som "hadefulde ytringer" og "trygt onlinemiljø". Ikke et slapt "måske kopierer vi det".
+5. **Udland er ikke "jer" (12. sep. 2026).** Sker det i Storbritannien, USA eller et andet land: skriv *de*, *briterne*, *folk*. Ikke "de anholder jer", som om læseren står i Cumbria. Danmark-afsnittet må tale til os herhjemme. Orwell og *1984* kun når det rammer — tænke-kursus, tankepoliti — ikke som skoleopgave.
+6. **Kladde i chatten først.** Matt læser og godkender. Ingen udgivelse, ingen tidsplan, før han siger ja.
+7. **Når han siger hvordan det skal være:** skriv det ned her og i `AGENTS.md`. Glem det ikke næste gang.
+8. **Støtte (15. aug. 2026).** Bjælke øverst + siden `/stoet/`. Hjælp med at få Folkets Medie tilbage på en rigtig hjemmeside. Mail: mattomadsen@proton.me. MobilePay: 28896782 (kun nummeret offentligt). Overførsel: 9070 / 8060896667. Ingen reklamer.
+9. **Facebook (15. aug. 2026).** Efter deploy kan scriptet `scripts/post-facebook.py` slå den seneste artikel op på Folkets Medies Facebook-side — som det gamle WordPress-plugin. Kræver Page-id og Page-token i `~/.folketsmedie/facebook.env` (ikke i git). RSS: `/folketsmedie/feed.xml`.
+10. **Ved godkendt udgivelse:**
    - billeder der passer (lokalt under `public/media/featured/`, ingen døde folketsmedie.dk-URL’er, ingen AI-ansigter af navngivne personer, ingen ulæselig tekst på billedet)
    - links til kilder og til de omtalte på X
    - gerne et kort, relevant videoklip (ikke nødvendigvis hele mødet)
@@ -54,7 +58,7 @@ Derefter: hvad er nyt, hvorfor det er vigtigt, hvad mainstream skjuler.
 2. **Featured-billede** (teknisk: se afsnit 6)  
 3. **Hvad er sket?** / kerneafsnit med fakta  
 4. **2–4 mellemrubrikker** (`h2`) med underpunkter  
-5. **Danmark / “hvad betyder det for os”** (når det giver mening)  
+5. **Danmark / “hvad betyder det for os”** (når det giver mening) — med bid, ikke et slapt “måske kopierer vi det”. Ved censur/ytringer: samme logik sælges her som “hadefulde ytringer” og “trygt onlinemiljø”.  
 6. **Konklusion**  
 7. **Kilder** + evt. X-embed  
 
@@ -79,7 +83,7 @@ Derefter: hvad er nyt, hvorfor det er vigtigt, hvad mainstream skjuler.
 | **title** | Klar, dansk, gerne med konkret vinkel. Kan bruge anførselstegn ved citat. Undgå ALL CAPS i hele titlen. |
 | **slug** | Kun små bogstaver, tal, bindestreg. Dansk æ/ø/å → `ae`/`oe`/`aa` eller omskriv. Max ~80–90 tegn. Unik. |
 | **excerpt** | 1–2 sætninger (ca. 150–220 tegn). Bruges til forside, SEO og SoMe-beskrivelse. |
-| **date** | `YYYY-MM-DD HH:MM:SS` — nyere dato = øverst på forsiden. |
+| **date** | `YYYY-MM-DD HH:MM:SS` — nyere dato = øverst på forsiden. **Skal være passeret i UTC på build-maskinen**, ellers filtrer `isPublished()` artiklen fra (12. sep. 2026: Ilhan-artiklen med `11:20` kom ikke med, fordi VM’en var `09:xx` UTC). |
 | **source** | Ved manuelt indhold: `"manual"`. |
 
 ### Slug-eksempler
@@ -217,14 +221,28 @@ Artikler lever i **`data/export.json`** under `articles[]`.
 ### `id`
 - Vælg et tal **højere** end eksisterende max (manuelle artikler bruger typisk ≥ 999999 / 1000000).
 
-### Efter ændring
+### Efter ændring (udgivelse, 12. sep. 2026)
+
+Kladde er godkendt. Så:
+
+1. Featured-fil under `public/media/featured/` + felter i `export.json`.
+2. Dato: allerede passeret **i UTC** (se feltet `date` ovenfor).
+3. Commit json + billede. Push arbejdsgreenen.
+4. Deploy live:
+
 ```bash
-npm run build
-# sørg for dist/.nojekyll (ellers CSS 404 på Pages)
-touch dist/.nojekyll
-# commit source (export.json + billeder) til main
-# deploy dist → branch gh-pages (med .nojekyll)
+# rsync skal findes (ellers: sudo apt-get install -y rsync)
+COMMIT_MSG="Deploy: kort titel" bash scripts/deploy-gh-pages.sh
 ```
+
+Scriptet bygger, lægger `dist/` på `origin/gh-pages` med `.nojekyll`, og **gendanner** filer som `rsync --delete` ellers tager med: `/admin/`, ekstra `media/featured/`, skandale-bundle. Gamle `_astro/`-hashes gendannes ikke.
+
+5. Tjek live (ikke kun et screenshot):
+   - `https://mattomadsen.github.io/folketsmedie/` — artiklen øverst
+   - artikelsiden, featured-billede, CSS
+   - `/folketsmedie/feed.xml`
+   - `/folketsmedie/admin/` og ældre featured-URL’er stadig 200
+6. Facebook kører efter deploy, hvis `~/.folketsmedie/facebook.env` findes. Ellers spring over.
 
 ### Deploy-faldgruber
 | Problem | Årsag / fix |
@@ -233,6 +251,10 @@ touch dist/.nojekyll
 | Intet billede ved deling | Manglende `og:image` / featured ikke absolut / ikke deployed |
 | Billede 404 i artikel | Inline `src` uden `/folketsmedie/` |
 | Artikel ikke øverst | `date` er for gammel |
+| Artikel findes slet ikke efter build | `date` ligger i fremtiden i UTC — `isPublished()` dropper den |
+| Admin / gamle billeder 404 | `rsync --delete` uden gendannelse. Brug `scripts/deploy-gh-pages.sh` |
+| `rsync: command not found` | `sudo apt-get install -y rsync` |
+| `gh-pages is already used by worktree` | Fjern `/tmp/fm-gh-pages.*` og `git worktree prune` — scriptet gør det |
 
 ### Hvad sitet automatisk giver
 - Like-knap (øverst + nederst)  
@@ -255,8 +277,10 @@ Du behøver **ikke** indkode like/share i HTML-indholdet.
 1. Læs hele opslaget + tråd/medier.  
 2. Find 2–5 **stærke** links (PubMed, dokumenter, andre X-kilder).  
 3. Skriv dansk artikel — **ikke** ordret maskinoversættelse.  
-4. Indsæt X-embed + kilde-linje.  
-5. Featured + evt. 1–2 inline-billeder.  
+4. Skriv som nyhed, folk ikke har hørt. Antag ikke, at de har set opslaget eller tallene.  
+5. Venlige kilder, der rammer lidt ved siden af: ret fakta, kør ikke på personen.  
+6. Indsæt X-embed + kilde-linje.  
+7. Featured + evt. 1–2 inline-billeder.  
 
 ---
 
@@ -290,8 +314,9 @@ Artiklen skal lyde, som om den er skrevet på dansk — ikke som en ordret overs
 - [ ] Inline-billeder med `/folketsmedie/media/...`  
 - [ ] X-embed hvis historien kommer fra X  
 - [ ] Indsat i `export.json` med `source: "manual"`  
-- [ ] `npm run build` + deploy med `.nojekyll`  
-- [ ] Tjek live: forside, artikel, CSS, SoMe-preview  
+- [ ] `date` er passeret i UTC (ellers kommer artiklen ikke med i build)  
+- [ ] `COMMIT_MSG="…" bash scripts/deploy-gh-pages.sh` (gendanner admin/featured)  
+- [ ] Tjek live: forside, artikel, CSS, billede, feed, admin stadig oppe  
 
 ---
 
