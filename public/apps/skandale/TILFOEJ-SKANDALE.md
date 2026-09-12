@@ -28,6 +28,8 @@ Skandaler gemmes i den granulære struktur:
 
 Hver skandale har sin egen JSON-fil, og `manifest.json` i mappen skal opdateres.
 
+Efter nye JSON-filer: kør `npm run bundle:skandale` (køres også ved `npm run build`), så live-siden henter den opdaterede `data/bundle.json`.
+
 ---
 
 *Oprettet: 20. maj 2026*
