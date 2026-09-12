@@ -42,7 +42,7 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 
 - **Kladde først.** Vis den færdige artikel her i chatten. Udgiv aldrig før han har læst og godkendt.
 - **Research først.** Tjek datoer, citater, myndighedstekster og X-kilder. Ingen gætteri, ingen «tre ting på én gang» hvis det ikke er sandt.
-- **Drop når det ikke holder (12. sep. 2026).** Hvis datoen er forkert, eller kernen ikke kan belægges: ingen artikel. Ingen omskrivning af gammelt som breaking.
+- **Ikke nedgøre venlige kilder (12. sep. 2026).** Ramte de lidt ved siden af: ret tal og dato i teksten. Kør ikke på dem. Skriv historien, som om læseren ikke har set opslaget.
 - **Ved udgivelse (efter ok):** billeder der passer, lokale featured-filer, links til kilder og til navngivne personer på X, gerne relevant kort video. Deploy til `gh-pages` med `scripts/deploy-gh-pages.sh`. Dato i UTC, allerede passeret. Se afsnittet *Artikel-udgivelse* under Deploy.
 - **Billeder skal ligne historien (15. aug. 2026).** Ikke det samme skrivebord med en stak papir igen. Colombia = Andes/grænse/kartel-rute. Mexico = Rio Grande/hegn. FBI-dokumenter må gerne være arkiv — men kun når artiklen *er* papirer. Ingen navngivne ansigter uden rigtigt foto. Ingen ulæselig tekst på billedet.
 - **Når Matt siger hvordan noget skal være:** skriv det ind i denne fil og i `docs/ARTIKEL-GUIDE.md` med det samme.

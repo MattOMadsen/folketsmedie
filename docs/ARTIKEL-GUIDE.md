@@ -11,11 +11,12 @@ Mål: artikler der lyder som **Folkets Medie** — skarpe, kildenære, fra folke
 
 1. **Research før skrivning.** Slå datoer, citater og myndighedstekster efter. Skriv ikke noget, der ikke kan belægges. Ingen opdigtede «stadig» eller «på én gang».
 2. **Drop når det ikke holder (12. sep. 2026).** Hvis datoen er forkert, eller kernen ikke kan belægges: ingen artikel. Ingen omskrivning af gammelt som breaking.
+3. **Ikke nedgøre venlige kilder (12. sep. 2026).** Ramte de lidt ved siden af: ret tal og dato i teksten. Kør ikke på dem. Skriv historien, som om læseren ikke har set opslaget.
 3. **Kladde i chatten først.** Matt læser og godkender. Ingen udgivelse, ingen tidsplan, før han siger ja.
-3. **Når han siger hvordan det skal være:** skriv det ned her og i `AGENTS.md`. Glem det ikke næste gang.
-4. **Støtte (15. aug. 2026).** Bjælke øverst + siden `/stoet/`. Hjælp med at få Folkets Medie tilbage på en rigtig hjemmeside. Mail: mattomadsen@proton.me. MobilePay: 28896782 (kun nummeret offentligt). Overførsel: 9070 / 8060896667. Ingen reklamer.
-5. **Facebook (15. aug. 2026).** Efter deploy kan scriptet `scripts/post-facebook.py` slå den seneste artikel op på Folkets Medies Facebook-side — som det gamle WordPress-plugin. Kræver Page-id og Page-token i `~/.folketsmedie/facebook.env` (ikke i git). RSS: `/folketsmedie/feed.xml`.
-6. **Ved godkendt udgivelse:**
+4. **Når han siger hvordan det skal være:** skriv det ned her og i `AGENTS.md`. Glem det ikke næste gang.
+5. **Støtte (15. aug. 2026).** Bjælke øverst + siden `/stoet/`. Hjælp med at få Folkets Medie tilbage på en rigtig hjemmeside. Mail: mattomadsen@proton.me. MobilePay: 28896782 (kun nummeret offentligt). Overførsel: 9070 / 8060896667. Ingen reklamer.
+6. **Facebook (15. aug. 2026).** Efter deploy kan scriptet `scripts/post-facebook.py` slå den seneste artikel op på Folkets Medies Facebook-side — som det gamle WordPress-plugin. Kræver Page-id og Page-token i `~/.folketsmedie/facebook.env` (ikke i git). RSS: `/folketsmedie/feed.xml`.
+7. **Ved godkendt udgivelse:**
    - billeder der passer (lokalt under `public/media/featured/`, ingen døde folketsmedie.dk-URL’er, ingen AI-ansigter af navngivne personer, ingen ulæselig tekst på billedet)
    - links til kilder og til de omtalte på X
    - gerne et kort, relevant videoklip (ikke nødvendigvis hele mødet)
@@ -274,8 +275,10 @@ Du behøver **ikke** indkode like/share i HTML-indholdet.
 1. Læs hele opslaget + tråd/medier.  
 2. Find 2–5 **stærke** links (PubMed, dokumenter, andre X-kilder).  
 3. Skriv dansk artikel — **ikke** ordret maskinoversættelse.  
-4. Indsæt X-embed + kilde-linje.  
-5. Featured + evt. 1–2 inline-billeder.  
+4. Skriv som nyhed, folk ikke har hørt. Antag ikke, at de har set opslaget eller tallene.  
+5. Venlige kilder, der rammer lidt ved siden af: ret fakta, kør ikke på personen.  
+6. Indsæt X-embed + kilde-linje.  
+7. Featured + evt. 1–2 inline-billeder.  
 
 ---
 
