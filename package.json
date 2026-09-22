@@ -7,7 +7,10 @@
     "node": ">=22.12.0"
   },
   "scripts": {
+    "bundle:skandale": "node scripts/bundle-skandale-data.mjs",
+    "predev": "node scripts/bundle-skandale-data.mjs",
     "dev": "astro dev",
+    "prebuild": "node scripts/bundle-skandale-data.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"

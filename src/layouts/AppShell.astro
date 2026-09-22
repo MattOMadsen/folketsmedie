@@ -27,6 +27,14 @@ const canonical = `${site}${base}${house}/`;
     <meta name="theme-color" content="#0a0b0c" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    {house === 'skandale' && (
+      <link
+        rel="preload"
+        href={`${base}apps/skandale/data/bundle.json`}
+        as="fetch"
+        crossorigin="anonymous"
+      />
+    )}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -40,14 +48,19 @@ const canonical = `${site}${base}${house}/`;
     <div class="site-top">
       <HouseSwitch current={house} />
     </div>
-    <iframe
-      class="app-frame"
-      src={iframeSrc}
-      title={title}
-      loading="eager"
-      referrerpolicy="no-referrer-when-downgrade"
-      transition:persist={`frame-${house}`}
-    ></iframe>
+    <div class="app-frame-wrap">
+      <div class="app-frame-pending" aria-hidden="true">Åbner {title}…</div>
+      <iframe
+        class="app-frame"
+        src={iframeSrc}
+        title={title}
+        loading="eager"
+        fetchpriority="high"
+        referrerpolicy="no-referrer-when-downgrade"
+        transition:persist={`frame-${house}`}
+        onload="this.parentElement.classList.add('is-ready')"
+      ></iframe>
+    </div>
     <SupportBanner bottom />
   </body>
 </html>

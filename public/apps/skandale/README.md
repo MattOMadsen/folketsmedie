@@ -53,7 +53,7 @@ Se guiden her:
 
 - Ren HTML + Tailwind CSS + Font Awesome
 - Vanilla JavaScript
-- Data i JSON-filer (manifest-baseret)
+- Data i JSON-filer (manifest-baseret). Ved build pakkes de til `data/bundle.json`, så GitHub Pages ikke skal hente hundredvis af små filer.
 - Klar til GitHub Pages
 
 ## Kør lokalt

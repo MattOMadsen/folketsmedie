@@ -28,6 +28,10 @@ async function loadPoliticians() {
       _detailsLoaded: false
     }));
 
+    if (SiteStats.hasBundle()) {
+      await Promise.all(politicians.map((p) => loadPoliticianDetails(p).catch(() => p)));
+    }
+
     window.politicians = politicians;
     return politicians;
   } catch (error) {
