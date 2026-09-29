@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Åbn øjnene — gæt tallene</title>
+  <meta name="description" content="Gæt Danmarks tal. Budget på 100 kroner. Ét tal om dagen. Kilder: DST og finansloven." />
+  <meta name="theme-color" content="#0f1410" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { serif: ["Georgia", "Times New Roman", "serif"], sans: ["ui-sans-serif", "system-ui", "sans-serif"] },
+          colors: { ink: "#e8eadf", paper: "#0f1410", moss: "#9caf88", rust: "#c4a574" }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: #0f1410; color: #e8eadf; }
+    .bar { transition: width .45s ease; }
+    button:disabled { opacity: .55; }
+  </style>
+</head>
+<body class="min-h-dvh antialiased">
+  <header class="px-4 pt-6 pb-4 max-w-lg mx-auto">
+    <p class="text-xs tracking-[0.2em] uppercase text-moss">Folkets tal</p>
+    <h1 class="font-serif text-3xl mt-1">Åbn øjnene</h1>
+    <p class="text-sm text-white/60 mt-2 leading-relaxed">Ikke en artikel. Et gæt. Facit kommer fra Danmarks Statistik og finansloven — så du kan tjekke selv.</p>
+  </header>
+
+  <nav class="sticky top-0 z-10 bg-paper/95 backdrop-blur border-b border-white/10 px-4">
+    <div class="max-w-lg mx-auto flex gap-1 py-2" role="tablist">
+      <button class="tab flex-1 py-2 text-sm rounded-lg" data-tab="quiz" aria-selected="true">Gæt tallet</button>
+      <button class="tab flex-1 py-2 text-sm rounded-lg" data-tab="budget" aria-selected="false">100 kroner</button>
+      <button class="tab flex-1 py-2 text-sm rounded-lg" data-tab="daily" aria-selected="false">Dagens tal</button>
+    </div>
+  </nav>
+
+  <main class="max-w-lg mx-auto px-4 pb-16 pt-6">
+    <section id="quiz" class="panel"></section>
+    <section id="budget" class="panel hidden"></section>
+    <section id="daily" class="panel hidden"></section>
+  </main>
+
+  <footer class="max-w-lg mx-auto px-4 pb-10 text-xs text-white/40 leading-relaxed">
+    Tallene er afrundet. Åbn kilden før du deler et facit som slåskamp.
+    <span class="block mt-1"><a href="../../" style="color:#c4a574">Tilbage til Folkets Medie</a></span>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

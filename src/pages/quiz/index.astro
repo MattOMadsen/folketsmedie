@@ -1,0 +1,12 @@
+---
+import AppShell from '../../layouts/AppShell.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<AppShell
+  title="Gæt tallet"
+  description="Gæt Danmarks tal. Fordel 100 kroner. Ét tal om dagen. Kilder: Danmarks Statistik og finansloven."
+  house="quiz"
+  iframeSrc={`${base}apps/quiz/`}
+/>

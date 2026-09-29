@@ -1,6 +1,6 @@
 ---
 interface Props {
-  current?: 'fm' | 'skandale' | 'skattejaegeren';
+  current?: 'fm' | 'skandale' | 'skattejaegeren' | 'quiz';
 }
 const { current = 'fm' } = Astro.props;
 const base = import.meta.env.BASE_URL;
@@ -9,6 +9,7 @@ const sites = [
   { id: 'fm', label: 'Folkets Medie', href: base },
   { id: 'skandale', label: 'Politiske skandaler', href: `${base}skandale/` },
   { id: 'skattejaegeren', label: 'Skattejægeren', href: `${base}skattejaegeren/` },
+  { id: 'quiz', label: 'Gæt tallet', href: `${base}quiz/` },
 ] as const;
 ---
 
