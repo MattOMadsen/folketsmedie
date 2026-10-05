@@ -755,6 +755,7 @@ body.app-shell .support-bar--foot {
 .prose {
   font-size: 1.08rem;
   color: var(--text-soft);
+  overflow-wrap: anywhere;
 }
 
 .prose h2,
