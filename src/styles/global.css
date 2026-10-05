@@ -782,6 +782,32 @@ body.app-shell .support-bar--foot {
   border: 1px solid var(--border-soft);
 }
 
+.prose figure {
+  margin: 1.15rem 0 1.4rem;
+}
+
+.prose figcaption {
+  margin-top: 0.45rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.prose video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background: #000;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.prose figure.fm-video {
+  margin: 1.2rem 0 1.5rem;
+}
+
 .prose blockquote {
   margin: 0 0 1.2em;
   padding: 0.85rem 1rem 0.85rem 1.1rem;
