@@ -809,6 +809,18 @@ body.app-shell .support-bar--foot {
   margin: 1.2rem 0 1.5rem;
 }
 
+.prose .fm-x-card {
+  margin: 1.15rem 0 1.4rem;
+}
+
+.prose .fm-x-card blockquote {
+  margin-bottom: 0.55rem;
+}
+
+.prose .fm-x-card blockquote p + p {
+  margin-top: 0.75rem;
+}
+
 .prose blockquote {
   margin: 0 0 1.2em;
   padding: 0.85rem 1rem 0.85rem 1.1rem;
