@@ -110,6 +110,21 @@ Artikler gemmes som **HTML-strenge** i `data/export.json` (ikke bare Markdown i 
 </figure>
 ```
 
+### Lokal video (mp4 på GitHub Pages)
+
+Truth Social og andre sider kan ikke embeddes stabilt på et statisk site. Når mp4-filen kan hentes, læg den i `public/media/video/` (komprimer, `+faststart`) og poster-billedet ved siden af. Brug stien med `/folketsmedie/`:
+
+```html
+<figure class="wp-block-video fm-video">
+  <video controls preload="metadata" playsinline poster="/folketsmedie/media/video/fil-poster.jpg" width="1280" height="720">
+    <source src="/folketsmedie/media/video/fil.mp4" type="video/mp4" />
+  </video>
+  <figcaption>Kort billedtekst. <a href="https://oprindeligt-opslag" target="_blank" rel="noopener">Se det originale opslag</a>.</figcaption>
+</figure>
+```
+
+`preload="metadata"` så mobil ikke henter hele filen, før læseren trykker play.
+
 ### X / Twitter-embed
 ```html
 <figure class="wp-block-embed is-type-rich is-provider-twitter wp-block-embed-twitter">
