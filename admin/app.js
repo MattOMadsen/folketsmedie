@@ -34,6 +34,96 @@
     },
   };
 
+  const MONTHS = ['jan.', 'feb.', 'mar.', 'apr.', 'maj', 'jun.', 'jul.', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'];
+
+  const DEMO_ARTICLES = [
+    {
+      id: 1000034,
+      title: '70 millioner amerikanske børn har nu fået en investeringskonto i eget navn',
+      slug: 'trump-konti-70-millioner-boern-oktober-2026',
+      date: '2026-10-10T09:00:00Z',
+      excerpt: '',
+      content: '<p>Eksempeltekst.</p>',
+      featured_image_local: '/media/featured/wh-billede-1.jpg',
+      status: 'published',
+    },
+    {
+      id: 1000033,
+      title: 'Vælgerne går til højre i hele Europa. Domstole og brandmure står i vejen',
+      slug: 'vaelgerne-gaar-til-hoejre-europa-domstole-brandmure-oktober-2026',
+      date: '2026-10-06T09:30:00Z',
+      excerpt: '',
+      content: '<p>Eksempeltekst.</p>',
+      featured_image_local: '/media/featured/hoejrefloej-maalinger-oktober-2026.png',
+      status: 'published',
+    },
+    {
+      id: 1000032,
+      title: 'Trump vil have svindlere i fængsel. Og politikere, der ser stille til, skal selv betale',
+      slug: 'trump-faengsel-svindlere-politikere-betaler-oktober-2026',
+      date: '2026-10-06T05:00:00Z',
+      excerpt: '',
+      content: '<p>Eksempeltekst.</p>',
+      featured_image_local: '/media/featured/trump-svindel-video-still-2026-10-03.jpg',
+      status: 'published',
+    },
+    {
+      id: 1000031,
+      title: 'AfD vinder igen i øst. Brandmuren står. Tyskland og Europa betaler prisen',
+      slug: 'afd-vinder-igen-i-oest-brandmur-tyskland-europa',
+      date: '2026-09-20 18:00:00',
+      excerpt: '',
+      content: '<p>Eksempeltekst.</p>',
+      featured_image_local: '/media/featured/afd-vinder-igen-i-oest-brandmur.png',
+      status: 'published',
+    },
+    {
+      id: 1000101,
+      title: 'Udkast: gennemgang af talen',
+      slug: 'udkast-gennemgang-af-talen',
+      date: '2026-10-10 14:30:00',
+      excerpt: '',
+      content: '<p>Eksempelkladde.</p>',
+      featured_image_local: '/media/featured/dublin-liberty-hall-luas-gade.jpg',
+      status: 'draft',
+    },
+    {
+      id: 1000102,
+      title: 'Udkast: kilder mangler',
+      slug: 'udkast-kilder-mangler',
+      date: '2026-10-09 09:00:00',
+      excerpt: '',
+      content: '',
+      featured_image_local: '',
+      status: 'draft',
+    },
+  ];
+
+  const DEMO_POLITICIANS = [
+    { slug: 'mette-frederiksen', name: 'Mette Frederiksen', party: 'Socialdemokratiet', role: 'Statsminister siden 2019', live: true },
+    { slug: 'lars-loekke-rasmussen', name: 'Lars Løkke Rasmussen', party: 'Moderaterne', role: 'Udenrigsminister', live: true },
+    { slug: 'eksempel-politiker', name: 'Eksempelpolitiker', party: 'Venstre', role: 'Kladde', live: false },
+  ];
+
+  const DEMO_CASES = [
+    {
+      slug: 'statens-kunstfond',
+      title: 'Statens Kunstfond: millioner til kunst — ikke til ældrepleje',
+      status: 'approved',
+      amountLabel: '27,8 mio. kr.',
+      amountDkk: 27800000,
+      inIndex: true,
+    },
+    {
+      slug: 'eksempel-sag',
+      title: 'Eksempelsag om en pulje',
+      status: 'draft',
+      amountLabel: '4,2 mio. kr.',
+      amountDkk: 4200000,
+      inIndex: false,
+    },
+  ];
+
   const root = document.getElementById('admin-root');
   const base = root?.dataset.base || '/folketsmedie/';
 
@@ -43,7 +133,10 @@
     branch: 'main',
     house: houseFromHash(),
     view: 'list',
-    fmFilter: 'all',
+    fmFilter: 'live',
+    demo: false,
+    gcKey: '',
+    visits: { mode: 'example', total: 12480, bySlug: {}, note: '' },
     editorTab: 'skriv',
     status: '',
     statusKind: '',
@@ -304,6 +397,7 @@
         token: raw.token || '',
         repo: raw.repo || state.repo,
         branch: raw.branch || 'main',
+        gcKey: raw.gcKey || '',
       });
     } catch {
       /* ignore */
@@ -311,12 +405,26 @@
   }
 
   function saveLocal() {
+    let token = state.token;
+    let repo = state.repo;
+    let branch = state.branch;
+    if (state.demo) {
+      try {
+        const raw = JSON.parse(localStorage.getItem(STORAGE) || '{}');
+        token = raw.token || '';
+        repo = raw.repo || repo;
+        branch = raw.branch || branch;
+      } catch {
+        token = '';
+      }
+    }
     localStorage.setItem(
       STORAGE,
       JSON.stringify({
-        token: state.token,
-        repo: state.repo,
-        branch: state.branch,
+        token,
+        repo,
+        branch,
+        gcKey: state.gcKey || '',
       })
     );
   }
@@ -339,15 +447,186 @@
 
   function badge(live) {
     return live
-      ? '<span class="badge live">live</span>'
-      : '<span class="badge draft">kladde</span>';
+      ? '<span class="badge live">Live</span>'
+      : '<span class="badge draft">Kladde</span>';
   }
 
   function articleBadge(a) {
-    if (a.status === 'draft' || a.status === 'hidden') {
-      return `<span class="badge draft">${a.status === 'hidden' ? 'skjult' : 'kladde'}</span>`;
+    if (a.status === 'hidden') return '<span class="badge draft">Skjult</span>';
+    if (a.status === 'draft') return '<span class="badge draft">Kladde</span>';
+    return '<span class="badge live">Live</span>';
+  }
+
+  function isDraftArticle(a) {
+    return a.status === 'draft' || a.status === 'hidden';
+  }
+
+  function withClock(day, month, year, hour, minute) {
+    const mon = MONTHS[month - 1] || '';
+    const hm = minute ? ` kl. ${hour}.${String(minute).padStart(2, '0')}` : ` kl. ${hour}`;
+    return `${day}. ${mon} ${year}${hm}`;
+  }
+
+  function formatDa(input) {
+    const s = String(input || '').trim();
+    if (!s) return '';
+    const hasZone = /[zZ]$|[+-]\d{2}:?\d{2}$/.test(s);
+    const m = s.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
+    if (!m) return s;
+    if (!hasZone) {
+      const day = Number(m[3]);
+      const month = Number(m[2]);
+      const year = Number(m[1]);
+      if (!m[4]) return `${day}. ${MONTHS[month - 1]} ${year}`;
+      return withClock(day, month, year, Number(m[4]), Number(m[5]));
     }
-    return '<span class="badge live">live</span>';
+    const d = new Date(s);
+    if (Number.isNaN(d.getTime())) return s;
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/Copenhagen',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hourCycle: 'h23',
+    }).formatToParts(d);
+    const g = (t) => Number(parts.find((p) => p.type === t)?.value);
+    return withClock(g('day'), g('month'), g('year'), g('hour'), g('minute'));
+  }
+
+  function formatCount(n) {
+    return Number(n || 0).toLocaleString('da-DK');
+  }
+
+  function exampleCount(key) {
+    const s = String(key || 'x');
+    let h = 2166136261;
+    for (let i = 0; i < s.length; i += 1) {
+      h ^= s.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return 800 + ((h >>> 0) % 42000);
+  }
+
+  function visitHtml(key) {
+    const live = state.visits.mode === 'live';
+    const n = live ? Number(state.visits.bySlug[key] || 0) : exampleCount(key);
+    const ex = live ? '' : '<span class="ex">eksempel</span>';
+    return `<span class="hits">${formatCount(n)} besøg ${ex}</span>`;
+  }
+
+  function articleImage(a) {
+    const local = a.featured_image_local || '';
+    if (local) {
+      if (/^https?:/i.test(local)) return local;
+      const path = local.startsWith('/') ? local : `/${local}`;
+      if (path.startsWith(base)) return path;
+      return `${base.replace(/\/$/, '')}${path}`;
+    }
+    return a.featured_image || '';
+  }
+
+  function partyColor(name) {
+    const hit = PARTIES.find(([n]) => n === name);
+    return hit ? hit[1] : '#2a3236';
+  }
+
+  function tabsHtml(counts) {
+    const tabs = [
+      ['live', 'Live', counts.live],
+      ['draft', 'Kladder', counts.draft],
+      ['all', 'Alle', counts.all],
+    ];
+    return `<div class="tabs" role="tablist">${tabs
+      .map(
+        ([id, label, n]) =>
+          `<button type="button" data-filter="${id}" class="${state.fmFilter === id ? 'is-on' : ''}" role="tab" aria-selected="${state.fmFilter === id}">${label} <span class="count">${n}</span></button>`
+      )
+      .join('')}</div>`;
+  }
+
+  function bindListChrome(rerender) {
+    const q = document.getElementById('q');
+    q?.addEventListener('input', (e) => {
+      state.q = e.target.value;
+      const pos = e.target.selectionStart;
+      rerender();
+      const again = document.getElementById('q');
+      if (again) {
+        again.focus();
+        try {
+          again.setSelectionRange(pos, pos);
+        } catch {
+          /* search inputs */
+        }
+      }
+    });
+    document.querySelectorAll('.tabs [data-filter]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        state.fmFilter = btn.dataset.filter;
+        rerender();
+      });
+    });
+  }
+
+  function blockDemo() {
+    if (!state.demo) return false;
+    setStatus('Eksempelvisning. Her gemmes ingenting.', 'err');
+    return true;
+  }
+
+  async function loadVisits() {
+    if (state.demo) return;
+    if (!state.gcKey) {
+      state.visits = {
+        mode: 'example',
+        total: 12480,
+        bySlug: {},
+        note: 'Eksempeltal. Sæt nøglen i menuen for at hente de rigtige.',
+      };
+      return;
+    }
+    try {
+      const headers = {
+        Authorization: `Bearer ${state.gcKey}`,
+        Accept: 'application/json',
+      };
+      const api = 'https://folketsmedie.goatcounter.com/api/v0';
+      const totalRes = await fetch(`${api}/stats/total`, { headers });
+      if (!totalRes.ok) throw new Error('besøg');
+      const totalJson = await totalRes.json();
+      const bySlug = {};
+      let offset = 0;
+      for (let page = 0; page < 6; page += 1) {
+        const res = await fetch(`${api}/stats/hits?limit=100&offset=${offset}`, { headers });
+        if (!res.ok) throw new Error('besøg');
+        const json = await res.json();
+        const hits = Array.isArray(json.hits) ? json.hits : [];
+        for (const hit of hits) {
+          const path = String(hit.path || '');
+          const found = path.match(/\/(?:artikel|skandale|skattejaegeren)\/([^/?#]+)/);
+          if (!found) continue;
+          const slug = decodeURIComponent(found[1].replace(/\/$/, ''));
+          bySlug[slug] = (bySlug[slug] || 0) + Number(hit.count || 0);
+        }
+        if (!json.more || !hits.length) break;
+        offset += hits.length;
+      }
+      state.visits = {
+        mode: 'live',
+        total: Number(totalJson.total ?? totalJson.total_utc ?? 0),
+        bySlug,
+        note: '',
+      };
+    } catch {
+      state.visits = {
+        mode: 'example',
+        total: 12480,
+        bySlug: {},
+        note: 'Tallene kunne ikke hentes her. Telefonen kan blokere goatcounter.com. Eksempeltal vises i stedet.',
+      };
+    }
   }
 
   function mergedArticles() {
@@ -384,11 +663,53 @@
     state.house = house;
     state.view = 'list';
     state.q = '';
-    state.polList = [];
-    state.caseSummaries = [];
+    if (!state.demo) {
+      state.polList = [];
+      state.caseSummaries = [];
+    }
     if (location.hash.replace(/^#/, '') !== house) {
       history.replaceState(null, '', `#${house}`);
     }
+    render();
+  }
+
+  function newLabel() {
+    if (state.house === 'skandale') return 'Ny politiker';
+    if (state.house === 'skatte') return 'Ny sag';
+    return 'Ny artikel';
+  }
+
+  function startNew() {
+    stopPoll();
+    if (state.house === 'fm') {
+      state.article = blankArticle();
+      state.view = 'edit';
+      render();
+      return;
+    }
+    if (state.house === 'skandale') {
+      state.politicianSlug = '';
+      state.polCore = blankPolitician();
+      state.polCoreSha = null;
+      state.polLive = false;
+      state.scandals = [];
+      state.promises = [];
+      state.scManifest = { scandals: [] };
+      state.prManifest = { brokenPromises: [] };
+      state.scManifestSha = null;
+      state.prManifestSha = null;
+      state.affiliationsText = '';
+      state.donationsText = '';
+      state.affSha = null;
+      state.ecoSha = null;
+      state.view = 'newpol';
+      render();
+      return;
+    }
+    state.caseFile = blankCase();
+    state.caseSha = null;
+    state.caseSlug = '';
+    state.view = 'edit';
     render();
   }
 
@@ -409,29 +730,20 @@
   function loginHtml() {
     return `
       <div class="login-box card">
-        <h1>Admin · Folkets Medie</h1>
-        <p>Én indgang, tre rum. GitHub-token sættes én gang i browseren. Grok kører via Cursor — ingen xAI-nøgle her. Intet går live, før du trykker Udgiv.</p>
-        <ul class="house-list">
-          <li><strong>Folkets Medie</strong> — artikler</li>
-          <li><strong>Politiske skandaler</strong> — politikere, skandaler, brudte løfter</li>
-          <li><strong>Skattejægeren</strong> — sager om skattekroner</li>
-        </ul>
-        <label>GitHub-token (contents: read/write på folketsmedie)</label>
-        <input id="tok" type="password" autocomplete="off" placeholder="ghp_…" value="${esc(state.token)}">
-        <div class="row">
-          <div>
-            <label>Repo</label>
-            <input id="repo" value="${esc(state.repo)}">
-          </div>
-          <div>
-            <label>Branch</label>
-            <input id="branch" value="${esc(state.branch)}">
-          </div>
-        </div>
-        <p class="hint">Token gemmes kun i din browser. Opret en classic PAT eller fine-grained token med adgang til dette repo.</p>
+        <h1>Admin</h1>
+        <p>Folkets Medie, Politiske skandaler og Skattejægeren. Nøglen gemmes kun i denne browser. Intet går live, før du trykker Udgiv.</p>
+        <label for="tok">GitHub-nøgle</label>
+        <input id="tok" type="password" autocomplete="off" placeholder="ghp_…" value="${esc(state.demo ? '' : state.token)}">
+        <details class="more">
+          <summary>Flere indstillinger</summary>
+          <label for="repo">Repo</label>
+          <input id="repo" value="${esc(state.repo)}">
+          <label for="branch">Branch</label>
+          <input id="branch" value="${esc(state.branch)}">
+        </details>
         <div class="actions">
-          <button class="btn" id="login">Log ind</button>
-          <a class="btn secondary" href="${esc(base)}">Tilbage til sitet</a>
+          <button class="btn" id="login" type="button">Log ind</button>
+          <a class="btn secondary" href="${esc(base)}">Se siden</a>
         </div>
         <div id="admin-status" class="status ${state.statusKind}">${esc(state.status)}</div>
       </div>`;
@@ -439,16 +751,21 @@
 
   function bindLogin() {
     document.getElementById('login')?.addEventListener('click', async () => {
+      state.demo = false;
       state.token = document.getElementById('tok').value.trim();
-      state.repo = document.getElementById('repo').value.trim() || state.repo;
-      state.branch = document.getElementById('branch').value.trim() || 'main';
-      if (!state.token) return setStatus('Sæt et token.', 'err');
+      state.repo = document.getElementById('repo')?.value.trim() || state.repo;
+      state.branch = document.getElementById('branch')?.value.trim() || 'main';
+      if (!state.token) return setStatus('Sæt en GitHub-nøgle.', 'err');
+      const url = new URL(location.href);
+      url.searchParams.delete('demo');
+      history.replaceState(null, '', url.pathname + url.search + url.hash);
       saveLocal();
       applyGit();
       state.busy = true;
       try {
         await FMGit.api('');
         await bootData();
+        await loadVisits();
         render();
       } catch (err) {
         setStatus(err.message || 'Login fejlede', 'err');
@@ -459,35 +776,82 @@
 
   function shellHtml() {
     const h = HOUSES[state.house];
+    const live = state.visits.mode === 'live';
+    const ex = live ? '' : '<span class="ex">eksempel</span>';
+    const note = state.visits.note ? `<p class="hint visits-note">${esc(state.visits.note)}</p>` : '';
     return `
-      <div class="admin-top">
-        <div>
-          <p class="kicker">${esc(h.kicker)}</p>
-          <h1>Admin · ${esc(h.title)}</h1>
-          <p>Tre sider. Tre rum. Gem kladde først — udgiv kun når du vil.</p>
+      <div class="shell">
+        <header class="topbar">
+          <button class="btn" id="go-new" type="button">${esc(newLabel())}</button>
+          <button class="btn secondary menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="main-menu">Menu</button>
+        </header>
+        <div class="menu" id="main-menu" hidden>
+          <a class="btn secondary" href="${esc(base + h.live)}" target="_blank" rel="noopener">Se siden</a>
+          <button class="btn secondary" id="logout" type="button">Log ud</button>
+          <div class="menu-key">
+            <label for="gc-key">Nøgle til besøgstal</label>
+            <input id="gc-key" type="password" autocomplete="off" placeholder="Sættes én gang i browseren" value="${esc(state.gcKey)}">
+            <button class="btn" id="gc-save" type="button">Hent tal</button>
+            <p class="hint">Nøglen bliver kun i denne browser.</p>
+          </div>
         </div>
-        <div class="actions">
-          <a class="btn secondary" href="${esc(base + h.live)}" target="_blank" rel="noopener">Se ${esc(h.title)}</a>
-          <a class="btn secondary" href="${esc(base)}">Forsiden</a>
-          <button class="btn secondary" id="logout">Log ud</button>
-        </div>
-      </div>
-      <nav class="houses" aria-label="Vælg rum">
-        <button data-house="fm" class="${state.house === 'fm' ? 'is-on' : ''}">Folkets Medie</button>
-        <button data-house="skandale" class="${state.house === 'skandale' ? 'is-on' : ''}">Politiske skandaler</button>
-        <button data-house="skatte" class="${state.house === 'skatte' ? 'is-on' : ''}">Skattejægeren</button>
-      </nav>
-      <div id="admin-main"></div>
-      <div id="admin-status" class="status ${state.statusKind}">${esc(state.status)}</div>
-    `;
+        <nav class="houses" aria-label="Vælg side">
+          <button type="button" data-house="fm" class="${state.house === 'fm' ? 'is-on' : ''}">Folkets Medie</button>
+          <button type="button" data-house="skandale" class="${state.house === 'skandale' ? 'is-on' : ''}">Politiske skandaler</button>
+          <button type="button" data-house="skatte" class="${state.house === 'skatte' ? 'is-on' : ''}">Skattejægeren</button>
+        </nav>
+        <section class="visits" aria-label="Besøg i alt">
+          <p class="kicker">Besøg i alt</p>
+          <p class="visits-num">${formatCount(state.visits.total)} ${ex}</p>
+        </section>
+        ${note}
+        <div id="admin-main"></div>
+        <div id="admin-status" class="status ${state.statusKind}">${esc(state.status)}</div>
+      </div>`;
   }
 
   function bindShell() {
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('main-menu');
+    menuBtn?.addEventListener('click', () => {
+      const open = menu.hasAttribute('hidden');
+      if (open) menu.removeAttribute('hidden');
+      else menu.setAttribute('hidden', '');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
     document.getElementById('logout')?.addEventListener('click', () => {
+      if (state.demo) {
+        state.demo = false;
+        state.token = '';
+        const url = new URL(location.href);
+        url.searchParams.delete('demo');
+        history.replaceState(null, '', url.pathname + url.search + url.hash);
+        loadLocal();
+        state.token = '';
+        saveLocal();
+        render();
+        return;
+      }
       state.token = '';
       saveLocal();
       render();
     });
+    document.getElementById('gc-save')?.addEventListener('click', async () => {
+      state.gcKey = document.getElementById('gc-key').value.trim();
+      saveLocal();
+      if (state.demo) {
+        setStatus('Eksempelvisning. Her hentes ingen tal.', 'err');
+        return;
+      }
+      setStatus('Henter besøgstal…');
+      await loadVisits();
+      setStatus(
+        state.visits.mode === 'live' ? 'Besøgstal opdateret.' : state.visits.note,
+        state.visits.mode === 'live' ? 'ok' : 'err'
+      );
+      render();
+    });
+    document.getElementById('go-new')?.addEventListener('click', startNew);
     document.querySelectorAll('[data-house]').forEach((btn) => {
       btn.addEventListener('click', () => setHouse(btn.dataset.house));
     });
@@ -502,61 +866,50 @@
       bindFmEditor();
       return;
     }
-    const list = mergedArticles().filter((a) => {
-      const q = state.q.trim().toLowerCase();
-      const draft = a.status === 'draft' || a.status === 'hidden';
+    const all = mergedArticles();
+    const counts = {
+      all: all.length,
+      draft: all.filter(isDraftArticle).length,
+      live: all.filter((a) => !isDraftArticle(a)).length,
+    };
+    const q = state.q.trim().toLowerCase();
+    const list = all.filter((a) => {
+      const draft = isDraftArticle(a);
       if (state.fmFilter === 'draft' && !draft) return false;
       if (state.fmFilter === 'live' && draft) return false;
       if (!q) return true;
-      return `${a.title} ${a.slug}`.toLowerCase().includes(q);
+      return String(a.title || '').toLowerCase().includes(q);
     });
     main.innerHTML = `
-      <div class="card house-intro">
-        <p>Artikler som sitet: titel, uddrag, HTML, billede. Kladder i <code>data/manual.json</code>. <strong>Skriv med Cursor</strong> bruger din Grok-build — ingen xAI-nøgle i admin.</p>
+      <div class="list-tools">
+        ${tabsHtml(counts)}
+        <input class="search" id="q" type="search" placeholder="Søg i rubrik" value="${esc(state.q)}" enterkeyhint="search">
       </div>
-      <div class="card">
-        <div class="actions" style="margin-top:0">
-          <button class="btn" id="new-article">Ny artikel</button>
-        </div>
-        <div class="filters" role="tablist">
-          <button data-filter="all" class="${state.fmFilter === 'all' ? 'is-on' : ''}">Alle</button>
-          <button data-filter="draft" class="${state.fmFilter === 'draft' ? 'is-on' : ''}">Kladder</button>
-          <button data-filter="live" class="${state.fmFilter === 'live' ? 'is-on' : ''}">Live</button>
-        </div>
-        <input class="search" id="q" placeholder="Søg i titel eller slug…" value="${esc(state.q)}">
-        <div class="list" id="alist">
-          ${list
-            .slice(0, 120)
-            .map(
-              (a) => `<button class="item" data-slug="${esc(a.slug)}">
-                <div class="item-title">${esc(a.title)} ${articleBadge(a)}</div>
-                <div class="item-meta">${esc(a.date)} · ${esc(a.slug)}</div>
-              </button>`
-            )
-            .join('')}
-        </div>
-        <p class="hint">Viser ${Math.min(120, list.length)} af ${list.length}.</p>
+      <div class="cards" id="alist">
+        ${
+          list.length
+            ? list.map((a) => articleCard(a)).join('')
+            : '<p class="hint">Ingen artikler her.</p>'
+        }
       </div>`;
-    document.getElementById('q')?.addEventListener('input', (e) => {
-      state.q = e.target.value;
-    });
-    document.getElementById('q')?.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') renderFm();
-    });
-    document.querySelectorAll('.filters [data-filter]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        state.fmFilter = btn.dataset.filter;
-        renderFm();
-      });
-    });
-    document.getElementById('new-article')?.addEventListener('click', () => {
-      state.article = blankArticle();
-      state.view = 'edit';
-      render();
-    });
+    bindListChrome(() => renderFm());
     document.querySelectorAll('#alist [data-slug]').forEach((btn) => {
       btn.addEventListener('click', () => openArticle(btn.dataset.slug));
     });
+  }
+
+  function articleCard(a) {
+    const img = articleImage(a);
+    const thumb = img
+      ? `<img src="${esc(img)}" alt="" loading="lazy">`
+      : '<span class="thumb-fallback" aria-hidden="true"></span>';
+    return `<button type="button" class="story" data-slug="${esc(a.slug)}">
+      ${thumb}
+      <span class="story-body">
+        <span class="story-title">${esc(a.title)}</span>
+        <span class="story-meta">${articleBadge(a)}<span class="when">${esc(formatDa(a.date))}</span>${visitHtml(a.slug)}</span>
+      </span>
+    </button>`;
   }
 
   function openArticle(slug) {
@@ -575,53 +928,46 @@
       <div class="editor">
         <div class="card editor-main">
           <div class="actions" style="margin-top:0">
-            <button class="btn secondary" id="back">← Alle artikler</button>
+            <button class="btn secondary" id="back" type="button">Tilbage</button>
           </div>
+          <label for="a-title">Rubrik</label>
+          <input id="a-title" value="${esc(a.title)}">
+          <input id="a-slug" type="hidden" value="${esc(a.slug)}">
           <div class="row">
             <div>
-              <label>Titel</label>
-              <input id="a-title" value="${esc(a.title)}">
-            </div>
-            <div>
-              <label>Slug</label>
-              <input id="a-slug" value="${esc(a.slug)}" placeholder="bliver lavet ud fra titlen">
-            </div>
-          </div>
-          <div class="row">
-            <div>
-              <label>Dato</label>
+              <label for="a-date">Dato</label>
               <input id="a-date" value="${esc(a.date)}">
+              <p class="hint">${esc(formatDa(a.date))}</p>
             </div>
             <div>
-              <label>Uddrag</label>
+              <label for="a-excerpt">Uddrag</label>
               <input id="a-excerpt" value="${esc(a.excerpt)}">
             </div>
           </div>
           <div class="filters" role="tablist">
-            <button data-tab="skriv" class="${tab === 'skriv' ? 'is-on' : ''}">Skriv HTML</button>
-            <button data-tab="preview" class="${tab === 'preview' ? 'is-on' : ''}">Forhåndsvisning</button>
+            <button type="button" data-tab="skriv" class="${tab === 'skriv' ? 'is-on' : ''}">Tekst</button>
+            <button type="button" data-tab="preview" class="${tab === 'preview' ? 'is-on' : ''}">Forhåndsvisning</button>
           </div>
           <textarea class="body ${tab === 'preview' ? 'is-hidden' : ''}" id="a-content">${esc(a.content)}</textarea>
           <iframe id="a-preview" class="preview-frame ${tab === 'skriv' ? 'is-hidden' : ''}" title="Forhåndsvisning"></iframe>
         </div>
         <div class="card editor-side">
-          <h2 class="section">Cursor / Grok</h2>
-          <p class="hint">Ingen xAI-nøgle. Grok kører i din Cursor-build, når du har sat <code>CURSOR_API_KEY</code> én gang på GitHub.</p>
-          <label>Noter (hvad er sket, hvad der skal med)</label>
+          <h2 class="section">Kladdehjælp</h2>
+          <p class="hint">Skriv noter og kilder. Knappen laver et udkast, som du læser, før noget udgives.</p>
+          <label for="a-notes">Noter</label>
           <textarea id="a-notes">${esc(a.notes || '')}</textarea>
-          <label>Kilder (en URL pr. linje)</label>
+          <label for="a-sources">Kilder (en adresse pr. linje)</label>
           <textarea id="a-sources">${esc(a.sourcesText || '')}</textarea>
           <div class="actions">
-            <button class="btn" id="ai-write">Skriv med Cursor</button>
-            <a class="btn secondary" href="https://cursor.com/agents" target="_blank" rel="noopener">Åbn Cursor</a>
+            <button class="btn" id="ai-write" type="button">Skriv kladde</button>
           </div>
-          <label>Featured-billede (jpg/png, gerne 16:9)</label>
+          <label for="a-image">Billede</label>
           <input id="a-image" type="file" accept="image/jpeg,image/png,image/webp">
-          <p class="hint">Nuværende: ${esc(a.featured_image_local || 'ingen')}</p>
+          <p class="hint">${a.featured_image_local || a.featured_image ? 'Billede er sat.' : 'Intet billede endnu.'}</p>
           <div class="actions sticky-actions">
-            <button class="btn secondary" id="save-draft">Gem kladde</button>
-            <button class="btn" id="publish">Udgiv</button>
-            <button class="btn secondary" id="hide">Skjul</button>
+            <button class="btn secondary" id="save-draft" type="button">Gem kladde</button>
+            <button class="btn" id="publish" type="button">Udgiv</button>
+            <button class="btn secondary" id="hide" type="button">Skjul</button>
           </div>
           <p class="hint">Kladde kommer ikke på forsiden. Udgiv kun når du har læst teksten.</p>
         </div>
@@ -691,9 +1037,10 @@
   }
 
   async function runAi() {
+    if (blockDemo()) return;
     const a = readArticleForm();
     const notes = a.notes || a.title;
-    if (!notes.trim()) return setStatus('Skriv noter eller en titel, Cursor kan arbejde ud fra.', 'err');
+    if (!notes.trim()) return setStatus('Skriv noter eller en rubrik, så kladden kan skrives.', 'err');
     if (!a.title) {
       a.title = notes.trim().split('\n')[0].slice(0, 90);
       const t = document.getElementById('a-title');
@@ -704,7 +1051,7 @@
       const slugEl = document.getElementById('a-slug');
       if (slugEl) slugEl.value = a.slug;
     }
-    setStatus('Gemmer anmodning til Cursor…');
+    setStatus('Bestiller kladde…');
     try {
       await saveArticle('draft');
       const id = `${Date.now()}-${a.slug}`.slice(0, 80);
@@ -723,13 +1070,10 @@
         request,
         `AI-anmodning: ${request.title}`
       );
-      setStatus(
-        'Anmodning lagt i GitHub. Cursor/Grok skriver kladden. Den kommer ind her som kladde — udgiv den ikke før du har læst den. Du kan følge med på cursor.com/agents.',
-        'ok'
-      );
+      setStatus('Kladde er bestilt. Den dukker op her, når den er skrevet. Udgiv den ikke, før du har læst den.', 'ok');
       startPoll(a.slug);
     } catch (err) {
-      setStatus(err.message || 'Kunne ikke sende til Cursor', 'err');
+      setStatus(err.message || 'Kunne ikke bestille kladden', 'err');
     }
   }
 
@@ -740,7 +1084,7 @@
       n += 1;
       if (n > 40) {
         stopPoll();
-        setStatus('Cursor er stadig i gang, eller CURSOR_API_KEY mangler på GitHub. Åbn cursor.com/agents, eller sæt nøglen én gang under repo → Secrets.', 'err');
+        setStatus('Kladdehjælpen svarer ikke endnu. Prøv igen om lidt.', 'err');
         return;
       }
       try {
@@ -762,7 +1106,7 @@
               refreshPreview();
             }
           }
-          setStatus('Kladde fra Cursor ligger i felterne. Læs den. Ret den. Udgiv kun når du er tilfreds.', 'ok');
+          setStatus('Kladde er klar i felterne. Læs den, ret den, og udgiv kun når du er tilfreds.', 'ok');
         }
       } catch {
         /* prøv igen */
@@ -771,8 +1115,9 @@
   }
 
   async function saveArticle(status) {
+    if (blockDemo()) return;
     const a = readArticleForm();
-    if (!a.title || !a.slug) return setStatus('Titel og slug skal udfyldes.', 'err');
+    if (!a.title || !a.slug) return setStatus('Rubrikken skal udfyldes.', 'err');
     a.status = status;
     if (status === 'published' && !a.date) a.date = nowStamp();
     const fileInput = document.getElementById('a-image');
@@ -824,7 +1169,7 @@
       state.article = { ...state.article, ...record };
       setStatus(
         status === 'published'
-          ? 'Udgivet til GitHub. Sitet bygger om et øjeblik. Hard refresh når Actions er færdig.'
+          ? 'Udgivet. Sitet opdaterer om et øjeblik.'
           : status === 'hidden'
             ? 'Skjult. Den er ikke på forsiden.'
             : 'Kladde gemt. Den er ikke på forsiden.',
@@ -847,7 +1192,7 @@
   /* ——— Politiske skandaler ——— */
 
   async function ensurePoliticians() {
-    if (state.polList.length) return;
+    if (state.demo || state.polList.length) return;
     const man = await FMGit.getJson('public/apps/skandale/data/politicians/manifest.json', {
       politicians: [],
     });
@@ -880,12 +1225,14 @@
 
   async function renderSkandale() {
     const main = document.getElementById('admin-main');
-    main.innerHTML = `<div class="card"><p>Henter politikere…</p></div>`;
-    try {
-      await ensurePoliticians();
-    } catch (err) {
-      main.innerHTML = `<div class="card"><p class="status err">${esc(err.message)}</p></div>`;
-      return;
+    if (!state.demo && !state.polList.length) {
+      main.innerHTML = `<div class="card"><p>Henter politikere…</p></div>`;
+      try {
+        await ensurePoliticians();
+      } catch (err) {
+        main.innerHTML = `<div class="card"><p class="status err">${esc(err.message)}</p></div>`;
+        return;
+      }
     }
     if (state.view === 'scandal') {
       main.innerHTML = scandalFormHtml();
@@ -902,61 +1249,66 @@
       bindPoliticianForm();
       return;
     }
+    const all = state.polList;
+    const counts = {
+      all: all.length,
+      live: all.filter((p) => p.live).length,
+      draft: all.filter((p) => !p.live).length,
+    };
     const q = state.q.trim().toLowerCase();
-    const list = state.polList.filter(
-      (p) => !q || `${p.name} ${p.slug} ${p.party}`.toLowerCase().includes(q)
-    );
+    const list = all.filter((p) => {
+      if (state.fmFilter === 'live' && !p.live) return false;
+      if (state.fmFilter === 'draft' && p.live) return false;
+      if (!q) return true;
+      return `${p.name} ${p.party}`.toLowerCase().includes(q);
+    });
     main.innerHTML = `
-      <div class="card house-intro">
-        <p>Her styrer du <strong>Politiske skandaler</strong> som appen er bygget: én JSON pr. politiker, skandaler og brudte løfter i mapper med <code>manifest.json</code>. Kladde gemmes som fil, men kommer først på sitet når du trykker Udgiv — så ryger den i manifestet.</p>
+      <div class="list-tools">
+        ${tabsHtml(counts)}
+        <input class="search" id="q" type="search" placeholder="Søg i navn" value="${esc(state.q)}" enterkeyhint="search">
       </div>
-      <div class="card">
-        <div class="actions" style="margin-top:0">
-          <button class="btn" id="new-pol">Ny politiker</button>
-        </div>
-        <input class="search" id="q" placeholder="Søg i navn, parti eller slug…" value="${esc(state.q)}">
-        <div class="list" id="plist">
-          ${list
-            .map(
-              (p) => `<button class="item" data-slug="${esc(p.slug)}">
-                <div class="item-title">${esc(p.name)} ${badge(p.live)}</div>
-                <div class="item-meta">${esc(p.party)}${p.role ? ' · ' + esc(p.role) : ''} · ${esc(p.slug)}</div>
-              </button>`
-            )
-            .join('')}
-        </div>
-        <p class="hint">${list.length} politikere. Vælg en for at rette profil, skandaler og løfter.</p>
+      <div class="cards" id="plist">
+        ${
+          list.length
+            ? list
+                .map(
+                  (p) => `<button type="button" class="story" data-slug="${esc(p.slug)}">
+                    <span class="thumb-fallback" style="background:${esc(partyColor(p.party))}" aria-hidden="true"></span>
+                    <span class="story-body">
+                      <span class="story-title">${esc(p.name)}</span>
+                      <span class="story-meta">${badge(p.live)}<span>${esc(p.party)}${p.role ? ' · ' + esc(p.role) : ''}</span>${visitHtml(p.slug)}</span>
+                    </span>
+                  </button>`
+                )
+                .join('')
+            : '<p class="hint">Ingen politikere her.</p>'
+        }
       </div>`;
-    document.getElementById('q')?.addEventListener('input', (e) => {
-      state.q = e.target.value;
-    });
-    document.getElementById('q')?.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') renderSkandale();
-    });
-    document.getElementById('new-pol')?.addEventListener('click', () => {
-      state.politicianSlug = '';
-      state.polCore = blankPolitician();
-      state.polCoreSha = null;
-      state.polLive = false;
-      state.scandals = [];
-      state.promises = [];
-      state.scManifest = { scandals: [] };
-      state.prManifest = { brokenPromises: [] };
-      state.scManifestSha = null;
-      state.prManifestSha = null;
-      state.affiliationsText = '';
-      state.donationsText = '';
-      state.affSha = null;
-      state.ecoSha = null;
-      state.view = 'newpol';
-      render();
-    });
+    bindListChrome(() => renderSkandale());
     document.querySelectorAll('#plist [data-slug]').forEach((btn) => {
       btn.addEventListener('click', () => openPolitician(btn.dataset.slug));
     });
   }
 
   async function openPolitician(slug) {
+    if (state.demo) {
+      const hit = state.polList.find((p) => p.slug === slug) || {
+        slug,
+        name: slug,
+        party: 'Socialdemokratiet',
+        role: '',
+        live: false,
+      };
+      state.politicianSlug = slug;
+      state.polCore = { ...blankPolitician(), ...hit, slug };
+      state.polLive = !!hit.live;
+      state.scandals = [];
+      state.promises = [];
+      state.view = 'politician';
+      render();
+      setStatus('');
+      return;
+    }
     setStatus('Åbner politiker…');
     try {
       const [
@@ -1065,19 +1417,12 @@
     return `
       <div class="card">
         <div class="actions" style="margin-top:0">
-          <button class="btn secondary" id="back">← Alle politikere</button>
+          <button class="btn secondary" id="back" type="button">Tilbage</button>
         </div>
-        <p class="hint">${isNew ? 'Ny politiker' : `Profil: <strong>${esc(p.name || p.slug)}</strong> ${badge(state.polLive)}`}</p>
-        <div class="row">
-          <div>
-            <label>Navn</label>
-            <input id="np-name" value="${esc(p.name)}">
-          </div>
-          <div>
-            <label>Slug</label>
-            <input id="np-slug" value="${esc(p.slug)}" ${isNew ? '' : 'readonly'}>
-          </div>
-        </div>
+        <p class="hint">${isNew ? 'Ny politiker' : `Profil: <strong>${esc(p.name || '')}</strong> ${badge(state.polLive)}`}</p>
+        <label for="np-name">Navn</label>
+        <input id="np-name" value="${esc(p.name)}">
+        <input id="np-slug" type="hidden" value="${esc(p.slug)}" ${isNew ? '' : 'data-locked="1"'}>
         <div class="row">
           <div>
             <label>Parti</label>
@@ -1093,7 +1438,7 @@
           </div>
         </div>
         <label><input id="np-ft" type="checkbox" ${p.inFolketinget ? 'checked' : ''} style="width:auto"> I Folketinget nu</label>
-        <label>Billede-URL (rigtigt foto, ikke AI-ansigt)</label>
+        <label>Billede (rigtigt foto, ikke et opdigtet ansigt)</label>
         <input id="np-image" value="${esc(p.image)}">
         <label>Bio</label>
         <textarea id="np-bio">${esc(p.bio)}</textarea>
@@ -1129,7 +1474,7 @@
                   .map(
                     (s) => `<button class="item" data-file="${esc(s.filename)}">
                       <div class="item-title">${esc(s.title)} ${badge(s.live)}</div>
-                      <div class="item-meta">${esc(s.year)} · ${esc(s.filename)}</div>
+                      <div class="item-meta">${esc(s.year)}</div>
                     </button>`
                   )
                   .join('')
@@ -1149,7 +1494,7 @@
                   .map(
                     (s) => `<button class="item" data-file="${esc(s.filename)}">
                       <div class="item-title">${esc(s.title)} ${badge(s.live)}</div>
-                      <div class="item-meta">${esc(s.year)} · ${esc(s.filename)}</div>
+                      <div class="item-meta">${esc(s.year)}</div>
                     </button>`
                   )
                   .join('')
@@ -1167,7 +1512,7 @@
     });
     document.getElementById('np-name')?.addEventListener('blur', () => {
       const slug = document.getElementById('np-slug');
-      if (slug && !slug.readOnly && !slug.value.trim()) {
+      if (slug && !slug.dataset.locked && !slug.value.trim()) {
         slug.value = slugify(document.getElementById('np-name').value);
       }
     });
@@ -1217,8 +1562,9 @@
   }
 
   async function savePolitician(publish) {
+    if (blockDemo()) return;
     const p = readPoliticianForm();
-    if (!p.name || !p.slug) return setStatus('Navn og slug skal udfyldes.', 'err');
+    if (!p.name || !p.slug) return setStatus('Navnet skal udfyldes.', 'err');
     const party = p.party;
     const color = (PARTIES.find(([n]) => n === party) || [party, '#64748b'])[1];
     const raw = p._raw && typeof p._raw === 'object' ? p._raw : {};
@@ -1331,6 +1677,7 @@
   }
 
   async function hidePolitician() {
+    if (blockDemo()) return;
     const slug = state.politicianSlug;
     if (!slug) return;
     const list = (state.polManifest.politicians || []).filter((s) => s !== slug);
@@ -1389,7 +1736,7 @@
         <div class="actions" style="margin-top:0">
           <button class="btn secondary" id="back">← ${esc(state.polCore.name || state.politicianSlug)}</button>
         </div>
-        <p class="hint">Skandale til <strong>${esc(state.politicianSlug)}</strong>${state.scandalFile ? ` · ${esc(state.scandalFile)} ${badge(!!live)}` : ' · ny fil'}</p>
+        <p class="hint">Skandale om <strong>${esc(state.polCore.name || 'politikeren')}</strong> ${badge(!!live)}</p>
         <label>Titel</label>
         <input id="s-title" value="${esc(s.title)}">
         <div class="row">
@@ -1427,7 +1774,7 @@
           <button class="btn" id="pub-sc">Udgiv skandale</button>
           ${state.scandalFile && live ? '<button class="btn secondary" id="hide-sc">Skjul</button>' : ''}
         </div>
-        <p class="hint">Kladde skriver JSON-filen. Udgiv lægger filnavnet i politikerens skandale-manifest, som appen læser.</p>
+        <p class="hint">Kladde er ikke på sitet. Udgiv, når teksten er læst.</p>
       </div>`;
   }
 
@@ -1468,6 +1815,7 @@
   }
 
   async function saveScandal(publish) {
+    if (blockDemo()) return;
     const slug = state.politicianSlug;
     const item = readScandalForm();
     if (!item.title) return setStatus('Titel mangler.', 'err');
@@ -1500,6 +1848,7 @@
   }
 
   async function hideScandal() {
+    if (blockDemo()) return;
     const slug = state.politicianSlug;
     const filename = state.scandalFile;
     const files = (state.scManifest.scandals || []).filter((f) => f !== filename);
@@ -1511,7 +1860,7 @@
       );
       state.scManifest = { scandals: files };
       state.scManifestSha = manPut.content?.sha || state.scManifestSha;
-      setStatus('Skandalen er skjult (fjernet fra manifest).', 'ok');
+      setStatus('Skandalen er skjult.', 'ok');
       await openPolitician(slug);
     } catch (err) {
       setStatus(err.message || 'Kunne ikke skjule', 'err');
@@ -1543,7 +1892,7 @@
         <div class="actions" style="margin-top:0">
           <button class="btn secondary" id="back">← ${esc(state.polCore.name || state.politicianSlug)}</button>
         </div>
-        <p class="hint">Brudt løfte til <strong>${esc(state.politicianSlug)}</strong>${state.promiseFile ? ` · ${esc(state.promiseFile)} ${badge(!!live)}` : ' · ny fil'}</p>
+        <p class="hint">Brudt løfte om <strong>${esc(state.polCore.name || 'politikeren')}</strong> ${badge(!!live)}</p>
         <label>Titel / løftet</label>
         <input id="p-title" value="${esc(p.title)}">
         <label>År</label>
@@ -1571,6 +1920,7 @@
   }
 
   async function savePromise(publish) {
+    if (blockDemo()) return;
     const slug = state.politicianSlug;
     const title = document.getElementById('p-title').value.trim();
     if (!title) return setStatus('Titel mangler.', 'err');
@@ -1614,6 +1964,7 @@
   }
 
   async function hidePromise() {
+    if (blockDemo()) return;
     const slug = state.politicianSlug;
     const filename = state.promiseFile;
     const files = (state.prManifest.brokenPromises || []).filter((f) => f !== filename);
@@ -1634,7 +1985,7 @@
   /* ——— Skattejægeren: sager ——— */
 
   async function ensureCases() {
-    if (state.casesIndex && state.caseSummaries.length) return;
+    if (state.demo || (state.casesIndex && state.caseSummaries.length)) return;
     const idx = await FMGit.getJson('public/apps/skattejaegeren/data/cases/index.json', { slugs: [] });
     state.casesIndex = idx.data;
     state.casesIndexSha = idx.sha;
@@ -1666,64 +2017,78 @@
 
   async function renderSkatte() {
     const main = document.getElementById('admin-main');
-    main.innerHTML = `<div class="card"><p>Henter sager…</p></div>`;
-    try {
-      await ensureCases();
-    } catch (err) {
-      main.innerHTML = `<div class="card"><p class="status err">${esc(err.message)}</p></div>`;
-      return;
+    if (!state.demo && !state.caseSummaries.length) {
+      main.innerHTML = `<div class="card"><p>Henter sager…</p></div>`;
+      try {
+        await ensureCases();
+      } catch (err) {
+        main.innerHTML = `<div class="card"><p class="status err">${esc(err.message)}</p></div>`;
+        return;
+      }
     }
     if (state.view === 'edit') {
       main.innerHTML = caseFormHtml();
       bindCaseForm();
       return;
     }
+    const all = state.caseSummaries;
+    const isDraft = (s) => s.status === 'draft' || !s.inIndex;
+    const counts = {
+      all: all.length,
+      draft: all.filter(isDraft).length,
+      live: all.filter((s) => !isDraft(s)).length,
+    };
     const q = state.q.trim().toLowerCase();
-    const shown = state.caseSummaries.filter(
-      (s) => !q || `${s.title} ${s.slug}`.toLowerCase().includes(q)
-    );
+    const shown = all.filter((s) => {
+      if (state.fmFilter === 'draft' && !isDraft(s)) return false;
+      if (state.fmFilter === 'live' && isDraft(s)) return false;
+      if (!q) return true;
+      return String(s.title || '').toLowerCase().includes(q);
+    });
     main.innerHTML = `
-      <div class="card house-intro">
-        <p>Her styrer du <strong>Skattejægeren</strong> som appen er bygget: én JSON pr. sag i <code>data/cases/</code>. Listen kommer fra <code>index.json</code>. Status <code>draft</code> vises ikke på sitet — sæt <code>approved</code> når den skal frem.</p>
+      <div class="list-tools">
+        ${tabsHtml(counts)}
+        <input class="search" id="q" type="search" placeholder="Søg i sag" value="${esc(state.q)}" enterkeyhint="search">
       </div>
-      <div class="card">
-        <div class="actions" style="margin-top:0">
-          <button class="btn" id="new-case">Ny sag</button>
-        </div>
-        <input class="search" id="q" placeholder="Søg i titel eller slug…" value="${esc(state.q)}">
-        <div class="list">
-          ${shown
-            .map(
-              (s) => `<button class="item" data-slug="${esc(s.slug)}">
-                <div class="item-title">${esc(s.title)} ${
-                  s.status === 'draft' || !s.inIndex ? badge(false) : badge(true)
-                }</div>
-                <div class="item-meta">${esc(s.amountLabel || '')} · ${esc(s.slug)} · ${esc(s.status)}</div>
-              </button>`
-            )
-            .join('')}
-        </div>
-        <p class="hint">${shown.length} sager.</p>
+      <div class="cards" id="clist">
+        ${
+          shown.length
+            ? shown
+                .map(
+                  (s) => `<button type="button" class="story" data-slug="${esc(s.slug)}">
+                    <span class="thumb-fallback amount">${esc(s.amountLabel || 'Sag')}</span>
+                    <span class="story-body">
+                      <span class="story-title">${esc(s.title)}</span>
+                      <span class="story-meta">${isDraft(s) ? badge(false) : badge(true)}${visitHtml(s.slug)}</span>
+                    </span>
+                  </button>`
+                )
+                .join('')
+            : '<p class="hint">Ingen sager her.</p>'
+        }
       </div>`;
-    document.getElementById('q')?.addEventListener('input', (e) => {
-      state.q = e.target.value;
-    });
-    document.getElementById('q')?.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') renderSkatte();
-    });
-    document.getElementById('new-case')?.addEventListener('click', () => {
-      state.caseFile = blankCase();
-      state.caseSha = null;
-      state.caseSlug = '';
-      state.view = 'edit';
-      render();
-    });
-    document.querySelectorAll('[data-slug]').forEach((btn) => {
+    bindListChrome(() => renderSkatte());
+    document.querySelectorAll('#clist [data-slug]').forEach((btn) => {
       btn.addEventListener('click', () => openCase(btn.dataset.slug));
     });
   }
 
   async function openCase(slug) {
+    if (state.demo) {
+      const hit = state.caseSummaries.find((s) => s.slug === slug) || {};
+      state.caseSha = null;
+      state.caseSlug = slug;
+      state.caseFile = {
+        ...blankCase(),
+        ...hit,
+        slug,
+        status: hit.status || 'draft',
+      };
+      state.view = 'edit';
+      render();
+      setStatus('');
+      return;
+    }
     setStatus('Åbner sag…');
     try {
       const file = await FMGit.getJson(`public/apps/skattejaegeren/data/cases/${slug}.json`, {});
@@ -1764,23 +2129,16 @@
     return `
       <div class="card">
         <div class="actions" style="margin-top:0">
-          <button class="btn secondary" id="back">← Alle sager</button>
+          <button class="btn secondary" id="back" type="button">Tilbage</button>
         </div>
-        <label>Titel</label>
+        <label for="c-title">Titel</label>
         <input id="c-title" value="${esc(c.title)}">
-        <div class="row">
-          <div>
-            <label>Slug</label>
-            <input id="c-slug" value="${esc(c.slug)}">
-          </div>
-          <div>
-            <label>Status</label>
-            <select id="c-status">
-              <option value="draft" ${c.status === 'draft' ? 'selected' : ''}>draft — ikke på sitet</option>
-              <option value="approved" ${c.status === 'approved' ? 'selected' : ''}>approved — live</option>
-            </select>
-          </div>
-        </div>
+        <input id="c-slug" type="hidden" value="${esc(c.slug)}">
+        <label for="c-status">Status</label>
+        <select id="c-status">
+          <option value="draft" ${c.status === 'draft' ? 'selected' : ''}>Kladde</option>
+          <option value="approved" ${c.status === 'approved' ? 'selected' : ''}>Live</option>
+        </select>
         <div class="row">
           <div>
             <label>Prioritet (lavt tal først)</label>
@@ -1803,14 +2161,14 @@
         </div>
         <label>Beløbstype</label>
         <select id="c-kind">
-          <option ${c.amountKind === 'official' ? 'selected' : ''}>official</option>
-          <option ${c.amountKind === 'claim' ? 'selected' : ''}>claim</option>
+          <option value="official" ${c.amountKind === 'official' ? 'selected' : ''}>Officielt tal</option>
+          <option value="claim" ${c.amountKind === 'claim' ? 'selected' : ''}>Påstand</option>
         </select>
         <label>Kort resumé</label>
         <textarea id="c-sum">${esc(c.summary)}</textarea>
         <label>Vinkel</label>
         <textarea id="c-angle">${esc(c.angle)}</textarea>
-        <label>Plain lead (almindeligt dansk)</label>
+        <label>Indledning</label>
         <textarea id="c-lead">${esc(c.plainLead)}</textarea>
         <label>Hvad går pengene til</label>
         <textarea id="c-money">${esc(c.whatMoneyFor)}</textarea>
@@ -1850,9 +2208,10 @@
   }
 
   async function saveCase(approve) {
+    if (blockDemo()) return;
     const title = document.getElementById('c-title').value.trim();
     const slug = slugify(document.getElementById('c-slug').value.trim() || title);
-    if (!title || !slug) return setStatus('Titel og slug skal udfyldes.', 'err');
+    if (!title || !slug) return setStatus('Titlen skal udfyldes.', 'err');
     const status = approve ? 'approved' : document.getElementById('c-status').value;
     const summary = document.getElementById('c-sum').value.trim();
     const amountDkk = Number(document.getElementById('c-amt').value) || 0;
@@ -1918,9 +2277,9 @@
       state.caseSummaries = [];
       setStatus(
         approve
-          ? 'Sag udgivet som approved. Med ved næste build.'
+          ? 'Sagen er udgivet. Den kommer med, næste gang sitet bygges.'
           : status === 'draft'
-            ? 'Kladde gemt. Ikke på sitet.'
+            ? 'Kladde gemt. Den er ikke på sitet.'
             : 'Sag gemt.',
         'ok'
       );
@@ -1935,9 +2294,26 @@
   });
 
   loadLocal();
-  if (state.token) {
+  if (new URLSearchParams(location.search).has('demo')) {
+    state.demo = true;
+    state.token = 'demo';
+    state.fmFilter = 'all';
+    state.archive = DEMO_ARTICLES.filter((a) => !isDraftArticle(a));
+    state.manual = { articles: DEMO_ARTICLES.filter((a) => isDraftArticle(a)) };
+    state.polList = DEMO_POLITICIANS;
+    state.caseSummaries = DEMO_CASES;
+    state.casesIndex = { slugs: DEMO_CASES.filter((c) => c.inIndex).map((c) => c.slug) };
+    state.visits = {
+      mode: 'example',
+      total: 12480,
+      bySlug: {},
+      note: 'Eksempeltal. Sæt nøglen i menuen, når denne browser kan hente de rigtige.',
+    };
+    render();
+  } else if (state.token) {
     applyGit();
     bootData()
+      .then(() => loadVisits())
       .then(() => render())
       .catch((err) => {
         state.status = err.message || 'Kunne ikke hente data';
