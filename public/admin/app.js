@@ -135,8 +135,8 @@
     view: 'list',
     fmFilter: 'live',
     demo: false,
-    gcKey: '',
-    visits: { mode: 'example', total: 12480, bySlug: {}, note: '' },
+    statsPass: '',
+    visits: { mode: 'example', total: 12480, bySlug: {}, note: 'Eksempeltal.', updated: '', daily: [], referrers: [] },
     editorTab: 'skriv',
     status: '',
     statusKind: '',
@@ -397,7 +397,7 @@
         token: raw.token || '',
         repo: raw.repo || state.repo,
         branch: raw.branch || 'main',
-        gcKey: raw.gcKey || '',
+        statsPass: raw.statsPass || '',
       });
     } catch {
       /* ignore */
@@ -424,7 +424,7 @@
         token,
         repo,
         branch,
-        gcKey: state.gcKey || '',
+        statsPass: state.statsPass || '',
       })
     );
   }
@@ -510,10 +510,139 @@
   }
 
   function visitHtml(key) {
-    const live = state.visits.mode === 'live';
-    const n = live ? Number(state.visits.bySlug[key] || 0) : exampleCount(key);
-    const ex = live ? '' : '<span class="ex">eksempel</span>';
-    return `<span class="hits">${formatCount(n)} besøg ${ex}</span>`;
+    if (state.visits.mode === 'live') {
+      return `<span class="hits">${formatCount(state.visits.bySlug[key] || 0)} besøg</span>`;
+    }
+    if (state.visits.mode === 'example') {
+      return `<span class="hits">${formatCount(exampleCount(key))} besøg <span class="ex">eksempel</span></span>`;
+    }
+    return '';
+  }
+
+  function b64ToBytes(b64) {
+    const bin = atob(String(b64 || ''));
+    const out = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i += 1) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+
+  // Samme KDF som scripts/stats-crypto.mjs: PBKDF2-SHA-256, 600000 runder, AES-GCM.
+  async function decryptPacked(packed, password) {
+    const iter = Number(packed?.iter);
+    if (packed?.v !== 1 || packed?.kdf !== 'PBKDF2' || packed?.hash !== 'SHA-256') throw new Error('fil');
+    if (!Number.isFinite(iter) || iter < 100000 || iter > 2000000) throw new Error('fil');
+    const salt = b64ToBytes(packed.salt);
+    const iv = b64ToBytes(packed.iv);
+    const ct = b64ToBytes(packed.ct);
+    if (salt.length < 16 || iv.length < 12 || ct.length < 16 || ct.length > 1500000) throw new Error('fil');
+    const material = await crypto.subtle.importKey(
+      'raw',
+      new TextEncoder().encode(password),
+      'PBKDF2',
+      false,
+      ['deriveKey']
+    );
+    const key = await crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt, iterations: iter, hash: 'SHA-256' },
+      material,
+      { name: 'AES-GCM', length: 256 },
+      false,
+      ['decrypt']
+    );
+    const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, ct);
+    return JSON.parse(new TextDecoder().decode(plain));
+  }
+
+  function indexArticlePaths(pages) {
+    const bySlug = {};
+    for (const page of pages || []) {
+      const path = String(page.path || '');
+      const found = path.match(/\/(?:artikel|skandale|skattejaegeren)\/([^/?#]+)/);
+      if (!found) continue;
+      const slug = decodeURIComponent(found[1].replace(/\/$/, ''));
+      bySlug[slug] = (bySlug[slug] || 0) + Number(page.count || 0);
+    }
+    return bySlug;
+  }
+
+  function exampleVisits(note) {
+    return {
+      mode: 'example',
+      total: 12480,
+      bySlug: {},
+      note,
+      updated: '',
+      daily: [],
+      referrers: [],
+    };
+  }
+
+  function lockedVisits(note) {
+    return {
+      mode: 'locked',
+      total: 0,
+      bySlug: {},
+      note,
+      updated: '',
+      daily: [],
+      referrers: [],
+    };
+  }
+
+  function updatedLabel(iso) {
+    const d = new Date(iso || '');
+    if (Number.isNaN(d.getTime())) return '';
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/Copenhagen',
+      hour: '2-digit',
+      minute: '2-digit',
+      hourCycle: 'h23',
+    }).formatToParts(d);
+    const g = (t) => parts.find((p) => p.type === t)?.value || '00';
+    return `Opdateret kl. ${g('hour')}:${g('minute')}`;
+  }
+
+  async function loadStats() {
+    if (state.demo) {
+      state.visits = exampleVisits('Eksempeltal.');
+      return;
+    }
+    let res;
+    try {
+      const script = document.querySelector('script[src$="app.js"]');
+      const statsUrl = new URL('stats.enc.json', script?.src || location.href);
+      res = await fetch(statsUrl, { cache: 'no-store' });
+    } catch {
+      state.visits = lockedVisits('Besøgstallene kunne ikke hentes.');
+      return;
+    }
+    if (res.status === 404) {
+      state.visits = exampleVisits('Eksempeltal. De rigtige tal er her ikke endnu.');
+      return;
+    }
+    if (!res.ok) {
+      state.visits = lockedVisits('Besøgstallene kunne ikke hentes.');
+      return;
+    }
+    if (!state.statsPass) {
+      state.visits = lockedVisits('Skriv kodeordet i menuen for at se tallene.');
+      return;
+    }
+    try {
+      const packed = await res.json();
+      const data = await decryptPacked(packed, state.statsPass);
+      state.visits = {
+        mode: 'live',
+        total: Number(data.total || 0),
+        bySlug: indexArticlePaths(data.pages),
+        note: '',
+        updated: data.updated || '',
+        daily: Array.isArray(data.daily) ? data.daily : [],
+        referrers: Array.isArray(data.referrers) ? data.referrers : [],
+      };
+    } catch {
+      state.visits = lockedVisits('Kodeordet passer ikke.');
+    }
   }
 
   function articleImage(a) {
@@ -574,59 +703,6 @@
     if (!state.demo) return false;
     setStatus('Eksempelvisning. Her gemmes ingenting.', 'err');
     return true;
-  }
-
-  async function loadVisits() {
-    if (state.demo) return;
-    if (!state.gcKey) {
-      state.visits = {
-        mode: 'example',
-        total: 12480,
-        bySlug: {},
-        note: 'Eksempeltal. Sæt nøglen i menuen for at hente de rigtige.',
-      };
-      return;
-    }
-    try {
-      const headers = {
-        Authorization: `Bearer ${state.gcKey}`,
-        Accept: 'application/json',
-      };
-      const api = 'https://folketsmedie.goatcounter.com/api/v0';
-      const totalRes = await fetch(`${api}/stats/total`, { headers });
-      if (!totalRes.ok) throw new Error('besøg');
-      const totalJson = await totalRes.json();
-      const bySlug = {};
-      let offset = 0;
-      for (let page = 0; page < 6; page += 1) {
-        const res = await fetch(`${api}/stats/hits?limit=100&offset=${offset}`, { headers });
-        if (!res.ok) throw new Error('besøg');
-        const json = await res.json();
-        const hits = Array.isArray(json.hits) ? json.hits : [];
-        for (const hit of hits) {
-          const path = String(hit.path || '');
-          const found = path.match(/\/(?:artikel|skandale|skattejaegeren)\/([^/?#]+)/);
-          if (!found) continue;
-          const slug = decodeURIComponent(found[1].replace(/\/$/, ''));
-          bySlug[slug] = (bySlug[slug] || 0) + Number(hit.count || 0);
-        }
-        if (!json.more || !hits.length) break;
-        offset += hits.length;
-      }
-      state.visits = {
-        mode: 'live',
-        total: Number(totalJson.total ?? totalJson.total_utc ?? 0),
-        bySlug,
-        note: '',
-      };
-    } catch {
-      state.visits = {
-        mode: 'example',
-        total: 12480,
-        bySlug: {},
-        note: 'Tallene kunne ikke hentes her. Telefonen kan blokere goatcounter.com. Eksempeltal vises i stedet.',
-      };
-    }
   }
 
   function mergedArticles() {
@@ -765,7 +841,7 @@
       try {
         await FMGit.api('');
         await bootData();
-        await loadVisits();
+        await loadStats();
         render();
       } catch (err) {
         setStatus(err.message || 'Login fejlede', 'err');
@@ -774,11 +850,50 @@
     });
   }
 
+  function visitsSection() {
+    const v = state.visits;
+    if (v.mode === 'live') {
+      const days = [...(v.daily || [])].reverse();
+      const dayList = days.length
+        ? `<div class="visit-extra"><h2>Seneste 30 dage</h2><ul class="mini-list">${days
+            .map(
+              (row) =>
+                `<li><span>${esc(formatDa(row.date))}</span><span>${formatCount(row.count)}</span></li>`
+            )
+            .join('')}</ul></div>`
+        : '';
+      const refs = v.referrers || [];
+      const refList = refs.length
+        ? `<div class="visit-extra"><h2>Hvor de kommer fra</h2><ul class="mini-list">${refs
+            .map((row) => `<li><span>${esc(row.name)}</span><span>${formatCount(row.count)}</span></li>`)
+            .join('')}</ul></div>`
+        : '';
+      return `
+        <section class="visits" aria-label="Besøg i alt">
+          <p class="kicker">Besøg i alt</p>
+          <p class="visits-num">${formatCount(v.total)}</p>
+          <p class="updated">${esc(updatedLabel(v.updated))}</p>
+          ${dayList}
+          ${refList}
+        </section>`;
+    }
+    if (v.mode === 'example') {
+      return `
+        <section class="visits" aria-label="Besøg i alt">
+          <p class="kicker">Besøg i alt</p>
+          <p class="visits-num">${formatCount(v.total)} <span class="ex">eksempel</span></p>
+          <p class="hint visits-note">${esc(v.note || 'Eksempeltal.')}</p>
+        </section>`;
+    }
+    return `
+      <section class="visits" aria-label="Besøg i alt">
+        <p class="kicker">Besøg i alt</p>
+        <p class="hint visits-note">${esc(v.note || 'Skriv kodeordet i menuen for at se tallene.')}</p>
+      </section>`;
+  }
+
   function shellHtml() {
     const h = HOUSES[state.house];
-    const live = state.visits.mode === 'live';
-    const ex = live ? '' : '<span class="ex">eksempel</span>';
-    const note = state.visits.note ? `<p class="hint visits-note">${esc(state.visits.note)}</p>` : '';
     return `
       <div class="shell">
         <header class="topbar">
@@ -789,10 +904,10 @@
           <a class="btn secondary" href="${esc(base + h.live)}" target="_blank" rel="noopener">Se siden</a>
           <button class="btn secondary" id="logout" type="button">Log ud</button>
           <div class="menu-key">
-            <label for="gc-key">Nøgle til besøgstal</label>
-            <input id="gc-key" type="password" autocomplete="off" placeholder="Sættes én gang i browseren" value="${esc(state.gcKey)}">
-            <button class="btn" id="gc-save" type="button">Hent tal</button>
-            <p class="hint">Nøglen bliver kun i denne browser.</p>
+            <label for="stats-pass">Kodeord til besøgstal</label>
+            <input id="stats-pass" type="password" autocomplete="off" placeholder="${state.statsPass ? 'Kodeordet er gemt' : 'Sættes én gang i browseren'}">
+            <button class="btn" id="stats-save" type="button">Vis tal</button>
+            <p class="hint">Kodeordet bliver kun i denne browser.</p>
           </div>
         </div>
         <nav class="houses" aria-label="Vælg side">
@@ -800,11 +915,7 @@
           <button type="button" data-house="skandale" class="${state.house === 'skandale' ? 'is-on' : ''}">Politiske skandaler</button>
           <button type="button" data-house="skatte" class="${state.house === 'skatte' ? 'is-on' : ''}">Skattejægeren</button>
         </nav>
-        <section class="visits" aria-label="Besøg i alt">
-          <p class="kicker">Besøg i alt</p>
-          <p class="visits-num">${formatCount(state.visits.total)} ${ex}</p>
-        </section>
-        ${note}
+        ${visitsSection()}
         <div id="admin-main"></div>
         <div id="admin-status" class="status ${state.statusKind}">${esc(state.status)}</div>
       </div>`;
@@ -836,17 +947,22 @@
       saveLocal();
       render();
     });
-    document.getElementById('gc-save')?.addEventListener('click', async () => {
-      state.gcKey = document.getElementById('gc-key').value.trim();
+    document.getElementById('stats-save')?.addEventListener('click', async () => {
+      const typed = document.getElementById('stats-pass').value;
+      if (typed) state.statsPass = typed;
       saveLocal();
       if (state.demo) {
         setStatus('Eksempelvisning. Her hentes ingen tal.', 'err');
         return;
       }
-      setStatus('Henter besøgstal…');
-      await loadVisits();
+      if (!state.statsPass) {
+        setStatus('Skriv kodeordet.', 'err');
+        return;
+      }
+      setStatus('Åbner besøgstal…');
+      await loadStats();
       setStatus(
-        state.visits.mode === 'live' ? 'Besøgstal opdateret.' : state.visits.note,
+        state.visits.mode === 'live' ? 'Besøgstal er åbnet.' : state.visits.note,
         state.visits.mode === 'live' ? 'ok' : 'err'
       );
       render();
@@ -2307,13 +2423,13 @@
       mode: 'example',
       total: 12480,
       bySlug: {},
-      note: 'Eksempeltal. Sæt nøglen i menuen, når denne browser kan hente de rigtige.',
+      note: 'Eksempeltal.',
     };
     render();
   } else if (state.token) {
     applyGit();
     bootData()
-      .then(() => loadVisits())
+      .then(() => loadStats())
       .then(() => render())
       .catch((err) => {
         state.status = err.message || 'Kunne ikke hente data';
