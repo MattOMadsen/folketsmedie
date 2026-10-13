@@ -3,7 +3,7 @@
  * Offline: the small offline.html shell, not an article list.
  * Cache: hashed build files and icons only.
  */
-const VERSION = 'fm-pwa-1';
+const VERSION = 'fm-pwa-2';
 const SHELL = `fm-shell-${VERSION}`;
 const ASSETS = `fm-assets-${VERSION}`;
 const SCOPE = '/folketsmedie/';
@@ -56,7 +56,9 @@ function isStaticAsset(url) {
 
 async function networkFirstHtml(request) {
   try {
-    return await fetch(request);
+    // Bypass the browser HTTP cache. GitHub Pages may keep HTML for minutes,
+    // and a cached front page would hide newly published articles.
+    return await fetch(request, { cache: 'no-store' });
   } catch {
     const cache = await caches.open(SHELL);
     const offline = await cache.match(OFFLINE_URL);
