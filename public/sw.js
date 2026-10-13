@@ -3,7 +3,7 @@
  * Offline: the small offline.html shell, not an article list.
  * Cache: hashed build files and icons only.
  */
-const VERSION = 'fm-pwa-2';
+const VERSION = 'fm-pwa-3';
 const SHELL = `fm-shell-${VERSION}`;
 const ASSETS = `fm-assets-${VERSION}`;
 const SCOPE = '/folketsmedie/';
