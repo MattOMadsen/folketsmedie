@@ -14,7 +14,7 @@ Hver politiker har følgende dedikerede JSON-filer:
 | `data/economic-support/[slug].json` | Donorer | Økonomisk støtte tabel |
 | `data/broken-promises/[slug]/` | **Granulær struktur**:<br>• `manifest.json` (liste over løfte-filer)<br>• `*.json` (én fil pr. brudt løfte) | Brudte valgløfter sektion |
 
-> **Note:** De gamle single-file versioner beholdes som fallback. Den nye loader i `data.js` prøver først manifest-strukturen.
+> **Note:** De gamle single-file versioner beholdes som fallback. Den nye loader i `data.js` prøver først manifest-strukturen. Ved `npm run build` pakkes alle JSON-filer til `data/bundle.json`, så live-siden kun henter ét data-request. Ved `npm run build` pakkes alle JSON-filer til `data/bundle.json`, så live-siden kun henter ét data-request.
 
 ### Eksempel på ny granulær struktur (både scandals og broken-promises)
 ```

@@ -24,6 +24,9 @@ const SammenlignData = {
   networkToPoliticians: {},
 
   async fetchJSON(path) {
+    if (window.SiteStats?.fetchJSON) {
+      return SiteStats.fetchJSON(path);
+    }
     try {
       const res = await fetch(path);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);

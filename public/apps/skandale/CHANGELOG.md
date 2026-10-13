@@ -1,3 +1,9 @@
+## [v2.04.00] - 2026-09-10
+### Hurtigere indlæsning
+- Alle JSON-filer pakkes til `data/bundle.json` ved build (`scripts/bundle-skandale-data.mjs`)
+- Siden henter ét data-request i stedet for hundredvis af små filer på GitHub Pages
+- Tidslinje, sammenlign, statistik og netværk bruger samme bundle
+
 ## [v2.02.02] - 2026-06-11
 ### Fix: kilder viste «undefined»
 - `normalizeMediaLinks()` i `site-stats.js` — understøtter `name`, `title` og `text`
