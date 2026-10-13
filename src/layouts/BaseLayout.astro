@@ -3,6 +3,7 @@ import '../styles/global.css';
 import SearchBox from '../components/SearchBox.astro';
 import SupportBanner from '../components/SupportBanner.astro';
 import HouseSwitch from '../components/HouseSwitch.astro';
+import PwaHead from '../components/PwaHead.astro';
 import { ClientRouter } from 'astro:transitions';
 
 interface Props {
@@ -59,6 +60,7 @@ const desc = (description || '').replace(/\s+/g, ' ').trim().slice(0, 300);
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <PwaHead />
 
     <!-- Open Graph (Facebook, LinkedIn, m.fl.) -->
     <meta property="og:site_name" content="Folkets Medie" />
