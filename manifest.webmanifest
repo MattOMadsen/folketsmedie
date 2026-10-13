@@ -1,0 +1,39 @@
+{
+  "name": "Folkets Medie",
+  "short_name": "FM",
+  "description": "Nyheder, artikler og dokumentar fra Folkets Medie.",
+  "lang": "da",
+  "dir": "ltr",
+  "id": "/folketsmedie/",
+  "start_url": "/folketsmedie/",
+  "scope": "/folketsmedie/",
+  "display": "standalone",
+  "background_color": "#0a0b0c",
+  "theme_color": "#0a0b0c",
+  "icons": [
+    {
+      "src": "/folketsmedie/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/folketsmedie/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/folketsmedie/icons/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/folketsmedie/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
