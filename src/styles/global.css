@@ -835,6 +835,28 @@ body.app-shell .support-bar--foot {
   font-size: 0.9rem;
 }
 
+.prose .wp-block-table {
+  margin: 0 0 1.2em;
+  overflow-x: auto;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.prose th,
+.prose td {
+  text-align: left;
+  padding: 0.45rem 0.65rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.prose th {
+  color: var(--text);
+}
+
 .link-list {
   list-style: none;
   margin: 0 0 2rem;
