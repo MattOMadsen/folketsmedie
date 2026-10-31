@@ -171,8 +171,38 @@ p {
   font-variant-numeric: tabular-nums;
 }
 
-.visits-note {
-  margin: 8px 2px 0;
+.visits-note,
+.updated {
+  margin: 8px 0 0;
+}
+
+.visit-extra {
+  margin-top: 14px;
+}
+
+.visit-extra h2 {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.mini-list {
+  display: grid;
+  gap: 4px;
+  max-height: 180px;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-style: none;
+}
+
+.mini-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .list-tools {
