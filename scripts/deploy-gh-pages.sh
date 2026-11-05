@@ -74,6 +74,16 @@ if [ -f "$WT/apps/skandale/data/bundle.json" ] && [ ! -f "$ROOT/dist/apps/skanda
   cp -a "$WT/apps/skandale/data/bundle.json" "$ROOT/dist/apps/skandale/data/bundle.json"
 fi
 
+# Besøgstal skrives af en Action direkte på gh-pages som admin/stats.enc.json.
+# Filen er ikke med i Astro-buildet. Kopiér den ind i dist, så rsync --delete
+# ikke fjerner den, og en almindelig deploy ikke bygger hele sitet om for tallenes skyld.
+STATS_BEFORE=0
+if [ -f "$WT/admin/stats.enc.json" ]; then
+  STATS_BEFORE=1
+  mkdir -p "$ROOT/dist/admin"
+  cp -a "$WT/admin/stats.enc.json" "$ROOT/dist/admin/stats.enc.json"
+fi
+
 DIST_HTML="$(count_artikel_html "$ROOT/dist")"
 DIST_FRONT="$(front_artikel_count "$ROOT/dist")"
 
@@ -95,6 +105,11 @@ echo "deploy tæller: live HTML=$LIVE_HTML forside=$LIVE_FRONT → dist HTML=$DI
 rsync -a --delete --exclude .git "$ROOT/dist/" "$WT/"
 test -f "$WT/.nojekyll" || touch "$WT/.nojekyll"
 test -d "$WT/admin" || { echo "ABORT: admin/ mangler på gh-pages efter rsync" >&2; cleanup_wt; exit 1; }
+if [ "$STATS_BEFORE" = 1 ] && [ ! -f "$WT/admin/stats.enc.json" ]; then
+  echo "ABORT: admin/stats.enc.json blev fjernet under deploy." >&2
+  cleanup_wt
+  exit 1
+fi
 test -f "$WT/apps/skandale/data/bundle.json" || { echo "ABORT: apps/skandale/data/bundle.json mangler efter rsync" >&2; cleanup_wt; exit 1; }
 
 cd "$WT"

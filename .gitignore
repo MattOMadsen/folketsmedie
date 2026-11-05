@@ -17,6 +17,10 @@ pnpm-debug.log*
 .env
 .env.production
 
+# krypterede besøgstal hører hjemme på gh-pages, ikke i kilden
+public/admin/stats.enc.json
+admin/stats.enc.json
+
 # macOS-specific files
 .DS_Store
 

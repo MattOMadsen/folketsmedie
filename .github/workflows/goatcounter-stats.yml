@@ -1,0 +1,61 @@
+name: Besøgstal
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: besoegstal
+  cancel-in-progress: false
+
+jobs:
+  hent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hent kilde
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: src
+
+      - name: Hent gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: site
+          fetch-depth: 1
+
+      - name: Opsæt Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Hent og krypter
+        env:
+          GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
+          STATS_PASS: ${{ secrets.STATS_PASS }}
+          STATS_OUT: site/admin/stats.enc.json
+        run: node src/scripts/fetch-goatcounter-stats.mjs
+
+      - name: Gem kun den krypterede fil
+        working-directory: site
+        run: |
+          set -eu
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- admin/stats.enc.json
+          names="$(git diff --cached --name-only)"
+          if [ -z "$names" ]; then
+            echo "ingen aendring"
+            exit 0
+          fi
+          if [ "$names" != "admin/stats.enc.json" ]; then
+            echo "uventede filer i commit"
+            exit 1
+          fi
+          git commit -m "Opdater krypterede besoegstal"
+          git push
